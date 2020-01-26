@@ -2,6 +2,8 @@ package fr.altairstudios.arutairu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -31,6 +33,16 @@ public class MainActivity extends AppCompatActivity {
         mArutairu.setAlpha(0f);
         mStart.setAlpha(0f);
         mCurrentLanguage.setAlpha(0f);
+
+        mStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), Revision.class);
+                intent.putExtra("LESSON", 1);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     @Override

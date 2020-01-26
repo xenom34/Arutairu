@@ -1,4 +1,3014 @@
 <resources>
     <string name="app_name">Arutairu</string>
     <string name="jpAltair">アルタイル</string>
+    <string-array name="jpn">
+        <item>ように</item>
+        <item>私は</item>
+        <item>彼の</item>
+        <item>その</item>
+        <item>彼</item>
+        <item>た</item>
+        <item>ために</item>
+        <item>上の</item>
+        <item>アール</item>
+        <item>とともに</item>
+        <item>彼ら</item>
+        <item>ある</item>
+        <item>アット</item>
+        <item>一つ</item>
+        <item>持っている</item>
+        <item>この</item>
+        <item>から</item>
+        <item>バイ</item>
+        <item>ホット</item>
+        <item>言葉</item>
+        <item>しかし</item>
+        <item>何</item>
+        <item>いくつかの</item>
+        <item>です</item>
+        <item>それ</item>
+        <item>あなた</item>
+        <item>または</item>
+        <item>持っていた</item>
+        <item>インクルード</item>
+        <item>の</item>
+        <item>へ</item>
+        <item>そして</item>
+        <item>は</item>
+        <item>で</item>
+        <item>我々</item>
+        <item>缶</item>
+        <item>アウト</item>
+        <item>その他</item>
+        <item>だった</item>
+        <item>これ</item>
+        <item>やる</item>
+        <item>それらの</item>
+        <item>時間</item>
+        <item>もし</item>
+        <item>意志</item>
+        <item>方法</item>
+        <item>前記</item>
+        <item>の</item>
+        <item>それぞれ</item>
+        <item>言う</item>
+        <item>し</item>
+        <item>セット</item>
+        <item>個</item>
+        <item>欲しい</item>
+        <item>空気</item>
+        <item>よく</item>
+        <item>また</item>
+        <item>遊ぶ</item>
+        <item>小さい</item>
+        <item>終わり</item>
+        <item>置く</item>
+        <item>ホーム</item>
+        <item>読む</item>
+        <item>手</item>
+        <item>ポート</item>
+        <item>大きい</item>
+        <item>スペル</item>
+        <item>加える</item>
+        <item>さらに</item>
+        <item>土地</item>
+        <item>ここに</item>
+        <item>しなければならない</item>
+        <item>大きい</item>
+        <item>高い</item>
+        <item>そのような</item>
+        <item>続く</item>
+        <item>行為</item>
+        <item>なぜ</item>
+        <item>頼む</item>
+        <item>人々</item>
+        <item>変更</item>
+        <item>行ってきました</item>
+        <item>光</item>
+        <item>種類</item>
+        <item>オフ</item>
+        <item>必要</item>
+        <item>家</item>
+        <item>絵</item>
+        <item>試す</item>
+        <item>私たち</item>
+        <item>再び</item>
+        <item>動物</item>
+        <item>ポイント</item>
+        <item>母</item>
+        <item>世界</item>
+        <item>近く</item>
+        <item>ビルド</item>
+        <item>自己</item>
+        <item>地球</item>
+        <item>父</item>
+        <item>任意の</item>
+        <item>新しい</item>
+        <item>仕事</item>
+        <item>パート</item>
+        <item>取る</item>
+        <item>ゲット</item>
+        <item>場所</item>
+        <item>製</item>
+        <item>暮らす</item>
+        <item>どこ</item>
+        <item>後に</item>
+        <item>バック</item>
+        <item>少し</item>
+        <item>唯一の</item>
+        <item>ラウンド</item>
+        <item>男</item>
+        <item>年</item>
+        <item>来た</item>
+        <item>ショー</item>
+        <item>すべての</item>
+        <item>良い</item>
+        <item>私に</item>
+        <item>与える</item>
+        <item>私たちの</item>
+        <item>下</item>
+        <item>名前</item>
+        <item>非常に</item>
+        <item>スルー</item>
+        <item>ただ</item>
+        <item>フォーム</item>
+        <item>文</item>
+        <item>素晴らしい</item>
+        <item>思う</item>
+        <item>言う</item>
+        <item>助け</item>
+        <item>低い</item>
+        <item>ライン</item>
+        <item>異なる</item>
+        <item>ターン</item>
+        <item>原因</item>
+        <item>ずっと</item>
+        <item>意味する</item>
+        <item>前に</item>
+        <item>移動</item>
+        <item>権利</item>
+        <item>男の子</item>
+        <item>古い</item>
+        <item>あまりに</item>
+        <item>同じ</item>
+        <item>彼女</item>
+        <item>すべて</item>
+        <item>そこ</item>
+        <item>時</item>
+        <item>アップ</item>
+        <item>使用</item>
+        <item>あなたの</item>
+        <item>道</item>
+        <item>約</item>
+        <item>多くの</item>
+        <item>その後</item>
+        <item>それら</item>
+        <item>書く</item>
+        <item>でしょう</item>
+        <item>ような</item>
+        <item>そう</item>
+        <item>これらの</item>
+        <item>彼女の</item>
+        <item>長い</item>
+        <item>作る</item>
+        <item>もの</item>
+        <item>見る</item>
+        <item>彼に</item>
+        <item>二つ</item>
+        <item>があります</item>
+        <item>見える</item>
+        <item>多くの</item>
+        <item>日</item>
+        <item>可能性</item>
+        <item>行く</item>
+        <item>来る</item>
+        <item>やった</item>
+        <item>番号</item>
+        <item>聞こえる</item>
+        <item>いいえ</item>
+        <item>最も</item>
+        <item>人々</item>
+        <item>私の</item>
+        <item>オーバー</item>
+        <item>知っている</item>
+        <item>水</item>
+        <item>比べて</item>
+        <item>コール</item>
+        <item>最初の</item>
+        <item>誰</item>
+        <item>よい</item>
+        <item>ダウン</item>
+        <item>サイド</item>
+        <item>き</item>
+        <item>今</item>
+        <item>見つける</item>
+        <item>ヘッド</item>
+        <item>スタンド</item>
+        <item>独自の</item>
+        <item>ページ</item>
+        <item>べき</item>
+        <item>国</item>
+        <item>発見</item>
+        <item>答え</item>
+        <item>学校</item>
+        <item>成長する</item>
+        <item>研究</item>
+        <item>まだ</item>
+        <item>学ぶ</item>
+        <item>植物</item>
+        <item>カバー</item>
+        <item>食品</item>
+        <item>太陽</item>
+        <item>つの</item>
+        <item>間に</item>
+        <item>状態</item>
+        <item>キープ</item>
+        <item>目</item>
+        <item>ネバー</item>
+        <item>最後の</item>
+        <item>てみましょう</item>
+        <item>考え</item>
+        <item>街</item>
+        <item>ツリー</item>
+        <item>クロス</item>
+        <item>農場</item>
+        <item>ハード</item>
+        <item>スタート</item>
+        <item>可能性がある</item>
+        <item>物語</item>
+        <item>のこぎり</item>
+        <item>遠く</item>
+        <item>海</item>
+        <item>描く</item>
+        <item>左</item>
+        <item>遅く</item>
+        <item>ラン</item>
+        <item>ない’</item>
+        <item>一方、</item>
+        <item>プレス</item>
+        <item>クローズ</item>
+        <item>夜</item>
+        <item>リアル</item>
+        <item>生活</item>
+        <item>少数</item>
+        <item>北</item>
+        <item>ブック</item>
+        <item>運ぶ</item>
+        <item>かかった</item>
+        <item>科学</item>
+        <item>食べる</item>
+        <item>部屋</item>
+        <item>友人</item>
+        <item>始まった</item>
+        <item>アイデア</item>
+        <item>魚</item>
+        <item>山</item>
+        <item>停止</item>
+        <item>一度</item>
+        <item>ベース</item>
+        <item>聞く</item>
+        <item>馬</item>
+        <item>カット</item>
+        <item>確か</item>
+        <item>見る</item>
+        <item>カラー</item>
+        <item>顔</item>
+        <item>木材</item>
+        <item>メイン</item>
+        <item>オープン</item>
+        <item>見える</item>
+        <item>一緒に</item>
+        <item>次</item>
+        <item>白</item>
+        <item>子どもたち</item>
+        <item>始まる</item>
+        <item>だ</item>
+        <item>歩く</item>
+        <item>例</item>
+        <item>和らげる</item>
+        <item>紙</item>
+        <item>グループ</item>
+        <item>常に</item>
+        <item>音楽</item>
+        <item>それらの</item>
+        <item>両方</item>
+        <item>マーク</item>
+        <item>しばしば</item>
+        <item>手紙</item>
+        <item>まで、</item>
+        <item>マイル</item>
+        <item>川</item>
+        <item>カー</item>
+        <item>フィート</item>
+        <item>介護</item>
+        <item>第</item>
+        <item>十分な</item>
+        <item>平野</item>
+        <item>女の子</item>
+        <item>いつもの</item>
+        <item>若い</item>
+        <item>レディー</item>
+        <item>上記</item>
+        <item>今までに</item>
+        <item>赤</item>
+        <item>リスト</item>
+        <item>しかし</item>
+        <item>感じる</item>
+        <item>トーク</item>
+        <item>鳥</item>
+        <item>すぐに</item>
+        <item>ボディ</item>
+        <item>犬</item>
+        <item>家族</item>
+        <item>ダイレクト</item>
+        <item>ポーズ</item>
+        <item>去る</item>
+        <item>歌</item>
+        <item>測定</item>
+        <item>ドア</item>
+        <item>製品</item>
+        <item>黒</item>
+        <item>短い</item>
+        <item>数字</item>
+        <item>クラス</item>
+        <item>風</item>
+        <item>質問</item>
+        <item>起こる</item>
+        <item>完全な</item>
+        <item>船</item>
+        <item>エリア</item>
+        <item>半分</item>
+        <item>岩</item>
+        <item>オーダー</item>
+        <item>火災</item>
+        <item>南</item>
+        <item>問題</item>
+        <item>作品</item>
+        <item>言われ</item>
+        <item>知っていた</item>
+        <item>合格</item>
+        <item>以来</item>
+        <item>トップ</item>
+        <item>全体</item>
+        <item>王</item>
+        <item>ストリート</item>
+        <item>インチ</item>
+        <item>掛ける</item>
+        <item>何も</item>
+        <item>もちろん</item>
+        <item>滞在</item>
+        <item>ホイール</item>
+        <item>フル</item>
+        <item>力</item>
+        <item>ブルー</item>
+        <item>オブジェクト</item>
+        <item>決定する</item>
+        <item>表面</item>
+        <item>深い</item>
+        <item>ムーン</item>
+        <item>島</item>
+        <item>足</item>
+        <item>システム</item>
+        <item>忙しい</item>
+        <item>テスト</item>
+        <item>記録</item>
+        <item>ボート</item>
+        <item>一般的な</item>
+        <item>ゴールド</item>
+        <item>可能</item>
+        <item>飛行機</item>
+        <item>代わり</item>
+        <item>ドライ</item>
+        <item>不思議</item>
+        <item>笑い</item>
+        <item>千の</item>
+        <item>前</item>
+        <item>走った</item>
+        <item>チェック</item>
+        <item>ゲーム</item>
+        <item>形状</item>
+        <item>一致する</item>
+        <item>ホット</item>
+        <item>ミス</item>
+        <item>た</item>
+        <item>熱</item>
+        <item>雪</item>
+        <item>タイヤ</item>
+        <item>持って来る</item>
+        <item>はい</item>
+        <item>遠い</item>
+        <item>埋める</item>
+        <item>東</item>
+        <item>ペイント</item>
+        <item>言語</item>
+        <item>の間で</item>
+        <item>ユニット</item>
+        <item>パワー</item>
+        <item>町</item>
+        <item>罰金</item>
+        <item>特定の</item>
+        <item>飛ぶ</item>
+        <item>落ちる</item>
+        <item>鉛</item>
+        <item>泣く</item>
+        <item>暗い</item>
+        <item>マシン</item>
+        <item>ノート</item>
+        <item>待つ</item>
+        <item>計画</item>
+        <item>図</item>
+        <item>スター</item>
+        <item>ボックス</item>
+        <item>名詞</item>
+        <item>フィールド</item>
+        <item>残り</item>
+        <item>正しい</item>
+        <item>できる</item>
+        <item>ポンド</item>
+        <item>終わった</item>
+        <item>美しさ</item>
+        <item>ドライブ</item>
+        <item>立っていた</item>
+        <item>含む</item>
+        <item>フロント</item>
+        <item>教える</item>
+        <item>週</item>
+        <item>ファイナル</item>
+        <item>与えた</item>
+        <item>緑</item>
+        <item>ああ</item>
+        <item>クイック</item>
+        <item>開発する</item>
+        <item>海</item>
+        <item>暖かい</item>
+        <item>無料で</item>
+        <item>分</item>
+        <item>強い</item>
+        <item>特別</item>
+        <item>心</item>
+        <item>背後に</item>
+        <item>明確な</item>
+        <item>テール</item>
+        <item>作る</item>
+        <item>事実</item>
+        <item>スペース</item>
+        <item>聞いた</item>
+        <item>ベスト</item>
+        <item>時間</item>
+        <item>良い</item>
+        <item>真の</item>
+        <item>間に</item>
+        <item>百</item>
+        <item>五</item>
+        <item>覚えている</item>
+        <item>ステップ</item>
+        <item>早い</item>
+        <item>ホールド</item>
+        <item>西</item>
+        <item>地面</item>
+        <item>関心</item>
+        <item>リーチ</item>
+        <item>速い</item>
+        <item>動詞</item>
+        <item>歌う</item>
+        <item>聞く</item>
+        <item>六</item>
+        <item>テーブル</item>
+        <item>旅行</item>
+        <item>レス</item>
+        <item>朝</item>
+        <item>十</item>
+        <item>シンプル</item>
+        <item>いくつかの</item>
+        <item>母音</item>
+        <item>の方へ</item>
+        <item>戦争</item>
+        <item>産む</item>
+        <item>に対する</item>
+        <item>パターン</item>
+        <item>遅い</item>
+        <item>センター</item>
+        <item>愛</item>
+        <item>人</item>
+        <item>マネー</item>
+        <item>サーブ</item>
+        <item>見える</item>
+        <item>道路</item>
+        <item>マップ</item>
+        <item>雨</item>
+        <item>ルール</item>
+        <item>支配する</item>
+        <item>引っ張る</item>
+        <item>寒い</item>
+        <item>予告</item>
+        <item>声</item>
+        <item>エネルギー</item>
+        <item>狩り</item>
+        <item>ありそうな</item>
+        <item>ベッド</item>
+        <item>兄</item>
+        <item>卵</item>
+        <item>乗る</item>
+        <item>セル</item>
+        <item>信じる</item>
+        <item>たぶん</item>
+        <item>選ぶ</item>
+        <item>突然の</item>
+        <item>カウント</item>
+        <item>広場</item>
+        <item>理由</item>
+        <item>長さ</item>
+        <item>表す</item>
+        <item>アート</item>
+        <item>テーマ</item>
+        <item>地域</item>
+        <item>サイズ</item>
+        <item>変える</item>
+        <item>落ち着く</item>
+        <item>話す</item>
+        <item>重さ</item>
+        <item>一般</item>
+        <item>アイス</item>
+        <item>問題</item>
+        <item>サークル</item>
+        <item>ペア</item>
+        <item>含める</item>
+        <item>分割</item>
+        <item>音節</item>
+        <item>フェルト</item>
+        <item>壮大な</item>
+        <item>ボール</item>
+        <item>まだ</item>
+        <item>波</item>
+        <item>ドロップ</item>
+        <item>心</item>
+        <item></item>
+        <item>現在</item>
+        <item>重い</item>
+        <item>ダンス</item>
+        <item>エンジン</item>
+        <item>ポジション</item>
+        <item>アーム</item>
+        <item>広い</item>
+        <item>帆</item>
+        <item>材料</item>
+        <item>分数</item>
+        <item>森</item>
+        <item>座る</item>
+        <item>レース</item>
+        <item>窓</item>
+        <item>店</item>
+        <item>夏</item>
+        <item>列車</item>
+        <item>スリープ</item>
+        <item>証明する</item>
+        <item>ローン</item>
+        <item>レッグ</item>
+        <item>エクササイズ</item>
+        <item>壁</item>
+        <item>キャッチ</item>
+        <item>マウント</item>
+        <item>希望</item>
+        <item>空</item>
+        <item>ボード</item>
+        <item>喜び</item>
+        <item>冬</item>
+        <item>土</item>
+        <item>書かれた</item>
+        <item>ワイルド</item>
+        <item>楽器</item>
+        <item>保管</item>
+        <item>ガラス</item>
+        <item>草</item>
+        <item>乳牛</item>
+        <item>仕事</item>
+        <item>エッジ</item>
+        <item>看板</item>
+        <item>訪問</item>
+        <item>過去</item>
+        <item>ソフト</item>
+        <item>楽しい</item>
+        <item>明るい</item>
+        <item>ガス</item>
+        <item>天候</item>
+        <item>月</item>
+        <item>万</item>
+        <item>クマ</item>
+        <item>仕上げ</item>
+        <item>幸せな</item>
+        <item>希望</item>
+        <item>花</item>
+        <item>衣服を着せる</item>
+        <item>奇妙な</item>
+        <item>いなくなった</item>
+        <item>トレード</item>
+        <item>メロディー</item>
+        <item>旅</item>
+        <item>オフィス</item>
+        <item>受け取る</item>
+        <item>行</item>
+        <item>口</item>
+        <item>正確な</item>
+        <item>シンボル</item>
+        <item>死ぬ</item>
+        <item>最低</item>
+        <item>トラブル</item>
+        <item>シャウト</item>
+        <item>ただし</item>
+        <item>書いた</item>
+        <item>シード</item>
+        <item>トーン</item>
+        <item>参加する</item>
+        <item>提案する</item>
+        <item>クリーン</item>
+        <item>ブレーク</item>
+        <item>女性</item>
+        <item>庭</item>
+        <item>上昇</item>
+        <item>悪い</item>
+        <item>打撃</item>
+        <item>オイル</item>
+        <item>血</item>
+        <item>触れる</item>
+        <item>成長した</item>
+        <item>セント</item>
+        <item>ミックス</item>
+        <item>チーム</item>
+        <item>ワイヤー</item>
+        <item>コスト</item>
+        <item>失われた</item>
+        <item>ブラウン</item>
+        <item>着用</item>
+        <item>庭</item>
+        <item>等しい</item>
+        <item>送信された</item>
+        <item>選ぶ</item>
+        <item>落ちた</item>
+        <item>フィット</item>
+        <item>流れ</item>
+        <item>フェア</item>
+        <item>銀行</item>
+        <item>集める</item>
+        <item>保存</item>
+        <item>コントロール</item>
+        <item>進</item>
+        <item>耳</item>
+        <item>ほかに</item>
+        <item>かなり</item>
+        <item>壊した</item>
+        <item>ケース</item>
+        <item>ミドル</item>
+        <item>殺す</item>
+        <item>息子</item>
+        <item>湖</item>
+        <item>瞬間</item>
+        <item>スケール</item>
+        <item>騒々しい</item>
+        <item>春</item>
+        <item>観察する</item>
+        <item>子ども</item>
+        <item>ストレート</item>
+        <item>子音</item>
+        <item>国家</item>
+        <item>辞書</item>
+        <item>ミルク</item>
+        <item>スピード</item>
+        <item>方法</item>
+        <item>オルガン</item>
+        <item>支払い</item>
+        <item>年齢</item>
+        <item>セクション</item>
+        <item>ドレス</item>
+        <item>クラウド</item>
+        <item>驚き</item>
+        <item>静かな</item>
+        <item>石</item>
+        <item>小さな</item>
+        <item>登る</item>
+        <item>涼しい</item>
+        <item>デザイン</item>
+        <item>貧しい</item>
+        <item>たくさん</item>
+        <item>実験</item>
+        <item>ボトム</item>
+        <item>キー</item>
+        <item>鉄</item>
+        <item>シングル</item>
+        <item>スティック</item>
+        <item>フラット</item>
+        <item>個の</item>
+        <item>スキン</item>
+        <item>笑顔</item>
+        <item>しわ</item>
+        <item>穴</item>
+        <item>ジャンプ</item>
+        <item>赤ちゃん</item>
+        <item>人</item>
+        <item>村</item>
+        <item>大会</item>
+        <item>ルート</item>
+        <item>買う</item>
+        <item>上げる</item>
+        <item>解く</item>
+        <item>金属</item>
+        <item>かどうか</item>
+        <item>プッシュ</item>
+        <item></item>
+        <item>パラグラフ</item>
+        <item>第</item>
+        <item>しなければならない</item>
+        <item>ハンドヘルド</item>
+        <item>髪</item>
+        <item>説明する</item>
+        <item>料理人</item>
+        <item>床</item>
+        <item>どちら</item>
+        <item>結果</item>
+        <item>燃やす</item>
+        <item>丘</item>
+        <item>金庫</item>
+        <item>猫</item>
+        <item>世紀</item>
+        <item>考える</item>
+        <item>タイプ</item>
+        <item>法則</item>
+        <item>ビット</item>
+        <item>海岸</item>
+        <item>コピー</item>
+        <item>フレーズ</item>
+        <item>サイレント</item>
+        <item>背の高い</item>
+        <item>砂</item>
+        <item>土壌</item>
+        <item>ロール</item>
+        <item>温度</item>
+        <item>指</item>
+        <item>業界</item>
+        <item>値</item>
+        <item>戦い</item>
+        <item>うそ</item>
+        <item>ビート</item>
+        <item>エキサイト</item>
+        <item>ナチュラル</item>
+        <item>ビュー</item>
+        <item>感覚</item>
+        <item>首都</item>
+        <item>ないでしょう’</item>
+        <item>椅子</item>
+        <item>危険</item>
+        <item>フルーツ</item>
+        <item>金持ち</item>
+        <item>厚い</item>
+        <item>兵士</item>
+        <item>プロセス</item>
+        <item>操作する</item>
+        <item>練習</item>
+        <item>別</item>
+        <item>難しい</item>
+        <item>医師</item>
+        <item>どうぞ</item>
+        <item>守る</item>
+        <item>正午</item>
+        <item>作物</item>
+        <item>モダン</item>
+        <item>要素</item>
+        <item>ヒット</item>
+        <item>学生</item>
+        <item>コーナー</item>
+        <item>パーティー</item>
+        <item>サプライ</item>
+        <item>その</item>
+        <item>検索する</item>
+        <item>リング</item>
+        <item>キャラクター</item>
+        <item>昆虫</item>
+        <item>キャッチ</item>
+        <item>期間</item>
+        <item>示す</item>
+        <item>ラジオ</item>
+        <item>スポーク</item>
+        <item>アトム</item>
+        <item>人間</item>
+        <item>歴史</item>
+        <item>効果</item>
+        <item>エレクトリック</item>
+        <item>期待する</item>
+        <item>骨</item>
+        <item>レール</item>
+        <item>想像する</item>
+        <item>提供する</item>
+        <item>同意する</item>
+        <item>このようにして</item>
+        <item>優しい</item>
+        <item>女</item>
+        <item>キャプテン</item>
+        <item>推測</item>
+        <item>必要</item>
+        <item>シャープ</item>
+        <item>ウイング</item>
+        <item>作る</item>
+        <item>隣人</item>
+        <item>ウォッシュ</item>
+        <item>バット</item>
+        <item>むしろ</item>
+        <item>群衆</item>
+        <item>トウモロコシ</item>
+        <item>比較する</item>
+        <item>詩</item>
+        <item>文字列</item>
+        <item>鐘</item>
+        <item>決まる</item>
+        <item>肉</item>
+        <item>こする</item>
+        <item>チューブ</item>
+        <item>有名な</item>
+        <item>ドル</item>
+        <item>ストリーム</item>
+        <item>恐怖</item>
+        <item>視力</item>
+        <item>薄い</item>
+        <item>三角形</item>
+        <item>惑星</item>
+        <item>急ぐ</item>
+        <item>チーフ</item>
+        <item>コロニー</item>
+        <item>クロック</item>
+        <item>地雷</item>
+        <item>ネクタイ</item>
+        <item>入力する</item>
+        <item>主要な</item>
+        <item>新鮮な</item>
+        <item>検索</item>
+        <item>送信</item>
+        <item>黄色</item>
+        <item>銃</item>
+        <item>許可する</item>
+        <item>印刷</item>
+        <item>死んだ</item>
+        <item>スポット</item>
+        <item>砂漠</item>
+        <item>スーツ</item>
+        <item>現在の</item>
+        <item>リフト</item>
+        <item>ローズ</item>
+        <item>届く</item>
+        <item>マスター</item>
+        <item>トラック</item>
+        <item>親</item>
+        <item>海岸</item>
+        <item>分裂</item>
+        <item>シート</item>
+        <item>物質</item>
+        <item>好む</item>
+        <item>接続する</item>
+        <item>ポスト</item>
+        <item>過ごす</item>
+        <item>和音</item>
+        <item>脂肪</item>
+        <item>うれしい</item>
+        <item>オリジナル</item>
+        <item>シェア</item>
+        <item>駅</item>
+        <item>お父さん</item>
+        <item>パン</item>
+        <item>充電</item>
+        <item>適切な</item>
+        <item>バー</item>
+        <item>申し出</item>
+        <item>セグメント</item>
+        <item>スレーブ</item>
+        <item>アヒル</item>
+        <item>インスタント</item>
+        <item>市場</item>
+        <item>度</item>
+        <item>投入する</item>
+        <item>ひよこ</item>
+        <item>かわいい</item>
+        <item>敵</item>
+        <item>返事</item>
+        <item>ドリンク</item>
+        <item>起こる</item>
+        <item>サポート</item>
+        <item>スピーチ</item>
+        <item>自然</item>
+        <item>レンジ</item>
+        <item>スチーム</item>
+        <item>モーション</item>
+        <item>パス</item>
+        <item>液体</item>
+        <item>ログ</item>
+        <item>意味</item>
+        <item>商</item>
+        <item>歯牙</item>
+        <item>シェル</item>
+        <item>首</item>
+        <item>酸素</item>
+        <item>砂糖</item>
+        <item>死</item>
+        <item>かわいい</item>
+        <item>スキル</item>
+        <item>女性たち</item>
+        <item>シーズン</item>
+        <item>ソリューション</item>
+        <item>マグネット</item>
+        <item>銀</item>
+        <item>感謝</item>
+        <item>ブランチ</item>
+        <item>マッチ</item>
+        <item>サフィックス</item>
+        <item>特に</item>
+        <item>イチジク</item>
+        <item>恐れて</item>
+        <item>巨大な</item>
+        <item>姉妹</item>
+        <item>スチール</item>
+        <item>話し合う</item>
+        <item>フォワード</item>
+        <item>同じような</item>
+        <item>ガイド</item>
+        <item>経験</item>
+        <item>スコア</item>
+        <item>リンゴ</item>
+        <item>買った</item>
+        <item>主導</item>
+        <item>ピッチ</item>
+        <item>コート</item>
+        <item>マス</item>
+        <item>カード</item>
+        <item>バンド</item>
+        <item>ロープ</item>
+        <item>スリップ</item>
+        <item>勝つ</item>
+        <item>夢</item>
+        <item>夕べ</item>
+        <item>条件</item>
+        <item>フィード</item>
+        <item>ツール</item>
+        <item>合計</item>
+        <item>基本</item>
+        <item>匂い</item>
+        <item>谷</item>
+        <item>も</item>
+        <item>ダブル</item>
+        <item>座席</item>
+        <item>続ける</item>
+        <item>ブロック</item>
+        <item>チャート</item>
+        <item>帽子</item>
+        <item>売る</item>
+        <item>成功</item>
+        <item>会社</item>
+        <item>引く</item>
+        <item>イベント</item>
+        <item>特定の</item>
+        <item>契約</item>
+        <item>泳ぐ</item>
+        <item>言葉</item>
+        <item>反対</item>
+        <item>妻</item>
+        <item>靴</item>
+        <item>肩</item>
+        <item>スプレッド</item>
+        <item>アレンジ</item>
+        <item>キャンプ</item>
+        <item>発明する</item>
+        <item>綿</item>
+        <item>ボルン</item>
+        <item>決定する</item>
+        <item>クォート</item>
+        <item>人</item>
+        <item>トラック</item>
+        <item>ノイズ</item>
+        <item>レベル</item>
+        <item>チャンス</item>
+        <item>集まる</item>
+        <item>ショップ</item>
+        <item>ストレッチ</item>
+        <item>投げる</item>
+        <item>輝き</item>
+        <item>財産</item>
+        <item>コラム</item>
+        <item>分子</item>
+        <item>選択する</item>
+        <item>間違った</item>
+        <item>グレー</item>
+        <item>リピート</item>
+        <item>必要とする</item>
+        <item>幅広い</item>
+        <item>準備する</item>
+        <item>塩</item>
+        <item>鼻</item>
+        <item>複数</item>
+        <item>怒り</item>
+        <item>請求</item>
+        <item>大陸</item>
+    </string-array>
+
+    <string-array name="romaji">
+        <item>yōni</item>
+        <item> watashi wa</item>
+        <item> kare no</item>
+        <item> sono</item>
+        <item> kare</item>
+        <item>ta</item>
+        <item> tameni</item>
+        <item>jō no</item>
+        <item> a-ru</item>
+        <item> totomoni</item>
+        <item> karera</item>
+        <item> aru</item>
+        <item> atto</item>
+        <item> hitotsu</item>
+        <item> motteiru</item>
+        <item> kono</item>
+        <item> kara</item>
+        <item> bai</item>
+        <item> hotto</item>
+        <item> kotoba</item>
+        <item> shikashi</item>
+        <item> nani</item>
+        <item> ikutsu ka no</item>
+        <item> desu</item>
+        <item> sore</item>
+        <item> anata</item>
+        <item> mataha</item>
+        <item> motteita</item>
+        <item> inkuru-do</item>
+        <item> no</item>
+        <item> e</item>
+        <item> soshite</item>
+        <item> wa</item>
+        <item> de</item>
+        <item> wareware</item>
+        <item> kan</item>
+        <item> auto</item>
+        <item> sonota</item>
+        <item> datta</item>
+        <item> kore</item>
+        <item> yaru</item>
+        <item> sorera no</item>
+        <item> jikan</item>
+        <item> mo shi</item>
+        <item> ishi</item>
+        <item> hōhō</item>
+        <item> zenki</item>
+        <item> no</item>
+        <item> sorezore</item>
+        <item> iu</item>
+        <item>shi</item>
+        <item> setto</item>
+        <item> ko</item>
+        <item> hoshii</item>
+        <item> kūki</item>
+        <item> yoku</item>
+        <item> mata</item>
+        <item> asobu</item>
+        <item> chiisai</item>
+        <item> owari</item>
+        <item> oku</item>
+        <item> ho-mu</item>
+        <item> yomu</item>
+        <item>shu</item>
+        <item> po-to</item>
+        <item> ōkii</item>
+        <item> superu</item>
+        <item> kuwaeru</item>
+        <item> sarani</item>
+        <item> tochi</item>
+        <item> koko ni</item>
+        <item>shinakerebanaranai</item>
+        <item> ōkii</item>
+        <item> takai</item>
+        <item> sono yōna</item>
+        <item> tsuzuku</item>
+        <item> kōi</item>
+        <item> naze</item>
+        <item> tanomu</item>
+        <item> hitobito</item>
+        <item> henkō</item>
+        <item> ittekimashita</item>
+        <item>kō</item>
+        <item> shurui</item>
+        <item> ofu</item>
+        <item> hitsuyō</item>
+        <item>ka</item>
+        <item>e</item>
+        <item> tamesu</item>
+        <item> watashitachi</item>
+        <item> futatabi</item>
+        <item> dōbutsu</item>
+        <item> pointo</item>
+        <item> haha</item>
+        <item> sekai</item>
+        <item> chikaku</item>
+        <item> birudo</item>
+        <item> jiko</item>
+        <item> chikyū</item>
+        <item> chichi</item>
+        <item> nin\'i no</item>
+        <item> atarashii</item>
+        <item> shigoto</item>
+        <item> pa-to</item>
+        <item> toru</item>
+        <item> getto</item>
+        <item> basho</item>
+        <item>sei</item>
+        <item> kurasu</item>
+        <item> doko</item>
+        <item>go ni</item>
+        <item> bakku</item>
+        <item> sukoshi</item>
+        <item> yuiitsu no</item>
+        <item> raundo</item>
+        <item> otoko</item>
+        <item>nen</item>
+        <item> kita</item>
+        <item> sho-</item>
+        <item> subete no</item>
+        <item> yoi</item>
+        <item> watashi ni</item>
+        <item> ataeru</item>
+        <item> watashitachi no</item>
+        <item>ka</item>
+        <item> namae</item>
+        <item> hijō ni</item>
+        <item> suru-</item>
+        <item> tada</item>
+        <item> fuxo-mu</item>
+        <item> bun</item>
+        <item> subarashii</item>
+        <item> omou</item>
+        <item> iu</item>
+        <item> tasuke</item>
+        <item> hikui</item>
+        <item> rain</item>
+        <item> kotonaru</item>
+        <item> ta-n</item>
+        <item> gen\'in</item>
+        <item> zutto</item>
+        <item> imisuru</item>
+        <item> mae ni</item>
+        <item> idō</item>
+        <item> kenri</item>
+        <item> otokonoko</item>
+        <item> furui</item>
+        <item> amarini</item>
+        <item> onaji</item>
+        <item> kanojo</item>
+        <item> subete</item>
+        <item> soko</item>
+        <item>ji</item>
+        <item> appu</item>
+        <item> shiyō</item>
+        <item> anata no</item>
+        <item>dō</item>
+        <item> yaku</item>
+        <item> ōku no</item>
+        <item> sonogo</item>
+        <item> sorera</item>
+        <item> kaku</item>
+        <item> deshō</item>
+        <item>yō na</item>
+        <item>sō</item>
+        <item> korera no</item>
+        <item> kanojo no</item>
+        <item> nagai</item>
+        <item> tsukuru</item>
+        <item>mono</item>
+        <item> miru</item>
+        <item> kare ni</item>
+        <item> futatsu</item>
+        <item> ga arimasu</item>
+        <item> mieru</item>
+        <item> ōku no</item>
+        <item>bi</item>
+        <item> kanōsei</item>
+        <item> iku</item>
+        <item> kuru</item>
+        <item> yatta</item>
+        <item> bangō</item>
+        <item> kikoeru</item>
+        <item> iie</item>
+        <item> mottomo</item>
+        <item> hitobito</item>
+        <item> watashi no</item>
+        <item> o-ba-</item>
+        <item> shitteiru</item>
+        <item>sui</item>
+        <item> kurabete</item>
+        <item> ko-ru</item>
+        <item> saisho no</item>
+        <item> dare</item>
+        <item> yoi</item>
+        <item> daun</item>
+        <item> saido</item>
+        <item> ki</item>
+        <item> ima</item>
+        <item> mitsukeru</item>
+        <item> heddo</item>
+        <item> sutando</item>
+        <item> dokuji no</item>
+        <item> pe-ji</item>
+        <item> beki</item>
+        <item>koku</item>
+        <item> hakken</item>
+        <item> kotae</item>
+        <item> gakkō</item>
+        <item> seichōsuru</item>
+        <item> kenkyū</item>
+        <item> mada</item>
+        <item> manabu</item>
+        <item> shokubutsu</item>
+        <item> kaba-</item>
+        <item> shokuhin</item>
+        <item> taiyō</item>
+        <item> tsu no</item>
+        <item>kan ni</item>
+        <item> jōtai</item>
+        <item> ki-pu</item>
+        <item>me</item>
+        <item> neba-</item>
+        <item> saigo no</item>
+        <item>temimashō</item>
+        <item> kangae</item>
+        <item>gai</item>
+        <item> tsuri-</item>
+        <item> kurosu</item>
+        <item> nōjō</item>
+        <item> ha-do</item>
+        <item> suta-to</item>
+        <item> kanōsei ga aru</item>
+        <item> monogatari</item>
+        <item> nokogiri</item>
+        <item> tōku</item>
+        <item> umi</item>
+        <item> egaku</item>
+        <item> hidari</item>
+        <item> osoku</item>
+        <item> ran</item>
+        <item> nai</item>
+        <item> ippō,</item>
+        <item> puresu</item>
+        <item> kuro-zu</item>
+        <item> yoru</item>
+        <item> Riaru</item>
+        <item> seikatsu</item>
+        <item> shōsū</item>
+        <item> kita</item>
+        <item> bukku</item>
+        <item> hakobu</item>
+        <item> kakatta</item>
+        <item> kagaku</item>
+        <item> taberu</item>
+        <item> heya</item>
+        <item> yūjin</item>
+        <item> hajimatta</item>
+        <item> aidea</item>
+        <item>gyo</item>
+        <item>san</item>
+        <item> teishi</item>
+        <item> ichi do</item>
+        <item> be-su</item>
+        <item> kiku</item>
+        <item>ba</item>
+        <item> katto</item>
+        <item> tashika</item>
+        <item> miru</item>
+        <item> kara-</item>
+        <item>gao</item>
+        <item> mokuzai</item>
+        <item> mein</item>
+        <item> o-pun</item>
+        <item> mieru</item>
+        <item> issho ni</item>
+        <item>ji</item>
+        <item> shiro</item>
+        <item> kodomotachi</item>
+        <item> hajimaru</item>
+        <item> da</item>
+        <item> aruku</item>
+        <item> rei</item>
+        <item> yawarageru</item>
+        <item>shi</item>
+        <item> guru-pu</item>
+        <item> tsuneni</item>
+        <item> ongaku</item>
+        <item> sorera no</item>
+        <item> ryōhō</item>
+        <item> ma-ku</item>
+        <item> shibashiba</item>
+        <item> tegami</item>
+        <item> made,</item>
+        <item> mairu</item>
+        <item>gawa</item>
+        <item> ka-</item>
+        <item> fyi-to</item>
+        <item> kaigo</item>
+        <item> dai</item>
+        <item> jūbunna</item>
+        <item> heiya</item>
+        <item> onnanoko</item>
+        <item> itsumo no</item>
+        <item> wakai</item>
+        <item> redhi-</item>
+        <item> jōki</item>
+        <item> ima made ni</item>
+        <item> aka</item>
+        <item> risuto</item>
+        <item> shikashi</item>
+        <item> kanjiru</item>
+        <item> to-ku</item>
+        <item> tori</item>
+        <item> sugu ni</item>
+        <item> bodhi</item>
+        <item>ken</item>
+        <item> kazoku</item>
+        <item> dairekuto</item>
+        <item> po-zu</item>
+        <item> saru</item>
+        <item>ka</item>
+        <item> sokutei</item>
+        <item> doa</item>
+        <item> seihin</item>
+        <item> kuro</item>
+        <item> mijikai</item>
+        <item> sūji</item>
+        <item> kurasu</item>
+        <item>fū</item>
+        <item> shitsumon</item>
+        <item> okoru</item>
+        <item> kanzenna</item>
+        <item>sen</item>
+        <item> eria</item>
+        <item> hanbun</item>
+        <item> iwa</item>
+        <item> o-da-</item>
+        <item> kasai</item>
+        <item> minami</item>
+        <item> mondai</item>
+        <item> sakuhin</item>
+        <item> iware</item>
+        <item> shitteita</item>
+        <item> gōkaku</item>
+        <item> irai</item>
+        <item> toppu</item>
+        <item> zentai</item>
+        <item>ō</item>
+        <item> sutori-to</item>
+        <item> inchi</item>
+        <item> kakeru</item>
+        <item> nani mo</item>
+        <item> mochiron</item>
+        <item> taizai</item>
+        <item> hoi-ru</item>
+        <item> furu</item>
+        <item>ryoku</item>
+        <item> buru-</item>
+        <item> obujyekuto</item>
+        <item> ketteisuru</item>
+        <item> hyōmen</item>
+        <item> fukai</item>
+        <item> mu-n</item>
+        <item>tō</item>
+        <item> ashi</item>
+        <item> shisutemu</item>
+        <item> isogashii</item>
+        <item> tesuto</item>
+        <item> kiroku</item>
+        <item> bo-to</item>
+        <item> ippanteki na</item>
+        <item> go-rudo</item>
+        <item> kanō</item>
+        <item> hikōki</item>
+        <item> kawari</item>
+        <item> dorai</item>
+        <item> fushigi</item>
+        <item> warai</item>
+        <item> sen no</item>
+        <item> mae</item>
+        <item> hashitta</item>
+        <item> tyekku</item>
+        <item> ge-mu</item>
+        <item> keijō</item>
+        <item> itchisuru</item>
+        <item> hotto</item>
+        <item> misu</item>
+        <item>ta</item>
+        <item>netsu</item>
+        <item>setsu</item>
+        <item> taiya</item>
+        <item> mottekuru</item>
+        <item> hai</item>
+        <item> tōi</item>
+        <item> umeru</item>
+        <item> higashi</item>
+        <item> peinto</item>
+        <item> gengo</item>
+        <item> no ma de</item>
+        <item> yunitto</item>
+        <item> pawa-</item>
+        <item>machi</item>
+        <item> bakkin</item>
+        <item> tokutei no</item>
+        <item> tobu</item>
+        <item> ochiru</item>
+        <item> namari</item>
+        <item> naku</item>
+        <item> kurai</item>
+        <item> mashin</item>
+        <item> no-to</item>
+        <item> matsu</item>
+        <item> keikaku</item>
+        <item>zu</item>
+        <item> suta-</item>
+        <item> bokkusu</item>
+        <item> meishi</item>
+        <item> fyi-rudo</item>
+        <item> nokori</item>
+        <item> tadashii</item>
+        <item> dekiru</item>
+        <item> pondo</item>
+        <item> owatta</item>
+        <item> utsukushisa</item>
+        <item> doraibu</item>
+        <item> tatteita</item>
+        <item> fukumu</item>
+        <item> furonto</item>
+        <item> oshieru</item>
+        <item>shū</item>
+        <item> fuxainaru</item>
+        <item> ataeta</item>
+        <item> midori</item>
+        <item> ā</item>
+        <item> kuikku</item>
+        <item> kaihatsusuru</item>
+        <item> umi</item>
+        <item> atatakai</item>
+        <item> muryō de</item>
+        <item>bun</item>
+        <item> tsuyoi</item>
+        <item> tokubetsu</item>
+        <item>shin</item>
+        <item> haigo ni</item>
+        <item> meikakuna</item>
+        <item> te-ru</item>
+        <item> tsukuru</item>
+        <item> jijitsu</item>
+        <item> supe-su</item>
+        <item> kiita</item>
+        <item> besuto</item>
+        <item> jikan</item>
+        <item> yoi</item>
+        <item> shin no</item>
+        <item>kan ni</item>
+        <item> hyaku</item>
+        <item> go</item>
+        <item> oboeteiru</item>
+        <item> suteppu</item>
+        <item> hayai</item>
+        <item> ho-rudo</item>
+        <item> nishi</item>
+        <item> jimen</item>
+        <item> kanshin</item>
+        <item> ri-chi</item>
+        <item> hayai</item>
+        <item> dōshi</item>
+        <item> utau</item>
+        <item> kiku</item>
+        <item> roku</item>
+        <item> te-buru</item>
+        <item> ryokō</item>
+        <item> resu</item>
+        <item> asa</item>
+        <item> jū</item>
+        <item> shinpuru</item>
+        <item> ikutsu ka no</item>
+        <item> boin</item>
+        <item> no hō e</item>
+        <item> sensō</item>
+        <item> umu</item>
+        <item> nitaisuru</item>
+        <item> pata-n</item>
+        <item> osoi</item>
+        <item> senta-</item>
+        <item>ai</item>
+        <item>jin</item>
+        <item> mane-</item>
+        <item> sa-bu</item>
+        <item> mieru</item>
+        <item> dōro</item>
+        <item> mappu</item>
+        <item>u</item>
+        <item> ru-ru</item>
+        <item> shihaisuru</item>
+        <item> hipparu</item>
+        <item> samui</item>
+        <item> yokoku</item>
+        <item>goe</item>
+        <item> enerugi-</item>
+        <item> kari</item>
+        <item> arisō na</item>
+        <item> beddo</item>
+        <item>kei</item>
+        <item> tamago</item>
+        <item> noru</item>
+        <item> seru</item>
+        <item> shinjiru</item>
+        <item> tabun</item>
+        <item> erabu</item>
+        <item> totsuzen no</item>
+        <item> kaunto</item>
+        <item> hiroba</item>
+        <item> riyū</item>
+        <item> nagasa</item>
+        <item> arawasu</item>
+        <item> a-to</item>
+        <item> te-ma</item>
+        <item> chiiki</item>
+        <item> saizu</item>
+        <item> kaeru</item>
+        <item> ochitsuku</item>
+        <item> hanasu</item>
+        <item> omosa</item>
+        <item> ippan</item>
+        <item> aisu</item>
+        <item> mondai</item>
+        <item> sa-kuru</item>
+        <item> pea</item>
+        <item> fukumeru</item>
+        <item> bunkatsu</item>
+        <item> onsetsu</item>
+        <item> fyeruto</item>
+        <item> sōdaina</item>
+        <item> bo-ru</item>
+        <item> mada</item>
+        <item>ha</item>
+        <item> doroppu</item>
+        <item>shin</item>
+        <item></item>
+        <item> genzai</item>
+        <item> omoi</item>
+        <item> dansu</item>
+        <item> enjin</item>
+        <item> pojishon</item>
+        <item> a-mu</item>
+        <item> hiroi</item>
+        <item> ho</item>
+        <item> zairyō</item>
+        <item> bunsū</item>
+        <item> mori</item>
+        <item> suwaru</item>
+        <item> re-su</item>
+        <item> mado</item>
+        <item>ten</item>
+        <item> natsu</item>
+        <item> ressha</item>
+        <item> suri-pu</item>
+        <item> shōmeisuru</item>
+        <item> ro-n</item>
+        <item> reggu</item>
+        <item> ekusasaizu</item>
+        <item> kabe</item>
+        <item> kyatchi</item>
+        <item> maunto</item>
+        <item> kibō</item>
+        <item> sora</item>
+        <item> bo-do</item>
+        <item> yorokobi</item>
+        <item> fuyu</item>
+        <item>do</item>
+        <item> kakareta</item>
+        <item> wairudo</item>
+        <item> gakki</item>
+        <item> hokan</item>
+        <item> garasu</item>
+        <item>sō</item>
+        <item> nyūgyū</item>
+        <item> shigoto</item>
+        <item> ejji</item>
+        <item> kanban</item>
+        <item> hōmon</item>
+        <item> kako</item>
+        <item> sofuto</item>
+        <item> tanoshii</item>
+        <item> akarui</item>
+        <item> gasu</item>
+        <item> tenkō</item>
+        <item> tsuki</item>
+        <item> man</item>
+        <item> kuma</item>
+        <item> shiage</item>
+        <item> shiawasena</item>
+        <item> kibō</item>
+        <item> hana</item>
+        <item> ifuku o kiseru</item>
+        <item> kimyōna</item>
+        <item> inaku natta</item>
+        <item> tore-do</item>
+        <item> merodhi-</item>
+        <item> tabi</item>
+        <item> ofyisu</item>
+        <item> uketoru</item>
+        <item>yuki</item>
+        <item>guchi</item>
+        <item> seikakuna</item>
+        <item> shinboru</item>
+        <item> shinu</item>
+        <item> saitei</item>
+        <item> toraburu</item>
+        <item> shauto</item>
+        <item> tadashi</item>
+        <item> kaita</item>
+        <item> shi-do</item>
+        <item> to-n</item>
+        <item> sankasuru</item>
+        <item> teiansuru</item>
+        <item> kuri-n</item>
+        <item> bure-ku</item>
+        <item> josei</item>
+        <item> niwa</item>
+        <item> jōshō</item>
+        <item> warui</item>
+        <item> dageki</item>
+        <item> oiru</item>
+        <item> chi</item>
+        <item> fureru</item>
+        <item> seichōshita</item>
+        <item> sento</item>
+        <item> mikkusu</item>
+        <item> chi-mu</item>
+        <item> waiya-</item>
+        <item> kosuto</item>
+        <item> ushinawareta</item>
+        <item> buraun</item>
+        <item> chakuyō</item>
+        <item> niwa</item>
+        <item> hitoshii</item>
+        <item> sōshinsareta</item>
+        <item> erabu</item>
+        <item> ochita</item>
+        <item> fyitto</item>
+        <item> nagare</item>
+        <item> fyea</item>
+        <item> ginkō</item>
+        <item> atsumeru</item>
+        <item> hozon</item>
+        <item> kontoro-ru</item>
+        <item> Susumu</item>
+        <item> mimi</item>
+        <item> hoka ni</item>
+        <item> kanari</item>
+        <item> kowashita</item>
+        <item> ke-su</item>
+        <item> midoru</item>
+        <item> korosu</item>
+        <item> musuko</item>
+        <item>ko</item>
+        <item> shunkan</item>
+        <item> suke-ru</item>
+        <item> sōzōshii</item>
+        <item> haru</item>
+        <item> kansatsusuru</item>
+        <item> kodomo</item>
+        <item> sutore-to</item>
+        <item> shiin</item>
+        <item> kokka</item>
+        <item> jisho</item>
+        <item> miruku</item>
+        <item> supi-do</item>
+        <item> hōhō</item>
+        <item> orugan</item>
+        <item> shiharai</item>
+        <item> nenrei</item>
+        <item> sekushon</item>
+        <item> doresu</item>
+        <item> Kura udo</item>
+        <item> odoroki</item>
+        <item> shizukana</item>
+        <item>seki</item>
+        <item> chiisana</item>
+        <item> noboru</item>
+        <item> suzushii</item>
+        <item> dezain</item>
+        <item> mazushii</item>
+        <item> takusan</item>
+        <item> jikken</item>
+        <item> botomu</item>
+        <item> ki-</item>
+        <item> tetsu</item>
+        <item> shinguru</item>
+        <item> suthikku</item>
+        <item> furatto</item>
+        <item> ko no</item>
+        <item> sukin</item>
+        <item> egao</item>
+        <item> shiwa</item>
+        <item> ana</item>
+        <item> janpu</item>
+        <item> akachan</item>
+        <item>jin</item>
+        <item>mura</item>
+        <item> taikai</item>
+        <item> ru-to</item>
+        <item> kau</item>
+        <item> ageru</item>
+        <item> toku</item>
+        <item> kinzoku</item>
+        <item> ka dō ka</item>
+        <item> pusshu</item>
+        <item></item>
+        <item> paragurafu</item>
+        <item> dai</item>
+        <item>shinakerebanaranai</item>
+        <item> handoherudo</item>
+        <item> kami</item>
+        <item> setsumeisuru</item>
+        <item> ryōrijin</item>
+        <item> yuka</item>
+        <item> dochira</item>
+        <item> kekka</item>
+        <item> moyasu</item>
+        <item> oka</item>
+        <item> kinko</item>
+        <item> neko</item>
+        <item> seiki</item>
+        <item> kangaeru</item>
+        <item> taipu</item>
+        <item> hōsoku</item>
+        <item> bitto</item>
+        <item> kaigan</item>
+        <item> kopi-</item>
+        <item> fure-zu</item>
+        <item> sairento</item>
+        <item> se no takai</item>
+        <item> suna</item>
+        <item> dojō</item>
+        <item> ro-ru</item>
+        <item> ondo</item>
+        <item> yubi</item>
+        <item> gyōkai</item>
+        <item>chi</item>
+        <item> tatakai</item>
+        <item> uso</item>
+        <item> bi-to</item>
+        <item> ekisaito</item>
+        <item> nachuraru</item>
+        <item> byu-</item>
+        <item> kankaku</item>
+        <item> shuto</item>
+        <item> nai deshō</item>
+        <item> isu</item>
+        <item> kiken</item>
+        <item> furu-tsu</item>
+        <item> kanemochi</item>
+        <item> atsui</item>
+        <item> heishi</item>
+        <item> purosesu</item>
+        <item> sōsasuru</item>
+        <item> renshū</item>
+        <item>betsu</item>
+        <item> muzukashii</item>
+        <item> ishi</item>
+        <item> dōzo</item>
+        <item> mamoru</item>
+        <item> shōgo</item>
+        <item> sakumotsu</item>
+        <item> modan</item>
+        <item> yōso</item>
+        <item> hitto</item>
+        <item> gakusei</item>
+        <item> ko-na-</item>
+        <item> pa-thi-</item>
+        <item> sapurai</item>
+        <item> sono</item>
+        <item> kensakusuru</item>
+        <item> ringu</item>
+        <item> kyarakuta-</item>
+        <item> konchū</item>
+        <item> kyatchi</item>
+        <item> kikan</item>
+        <item> shimesu</item>
+        <item> rajio</item>
+        <item> supo-ku</item>
+        <item> atomu</item>
+        <item> ningen</item>
+        <item> rekishi</item>
+        <item> kōka</item>
+        <item> erekutorikku</item>
+        <item> kitaisuru</item>
+        <item>bone</item>
+        <item> re-ru</item>
+        <item> sōzōsuru</item>
+        <item> teikyōsuru</item>
+        <item> dōisuru</item>
+        <item> kono yō ni shite</item>
+        <item> yasashii</item>
+        <item> onna</item>
+        <item> kyaputen</item>
+        <item> suisoku</item>
+        <item> hitsuyō</item>
+        <item> Sha-Pu</item>
+        <item> uingu</item>
+        <item> tsukuru</item>
+        <item> rinjin</item>
+        <item> uxosshu</item>
+        <item> batto</item>
+        <item> mushiro</item>
+        <item> gunshū</item>
+        <item> tōmorokoshi</item>
+        <item> hikakusuru</item>
+        <item> shi</item>
+        <item> moji retsu</item>
+        <item> kane</item>
+        <item> kimaru</item>
+        <item> niku</item>
+        <item> kosuru</item>
+        <item> chu-bu</item>
+        <item> yūmeina</item>
+        <item> doru</item>
+        <item> sutori-mu</item>
+        <item> kyōfu</item>
+        <item> shiryoku</item>
+        <item> usui</item>
+        <item> sankakkei</item>
+        <item> wakusei</item>
+        <item> isogu</item>
+        <item> chi-fu</item>
+        <item> koroni-</item>
+        <item> kurokku</item>
+        <item> jirai</item>
+        <item> nekutai</item>
+        <item> nyūryokusuru</item>
+        <item> shuyōna</item>
+        <item> shinsenna</item>
+        <item> kensaku</item>
+        <item> sōshin</item>
+        <item> kiiro</item>
+        <item> jū</item>
+        <item> kyokasuru</item>
+        <item> insatsu</item>
+        <item> shinda</item>
+        <item> supotto</item>
+        <item> sabaku</item>
+        <item> su-tsu</item>
+        <item> genzai no</item>
+        <item> rifuto</item>
+        <item> Ro-Zu</item>
+        <item> todoku</item>
+        <item> masuta-</item>
+        <item> torakku</item>
+        <item> oya</item>
+        <item> kaigan</item>
+        <item> bunretsu</item>
+        <item> shi-to</item>
+        <item> busshitsu</item>
+        <item> konomu</item>
+        <item> setsuzokusuru</item>
+        <item> posuto</item>
+        <item> sugosu</item>
+        <item> waon</item>
+        <item> shibō</item>
+        <item> ureshii</item>
+        <item> orijinaru</item>
+        <item> shea</item>
+        <item>eki</item>
+        <item> otōsan</item>
+        <item> pan</item>
+        <item> jūden</item>
+        <item> tekisetsuna</item>
+        <item> ba-</item>
+        <item> mōshide</item>
+        <item> segumento</item>
+        <item> sure-bu</item>
+        <item> ahiru</item>
+        <item> insutanto</item>
+        <item> shijō</item>
+        <item>do</item>
+        <item> tōnyūsuru</item>
+        <item> hiyoko</item>
+        <item> kawaii</item>
+        <item> teki</item>
+        <item> henji</item>
+        <item> dorinku</item>
+        <item> okoru</item>
+        <item> sapo-to</item>
+        <item> supi-chi</item>
+        <item> shizen</item>
+        <item> renji</item>
+        <item> suchi-mu</item>
+        <item> Mo- Shon</item>
+        <item> pasu</item>
+        <item> ekitai</item>
+        <item> rogu</item>
+        <item> imi</item>
+        <item>shō</item>
+        <item> shiga</item>
+        <item> sheru</item>
+        <item> kubi</item>
+        <item> sanso</item>
+        <item> satō</item>
+        <item>shi</item>
+        <item> kawaii</item>
+        <item> sukiru</item>
+        <item> joseitachi</item>
+        <item> shi-zun</item>
+        <item> soryu-shon</item>
+        <item> magunetto</item>
+        <item> gin</item>
+        <item> kansha</item>
+        <item> buranchi</item>
+        <item> matchi</item>
+        <item> safyikkusu</item>
+        <item> tokuni</item>
+        <item> ichijiku</item>
+        <item> osorete</item>
+        <item> kyodaina</item>
+        <item> shimai</item>
+        <item> suchi-ru</item>
+        <item> hanashiau</item>
+        <item> fuxowa-do</item>
+        <item> onaji yōna</item>
+        <item> gaido</item>
+        <item> keiken</item>
+        <item> sukoa</item>
+        <item> ringo</item>
+        <item> katta</item>
+        <item> shudō</item>
+        <item> pitchi</item>
+        <item> ko-to</item>
+        <item> masu</item>
+        <item> ka-do</item>
+        <item> bando</item>
+        <item> ro-pu</item>
+        <item> surippu</item>
+        <item> katsu</item>
+        <item> yume</item>
+        <item> yūbe</item>
+        <item> jōken</item>
+        <item> fyi-do</item>
+        <item> tsu-ru</item>
+        <item> gōkei</item>
+        <item> kihon</item>
+        <item> nioi</item>
+        <item> tani</item>
+        <item> mo</item>
+        <item> daburu</item>
+        <item> zaseki</item>
+        <item> tsuzukeru</item>
+        <item> burokku</item>
+        <item> cha-to</item>
+        <item> bōshi</item>
+        <item> uru</item>
+        <item> seikō</item>
+        <item> kaisha</item>
+        <item> hiku</item>
+        <item> ibento</item>
+        <item> tokutei no</item>
+        <item> keiyaku</item>
+        <item> oyogu</item>
+        <item> kotoba</item>
+        <item> hantai</item>
+        <item> tsuma</item>
+        <item> kutsu</item>
+        <item> kata</item>
+        <item> supureddo</item>
+        <item> arenji</item>
+        <item> kyanpu</item>
+        <item> hatsumeisuru</item>
+        <item> men</item>
+        <item> borun</item>
+        <item> ketteisuru</item>
+        <item> kuxo-to</item>
+        <item>jin</item>
+        <item> torakku</item>
+        <item> noizu</item>
+        <item> reberu</item>
+        <item> chansu</item>
+        <item> atsumaru</item>
+        <item> shoppu</item>
+        <item> sutoretchi</item>
+        <item> nageru</item>
+        <item> kagayaki</item>
+        <item> zaisan</item>
+        <item> koramu</item>
+        <item> bunshi</item>
+        <item> sentakusuru</item>
+        <item> machigatta</item>
+        <item> gure-</item>
+        <item> ripi-to</item>
+        <item> hitsuyō to suru</item>
+        <item> habahiroi</item>
+        <item> junbisuru</item>
+        <item> shio</item>
+        <item> hana</item>
+        <item> fukusū</item>
+        <item> ikari</item>
+        <item> seikyū</item>
+        <item> tairiku </item>
+    </string-array>
+    <string-array name="english">
+        <item>as</item>
+        <item>I</item>
+        <item>his</item>
+        <item>that</item>
+        <item>he</item>
+        <item>was</item>
+        <item>for</item>
+        <item>on</item>
+        <item>are</item>
+        <item>with</item>
+        <item>they</item>
+        <item>be</item>
+        <item>at</item>
+        <item>one</item>
+        <item>have</item>
+        <item>this</item>
+        <item>from</item>
+        <item>by</item>
+        <item>hot</item>
+        <item>word</item>
+        <item>but</item>
+        <item>what</item>
+        <item>some</item>
+        <item>is</item>
+        <item>it</item>
+        <item>you</item>
+        <item>or</item>
+        <item>had</item>
+        <item>the</item>
+        <item>of</item>
+        <item>to</item>
+        <item>and</item>
+        <item>a</item>
+        <item>in</item>
+        <item>we</item>
+        <item>can</item>
+        <item>out</item>
+        <item>other</item>
+        <item>were</item>
+        <item>which</item>
+        <item>do</item>
+        <item>their</item>
+        <item>time</item>
+        <item>if</item>
+        <item>will</item>
+        <item>how</item>
+        <item>said</item>
+        <item>an</item>
+        <item>each</item>
+        <item>tell</item>
+        <item>does</item>
+        <item>set</item>
+        <item>three</item>
+        <item>want</item>
+        <item>air</item>
+        <item>well</item>
+        <item>also</item>
+        <item>play</item>
+        <item>small</item>
+        <item>end</item>
+        <item>put</item>
+        <item>home</item>
+        <item>read</item>
+        <item>hand</item>
+        <item>port</item>
+        <item>large</item>
+        <item>spell</item>
+        <item>add</item>
+        <item>even</item>
+        <item>land</item>
+        <item>here</item>
+        <item>must</item>
+        <item>big</item>
+        <item>high</item>
+        <item>such</item>
+        <item>follow</item>
+        <item>act</item>
+        <item>why</item>
+        <item>ask</item>
+        <item>men</item>
+        <item>change</item>
+        <item>went</item>
+        <item>light</item>
+        <item>kind</item>
+        <item>off</item>
+        <item>need</item>
+        <item>house</item>
+        <item>picture</item>
+        <item>try</item>
+        <item>us</item>
+        <item>again</item>
+        <item>animal</item>
+        <item>point</item>
+        <item>mother</item>
+        <item>world</item>
+        <item>near</item>
+        <item>build</item>
+        <item>self</item>
+        <item>earth</item>
+        <item>father</item>
+        <item>any</item>
+        <item>new</item>
+        <item>work</item>
+        <item>part</item>
+        <item>take</item>
+        <item>get</item>
+        <item>place</item>
+        <item>made</item>
+        <item>live</item>
+        <item>where</item>
+        <item>after</item>
+        <item>back</item>
+        <item>little</item>
+        <item>only</item>
+        <item>round</item>
+        <item>man</item>
+        <item>year</item>
+        <item>came</item>
+        <item>show</item>
+        <item>every</item>
+        <item>good</item>
+        <item>me</item>
+        <item>give</item>
+        <item>our</item>
+        <item>under</item>
+        <item>name</item>
+        <item>very</item>
+        <item>through</item>
+        <item>just</item>
+        <item>form</item>
+        <item>sentence</item>
+        <item>great</item>
+        <item>think</item>
+        <item>say</item>
+        <item>help</item>
+        <item>low</item>
+        <item>line</item>
+        <item>differ</item>
+        <item>turn</item>
+        <item>cause</item>
+        <item>much</item>
+        <item>mean</item>
+        <item>before</item>
+        <item>move</item>
+        <item>right</item>
+        <item>boy</item>
+        <item>old</item>
+        <item>too</item>
+        <item>same</item>
+        <item>she</item>
+        <item>all</item>
+        <item>there</item>
+        <item>when</item>
+        <item>up</item>
+        <item>use</item>
+        <item>your</item>
+        <item>way</item>
+        <item>about</item>
+        <item>many</item>
+        <item>then</item>
+        <item>them</item>
+        <item>write</item>
+        <item>would</item>
+        <item>like</item>
+        <item>so</item>
+        <item>these</item>
+        <item>her</item>
+        <item>long</item>
+        <item>make</item>
+        <item>thing</item>
+        <item>see</item>
+        <item>him</item>
+        <item>two</item>
+        <item>has</item>
+        <item>look</item>
+        <item>more</item>
+        <item>day</item>
+        <item>could</item>
+        <item>go</item>
+        <item>come</item>
+        <item>did</item>
+        <item>number</item>
+        <item>sound</item>
+        <item>no</item>
+        <item>most</item>
+        <item>people</item>
+        <item>my</item>
+        <item>over</item>
+        <item>know</item>
+        <item>water</item>
+        <item>than</item>
+        <item>call</item>
+        <item>first</item>
+        <item>who</item>
+        <item>may</item>
+        <item>down</item>
+        <item>side</item>
+        <item>been</item>
+        <item>now</item>
+        <item>find</item>
+        <item>head</item>
+        <item>stand</item>
+        <item>own</item>
+        <item>page</item>
+        <item>should</item>
+        <item>country</item>
+        <item>found</item>
+        <item>answer</item>
+        <item>school</item>
+        <item>grow</item>
+        <item>study</item>
+        <item>still</item>
+        <item>learn</item>
+        <item>plant</item>
+        <item>cover</item>
+        <item>food</item>
+        <item>sun</item>
+        <item>four</item>
+        <item>between</item>
+        <item>state</item>
+        <item>keep</item>
+        <item>eye</item>
+        <item>never</item>
+        <item>last</item>
+        <item>let</item>
+        <item>thought</item>
+        <item>city</item>
+        <item>tree</item>
+        <item>cross</item>
+        <item>farm</item>
+        <item>hard</item>
+        <item>start</item>
+        <item>might</item>
+        <item>story</item>
+        <item>saw</item>
+        <item>far</item>
+        <item>sea</item>
+        <item>draw</item>
+        <item>left</item>
+        <item>late</item>
+        <item>run</item>
+        <item>don�t</item>
+        <item>while</item>
+        <item>press</item>
+        <item>close</item>
+        <item>night</item>
+        <item>real</item>
+        <item>life</item>
+        <item>few</item>
+        <item>north</item>
+        <item>book</item>
+        <item>carry</item>
+        <item>took</item>
+        <item>science</item>
+        <item>eat</item>
+        <item>room</item>
+        <item>friend</item>
+        <item>began</item>
+        <item>idea</item>
+        <item>fish</item>
+        <item>mountain</item>
+        <item>stop</item>
+        <item>once</item>
+        <item>base</item>
+        <item>hear</item>
+        <item>horse</item>
+        <item>cut</item>
+        <item>sure</item>
+        <item>watch</item>
+        <item>color</item>
+        <item>face</item>
+        <item>wood</item>
+        <item>main</item>
+        <item>open</item>
+        <item>seem</item>
+        <item>together</item>
+        <item>next</item>
+        <item>white</item>
+        <item>children</item>
+        <item>begin</item>
+        <item>got</item>
+        <item>walk</item>
+        <item>example</item>
+        <item>ease</item>
+        <item>paper</item>
+        <item>group</item>
+        <item>always</item>
+        <item>music</item>
+        <item>those</item>
+        <item>both</item>
+        <item>mark</item>
+        <item>often</item>
+        <item>letter</item>
+        <item>until</item>
+        <item>mile</item>
+        <item>river</item>
+        <item>car</item>
+        <item>feet</item>
+        <item>care</item>
+        <item>second</item>
+        <item>enough</item>
+        <item>plain</item>
+        <item>girl</item>
+        <item>usual</item>
+        <item>young</item>
+        <item>ready</item>
+        <item>above</item>
+        <item>ever</item>
+        <item>red</item>
+        <item>list</item>
+        <item>though</item>
+        <item>feel</item>
+        <item>talk</item>
+        <item>bird</item>
+        <item>soon</item>
+        <item>body</item>
+        <item>dog</item>
+        <item>family</item>
+        <item>direct</item>
+        <item>pose</item>
+        <item>leave</item>
+        <item>song</item>
+        <item>measure</item>
+        <item>door</item>
+        <item>product</item>
+        <item>black</item>
+        <item>short</item>
+        <item>numeral</item>
+        <item>class</item>
+        <item>wind</item>
+        <item>question</item>
+        <item>happen</item>
+        <item>complete</item>
+        <item>ship</item>
+        <item>area</item>
+        <item>half</item>
+        <item>rock</item>
+        <item>order</item>
+        <item>fire</item>
+        <item>south</item>
+        <item>problem</item>
+        <item>piece</item>
+        <item>told</item>
+        <item>knew</item>
+        <item>pass</item>
+        <item>since</item>
+        <item>top</item>
+        <item>whole</item>
+        <item>king</item>
+        <item>street</item>
+        <item>inch</item>
+        <item>multiply</item>
+        <item>nothing</item>
+        <item>course</item>
+        <item>stay</item>
+        <item>wheel</item>
+        <item>full</item>
+        <item>force</item>
+        <item>blue</item>
+        <item>object</item>
+        <item>decide</item>
+        <item>surface</item>
+        <item>deep</item>
+        <item>moon</item>
+        <item>island</item>
+        <item>foot</item>
+        <item>system</item>
+        <item>busy</item>
+        <item>test</item>
+        <item>record</item>
+        <item>boat</item>
+        <item>common</item>
+        <item>gold</item>
+        <item>possible</item>
+        <item>plane</item>
+        <item>stead</item>
+        <item>dry</item>
+        <item>wonder</item>
+        <item>laugh</item>
+        <item>thousand</item>
+        <item>ago</item>
+        <item>ran</item>
+        <item>check</item>
+        <item>game</item>
+        <item>shape</item>
+        <item>equate</item>
+        <item>hot</item>
+        <item>miss</item>
+        <item>brought</item>
+        <item>heat</item>
+        <item>snow</item>
+        <item>tire</item>
+        <item>bring</item>
+        <item>yes</item>
+        <item>distant</item>
+        <item>fill</item>
+        <item>east</item>
+        <item>paint</item>
+        <item>language</item>
+        <item>among</item>
+        <item>unit</item>
+        <item>power</item>
+        <item>town</item>
+        <item>fine</item>
+        <item>certain</item>
+        <item>fly</item>
+        <item>fall</item>
+        <item>lead</item>
+        <item>cry</item>
+        <item>dark</item>
+        <item>machine</item>
+        <item>note</item>
+        <item>wait</item>
+        <item>plan</item>
+        <item>figure</item>
+        <item>star</item>
+        <item>box</item>
+        <item>noun</item>
+        <item>field</item>
+        <item>rest</item>
+        <item>correct</item>
+        <item>able</item>
+        <item>pound</item>
+        <item>done</item>
+        <item>beauty</item>
+        <item>drive</item>
+        <item>stood</item>
+        <item>contain</item>
+        <item>front</item>
+        <item>teach</item>
+        <item>week</item>
+        <item>final</item>
+        <item>gave</item>
+        <item>green</item>
+        <item>oh</item>
+        <item>quick</item>
+        <item>develop</item>
+        <item>ocean</item>
+        <item>warm</item>
+        <item>free</item>
+        <item>minute</item>
+        <item>strong</item>
+        <item>special</item>
+        <item>mind</item>
+        <item>behind</item>
+        <item>clear</item>
+        <item>tail</item>
+        <item>produce</item>
+        <item>fact</item>
+        <item>space</item>
+        <item>heard</item>
+        <item>best</item>
+        <item>hour</item>
+        <item>better</item>
+        <item>true</item>
+        <item>during</item>
+        <item>hundred</item>
+        <item>five</item>
+        <item>remember</item>
+        <item>step</item>
+        <item>early</item>
+        <item>hold</item>
+        <item>west</item>
+        <item>ground</item>
+        <item>interest</item>
+        <item>reach</item>
+        <item>fast</item>
+        <item>verb</item>
+        <item>sing</item>
+        <item>listen</item>
+        <item>six</item>
+        <item>table</item>
+        <item>travel</item>
+        <item>less</item>
+        <item>morning</item>
+        <item>ten</item>
+        <item>simple</item>
+        <item>several</item>
+        <item>vowel</item>
+        <item>toward</item>
+        <item>war</item>
+        <item>lay</item>
+        <item>against</item>
+        <item>pattern</item>
+        <item>slow</item>
+        <item>center</item>
+        <item>love</item>
+        <item>person</item>
+        <item>money</item>
+        <item>serve</item>
+        <item>appear</item>
+        <item>road</item>
+        <item>map</item>
+        <item>rain</item>
+        <item>rule</item>
+        <item>govern</item>
+        <item>pull</item>
+        <item>cold</item>
+        <item>notice</item>
+        <item>voice</item>
+        <item>energy</item>
+        <item>hunt</item>
+        <item>probable</item>
+        <item>bed</item>
+        <item>brother</item>
+        <item>egg</item>
+        <item>ride</item>
+        <item>cell</item>
+        <item>believe</item>
+        <item>perhaps</item>
+        <item>pick</item>
+        <item>sudden</item>
+        <item>count</item>
+        <item>square</item>
+        <item>reason</item>
+        <item>length</item>
+        <item>represent</item>
+        <item>art</item>
+        <item>subject</item>
+        <item>region</item>
+        <item>size</item>
+        <item>vary</item>
+        <item>settle</item>
+        <item>speak</item>
+        <item>weight</item>
+        <item>general</item>
+        <item>ice</item>
+        <item>matter</item>
+        <item>circle</item>
+        <item>pair</item>
+        <item>include</item>
+        <item>divide</item>
+        <item>syllable</item>
+        <item>felt</item>
+        <item>grand</item>
+        <item>ball</item>
+        <item>yet</item>
+        <item>wave</item>
+        <item>drop</item>
+        <item>heart</item>
+        <item>am</item>
+        <item>present</item>
+        <item>heavy</item>
+        <item>dance</item>
+        <item>engine</item>
+        <item>position</item>
+        <item>arm</item>
+        <item>wide</item>
+        <item>sail</item>
+        <item>material</item>
+        <item>fraction</item>
+        <item>forest</item>
+        <item>sit</item>
+        <item>race</item>
+        <item>window</item>
+        <item>store</item>
+        <item>summer</item>
+        <item>train</item>
+        <item>sleep</item>
+        <item>prove</item>
+        <item>lone</item>
+        <item>leg</item>
+        <item>exercise</item>
+        <item>wall</item>
+        <item>catch</item>
+        <item>mount</item>
+        <item>wish</item>
+        <item>sky</item>
+        <item>board</item>
+        <item>joy</item>
+        <item>winter</item>
+        <item>sat</item>
+        <item>written</item>
+        <item>wild</item>
+        <item>instrument</item>
+        <item>kept</item>
+        <item>glass</item>
+        <item>grass</item>
+        <item>cow</item>
+        <item>job</item>
+        <item>edge</item>
+        <item>sign</item>
+        <item>visit</item>
+        <item>past</item>
+        <item>soft</item>
+        <item>fun</item>
+        <item>bright</item>
+        <item>gas</item>
+        <item>weather</item>
+        <item>month</item>
+        <item>million</item>
+        <item>bear</item>
+        <item>finish</item>
+        <item>happy</item>
+        <item>hope</item>
+        <item>flower</item>
+        <item>clothe</item>
+        <item>strange</item>
+        <item>gone</item>
+        <item>trade</item>
+        <item>melody</item>
+        <item>trip</item>
+        <item>office</item>
+        <item>receive</item>
+        <item>row</item>
+        <item>mouth</item>
+        <item>exact</item>
+        <item>symbol</item>
+        <item>die</item>
+        <item>least</item>
+        <item>trouble</item>
+        <item>shout</item>
+        <item>except</item>
+        <item>wrote</item>
+        <item>seed</item>
+        <item>tone</item>
+        <item>join</item>
+        <item>suggest</item>
+        <item>clean</item>
+        <item>break</item>
+        <item>lady</item>
+        <item>yard</item>
+        <item>rise</item>
+        <item>bad</item>
+        <item>blow</item>
+        <item>oil</item>
+        <item>blood</item>
+        <item>touch</item>
+        <item>grew</item>
+        <item>cent</item>
+        <item>mix</item>
+        <item>team</item>
+        <item>wire</item>
+        <item>cost</item>
+        <item>lost</item>
+        <item>brown</item>
+        <item>wear</item>
+        <item>garden</item>
+        <item>equal</item>
+        <item>sent</item>
+        <item>choose</item>
+        <item>fell</item>
+        <item>fit</item>
+        <item>flow</item>
+        <item>fair</item>
+        <item>bank</item>
+        <item>collect</item>
+        <item>save</item>
+        <item>control</item>
+        <item>decimal</item>
+        <item>ear</item>
+        <item>else</item>
+        <item>quite</item>
+        <item>broke</item>
+        <item>case</item>
+        <item>middle</item>
+        <item>kill</item>
+        <item>son</item>
+        <item>lake</item>
+        <item>moment</item>
+        <item>scale</item>
+        <item>loud</item>
+        <item>spring</item>
+        <item>observe</item>
+        <item>child</item>
+        <item>straight</item>
+        <item>consonant</item>
+        <item>nation</item>
+        <item>dictionary</item>
+        <item>milk</item>
+        <item>speed</item>
+        <item>method</item>
+        <item>organ</item>
+        <item>pay</item>
+        <item>age</item>
+        <item>section</item>
+        <item>dress</item>
+        <item>cloud</item>
+        <item>surprise</item>
+        <item>quiet</item>
+        <item>stone</item>
+        <item>tiny</item>
+        <item>climb</item>
+        <item>cool</item>
+        <item>design</item>
+        <item>poor</item>
+        <item>lot</item>
+        <item>experiment</item>
+        <item>bottom</item>
+        <item>key</item>
+        <item>iron</item>
+        <item>single</item>
+        <item>stick</item>
+        <item>flat</item>
+        <item>twenty</item>
+        <item>skin</item>
+        <item>smile</item>
+        <item>crease</item>
+        <item>hole</item>
+        <item>jump</item>
+        <item>baby</item>
+        <item>eight</item>
+        <item>village</item>
+        <item>meet</item>
+        <item>root</item>
+        <item>buy</item>
+        <item>raise</item>
+        <item>solve</item>
+        <item>metal</item>
+        <item>whether</item>
+        <item>push</item>
+        <item>seven</item>
+        <item>paragraph</item>
+        <item>third</item>
+        <item>shall</item>
+        <item>held</item>
+        <item>hair</item>
+        <item>describe</item>
+        <item>cook</item>
+        <item>floor</item>
+        <item>either</item>
+        <item>result</item>
+        <item>burn</item>
+        <item>hill</item>
+        <item>safe</item>
+        <item>cat</item>
+        <item>century</item>
+        <item>consider</item>
+        <item>type</item>
+        <item>law</item>
+        <item>bit</item>
+        <item>coast</item>
+        <item>copy</item>
+        <item>phrase</item>
+        <item>silent</item>
+        <item>tall</item>
+        <item>sand</item>
+        <item>soil</item>
+        <item>roll</item>
+        <item>temperatur</item>
+        <item>finger</item>
+        <item>industry</item>
+        <item>value</item>
+        <item>fight</item>
+        <item>lie</item>
+        <item>beat</item>
+        <item>excite</item>
+        <item>natural</item>
+        <item>view</item>
+        <item>sense</item>
+        <item>capital</item>
+        <item>won�t</item>
+        <item>chair</item>
+        <item>danger</item>
+        <item>fruit</item>
+        <item>rich</item>
+        <item>thick</item>
+        <item>soldier</item>
+        <item>process</item>
+        <item>operate</item>
+        <item>practice</item>
+        <item>separate</item>
+        <item>difficult</item>
+        <item>doctor</item>
+        <item>please</item>
+        <item>protect</item>
+        <item>noon</item>
+        <item>crop</item>
+        <item>modern</item>
+        <item>element</item>
+        <item>hit</item>
+        <item>student</item>
+        <item>corner</item>
+        <item>party</item>
+        <item>supply</item>
+        <item>whose</item>
+        <item>locate</item>
+        <item>ring</item>
+        <item>character</item>
+        <item>insect</item>
+        <item>caught</item>
+        <item>period</item>
+        <item>indicate</item>
+        <item>radio</item>
+        <item>spoke</item>
+        <item>atom</item>
+        <item>human</item>
+        <item>history</item>
+        <item>effect</item>
+        <item>electric</item>
+        <item>expect</item>
+        <item>bone</item>
+        <item>rail</item>
+        <item>imagine</item>
+        <item>provide</item>
+        <item>agree</item>
+        <item>thus</item>
+        <item>gentle</item>
+        <item>woman</item>
+        <item>captain</item>
+        <item>guess</item>
+        <item>necessary</item>
+        <item>sharp</item>
+        <item>wing</item>
+        <item>create</item>
+        <item>neighbor</item>
+        <item>wash</item>
+        <item>bat</item>
+        <item>rather</item>
+        <item>crowd</item>
+        <item>corn</item>
+        <item>compare</item>
+        <item>poem</item>
+        <item>string</item>
+        <item>bell</item>
+        <item>depend</item>
+        <item>meat</item>
+        <item>rub</item>
+        <item>tube</item>
+        <item>famous</item>
+        <item>dollar</item>
+        <item>stream</item>
+        <item>fear</item>
+        <item>sight</item>
+        <item>thin</item>
+        <item>triangle</item>
+        <item>planet</item>
+        <item>hurry</item>
+        <item>chief</item>
+        <item>colony</item>
+        <item>clock</item>
+        <item>mine</item>
+        <item>tie</item>
+        <item>enter</item>
+        <item>major</item>
+        <item>fresh</item>
+        <item>search</item>
+        <item>send</item>
+        <item>yellow</item>
+        <item>gun</item>
+        <item>allow</item>
+        <item>print</item>
+        <item>dead</item>
+        <item>spot</item>
+        <item>desert</item>
+        <item>suit</item>
+        <item>current</item>
+        <item>lift</item>
+        <item>rose</item>
+        <item>arrive</item>
+        <item>master</item>
+        <item>track</item>
+        <item>parent</item>
+        <item>shore</item>
+        <item>division</item>
+        <item>sheet</item>
+        <item>substance</item>
+        <item>favor</item>
+        <item>connect</item>
+        <item>post</item>
+        <item>spend</item>
+        <item>chord</item>
+        <item>fat</item>
+        <item>glad</item>
+        <item>original</item>
+        <item>share</item>
+        <item>station</item>
+        <item>dad</item>
+        <item>bread</item>
+        <item>charge</item>
+        <item>proper</item>
+        <item>bar</item>
+        <item>offer</item>
+        <item>segment</item>
+        <item>slave</item>
+        <item>duck</item>
+        <item>instant</item>
+        <item>market</item>
+        <item>degree</item>
+        <item>populate</item>
+        <item>chick</item>
+        <item>dear</item>
+        <item>enemy</item>
+        <item>reply</item>
+        <item>drink</item>
+        <item>occur</item>
+        <item>support</item>
+        <item>speech</item>
+        <item>nature</item>
+        <item>range</item>
+        <item>steam</item>
+        <item>motion</item>
+        <item>path</item>
+        <item>liquid</item>
+        <item>log</item>
+        <item>meant</item>
+        <item>quotient</item>
+        <item>teeth</item>
+        <item>shell</item>
+        <item>neck</item>
+        <item>oxygen</item>
+        <item>sugar</item>
+        <item>death</item>
+        <item>pretty</item>
+        <item>skill</item>
+        <item>women</item>
+        <item>season</item>
+        <item>solution</item>
+        <item>magnet</item>
+        <item>silver</item>
+        <item>thank</item>
+        <item>branch</item>
+        <item>match</item>
+        <item>suffix</item>
+        <item>especially</item>
+        <item>fig</item>
+        <item>afraid</item>
+        <item>huge</item>
+        <item>sister</item>
+        <item>steel</item>
+        <item>discuss</item>
+        <item>forward</item>
+        <item>similar</item>
+        <item>guide</item>
+        <item>experience</item>
+        <item>score</item>
+        <item>apple</item>
+        <item>bought</item>
+        <item>led</item>
+        <item>pitch</item>
+        <item>coat</item>
+        <item>mass</item>
+        <item>card</item>
+        <item>band</item>
+        <item>rope</item>
+        <item>slip</item>
+        <item>win</item>
+        <item>dream</item>
+        <item>evening</item>
+        <item>condition</item>
+        <item>feed</item>
+        <item>tool</item>
+        <item>total</item>
+        <item>basic</item>
+        <item>smell</item>
+        <item>valley</item>
+        <item>nor</item>
+        <item>double</item>
+        <item>seat</item>
+        <item>continue</item>
+        <item>block</item>
+        <item>chart</item>
+        <item>hat</item>
+        <item>sell</item>
+        <item>success</item>
+        <item>company</item>
+        <item>subtract</item>
+        <item>event</item>
+        <item>particular</item>
+        <item>deal</item>
+        <item>swim</item>
+        <item>term</item>
+        <item>opposite</item>
+        <item>wife</item>
+        <item>shoe</item>
+        <item>shoulder</item>
+        <item>spread</item>
+        <item>arrange</item>
+        <item>camp</item>
+        <item>invent</item>
+        <item>cotton</item>
+        <item>born</item>
+        <item>determine</item>
+        <item>quart</item>
+        <item>nine</item>
+        <item>truck</item>
+        <item>noise</item>
+        <item>level</item>
+        <item>chance</item>
+        <item>gather</item>
+        <item>shop</item>
+        <item>stretch</item>
+        <item>throw</item>
+        <item>shine</item>
+        <item>property</item>
+        <item>column</item>
+        <item>molecule</item>
+        <item>select</item>
+        <item>wrong</item>
+        <item>gray</item>
+        <item>repeat</item>
+        <item>require</item>
+        <item>broad</item>
+        <item>prepare</item>
+        <item>salt</item>
+        <item>nose</item>
+        <item>plural</item>
+        <item>anger</item>
+        <item>claim</item>
+        <item>continent</item>
+    </string-array>
+    <string name="title_activity_test">Test</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>
