@@ -2,8 +2,10 @@ package fr.altairstudios.arutairu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.AudioAttributes;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.speech.tts.Voice;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
