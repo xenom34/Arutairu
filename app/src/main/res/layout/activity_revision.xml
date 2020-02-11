@@ -95,8 +95,8 @@
 
     <Button
         android:id="@+id/next"
-        android:layout_width="95dp"
-        android:layout_height="41dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="NEXT"
         android:textColor="@color/white"
         android:backgroundTint="@color/red"

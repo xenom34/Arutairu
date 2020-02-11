@@ -53,8 +53,7 @@ public class MainActivity extends AppCompatActivity {
         mStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), Revision.class);
-                intent.putExtra("LESSON", 1);
+                Intent intent = new Intent(getBaseContext(), ListActivity.class);
                 startActivity(intent);
                 finish();
             }

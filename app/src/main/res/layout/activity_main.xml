@@ -21,7 +21,7 @@
         android:id="@+id/currentLanguage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Japanese -> English"
+        android:text="Japonais -> Français"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

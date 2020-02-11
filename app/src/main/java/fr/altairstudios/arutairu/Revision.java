@@ -1,7 +1,9 @@
 package fr.altairstudios.arutairu;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.AudioAttributes;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -16,19 +18,23 @@ public class Revision extends AppCompatActivity {
     private com.google.android.material.floatingactionbutton.FloatingActionButton mSound;
     TextToSpeech t1;
     private int state = 0;
+    private int max;
     String[] mEnglish, mRomaji, mJpn;
     private Button mNext;
     private TextView mShowJpn, mShowEnglish, mShowRomaji, mCount;
+    private LessonsStorage lessonsStorage = new LessonsStorage();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_revision);
 
+        max = getIntent().getIntExtra("MAX", Integer.MAX_VALUE);
+
         mSound = findViewById(R.id.sound);
-        mEnglish = getResources().getStringArray(R.array.english);
-        mJpn = getResources().getStringArray(R.array.jpn);
-        mRomaji = getResources().getStringArray(R.array.romaji);
+        mEnglish = getResources().getStringArray(lessonsStorage.getSrcRes(LessonsStorage.NUMBERS));
+        mJpn = getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.NUMBERS));
+        mRomaji = getResources().getStringArray(lessonsStorage.getRmRes(LessonsStorage.NUMBERS));
         mNext = findViewById(R.id.next);
         mShowRomaji = findViewById(R.id.romaji);
         mShowEnglish = findViewById(R.id.english);
@@ -39,7 +45,15 @@ public class Revision extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 state++;
-                refresh();
+                if (state != max){
+                    refresh();
+                }else{
+                    Intent intent = new Intent(getApplicationContext(), Exercise.class);
+                    startActivity(intent);
+                    intent.putExtra("MAX", max);
+                    intent.putExtra("LESSON", 1);
+                    finish();
+                }
             }
         });
 
