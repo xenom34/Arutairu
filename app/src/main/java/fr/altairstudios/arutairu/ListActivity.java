@@ -15,7 +15,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ListActivity extends AppCompatActivity {
 
-    private FloatingActionButton mStartNumbers, mStartJobs, mStartBody, mStartPeople;
+    private com.google.android.material.card.MaterialCardView mStartNumbers, mStartJobs, mStartBody, mStartPeople;
     private LessonsStorage lessonsStorage = new LessonsStorage();
     private boolean firstExec;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";

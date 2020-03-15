@@ -15,138 +15,430 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:orientation="vertical">
-            <androidx.constraintlayout.widget.ConstraintLayout
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:text="@string/le_ons"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
+                />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnNumbers"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
 
                 <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="300px"
-                    android:src="@drawable/list"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/numbers"
+                    android:scaleType="centerCrop"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/btnNumbers"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:cardCornerRadius="0dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nombres"
-                    android:textSize="50sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginStart="100px" />
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Les nombres"
+                            android:textStyle="bold"
+                            android:layout_margin="5dp"/>
+                    </com.google.android.material.card.MaterialCardView>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:cardCornerRadius="0dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+                        <androidx.core.widget.ContentLoadingProgressBar
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:progress="20"
+                            style="@android:style/Widget.Material.ProgressBar.Horizontal"/>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnPeople"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/people"
+                    android:scaleType="centerCrop"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:cardCornerRadius="0dp">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:text="Les gens"
+                            android:textStyle="bold" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:cardCornerRadius="0dp">
+
+                        <androidx.core.widget.ContentLoadingProgressBar
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:progress="40"
+                            style="@android:style/Widget.Material.ProgressBar.Horizontal"/>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnJobs"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="300px"
-                    android:src="@drawable/list"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/jobs"
+                    android:scaleType="centerCrop"/>
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/btnPeople"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Gens"
-                    android:textSize="50sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginStart="100px" />
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:cardCornerRadius="0dp">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Métiers"
+                            android:textStyle="bold"
+                            android:layout_margin="5dp"/>
+                    </com.google.android.material.card.MaterialCardView>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:cardCornerRadius="0dp">
+
+                        <androidx.core.widget.ContentLoadingProgressBar
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:progress="20"
+                            style="@android:style/Widget.Material.ProgressBar.Horizontal"/>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnBody"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="300px"
-                    android:src="@drawable/list"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/body"
+                    android:scaleType="centerCrop"/>
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/btnJobs"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Métiers"
-                    android:textSize="50sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginStart="100px" />
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:cardCornerRadius="0dp">
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Le corps"
+                            android:textStyle="bold"
+                            android:layout_margin="5dp"/>
+                    </com.google.android.material.card.MaterialCardView>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:cardCornerRadius="0dp">
+
+                        <androidx.core.widget.ContentLoadingProgressBar
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:progress="82"
+                            style="@android:style/Widget.Material.ProgressBar.Horizontal"/>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnFamily"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="300px"
-                    android:src="@drawable/list"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/btnBody"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnAnimals"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Corps"
-                    android:textSize="50sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginStart="100px" />
+            </com.google.android.material.card.MaterialCardView>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnPlants"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnCrops"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnFood"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnDrink"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnSeasoning"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnDays"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnWeather"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnDirections"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnMaterials"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnWeights"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnSociety"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnHome"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnTools"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnStationery"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnClothes"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnTransport"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnLanguage"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnMedia"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnColors"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnOthers"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnAbstract"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginBottom="15dp"
+                app:cardCornerRadius="10dp">
+
+            </com.google.android.material.card.MaterialCardView>
+
 
 
         </LinearLayout>
