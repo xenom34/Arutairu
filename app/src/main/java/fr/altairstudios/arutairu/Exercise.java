@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -18,10 +19,12 @@ import com.google.android.material.textview.MaterialTextView;
 public class Exercise extends AppCompatActivity {
     private TextInputEditText mAnswer;
     private MaterialButton mSubmit;
+    public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
     private MaterialTextView mText, mState;
     private LessonsStorage lessonsStorage = new LessonsStorage();
     private int state = 0;
-    private int max;
+    private boolean completed = true;
+    private int max, lesson;
     String[] mEnglish, mRomaji, mJpn;
     private String mAnswerText;
 
@@ -30,10 +33,11 @@ public class Exercise extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
 
-        max = getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.NUMBERS)).length;
+        lesson = getIntent().getIntExtra("LESSON", Integer.MAX_VALUE);
+        max = getResources().getStringArray(lessonsStorage.getJpRes(lesson)).length;
 
-        mEnglish = getResources().getStringArray(lessonsStorage.getSrcRes(LessonsStorage.NUMBERS));
-        mJpn = getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.NUMBERS));
+        mEnglish = getResources().getStringArray(lessonsStorage.getSrcRes(lesson));
+        mJpn = getResources().getStringArray(lessonsStorage.getJpRes(lesson));
 
         mAnswer = findViewById(R.id.Answer);
         mSubmit = findViewById(R.id.submitBtn);
@@ -51,14 +55,20 @@ public class Exercise extends AppCompatActivity {
                             state++;
                             if (state != max){
                                 refresh();
+                                mAnswer.setText("");
                             }else{
+                                SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
+                                sharedPreferences.edit().putBoolean(Integer.toString(lesson), completed).apply();
                                 Intent intent = new Intent(getApplicationContext(), ListActivity.class);
+                                startActivity(intent);
+                                finish();
                             }
                             mSubmit.setBackgroundColor(getResources().getColor(R.color.grey));
                         }
                     },1000);
                 }else{
                     showDialog();
+                    completed = false;
 
                 }
             }

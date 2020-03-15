@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Arutairu</string>
     <string name="jpAltair">アルタイル</string>
+    <string name="textwelcome">Merci d\'avoir téléchargé cette application ! Ici, le but est de vous familiariser avec le japonais, en aprenant un maximum de vocabulaire. Ce mode d\'aprantissage peut vous permettre de communiquer de manière très simple avec les locaux.\nDésormais, séléctionnez un chapitre, mémorisez-les et recopiez-les en japonais.\n</string>
     <string-array name="numbersJP">
         <item>零</item>
         <item>一</item>
@@ -60,5 +61,248 @@
         <item>man</item>
         <item>oku</item>
         <item>chō</item>
+    </string-array>
+    <string-array name="peopleJS">
+        <item>にんげん</item>
+        <item>じんるい</item>
+        <item>ひと</item>
+        <item>おとこ</item>
+        <item>おんな</item>
+        <item>おとこのひと</item>
+        <item>おんなのひと</item>
+        <item>おとこのこ</item>
+        <item>おんなのこ</item>
+        <item>あかちゃん</item>
+        <item>わかもの</item>
+        <item>わたし</item>
+        <item>わたくし</item>
+        <item>ぼく</item>
+        <item>おれ</item>
+        <item>あたし</item>
+        <item>しょうじょ</item>
+        <item>しょうねん</item>
+    </string-array>
+    <string-array name="peopleFR">
+        <item>humain</item>
+        <item>humanité</item>
+        <item>personne</item>
+        <item>Homme (genre)</item>
+        <item>Femme (genre)</item>
+        <item>Homme (nom)</item>
+        <item>Femme (nom)</item>
+        <item>Jeune homme</item>
+        <item>Jeune femme</item>
+        <item>Bébé</item>
+        <item>Jeune</item>
+        <item>Je</item>
+        <item>Je (formel)</item>
+        <item>Je (hommes)</item>
+        <item>Je (hommes, informel)</item>
+        <item>Je (femmes)</item>
+        <item>Fille</item>
+        <item>Garçon</item>
+    </string-array>
+    <string-array name="peopleRM">
+        <item>ningen</item>
+        <item>jinrui</item>
+        <item>hito</item>
+        <item>otoko</item>
+        <item>onno</item>
+        <item>otokonohito</item>
+        <item>onnanohito</item>
+        <item>otokonoko</item>
+        <item>onnanoko</item>
+        <item>akachan</item>
+        <item>wakamono</item>
+        <item>watashi</item>
+        <item>watakushi</item>
+        <item>boku</item>
+        <item>ore</item>
+        <item>atashi</item>
+        <item>shoujo</item>
+        <item>shounen</item>
+    </string-array>
+        <string-array name="jobsJP">
+        <item>いしゃ</item>
+        <item>かんごし</item>
+        <item>かんごふ</item>
+        <item>しかい</item>
+        <item>せいじか</item>
+        <item>べんごし</item>
+        <item>しょうぼうし</item>
+        <item>けいさつかん</item>
+        <item>へいし</item>
+        <item>けんちくか</item>
+        <item>せんせい</item>
+        <item>きょうし</item>
+        <item>かしゅ</item>
+        <item>エンジニア</item>
+    </string-array>
+    <string-array name="jobsFR">
+        <item>docteur</item>
+        <item>infirmier</item>
+        <item>infirmière</item>
+        <item>dentiste</item>
+        <item>politicien</item>
+        <item>avocat</item>
+        <item>pompier</item>
+        <item>policier</item>
+        <item>soldat</item>
+        <item>architecte</item>
+        <item>enseignant</item>
+        <item>professeur</item>
+        <item>chanteur</item>
+        <item>ingénieur</item>
+    </string-array>
+    <string-array name="jobsRM">
+        <item>isha</item>
+        <item>kangoshi</item>
+        <item>kangofu</item>
+        <item>shikai</item>
+        <item>seijika</item>
+        <item>bengoshi</item>
+        <item>shouboushi</item>
+        <item>keisatsukan</item>
+        <item>heishi</item>
+        <item>kenchikuka</item>
+        <item>sensei</item>
+        <item>kyoushi</item>
+        <item>kashu</item>
+        <item>enjinia</item>
+    </string-array>
+    <string-array name="bodyJP">
+        <item>あし</item>
+        <item>かかと</item>
+        <item>すね</item>
+        <item>ひざ</item>
+        <item>もも</item>
+        <item>あたま</item>
+        <item>かお</item>
+        <item>くち</item>
+        <item>くちびる</item>
+        <item>は</item>
+        <item>はな</item>
+        <item>め</item>
+        <item>ひげ</item>
+        <item>かみ</item>
+        <item>みみ</item>
+        <item>おなか</item>
+        <item>うで</item>
+        <item>ひじ</item>
+        <item>かた</item>
+        <item>つめ</item>
+        <item>て</item>
+        <item>てくび</item>
+        <item>てのひら</item>
+        <item>ゆび</item>
+        <item>しり</item>
+        <item>おなか</item>
+        <item>かんぞう</item>
+        <item>きも</item>
+        <item>きんにく</item>
+        <item>くび</item>
+        <item>こころ</item>
+        <item>こし</item>
+        <item>しんぞう</item>
+        <item>せなか</item>
+        <item>ち</item>
+        <item>にく</item>
+        <item>はだ</item>
+        <item>ひふ</item>
+        <item>ほね</item>
+        <item>むね</item>
+        <item>かぜ</item>
+        <item>げり</item>
+        <item>びょうき</item>
+    </string-array>
+        <string-array name="bodyFR">
+        <item>Pied</item>
+        <item>Talon</item>
+        <item>Tibia</item>
+        <item>Genou</item>
+        <item>Cuisse</item>
+        <item>Tête</item>
+        <item>Visage</item>
+        <item>Bouche</item>
+        <item>Lèvres</item>
+        <item>Dent</item>
+        <item>Nez</item>
+        <item>Œuil</item>
+        <item>Moustache</item>
+        <item>Cheveux</item>
+        <item>Oreille</item>
+        <item>Estomac</item>
+        <item>Bras</item>
+        <item>Coude</item>
+        <item>Épaule</item>
+        <item>Ongle</item>
+        <item>Main</item>
+        <item>Poignet</item>
+        <item>Paume de la main</item>
+        <item>Doigt</item>
+        <item>Fesses</item>
+        <item>Abdomen</item>
+        <item>Foie (deleted)</item>
+        <item>Foie</item>
+        <item>Muscle</item>
+        <item>Cou</item>
+        <item>Coeur (sentiments)</item>
+        <item>Taille</item>
+        <item>Coeur</item>
+        <item>Dos</item>
+        <item>Sang</item>
+        <item>Viande</item>
+        <item>Nu</item>
+        <item>Peau</item>
+        <item>Os</item>
+        <item>Torse</item>
+        <item>Froid (maladie)</item>
+        <item>Diarrhée</item>
+        <item>Maladie</item>
+    </string-array>
+    <string-array name="bodyRM">
+        <item>ashi</item>
+        <item>kakato</item>
+        <item>sune</item>
+        <item>hiza</item>
+        <item>momo</item>
+        <item>atama</item>
+        <item>kao</item>
+        <item>kuchi</item>
+        <item>kuchibiru</item>
+        <item>ha</item>
+        <item>hana</item>
+        <item>me</item>
+        <item>hige</item>
+        <item>kami</item>
+        <item>mimi</item>
+        <item>onaka</item>
+        <item>ude</item>
+        <item>hiji</item>
+        <item>kata</item>
+        <item>tsume</item>
+        <item>te</item>
+        <item>tekubi</item>
+        <item>te-no-hira</item>
+        <item>yubi</item>
+        <item>shiri</item>
+        <item>o-naka</item>
+        <item>kanzō</item>
+        <item>kimo</item>
+        <item>kin\'niku</item>
+        <item>kubi</item>
+        <item>kokoro</item>
+        <item>koshi</item>
+        <item>shinzō</item>
+        <item>senaka</item>
+        <item>chi</item>
+        <item>niku</item>
+        <item>hada</item>
+        <item>hifu</item>
+        <item>hone</item>
+        <item>mune</item>
+        <item>kaze</item>
+        <item>geri</item>
+        <item>byōki</item>
     </string-array>
 </resources>

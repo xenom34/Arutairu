@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".Revision">
 
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:elevation="20dp"
+        android:src="@drawable/ic_play"
+        app:layout_constraintBottom_toBottomOf="@+id/sound"
+        app:layout_constraintEnd_toEndOf="@+id/sound"
+        app:layout_constraintStart_toStartOf="@+id/sound"
+        app:layout_constraintTop_toTopOf="@+id/sound" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="100dp"
         android:layout_height="100dp"

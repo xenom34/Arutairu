@@ -18,7 +18,7 @@ public class Revision extends AppCompatActivity {
     private com.google.android.material.floatingactionbutton.FloatingActionButton mSound;
     TextToSpeech t1;
     private int state = 0;
-    private int max;
+    private int max, lesson;
     String[] mEnglish, mRomaji, mJpn;
     private Button mNext;
     private TextView mShowJpn, mShowEnglish, mShowRomaji, mCount;
@@ -30,11 +30,12 @@ public class Revision extends AppCompatActivity {
         setContentView(R.layout.activity_revision);
 
         max = getIntent().getIntExtra("MAX", Integer.MAX_VALUE);
+        lesson = getIntent().getIntExtra("LESSON", Integer.MAX_VALUE);
 
         mSound = findViewById(R.id.sound);
-        mEnglish = getResources().getStringArray(lessonsStorage.getSrcRes(LessonsStorage.NUMBERS));
-        mJpn = getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.NUMBERS));
-        mRomaji = getResources().getStringArray(lessonsStorage.getRmRes(LessonsStorage.NUMBERS));
+        mEnglish = getResources().getStringArray(lessonsStorage.getSrcRes(lesson));
+        mJpn = getResources().getStringArray(lessonsStorage.getJpRes(lesson));
+        mRomaji = getResources().getStringArray(lessonsStorage.getRmRes(lesson));
         mNext = findViewById(R.id.next);
         mShowRomaji = findViewById(R.id.romaji);
         mShowEnglish = findViewById(R.id.english);
@@ -49,9 +50,9 @@ public class Revision extends AppCompatActivity {
                     refresh();
                 }else{
                     Intent intent = new Intent(getApplicationContext(), Exercise.class);
-                    startActivity(intent);
                     intent.putExtra("MAX", max);
-                    intent.putExtra("LESSON", 1);
+                    intent.putExtra("LESSON", lesson);
+                    startActivity(intent);
                     finish();
                 }
             }
@@ -81,6 +82,7 @@ public class Revision extends AppCompatActivity {
         mShowJpn.setText(mJpn[state]);
         mShowEnglish.setText(mEnglish[state]);
         mShowRomaji.setText(mRomaji[state]);
-        mCount.setText(String.valueOf(state+1));
+        String s = state+1+"/"+max;
+        mCount.setText(s);
     }
 }
