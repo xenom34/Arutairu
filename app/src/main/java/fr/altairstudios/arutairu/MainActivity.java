@@ -14,10 +14,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    private ImageView mAltair;
+    private ImageView mAltair, mBg;
     private TextView mArutairu, mCurrentLanguage;
     private com.google.android.material.button.MaterialButton mStart;
-    private Animation fadeAltair2;
+    private Animation fadeAltair2, fadeAltair3;
+    private ShuffleBg shuffleBg = new ShuffleBg();
 
     @Override
     protected void onStop() {
@@ -40,8 +41,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         fadeAltair2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade2);
+        fadeAltair3 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade3);
 
         mAltair = findViewById(R.id.altair);
+        mBg = findViewById(R.id.bg);
         mCurrentLanguage = findViewById(R.id.currentLanguage);
         mStart = findViewById(R.id.startBtn);
         mArutairu = findViewById(R.id.txtArutairu);
@@ -49,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         mArutairu.setAlpha(0f);
         mStart.setAlpha(0f);
         mCurrentLanguage.setAlpha(0f);
+        mBg.setImageResource(shuffleBg.choose());
+        mBg.setAlpha(0f);
 
         mStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,9 +79,11 @@ public class MainActivity extends AppCompatActivity {
                 mArutairu.setAlpha(1f);
                 mStart.setAlpha(1f);
                 mCurrentLanguage.setAlpha(1f);
+                mBg.setAlpha(0.5f);
                 mArutairu.startAnimation(fadeAltair2);
                 mStart.startAnimation(fadeAltair2);
                 mCurrentLanguage.startAnimation(fadeAltair2);
+                mBg.startAnimation(fadeAltair3);
             }
         },3000);
 
