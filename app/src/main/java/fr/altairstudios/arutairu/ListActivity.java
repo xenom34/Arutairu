@@ -15,7 +15,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ListActivity extends AppCompatActivity {
 
-    private com.google.android.material.card.MaterialCardView mStartNumbers, mStartJobs, mStartBody, mStartPeople;
+    private com.google.android.material.card.MaterialCardView mStartNumbers, mStartJobs, mStartBody, mStartPeople, mStartFamily, mStartAnimals, mStartPlants, mStartCrop, mStartFood, mStartDrinks, mStartSeasoning, mStartWeek, mStartWeather, mStartDirections, mStartMaterials, mStartMeasures, mStartSociety, mStartHome, mStartTools, mStartStationery, mStartClothes, mStartTransport, mStartLanguages, mStartMedias, mStartColors, mStartOther, mStartAbstract;
     private LessonsStorage lessonsStorage = new LessonsStorage();
     private boolean firstExec;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
@@ -33,12 +33,35 @@ public class ListActivity extends AppCompatActivity {
         mStartBody = findViewById(R.id.btnBody);
         mStartJobs = findViewById(R.id.btnJobs);
         mStartPeople = findViewById(R.id.btnPeople);
+        mStartFamily = findViewById(R.id.btnFamily);
+        mStartAnimals = findViewById(R.id.btnAnimals);
+        mStartPlants = findViewById(R.id.btnPlants);
+        mStartCrop = findViewById(R.id.btnCrops);
+        mStartFood = findViewById(R.id.btnFood);
+        mStartDrinks = findViewById(R.id.btnDrink);
+        mStartSeasoning = findViewById(R.id.btnSeasoning);
+        mStartWeek = findViewById(R.id.btnDays);
+        mStartWeather = findViewById(R.id.btnWeather);
+        mStartDirections = findViewById(R.id.btnDirections);
+        mStartMaterials = findViewById(R.id.btnMaterials);
+        mStartMeasures = findViewById(R.id.btnWeights);
+        mStartSociety = findViewById(R.id.btnSociety);
+        mStartHome = findViewById(R.id.btnHome);
+        mStartTools = findViewById(R.id.btnTools);
+        mStartStationery = findViewById(R.id.btnStationery);
+        mStartClothes = findViewById(R.id.btnClothes);
+        mStartTransport = findViewById(R.id.btnTransport);
+        mStartLanguages = findViewById(R.id.btnLanguage);
+        mStartMedias = findViewById(R.id.btnMedia);
+        mStartColors = findViewById(R.id.btnColors);
+        mStartOther = findViewById(R.id.btnOthers);
+        mStartAbstract = findViewById(R.id.btnAbstract);
 
         mStartNumbers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Revision.class);
-                intent.putExtra("LESSON", 1);
+                intent.putExtra("LESSON", LessonsStorage.NUMBERS);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.NUMBERS)).length);
                 startActivity(intent);
             }
@@ -48,7 +71,7 @@ public class ListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Revision.class);
-                intent.putExtra("LESSON", 2);
+                intent.putExtra("LESSON", LessonsStorage.PEOPLE);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.PEOPLE)).length);
                 startActivity(intent);
             }
@@ -58,7 +81,7 @@ public class ListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Revision.class);
-                intent.putExtra("LESSON", 3);
+                intent.putExtra("LESSON", LessonsStorage.JOBS);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.JOBS)).length);
                 startActivity(intent);
             }
@@ -68,8 +91,238 @@ public class ListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), Revision.class);
-                intent.putExtra("LESSON", 4);
+                intent.putExtra("LESSON", LessonsStorage.BODY);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.BODY)).length);
+                startActivity(intent);
+            }
+        });
+
+        mStartFamily.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", LessonsStorage.FAMILY);
+                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.FAMILY)).length);
+                startActivity(intent);
+            }
+        });
+
+        mStartAnimals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", LessonsStorage.ANIMALS);
+                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.ANIMALS)).length);
+                startActivity(intent);
+            }
+        });
+
+        mStartPlants.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", LessonsStorage.PLANTS);
+                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.PLANTS)).length);
+                startActivity(intent);
+            }
+        });
+
+        mStartCrop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", LessonsStorage.CROPS);
+                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.CROPS)).length);
+                startActivity(intent);
+            }
+        });
+
+        mStartFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", LessonsStorage.FOOD);
+                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.FOOD)).length);
+                startActivity(intent);
+            }
+        });
+
+        mStartDrinks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", LessonsStorage.DRINK);
+                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.DRINK)).length);
+                startActivity(intent);
+            }
+        });
+
+        mStartSeasoning.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", LessonsStorage.SEASONING);
+                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.SEASONING)).length);
+                startActivity(intent);
+            }
+        });
+
+        mStartWeek.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", LessonsStorage.DAYS);
+                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.DAYS)).length);
+                startActivity(intent);
+            }
+        });
+
+        mStartWeather.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", LessonsStorage.WEATHER);
+                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.WEATHER)).length);
+                startActivity(intent);
+            }
+        });
+
+        mStartDirections.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", LessonsStorage.DIRECTIONS);
+                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.DIRECTIONS)).length);
+                startActivity(intent);
+            }
+        });
+
+        mStartMaterials.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", LessonsStorage.MATERIALS);
+                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.MATERIALS)).length);
+                startActivity(intent);
+            }
+        });
+
+        mStartMeasures.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", LessonsStorage.WEIGHTS);
+                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.WEIGHTS)).length);
+                startActivity(intent);
+            }
+        });
+
+        mStartSociety.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", LessonsStorage.SOCIETY);
+                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.SOCIETY)).length);
+                startActivity(intent);
+            }
+        });
+
+        mStartHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", LessonsStorage.HOME);
+                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.HOME)).length);
+                startActivity(intent);
+            }
+        });
+
+        mStartTools.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", LessonsStorage.TOOLS);
+                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.TOOLS)).length);
+                startActivity(intent);
+            }
+        });
+
+        mStartStationery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", LessonsStorage.STATIONERY);
+                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.STATIONERY)).length);
+                startActivity(intent);
+            }
+        });
+
+        mStartClothes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", LessonsStorage.CLOTHES);
+                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.CLOTHES)).length);
+                startActivity(intent);
+            }
+        });
+
+        mStartTransport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", LessonsStorage.TRANSPORT);
+                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.TRANSPORT)).length);
+                startActivity(intent);
+            }
+        });
+
+        mStartLanguages.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", LessonsStorage.LANGUAGE);
+                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.LANGUAGE)).length);
+                startActivity(intent);
+            }
+        });
+
+        mStartMedias.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", LessonsStorage.MEDIA);
+                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.MEDIA)).length);
+                startActivity(intent);
+            }
+        });
+
+        mStartColors.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", LessonsStorage.COLORS);
+                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.COLORS)).length);
+                startActivity(intent);
+            }
+        });
+
+        mStartOther.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", LessonsStorage.OTHERS);
+                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.OTHERS)).length);
+                startActivity(intent);
+            }
+        });
+
+        mStartAbstract.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", LessonsStorage.ABSTRACT);
+                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.ABSTRACT)).length);
                 startActivity(intent);
             }
         });
