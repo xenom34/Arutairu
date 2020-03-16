@@ -17,16 +17,33 @@
         app:srcCompat="@drawable/altair"
         android:padding="10dp"/>
 
-    <TextView
-        android:id="@+id/currentLanguage"
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="100dp"
+        android:id="@+id/logo"
+        android:layout_height="100dp"
+        app:cardCornerRadius="100dp"
+        app:layout_constraintBottom_toBottomOf="@+id/altair"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtArutairu">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/altairtransparent" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/welcomeTxtLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Japonais -> Français"
+        android:layout_marginTop="8dp"
+        android:text="Bienvenue !"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/altair"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/logo"
+        app:layout_constraintStart_toStartOf="@+id/logo"
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
         <TextView
             android:id="@+id/txtArutairu"

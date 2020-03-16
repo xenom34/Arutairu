@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -23,6 +24,7 @@ import com.google.android.material.textview.MaterialTextView;
 public class Exercise extends AppCompatActivity {
     private TextInputEditText mAnswer;
     private MaterialButton mSubmit;
+    private ImageView mcheck;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
     private MaterialTextView mText, mState;
     private LessonsStorage lessonsStorage = new LessonsStorage();
@@ -46,6 +48,8 @@ public class Exercise extends AppCompatActivity {
         mEnglish = getResources().getStringArray(lessonsStorage.getSrcRes(lesson));
         mJpn = getResources().getStringArray(lessonsStorage.getJpRes(lesson));
 
+        mcheck = findViewById(R.id.checkExercise);
+
         mAnswer = findViewById(R.id.Answer);
         mSubmit = findViewById(R.id.submitBtn);
         mText = findViewById(R.id.txtArutairu);
@@ -56,7 +60,7 @@ public class Exercise extends AppCompatActivity {
 
                 if(mAnswer.getText().toString().equals(mJpn[state])){
 
-                    if (completed){
+                    if (completed && !lessonsCompleted.isCompleted(lesson, state)){
                         lessonsCompleted.addCompleted(lesson, state);
                     }
 
@@ -176,6 +180,11 @@ public class Exercise extends AppCompatActivity {
     }
 
     private void refresh() {
+        if (lessonsCompleted.isCompleted(lesson, state)){
+            mcheck.setAlpha(1f);
+        }else{
+            mcheck.setAlpha(0f);
+        }
         mText.setText(mEnglish[state]);
         String s = state+1+"/"+max;
         mState.setText(s);
