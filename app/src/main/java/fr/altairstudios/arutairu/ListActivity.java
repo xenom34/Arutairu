@@ -24,7 +24,7 @@ public class ListActivity extends AppCompatActivity {
     private LessonsStorage lessonsStorage = new LessonsStorage();
     private boolean firstExec;
     private Vector<ImageView> checks = new Vector<>();
-    private ProgressBar mProgressNumbers, mProgressJobs, mProgressBody, mProgressPeople, mProgressFamily, mProgressAnimals, mProgressPlants, mProgressCrop, mProgressFood, mProgressDrinks, mProgressSeasoning, mProgressWeek, mProgressWeather, mProgressDirections, mProgressMaterials, mProgressMeasures, mProgressSociety, mProgressHome, mProgressTools, mProgressStationery, mProgressClothes, mProgressTransport, mProgressLanguages, mProgressMedias, mProgressColor, mProgressOther, mProgressAbstract;
+    private Vector<ProgressBar> progresses = new Vector<>();
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
     public static final String FIRST_EXEC = "first";
     static boolean waitingForData = false;
@@ -64,33 +64,33 @@ public class ListActivity extends AppCompatActivity {
         cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnOthers));
         cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnAbstract));
 
-        mProgressNumbers = findViewById(R.id.numbersProgress);
-        mProgressBody = findViewById(R.id.bodyProgress);
-        mProgressJobs = findViewById(R.id.jobsProgress);
-        mProgressPeople = findViewById(R.id.peopleProgress);
-        mProgressFamily = findViewById(R.id.familyProgress);
-        mProgressAnimals = findViewById(R.id.animalsProgress);
-        mProgressPlants = findViewById(R.id.plantsProgress);
-        mProgressCrop = findViewById(R.id.cropProgress);
-        mProgressFood = findViewById(R.id.foodProgress);
-        mProgressDrinks = findViewById(R.id.drinksProgress);
-        mProgressSeasoning = findViewById(R.id.seasoningProgress);
-        mProgressWeek = findViewById(R.id.weeksProgress);
-        mProgressWeather = findViewById(R.id.weatherProgress);
-        mProgressDirections = findViewById(R.id.directionsProgress);
-        mProgressMaterials = findViewById(R.id.materialsProgress);
-        mProgressMeasures = findViewById(R.id.measuresProgress);
-        mProgressSociety = findViewById(R.id.societyProgress);
-        mProgressHome = findViewById(R.id.homeProgress);
-        mProgressTools = findViewById(R.id.toolsProgress);
-        mProgressStationery = findViewById(R.id.stationeryProgress);
-        mProgressClothes = findViewById(R.id.clothesProgress);
-        mProgressTransport = findViewById(R.id.transportProgress);
-        mProgressLanguages = findViewById(R.id.languageProgress);
-        mProgressMedias = findViewById(R.id.mediasProgress);
-        mProgressColor = findViewById(R.id.colorsProgress);
-        mProgressOther = findViewById(R.id.othersProgress);
-        mProgressAbstract = findViewById(R.id.abstractProgress);
+        progresses.add((ProgressBar) findViewById(R.id.numbersProgress));
+        progresses.add((ProgressBar) findViewById(R.id.bodyProgress));
+        progresses.add((ProgressBar) findViewById(R.id.jobsProgress));
+        progresses.add((ProgressBar) findViewById(R.id.peopleProgress));
+        progresses.add((ProgressBar) findViewById(R.id.familyProgress));
+        progresses.add((ProgressBar) findViewById(R.id.animalsProgress));
+        progresses.add((ProgressBar) findViewById(R.id.plantsProgress));
+        progresses.add((ProgressBar) findViewById(R.id.cropProgress));
+        progresses.add((ProgressBar) findViewById(R.id.foodProgress));
+        progresses.add((ProgressBar) findViewById(R.id.drinksProgress));
+        progresses.add((ProgressBar) findViewById(R.id.seasoningProgress));
+        progresses.add((ProgressBar) findViewById(R.id.weeksProgress));
+        progresses.add((ProgressBar) findViewById(R.id.weatherProgress));
+        progresses.add((ProgressBar) findViewById(R.id.directionsProgress));
+        progresses.add((ProgressBar) findViewById(R.id.materialsProgress));
+        progresses.add((ProgressBar) findViewById(R.id.measuresProgress));
+        progresses.add((ProgressBar) findViewById(R.id.societyProgress));
+        progresses.add((ProgressBar) findViewById(R.id.homeProgress));
+        progresses.add((ProgressBar) findViewById(R.id.toolsProgress));
+        progresses.add((ProgressBar) findViewById(R.id.stationeryProgress));
+        progresses.add((ProgressBar) findViewById(R.id.clothesProgress));
+        progresses.add((ProgressBar) findViewById(R.id.transportProgress));
+        progresses.add((ProgressBar) findViewById(R.id.languageProgress));
+        progresses.add((ProgressBar) findViewById(R.id.mediasProgress));
+        progresses.add((ProgressBar) findViewById(R.id.colorsProgress));
+        progresses.add((ProgressBar) findViewById(R.id.othersProgress));
+        progresses.add((ProgressBar) findViewById(R.id.abstractProgress));
 
         checks.add((ImageView) findViewById(R.id.checkNumbers));
         checks.add((ImageView) findViewById(R.id.checkPeople));
@@ -120,20 +120,6 @@ public class ListActivity extends AppCompatActivity {
         checks.add((ImageView) findViewById(R.id.checkOthers));
         checks.add((ImageView) findViewById(R.id.checkAbstract));
 
-
-        /*mStartNumbers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Revision.class);
-                intent.putExtra("LESSON", LessonsStorage.NUMBERS);
-                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.NUMBERS)).length);
-                intent.putExtra("COMPLETED", lessonsCompleted);
-                waitingForData = true;
-                startActivity(intent);
-                finish();
-            }
-        });*/
-
         for (int i = 0; i < LessonsStorage.TOTAL; i++) {
             final int finalI = i;
             cards.elementAt(i).setOnClickListener(new View.OnClickListener() {
@@ -156,7 +142,7 @@ public class ListActivity extends AppCompatActivity {
     }
 
     void refresh(){
-        mProgressNumbers.setProgress((lessonsCompleted.howManyCompleted(LessonsStorage.NUMBERS)/getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.NUMBERS)).length)*100);
+        progresses.elementAt(0).setProgress((lessonsCompleted.howManyCompleted(LessonsStorage.NUMBERS)/getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.NUMBERS)).length)*100);
         checks.elementAt(0).setAlpha(1f);
     }
 
