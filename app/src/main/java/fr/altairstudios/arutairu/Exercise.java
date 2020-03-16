@@ -10,6 +10,7 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,14 +54,19 @@ public class Exercise extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(true){
+                if(mAnswer.getText().toString().equals(mJpn[state])){
+
+                    if (completed){
+                        lessonsCompleted.addCompleted(lesson, state);
+                    }
+
                     mSubmit.setBackgroundColor(getResources().getColor(R.color.green));
-                    lessonsCompleted.addCompleted(lesson, state);
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             state++;
                             if (state != max){
+                                completed = true;
                                 refresh();
                                 mAnswer.setText("");
                             }else{
@@ -70,8 +76,8 @@ public class Exercise extends AppCompatActivity {
                         }
                     },1000);
                 }else{
-                    showDialog();
                     completed = false;
+                    showDialog();
 
                 }
             }

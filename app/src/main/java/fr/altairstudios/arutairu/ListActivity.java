@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -142,8 +143,13 @@ public class ListActivity extends AppCompatActivity {
     }
 
     void refresh(){
-        progresses.elementAt(0).setProgress((lessonsCompleted.howManyCompleted(LessonsStorage.NUMBERS)/getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.NUMBERS)).length)*100);
-        checks.elementAt(0).setAlpha(1f);
+
+        for (int i = 0; i < LessonsStorage.TOTAL; i++) {
+            float progress = (float)(lessonsCompleted.howManyCompleted(i+1))/(float)(getResources().getStringArray(lessonsStorage.getJpRes(i+1)).length)*100;
+            progresses.elementAt(i).setProgress((int)progress);
+            if (progress == 100)
+                checks.elementAt(i).setAlpha(1f);
+        }
     }
 
     @Override

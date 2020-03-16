@@ -11,10 +11,10 @@ class LessonsCompleted implements Serializable {
     private Vector<Vector<Integer>> completed;
 
     void addCompleted(int lesson, int word){
-        if (completed.get(lesson) == null){
-            completed.add(lesson, new Vector<Integer>());
+        if (completed.get(lesson-1) == null){
+            completed.add(lesson-1, new Vector<Integer>());
         }
-        completed.get(lesson).add(word);
+        completed.get(lesson-1).add(word);
     }
 
     public LessonsCompleted() {
@@ -25,7 +25,7 @@ class LessonsCompleted implements Serializable {
     }
 
     boolean isCompleted(int lesson, int word){
-        for (Integer i: completed.get(lesson)) {
+        for (Integer i: completed.get(lesson-1)) {
             if (i.equals(word))
                 return true;
         }
@@ -35,7 +35,7 @@ class LessonsCompleted implements Serializable {
     int howManyCompleted(int lesson){
         int i = 0;
 
-        for (Integer j: completed.get(lesson)) {
+        for (Integer j: completed.get(lesson-1)) {
             i++;
         }
         return i;
