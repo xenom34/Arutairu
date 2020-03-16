@@ -1,10 +1,6 @@
 package fr.altairstudios.arutairu;
 
-import android.util.SparseArray;
-import android.util.SparseBooleanArray;
-
 import java.io.Serializable;
-import java.sql.Struct;
 import java.util.Vector;
 
 class LessonsCompleted implements Serializable {
@@ -17,7 +13,7 @@ class LessonsCompleted implements Serializable {
         completed.get(lesson-1).add(word);
     }
 
-    public LessonsCompleted() {
+    LessonsCompleted() {
          completed = new Vector<>();
         for (int i = 0; i < LessonsStorage.TOTAL; i++) {
             completed.add(new Vector<Integer>());

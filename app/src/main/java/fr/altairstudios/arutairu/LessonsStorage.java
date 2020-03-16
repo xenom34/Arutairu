@@ -2,9 +2,6 @@ package fr.altairstudios.arutairu;
 
 import android.util.SparseArray;
 
-import java.nio.file.DirectoryIteratorException;
-import java.util.HashMap;
-
 class LessonsStorage {
     private SparseArray<Lesson> storage = new SparseArray<>();
     static final int NUMBERS = 1;

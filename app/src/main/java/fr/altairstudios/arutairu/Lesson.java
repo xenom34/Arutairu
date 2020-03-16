@@ -1,7 +1,5 @@
 package fr.altairstudios.arutairu;
 
-import android.content.res.Resources;
-
 public class Lesson {
     private int jpn, rom, src;
 

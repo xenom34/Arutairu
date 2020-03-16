@@ -1,10 +1,6 @@
 package fr.altairstudios.arutairu;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ActivityOptions;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -13,11 +9,11 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.material.card.MaterialCardView;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     private ImageView mAltair, mBg;
-    private MaterialCardView mCurrentLanguage;
+    private ImageView mCurrentLanguage;
     private com.google.android.material.textview.MaterialTextView mWelcome;
     private TextView mArutairu;
     private com.google.android.material.button.MaterialButton mStart;
