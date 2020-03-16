@@ -142,6 +142,7 @@ public class Exercise extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Intent intent = new Intent(getApplicationContext(), ListActivity.class);
+                intent.putExtra("COMPLETED", lessonsCompleted);
                 startActivity(intent);
                 finish();
             }
