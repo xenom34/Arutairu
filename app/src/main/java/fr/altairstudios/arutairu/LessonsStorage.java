@@ -63,7 +63,7 @@ class LessonsStorage {
         storage.put(LANGUAGE, new Lesson(R.array.languageJP, R.array.languageRM, R.array.languageFR));
         storage.put(MEDIA, new Lesson(R.array.mediaJP, R.array.mediaRM, R.array.mediasFR));
         storage.put(COLORS, new Lesson(R.array.colorsJP, R.array.colorsRM, R.array.colorsFR));
-        storage.put(OTHERS, new Lesson(R.array.othersJP, R.array.colorsRM, R.array.colorsFR));
+        storage.put(OTHERS, new Lesson(R.array.othersJP, R.array.othersRM, R.array.othersFR));
         storage.put(ABSTRACT, new Lesson(R.array.abstractJP, R.array.asbstractRM, R.array.asbstractFR));
     }
     int getJpRes(int i){
