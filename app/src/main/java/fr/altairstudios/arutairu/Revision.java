@@ -25,6 +25,7 @@ public class Revision extends AppCompatActivity {
     private int max, lesson;
     String[] mEnglish, mRomaji, mJpn;
     private Button mNext;
+    LessonsCompleted lessonsCompleted;
     private TextView mShowJpn, mShowEnglish, mShowRomaji, mCount;
     private LessonsStorage lessonsStorage = new LessonsStorage();
 
@@ -32,6 +33,8 @@ public class Revision extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_revision);
+
+        lessonsCompleted = (LessonsCompleted) getIntent().getSerializableExtra("COMPLETED");
 
         max = getIntent().getIntExtra("MAX", Integer.MAX_VALUE);
         lesson = getIntent().getIntExtra("LESSON", Integer.MAX_VALUE);
@@ -56,6 +59,7 @@ public class Revision extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), Exercise.class);
                     intent.putExtra("MAX", max);
                     intent.putExtra("LESSON", lesson);
+                    intent.putExtra("COMPLETED", lessonsCompleted);
                     startActivity(intent);
                     finish();
                 }

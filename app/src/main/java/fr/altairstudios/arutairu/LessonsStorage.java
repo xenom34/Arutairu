@@ -34,6 +34,7 @@ class LessonsStorage {
     static final int COLORS = 25;
     static final int OTHERS = 26;
     static final int ABSTRACT = 27;
+    static final int TOTAL = 27;
     
 
     LessonsStorage() {

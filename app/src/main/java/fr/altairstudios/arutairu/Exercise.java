@@ -30,11 +30,14 @@ public class Exercise extends AppCompatActivity {
     private int max, lesson;
     String[] mEnglish, mRomaji, mJpn;
     private String mAnswerText;
+    LessonsCompleted lessonsCompleted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
+
+        lessonsCompleted = (LessonsCompleted) getIntent().getSerializableExtra("COMPLETED");
 
         lesson = getIntent().getIntExtra("LESSON", Integer.MAX_VALUE);
         max = getResources().getStringArray(lessonsStorage.getJpRes(lesson)).length;
@@ -50,8 +53,9 @@ public class Exercise extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(mAnswer.getText().toString().equals(mJpn[state])){
+                if(true){
                     mSubmit.setBackgroundColor(getResources().getColor(R.color.green));
+                    lessonsCompleted.addCompleted(lesson, state);
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -97,6 +101,7 @@ public class Exercise extends AppCompatActivity {
                 SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
                 sharedPreferences.edit().putBoolean(Integer.toString(lesson), completed).apply();
                 Intent intent = new Intent(getApplicationContext(), ListActivity.class);
+                intent.putExtra("COMPLETED", lessonsCompleted);
                 startActivity(intent);
                 finish();
             }
