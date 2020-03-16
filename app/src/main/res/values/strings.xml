@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Arutairu</string>
     <string name="jpAltair">アルタイル</string>
-    <string name="textwelcome">Merci d\'avoir téléchargé cette application ! Ici, le but est de vous familiariser avec le japonais, en aprenant un maximum de vocabulaire. Ce mode d\'aprantissage peut vous permettre de communiquer de manière très simple avec les locaux.\nDésormais, séléctionnez un chapitre, mémorisez-les et recopiez-les en japonais.\n</string>
+    <string name="textwelcome">Merci d\'avoir téléchargé cette application ! Ici, le but est de vous familiariser avec le japonais, en aprenant un maximum de vocabulaire. Ce mode d\'aprantissage peut vous permettre de communiquer de manière très simple avec les locaux.\n\nDésormais, séléctionnez un chapitre, mémorisez-les et recopiez-les en japonais.\n</string>
     <string name="le_ons">Leçons</string>
     <string-array name="numbersJP">
         <item>零</item>

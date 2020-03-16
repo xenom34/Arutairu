@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
         Animation fadeAltair =
                 AnimationUtils.loadAnimation(getApplicationContext(),
                         R.anim.fade);

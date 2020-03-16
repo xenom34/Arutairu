@@ -24,7 +24,7 @@
                 android:textAlignment="center"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="10dp"
+                android:layout_marginVertical="15dp"
                 />
 
             <com.google.android.material.card.MaterialCardView

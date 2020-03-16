@@ -6,11 +6,14 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -57,11 +60,7 @@ public class Exercise extends AppCompatActivity {
                                 refresh();
                                 mAnswer.setText("");
                             }else{
-                                SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
-                                sharedPreferences.edit().putBoolean(Integer.toString(lesson), completed).apply();
-                                Intent intent = new Intent(getApplicationContext(), ListActivity.class);
-                                startActivity(intent);
-                                finish();
+                                congrats();
                             }
                             mSubmit.setBackgroundColor(getResources().getColor(R.color.grey));
                         }
@@ -75,6 +74,93 @@ public class Exercise extends AppCompatActivity {
         });
 
         refresh();
+    }
+
+    private void congrats() {
+
+        //before inflating the custom alert dialog layout, we will get the current activity viewgroup
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+
+        //then we will inflate the custom alert dialog xml that we created
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.congrats_dialog, viewGroup, false);
+
+        //Now we need an AlertDialog.Builder object
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView);
+
+
+        builder.setPositiveButton("Revenir aux leçons", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
+                sharedPreferences.edit().putBoolean(Integer.toString(lesson), completed).apply();
+                Intent intent = new Intent(getApplicationContext(), ListActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                //mSpam = 0;
+            }
+        });
+
+        //finally creating the alert dialog and displaying it
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+    }
+
+    private void exit() {
+        //before inflating the custom alert dialog layout, we will get the current activity viewgroup
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+
+        //then we will inflate the custom alert dialog xml that we created
+
+        //Now we need an AlertDialog.Builder object
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+
+        //setting the view of the builder to our custom view that we already inflated
+
+
+        builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent(getApplicationContext(), ListActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        builder.setTitle("Quitter la leçons ?");
+
+        builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                //mSpam = 0;
+            }
+        });
+
+        //finally creating the alert dialog and displaying it
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        exit();
+
     }
 
     private void refresh() {

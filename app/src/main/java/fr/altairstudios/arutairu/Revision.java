@@ -1,14 +1,18 @@
 package fr.altairstudios.arutairu;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioAttributes;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.Voice;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -76,6 +80,50 @@ public class Revision extends AppCompatActivity {
 
         refresh();
 
+    }
+
+    private void showDialog(){
+        //before inflating the custom alert dialog layout, we will get the current activity viewgroup
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+
+        //Now we need an AlertDialog.Builder object
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+
+        //setting the view of the builder to our custom view that we already inflated
+
+        builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent(getApplicationContext(), ListActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        builder.setTitle("Quitter la leçons ?");
+
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                //mSpam = 0;
+            }
+        });
+
+        //finally creating the alert dialog and displaying it
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        showDialog();
     }
 
     private void refresh() {

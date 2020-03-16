@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="100dp"
+        android:layout_marginVertical="120dp"
         android:backgroundTint="@color/cardview_dark_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -96,12 +96,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1/10"
-        android:textStyle="bold"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/materialCardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.7" />
 
     <Button
         android:id="@+id/next"

@@ -20,14 +20,12 @@ public class ListActivity extends AppCompatActivity {
     private boolean firstExec;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
     public static final String FIRST_EXEC = "first";
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-
-        SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
-        sharedPreferences.getBoolean(FIRST_EXEC, true);
 
         mStartNumbers = findViewById(R.id.btnNumbers);
         mStartBody = findViewById(R.id.btnBody);
@@ -64,6 +62,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.NUMBERS);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.NUMBERS)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -74,6 +73,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.PEOPLE);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.PEOPLE)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -84,6 +84,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.JOBS);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.JOBS)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -94,6 +95,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.BODY);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.BODY)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -104,6 +106,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.FAMILY);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.FAMILY)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -114,6 +117,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.ANIMALS);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.ANIMALS)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -124,6 +128,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.PLANTS);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.PLANTS)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -134,6 +139,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.CROPS);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.CROPS)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -144,6 +150,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.FOOD);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.FOOD)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -154,6 +161,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.DRINK);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.DRINK)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -164,6 +172,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.SEASONING);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.SEASONING)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -174,6 +183,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.DAYS);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.DAYS)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -184,6 +194,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.WEATHER);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.WEATHER)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -194,6 +205,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.DIRECTIONS);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.DIRECTIONS)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -204,6 +216,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.MATERIALS);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.MATERIALS)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -214,6 +227,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.WEIGHTS);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.WEIGHTS)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -224,6 +238,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.SOCIETY);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.SOCIETY)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -234,6 +249,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.HOME);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.HOME)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -244,6 +260,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.TOOLS);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.TOOLS)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -254,6 +271,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.STATIONERY);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.STATIONERY)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -264,6 +282,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.CLOTHES);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.CLOTHES)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -274,6 +293,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.TRANSPORT);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.TRANSPORT)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -284,6 +304,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.LANGUAGE);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.LANGUAGE)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -294,6 +315,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.MEDIA);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.MEDIA)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -304,6 +326,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.COLORS);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.COLORS)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -314,6 +337,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.OTHERS);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.OTHERS)).length);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -324,6 +348,7 @@ public class ListActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", LessonsStorage.ABSTRACT);
                 intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(LessonsStorage.ABSTRACT)).length);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -331,8 +356,13 @@ public class ListActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        
-        showDialog();
+
+        sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
+
+        if(sharedPreferences.getBoolean(FIRST_EXEC, true)){
+            showDialog();
+        }
+
     }
 
     private void showDialog() {
