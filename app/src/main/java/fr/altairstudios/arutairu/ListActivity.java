@@ -3,6 +3,7 @@ package fr.altairstudios.arutairu;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +17,12 @@ import android.widget.ProgressBar;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.List;
 import java.util.Vector;
 
@@ -30,12 +37,17 @@ public class ListActivity extends AppCompatActivity {
     public static final String FIRST_EXEC = "first";
     static boolean waitingForData = false;
     SharedPreferences sharedPreferences;
-    LessonsCompleted lessonsCompleted = new LessonsCompleted();
+    LessonsCompleted lessonsCompleted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
+        sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
+
+        firstExec = sharedPreferences.getBoolean(FIRST_EXEC, true);
+
 
         cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnNumbers));
         cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnBody));
@@ -140,6 +152,14 @@ public class ListActivity extends AppCompatActivity {
         for (ImageView imageView:checks) {
             imageView.setAlpha(0f);
         }
+
+        try {
+            loadCompleted();
+        } catch (IOException e) {
+            lessonsCompleted = new LessonsCompleted();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     void refresh(){
@@ -152,19 +172,38 @@ public class ListActivity extends AppCompatActivity {
         }
     }
 
+    void saveCompleted() throws IOException {
+        FileOutputStream fos = getApplicationContext().openFileOutput("save.dat", Context.MODE_PRIVATE);
+        ObjectOutputStream os = new ObjectOutputStream(fos);
+        os.writeObject(lessonsCompleted);
+        os.close();
+        fos.close();
+    }
+
+    void loadCompleted() throws IOException, ClassNotFoundException {
+        FileInputStream fis = getApplicationContext().openFileInput("save.dat");
+        ObjectInputStream is = new ObjectInputStream(fis);
+        lessonsCompleted = (LessonsCompleted) is.readObject();
+        is.close();
+        fis.close();
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
 
+        refresh();
+
         if (waitingForData){
             lessonsCompleted = (LessonsCompleted) getIntent().getSerializableExtra("COMPLETED");
+            try {
+                saveCompleted();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             refresh();
             waitingForData = false;
         }
-
-        sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
-
-        firstExec = sharedPreferences.getBoolean(FIRST_EXEC, true);
 
         if(firstExec){
             showDialog();
