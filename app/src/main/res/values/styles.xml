@@ -14,6 +14,12 @@
         <item name="android:buttonBarButtonStyle">@style/buttonsTheme</item>
     </style>
 
+    <style name="Exercise" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+    </style>
+
     <style name="buttonsTheme">
         <item name="android:textColor">@color/white</item>
     </style>

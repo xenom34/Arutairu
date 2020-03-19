@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.util.Locale;
 
 public class Revision extends AppCompatActivity {
@@ -19,6 +22,7 @@ public class Revision extends AppCompatActivity {
     TextToSpeech t1;
     private int state = 0;
     private int max, lesson;
+    private AdView mAdView;
     String[] mEnglish, mRomaji, mJpn;
     private Button mNext;
     LessonsCompleted lessonsCompleted;
@@ -29,6 +33,10 @@ public class Revision extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_revision);
+
+        mAdView = findViewById(R.id.adViewRevision);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         lessonsCompleted = (LessonsCompleted) getIntent().getSerializableExtra("COMPLETED");
 

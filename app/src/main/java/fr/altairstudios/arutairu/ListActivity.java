@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,10 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -33,7 +38,6 @@ public class ListActivity extends AppCompatActivity {
     static boolean waitingForData = false;
     SharedPreferences sharedPreferences;
     LessonsCompleted lessonsCompleted;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

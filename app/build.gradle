@@ -7,8 +7,8 @@ android {
         applicationId "fr.altairstudios.arutairu"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 4
-        versionName "beta4"
+        versionCode 5
+        versionName "beta5"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -24,6 +24,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'com.google.android.material:material:1.1.0-rc02'
+    implementation 'com.google.android.gms:play-services-ads:19.0.1'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

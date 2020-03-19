@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,10 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textview.MaterialTextView;
@@ -21,6 +26,7 @@ public class Exercise extends AppCompatActivity {
     private TextInputEditText mAnswer;
     private MaterialButton mSubmit;
     private ImageView mcheck;
+    private InterstitialAd mInterstitialAd;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
     private MaterialTextView mText, mState;
     private LessonsStorage lessonsStorage = new LessonsStorage();
@@ -30,11 +36,31 @@ public class Exercise extends AppCompatActivity {
     String[] mEnglish, mRomaji, mJpn;
     private String mAnswerText;
     LessonsCompleted lessonsCompleted;
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        mInterstitialAd.setAdListener(new AdListener(){
+            @Override
+            public void onAdClosed() {
+                SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
+                sharedPreferences.edit().putBoolean(Integer.toString(lesson), completed).apply();
+                Intent intent = new Intent(getApplicationContext(), ListActivity.class);
+                intent.putExtra("COMPLETED", lessonsCompleted);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        mAdView = findViewById(R.id.adViewExercise);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         lessonsCompleted = (LessonsCompleted) getIntent().getSerializableExtra("COMPLETED");
 
@@ -104,12 +130,17 @@ public class Exercise extends AppCompatActivity {
         builder.setPositiveButton("Revenir aux leçons", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
-                sharedPreferences.edit().putBoolean(Integer.toString(lesson), completed).apply();
-                Intent intent = new Intent(getApplicationContext(), ListActivity.class);
-                intent.putExtra("COMPLETED", lessonsCompleted);
-                startActivity(intent);
-                finish();
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                } else {
+                    Log.d("TAG", "The interstitial wasn't loaded yet.");
+                    SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
+                    sharedPreferences.edit().putBoolean(Integer.toString(lesson), completed).apply();
+                    Intent intent = new Intent(getApplicationContext(), ListActivity.class);
+                    intent.putExtra("COMPLETED", lessonsCompleted);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
 

@@ -10,10 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-9369103706924521~6167910536"/>
         <activity android:name=".ListActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".Exercise"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar"/>
         <activity
             android:name=".Revision"
             android:screenOrientation="portrait" />
