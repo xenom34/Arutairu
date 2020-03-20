@@ -75,6 +75,7 @@ public class ListActivity extends AppCompatActivity {
         cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnColors));
         cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnOthers));
         cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnAbstract));
+        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnHiragana));
 
         progresses.add((ProgressBar) findViewById(R.id.numbersProgress));
         progresses.add((ProgressBar) findViewById(R.id.bodyProgress));
@@ -103,6 +104,7 @@ public class ListActivity extends AppCompatActivity {
         progresses.add((ProgressBar) findViewById(R.id.colorsProgress));
         progresses.add((ProgressBar) findViewById(R.id.othersProgress));
         progresses.add((ProgressBar) findViewById(R.id.abstractProgress));
+        progresses.add((ProgressBar) findViewById(R.id.hiraganaProgress));
 
         checks.add((ImageView) findViewById(R.id.checkNumbers));
         checks.add((ImageView) findViewById(R.id.checkPeople));
@@ -131,6 +133,7 @@ public class ListActivity extends AppCompatActivity {
         checks.add((ImageView) findViewById(R.id.checkColors));
         checks.add((ImageView) findViewById(R.id.checkOthers));
         checks.add((ImageView) findViewById(R.id.checkAbstract));
+        checks.add((ImageView) findViewById(R.id.checkHiragana));
 
         for (int i = 0; i < LessonsStorage.TOTAL; i++) {
             final int finalI = i;

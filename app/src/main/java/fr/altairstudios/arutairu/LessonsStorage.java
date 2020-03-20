@@ -4,6 +4,7 @@ import android.util.SparseArray;
 
 class LessonsStorage {
     private SparseArray<Lesson> storage = new SparseArray<>();
+    static final int HIRAGANA = 0;
     static final int NUMBERS = 1;
     static final int PEOPLE = 2;
     static final int JOBS = 3;
