@@ -47,7 +47,8 @@ public class ListActivity extends AppCompatActivity {
 
         firstExec = sharedPreferences.getBoolean(FIRST_EXEC, true);
 
-
+        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnHiragana));
+        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnDakuten));
         cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnNumbers));
         cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnBody));
         cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnJobs));
@@ -75,8 +76,9 @@ public class ListActivity extends AppCompatActivity {
         cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnColors));
         cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnOthers));
         cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnAbstract));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnHiragana));
 
+        progresses.add((ProgressBar) findViewById(R.id.hiraganaProgress));
+        progresses.add((ProgressBar) findViewById(R.id.dakutenProgress));
         progresses.add((ProgressBar) findViewById(R.id.numbersProgress));
         progresses.add((ProgressBar) findViewById(R.id.bodyProgress));
         progresses.add((ProgressBar) findViewById(R.id.jobsProgress));
@@ -104,8 +106,9 @@ public class ListActivity extends AppCompatActivity {
         progresses.add((ProgressBar) findViewById(R.id.colorsProgress));
         progresses.add((ProgressBar) findViewById(R.id.othersProgress));
         progresses.add((ProgressBar) findViewById(R.id.abstractProgress));
-        progresses.add((ProgressBar) findViewById(R.id.hiraganaProgress));
 
+        checks.add((ImageView) findViewById(R.id.checkHiragana));
+        checks.add((ImageView) findViewById(R.id.checkDakuten));
         checks.add((ImageView) findViewById(R.id.checkNumbers));
         checks.add((ImageView) findViewById(R.id.checkPeople));
         checks.add((ImageView) findViewById(R.id.checkJobs));
@@ -133,7 +136,6 @@ public class ListActivity extends AppCompatActivity {
         checks.add((ImageView) findViewById(R.id.checkColors));
         checks.add((ImageView) findViewById(R.id.checkOthers));
         checks.add((ImageView) findViewById(R.id.checkAbstract));
-        checks.add((ImageView) findViewById(R.id.checkHiragana));
 
         for (int i = 0; i < LessonsStorage.TOTAL; i++) {
             final int finalI = i;
