@@ -391,7 +391,7 @@
         <item>shoujo</item>
         <item>shounen</item>
     </string-array>
-        <string-array name="jobsJP">
+    <string-array name="jobsJP">
         <item>いしゃ</item>
         <item>かんごし</item>
         <item>かんごふ</item>
@@ -484,7 +484,7 @@
         <item>げり</item>
         <item>びょうき</item>
     </string-array>
-        <string-array name="bodyFR">
+    <string-array name="bodyFR">
         <item>Pied</item>
         <item>Talon</item>
         <item>Tibia</item>
@@ -659,1221 +659,1221 @@
     </string-array>
 
     <string-array name="plantsJP">
-    <item>しょくぶつ</item>
-    <item>くさ</item>
-    <item>はな</item>
-    <item>み</item>
-    <item>き</item>
-    <item>は</item>
-    <item>ね</item>
-    <item>くき</item>
-    <item>きのこ</item>
-    <item>きく</item>
-    <item>さくら</item>
-    <item>まつ</item>
-    <item>うめ</item>
-</string-array>
+        <item>しょくぶつ</item>
+        <item>くさ</item>
+        <item>はな</item>
+        <item>み</item>
+        <item>き</item>
+        <item>は</item>
+        <item>ね</item>
+        <item>くき</item>
+        <item>きのこ</item>
+        <item>きく</item>
+        <item>さくら</item>
+        <item>まつ</item>
+        <item>うめ</item>
+    </string-array>
 
- 
-<string-array name="cropsJP"> 
-    <item>こめ</item>
-    <item>いね</item>
-    <item>むぎ</item>
-    <item>やさい</item>
-    <item>くだもの</item>
-    <item>いも</item>
-    <item>まめ</item>
-    <item>だいこん</item>
-    <item>にんじん</item>
-    <item>リンゴ</item>
-    <item>ミカン</item>
-    <item>バナナ</item>
-    <item>ナシ</item>
-    <item>クリ</item>
-    <item>モモ</item>
-    <item>トマト</item>
-    <item>スイカ</item>
-</string-array>
- 
-<string-array name="foodJP">
-    <item>たべもの</item>
-    <item>ちょうしょく</item>
-    <item>ひるごはん</item>
-    <item>ばんごはん</item>
-    <item>ごはん</item>
-    <item>みそ</item>
-    <item>りょうり</item>
-    <item>サラダ</item>
-    <item>デザート</item>
-    <item>パン</item>
-    <item>サンドイッチ</item>
-    <item>おやつ</item>
-    <item>アイスクリーム</item>
-</string-array>
- 
-<string-array name="drinkJP">
-    <item>のみもの</item>
-    <item>ちゃ</item>
-    <item>おちゃ</item>
-    <item>コーヒー</item>
-    <item>ぎゅうにゅう</item>
-    <item>みず</item>
-    <item>ビール</item>
-    <item>ワイン</item>
-</string-array>
- 
-<string-array name="seasoningJP">
-    <item>さとう</item>
-    <item>しお</item>
-    <item>しょうゆ</item>
-</string-array>
- 
-<string-array name="daysJP">
-    <item>にちようび</item>
-    <item>げつようび</item>
-    <item>かようび</item>
-    <item>すいようび</item>
-    <item>もくようび</item>
-    <item>きんようび</item>
-    <item>どようび</item>
-</string-array>
- 
-<string-array name="weatherJP">
-    <item>たいよう</item>
-    <item>つき</item>
-    <item>ほし</item>
-    <item>てんき</item>
-    <item>はれ</item>
-    <item>あめ</item>
-    <item>くもり</item>
-    <item>ゆき</item>
-    <item>かぜ</item>
-    <item>かみなり</item>
-    <item>たいふう</item>
-    <item>あらし</item>
-    <item>そら</item>
-</string-array>
- 
-<string-array name="directionsJP">
-    <item>きた</item>
-    <item>ひがし</item>
-    <item>みなみ</item>
-    <item>にし</item>
-    <item>ここ</item>
-    <item>そこ</item>
-    <item>あそこ</item>
-    <item>みぎ</item>
-    <item>ひだり</item>
-    <item>うえ</item>
-    <item>した</item>
-    <item>まえ</item>
-    <item>うしろ</item>
-    <item>むこう</item>
-    <item>ななめ</item>
-    <item>てまえ</item>
-    <item>とおい</item>
-    <item>ちかい</item>
-</string-array>
- 
-<string-array name="materialsJP">
-    <item>みず</item>
-    <item>ゆ</item>
-    <item>こおり</item>
-    <item>ゆげ</item>
-    <item>ひ</item>
-    <item>ガス</item>
-    <item>くうき</item>
-    <item>つち</item>
-    <item>きんぞく</item>
-    <item>どろ</item>
-    <item>けむり</item>
-    <item>てつ</item>
-    <item>どう</item>
-    <item>きん</item>
-    <item>ぎん</item>
-    <item>なまり</item>
-    <item>しお</item>
-</string-array>
- 
-<string-array name="weightsJP">
-    <item>メートル</item>
-    <item>リットル</item>
-    <item>グラム</item>
-    <item>キロ</item>
-    <item>ミリ</item>
-    <item>センチメートル</item>
-    <item>インチ</item>
-</string-array>
- 
-<string-array name="societyJP">
-    <item>しゃかい</item>
-    <item>けいざい</item>
-    <item>かいしゃ</item>
-    <item>かいぎ</item>
-    <item>がっこう</item>
-    <item>やくしょ</item>
-    <item>みせ</item>
-    <item>ホテル</item>
-    <item>こうじょう</item>
-    <item>かね</item>
-    <item>さつ</item>
-    <item>こぜに</item>
-    <item>つりせん</item>
-    <item>じどうはんばいき</item>
-    <item>きっぷ</item>
-    <item>きって</item>
-</string-array>
- 
-<string-array name="homeJP">
-    <item>つくえ</item>
-    <item>いす</item>
-    <item>たたみ</item>
-    <item>と</item>
-    <item>とびら</item>
-    <item>ドア</item>
-    <item>まど</item>
-    <item>ふとん</item>
-    <item>げんかん</item>
-    <item>いえ</item>
-    <item>エレベーター</item>
-    <item>エスカレーター</item>
-    <item>でんき</item>
-</string-array>
- 
-<string-array name="toolsJP">
-    <item>くぎ</item>
-    <item>ひも</item>
-    <item>なわ</item>
-    <item>ふくろ</item>
-    <item>かばん</item>
-    <item>かさ</item>
-    <item>かぎ</item>
-    <item>ちょうこく</item>
-</string-array>
- 
-<string-array name="stationeryJP">
-    <item>ぶんぼうぐ</item>
-    <item>インク</item>
-    <item>ペン</item>
-    <item>ボールペン</item>
-    <item>まんねんひつ</item>
-    <item>えんぴつ</item>
-    <item>ふで</item>
-    <item>チョーク</item>
-    <item>けしゴム</item>
-    <item>えんぴつけずり</item>
-    <item>じょうぎ</item>
-    <item>ノート</item>
-    <item>にっき</item>
-    <item>カバー</item>
-    <item>ふうとう</item>
-    <item>はさみ</item>
-    <item>ホッチキス</item>
-</string-array>
- 
-<string-array name="clothesJP">
-    <item>ふく</item>
-    <item>ようふく</item>
-    <item>きもの</item>
-    <item>わふく</item>
-    <item>そで</item>
-    <item>えり</item>
-    <item>ボタン</item>
-    <item>チャック</item>
-    <item>ベルト</item>
-    <item>くつ</item>
-    <item>くつした</item>
-    <item>めがね</item>
-</string-array>
- 
-<string-array name="transportJP">
-    <item>てつどう</item>
-    <item>えき</item>
-    <item>ひこうき</item>
-    <item>くうこう</item>
-    <item>みち</item>
-    <item>どうろ</item>
-    <item>バスてい</item>
-    <item>とおり</item>
-    <item>でんしゃ</item>
-    <item>くるま</item>
-</string-array>
- 
-<string-array name="languageJP">
-    <item>もじ</item>
-    <item>じ</item>
-    <item>かんじ</item>
-    <item>ひらがな</item>
-    <item>カタカナ</item>
-    <item>すうじ</item>
-    <item>アルファベット</item>
-    <item>ローマ字</item>
-    <item>がいこくご</item>
-    <item>にほんご</item>
-    <item>えいご</item>
-    <item>ちゅうごくご</item>
-    <item>どいつご</item>
-    <item>すぺいんご</item>
-    <item>ふらんすご</item>
-    <item>ちょうせんご</item>
-</string-array>
- 
-<string-array name="mediaJP">
-    <item>ほん</item>
-    <item>かみ</item>
-    <item>てがみ</item>
-    <item>しんぶん</item>
-    <item>じしょ</item>
-    <item>パソコン</item>
-</string-array>
- 
-<string-array name="colorsJP">
-    <item>いろ</item>
-    <item>あか</item>
-    <item>きいろ</item>
-    <item>みどり</item>
-    <item>あお</item>
-    <item>むらさき</item>
-    <item>しろ</item>
-    <item>くろ</item>
-    <item>ピンク</item>
-    <item>ちゃいろ</item>
-    <item>はいいろ</item>
-    <item>オレンジ</item>
-</string-array>
- 
-<string-array name="othersJP">
-    <item>え</item>
-    <item>おんがく</item>
-    <item>りか</item>
-    <item>さんすう</item>
-    <item>れきし</item>
-    <item>ちり</item>
-    <item>たいいく</item>
-    <item>スポーツ</item>
-    <item>システム</item>
-    <item>じょうほう</item>
-    <item>ひつよう</item>
-    <item>べんきょう</item>
-    <item>いらい</item>
-</string-array>
- 
-<string-array name="abstractJP">
-    <item>これ</item>
-    <item>それ</item>
-    <item>あれ</item>
-    <item>どれ</item>
-    <item>こちら</item>
-    <item>そちら</item>
-    <item>あちら</item>
-    <item>どちら</item>
-    <item>ひみつ</item>
-    <item>じどう</item>
-    <item>ないよう</item>
-    <item>はば</item>
-    <item>せいしき</item>
-    <item>けっこん</item>
-    <item>げんざい</item>
-    <item>いま</item>
-    <item>かこ</item>
-    <item>みらい</item>
-</string-array>
 
-<string-array name="familyRM">
-	<item>kazoku</item>
-	<item>ryoushin</item>
-	<item>kodomo</item>
-	<item>chichi</item>
-	<item>haha</item>
-	<item>tsuma</item>
-	<item>otto</item>
-	<item>ani</item>
-	<item>ane</item>
-	<item>otōto</item>
-	<item>imōto</item>
-	<item>kyōdai</item>
-	<item>shimai</item>
-	<item>sofu</item>
-	<item>sobo</item>
-	<item>mago</item>
-	<item>oji</item>
-	<item>oba</item>
-	<item>itoko</item>
-	<item>mei</item>
-	<item>oi</item>
-</string-array>
+    <string-array name="cropsJP">
+        <item>こめ</item>
+        <item>いね</item>
+        <item>むぎ</item>
+        <item>やさい</item>
+        <item>くだもの</item>
+        <item>いも</item>
+        <item>まめ</item>
+        <item>だいこん</item>
+        <item>にんじん</item>
+        <item>リンゴ</item>
+        <item>ミカン</item>
+        <item>バナナ</item>
+        <item>ナシ</item>
+        <item>クリ</item>
+        <item>モモ</item>
+        <item>トマト</item>
+        <item>スイカ</item>
+    </string-array>
 
-<string-array name="animalsRM">
-	<item>ikimono</item>
-	<item>bakemono</item>
-	<item>dōbutsu</item>
-	<item>chītā</item>
-	<item>inu</item>
-	<item>neko</item>
-	<item>ushi</item>
-	<item>buta</item>
-	<item>uma</item>
-	<item>hitsuji</item>
-	<item>saru</item>
-	<item>nezumi</item>
-	<item>tora</item>
-	<item>ōkami</item>
-	<item>usagi</item>
-	<item>ryū</item>
-	<item>shika</item>
-	<item>kaeru</item>
-	<item>gama</item>
-	<item>shishi</item>
-	<item>kirin</item>
-	<item>zō</item>
-	<item>tori</item>
-	<item>niwatori</item>
-	<item>suzume</item>
-	<item>karasu</item>
-	<item>washi</item>
-	<item>taka</item>
-	<item>sakana</item>
-	<item>tai</item>
-	<item>ebi</item>
-	<item>iwashi</item>
-	<item>maguro</item>
-	<item>katsuo</item>
-	<item>sanma</item>
-	<item>aji</item>
-	<item>saba</item>
-	<item>ika</item>
-	<item>tako</item>
-	<item>mushi</item>
-	<item>chō</item>
-	<item>ga</item>
-	<item>semi</item>
-	<item>tonbo</item>
-	<item>batta</item>
-	<item>kumo</item>
-	<item>hotaru</item>
-	<item>hae</item>
-	<item>ka</item>
-	<item>gokiburi</item>
-	<item>katatsumuri</item>
-	<item>namekuji</item>
-	<item>mimizu</item>
-	<item>kai</item>
-	<item>kaigara</item>
-	<item>tokage</item>
-	<item>hebi</item>
-	<item>kuma</item>
-</string-array>
+    <string-array name="foodJP">
+        <item>たべもの</item>
+        <item>ちょうしょく</item>
+        <item>ひるごはん</item>
+        <item>ばんごはん</item>
+        <item>ごはん</item>
+        <item>みそ</item>
+        <item>りょうり</item>
+        <item>サラダ</item>
+        <item>デザート</item>
+        <item>パン</item>
+        <item>サンドイッチ</item>
+        <item>おやつ</item>
+        <item>アイスクリーム</item>
+    </string-array>
+
+    <string-array name="drinkJP">
+        <item>のみもの</item>
+        <item>ちゃ</item>
+        <item>おちゃ</item>
+        <item>コーヒー</item>
+        <item>ぎゅうにゅう</item>
+        <item>みず</item>
+        <item>ビール</item>
+        <item>ワイン</item>
+    </string-array>
+
+    <string-array name="seasoningJP">
+        <item>さとう</item>
+        <item>しお</item>
+        <item>しょうゆ</item>
+    </string-array>
+
+    <string-array name="daysJP">
+        <item>にちようび</item>
+        <item>げつようび</item>
+        <item>かようび</item>
+        <item>すいようび</item>
+        <item>もくようび</item>
+        <item>きんようび</item>
+        <item>どようび</item>
+    </string-array>
+
+    <string-array name="weatherJP">
+        <item>たいよう</item>
+        <item>つき</item>
+        <item>ほし</item>
+        <item>てんき</item>
+        <item>はれ</item>
+        <item>あめ</item>
+        <item>くもり</item>
+        <item>ゆき</item>
+        <item>かぜ</item>
+        <item>かみなり</item>
+        <item>たいふう</item>
+        <item>あらし</item>
+        <item>そら</item>
+    </string-array>
+
+    <string-array name="directionsJP">
+        <item>きた</item>
+        <item>ひがし</item>
+        <item>みなみ</item>
+        <item>にし</item>
+        <item>ここ</item>
+        <item>そこ</item>
+        <item>あそこ</item>
+        <item>みぎ</item>
+        <item>ひだり</item>
+        <item>うえ</item>
+        <item>した</item>
+        <item>まえ</item>
+        <item>うしろ</item>
+        <item>むこう</item>
+        <item>ななめ</item>
+        <item>てまえ</item>
+        <item>とおい</item>
+        <item>ちかい</item>
+    </string-array>
+
+    <string-array name="materialsJP">
+        <item>みず</item>
+        <item>ゆ</item>
+        <item>こおり</item>
+        <item>ゆげ</item>
+        <item>ひ</item>
+        <item>ガス</item>
+        <item>くうき</item>
+        <item>つち</item>
+        <item>きんぞく</item>
+        <item>どろ</item>
+        <item>けむり</item>
+        <item>てつ</item>
+        <item>どう</item>
+        <item>きん</item>
+        <item>ぎん</item>
+        <item>なまり</item>
+        <item>しお</item>
+    </string-array>
+
+    <string-array name="weightsJP">
+        <item>メートル</item>
+        <item>リットル</item>
+        <item>グラム</item>
+        <item>キロ</item>
+        <item>ミリ</item>
+        <item>センチメートル</item>
+        <item>インチ</item>
+    </string-array>
+
+    <string-array name="societyJP">
+        <item>しゃかい</item>
+        <item>けいざい</item>
+        <item>かいしゃ</item>
+        <item>かいぎ</item>
+        <item>がっこう</item>
+        <item>やくしょ</item>
+        <item>みせ</item>
+        <item>ホテル</item>
+        <item>こうじょう</item>
+        <item>かね</item>
+        <item>さつ</item>
+        <item>こぜに</item>
+        <item>つりせん</item>
+        <item>じどうはんばいき</item>
+        <item>きっぷ</item>
+        <item>きって</item>
+    </string-array>
+
+    <string-array name="homeJP">
+        <item>つくえ</item>
+        <item>いす</item>
+        <item>たたみ</item>
+        <item>と</item>
+        <item>とびら</item>
+        <item>ドア</item>
+        <item>まど</item>
+        <item>ふとん</item>
+        <item>げんかん</item>
+        <item>いえ</item>
+        <item>エレベーター</item>
+        <item>エスカレーター</item>
+        <item>でんき</item>
+    </string-array>
+
+    <string-array name="toolsJP">
+        <item>くぎ</item>
+        <item>ひも</item>
+        <item>なわ</item>
+        <item>ふくろ</item>
+        <item>かばん</item>
+        <item>かさ</item>
+        <item>かぎ</item>
+        <item>ちょうこく</item>
+    </string-array>
+
+    <string-array name="stationeryJP">
+        <item>ぶんぼうぐ</item>
+        <item>インク</item>
+        <item>ペン</item>
+        <item>ボールペン</item>
+        <item>まんねんひつ</item>
+        <item>えんぴつ</item>
+        <item>ふで</item>
+        <item>チョーク</item>
+        <item>けしゴム</item>
+        <item>えんぴつけずり</item>
+        <item>じょうぎ</item>
+        <item>ノート</item>
+        <item>にっき</item>
+        <item>カバー</item>
+        <item>ふうとう</item>
+        <item>はさみ</item>
+        <item>ホッチキス</item>
+    </string-array>
+
+    <string-array name="clothesJP">
+        <item>ふく</item>
+        <item>ようふく</item>
+        <item>きもの</item>
+        <item>わふく</item>
+        <item>そで</item>
+        <item>えり</item>
+        <item>ボタン</item>
+        <item>チャック</item>
+        <item>ベルト</item>
+        <item>くつ</item>
+        <item>くつした</item>
+        <item>めがね</item>
+    </string-array>
+
+    <string-array name="transportJP">
+        <item>てつどう</item>
+        <item>えき</item>
+        <item>ひこうき</item>
+        <item>くうこう</item>
+        <item>みち</item>
+        <item>どうろ</item>
+        <item>バスてい</item>
+        <item>とおり</item>
+        <item>でんしゃ</item>
+        <item>くるま</item>
+    </string-array>
+
+    <string-array name="languageJP">
+        <item>もじ</item>
+        <item>じ</item>
+        <item>かんじ</item>
+        <item>ひらがな</item>
+        <item>カタカナ</item>
+        <item>すうじ</item>
+        <item>アルファベット</item>
+        <item>ローマ字</item>
+        <item>がいこくご</item>
+        <item>にほんご</item>
+        <item>えいご</item>
+        <item>ちゅうごくご</item>
+        <item>どいつご</item>
+        <item>すぺいんご</item>
+        <item>ふらんすご</item>
+        <item>ちょうせんご</item>
+    </string-array>
+
+    <string-array name="mediaJP">
+        <item>ほん</item>
+        <item>かみ</item>
+        <item>てがみ</item>
+        <item>しんぶん</item>
+        <item>じしょ</item>
+        <item>パソコン</item>
+    </string-array>
+
+    <string-array name="colorsJP">
+        <item>いろ</item>
+        <item>あか</item>
+        <item>きいろ</item>
+        <item>みどり</item>
+        <item>あお</item>
+        <item>むらさき</item>
+        <item>しろ</item>
+        <item>くろ</item>
+        <item>ピンク</item>
+        <item>ちゃいろ</item>
+        <item>はいいろ</item>
+        <item>オレンジ</item>
+    </string-array>
+
+    <string-array name="othersJP">
+        <item>え</item>
+        <item>おんがく</item>
+        <item>りか</item>
+        <item>さんすう</item>
+        <item>れきし</item>
+        <item>ちり</item>
+        <item>たいいく</item>
+        <item>スポーツ</item>
+        <item>システム</item>
+        <item>じょうほう</item>
+        <item>ひつよう</item>
+        <item>べんきょう</item>
+        <item>いらい</item>
+    </string-array>
+
+    <string-array name="abstractJP">
+        <item>これ</item>
+        <item>それ</item>
+        <item>あれ</item>
+        <item>どれ</item>
+        <item>こちら</item>
+        <item>そちら</item>
+        <item>あちら</item>
+        <item>どちら</item>
+        <item>ひみつ</item>
+        <item>じどう</item>
+        <item>ないよう</item>
+        <item>はば</item>
+        <item>せいしき</item>
+        <item>けっこん</item>
+        <item>げんざい</item>
+        <item>いま</item>
+        <item>かこ</item>
+        <item>みらい</item>
+    </string-array>
+
+    <string-array name="familyRM">
+        <item>kazoku</item>
+        <item>ryoushin</item>
+        <item>kodomo</item>
+        <item>chichi</item>
+        <item>haha</item>
+        <item>tsuma</item>
+        <item>otto</item>
+        <item>ani</item>
+        <item>ane</item>
+        <item>otōto</item>
+        <item>imōto</item>
+        <item>kyōdai</item>
+        <item>shimai</item>
+        <item>sofu</item>
+        <item>sobo</item>
+        <item>mago</item>
+        <item>oji</item>
+        <item>oba</item>
+        <item>itoko</item>
+        <item>mei</item>
+        <item>oi</item>
+    </string-array>
+
+    <string-array name="animalsRM">
+        <item>ikimono</item>
+        <item>bakemono</item>
+        <item>dōbutsu</item>
+        <item>chītā</item>
+        <item>inu</item>
+        <item>neko</item>
+        <item>ushi</item>
+        <item>buta</item>
+        <item>uma</item>
+        <item>hitsuji</item>
+        <item>saru</item>
+        <item>nezumi</item>
+        <item>tora</item>
+        <item>ōkami</item>
+        <item>usagi</item>
+        <item>ryū</item>
+        <item>shika</item>
+        <item>kaeru</item>
+        <item>gama</item>
+        <item>shishi</item>
+        <item>kirin</item>
+        <item>zō</item>
+        <item>tori</item>
+        <item>niwatori</item>
+        <item>suzume</item>
+        <item>karasu</item>
+        <item>washi</item>
+        <item>taka</item>
+        <item>sakana</item>
+        <item>tai</item>
+        <item>ebi</item>
+        <item>iwashi</item>
+        <item>maguro</item>
+        <item>katsuo</item>
+        <item>sanma</item>
+        <item>aji</item>
+        <item>saba</item>
+        <item>ika</item>
+        <item>tako</item>
+        <item>mushi</item>
+        <item>chō</item>
+        <item>ga</item>
+        <item>semi</item>
+        <item>tonbo</item>
+        <item>batta</item>
+        <item>kumo</item>
+        <item>hotaru</item>
+        <item>hae</item>
+        <item>ka</item>
+        <item>gokiburi</item>
+        <item>katatsumuri</item>
+        <item>namekuji</item>
+        <item>mimizu</item>
+        <item>kai</item>
+        <item>kaigara</item>
+        <item>tokage</item>
+        <item>hebi</item>
+        <item>kuma</item>
+    </string-array>
 
     <string-array name="plantsRM">
-	<item>shokubutsu</item>
-	<item>kusa</item>
-	<item>hana</item>
-	<item>mi</item>
-	<item>ki</item>
-	<item>ha</item>
-	<item>ne</item>
-	<item>kuki</item>
-	<item>kinoko</item>
-	<item>kiku</item>
-	<item>sakura</item>
-	<item>matsu</item>
-	<item>ume</item>
-</string-array>
+        <item>shokubutsu</item>
+        <item>kusa</item>
+        <item>hana</item>
+        <item>mi</item>
+        <item>ki</item>
+        <item>ha</item>
+        <item>ne</item>
+        <item>kuki</item>
+        <item>kinoko</item>
+        <item>kiku</item>
+        <item>sakura</item>
+        <item>matsu</item>
+        <item>ume</item>
+    </string-array>
 
     <string-array name="cropsRM">
-	<item>kome</item>
-	<item>ine</item>
-	<item>mugi</item>
-	<item>yasai</item>
-	<item>kudamono</item>
-	<item>imo</item>
-	<item>mame</item>
-	<item>daikon</item>
-	<item>ninjin</item>
-	<item>ringo</item>
-	<item>mikan</item>
-	<item>banana, kanshō</item>
-	<item>nashi</item>
-	<item>kuri</item>
-	<item>momo</item>
-	<item>tomato, banka</item>
-	<item>suika</item>
-</string-array>
+        <item>kome</item>
+        <item>ine</item>
+        <item>mugi</item>
+        <item>yasai</item>
+        <item>kudamono</item>
+        <item>imo</item>
+        <item>mame</item>
+        <item>daikon</item>
+        <item>ninjin</item>
+        <item>ringo</item>
+        <item>mikan</item>
+        <item>banana, kanshō</item>
+        <item>nashi</item>
+        <item>kuri</item>
+        <item>momo</item>
+        <item>tomato, banka</item>
+        <item>suika</item>
+    </string-array>
 
     <string-array name="foodRM">
-	<item>tabemono</item>
-	<item>chōshoku, asagohan</item>
-	<item>hirugohan</item>
-	<item>bangohan</item>
-	<item>gohan</item>
-	<item>miso</item>
-	<item>ryōri</item>
-	<item>sarada</item>
-	<item>dezāto</item>
-	<item>pan</item>
-	<item>sandoitchi</item>
-	<item>oyatsu, kanshoku</item>
-	<item>aisukurīmu</item>
-</string-array>
+        <item>tabemono</item>
+        <item>chōshoku, asagohan</item>
+        <item>hirugohan</item>
+        <item>bangohan</item>
+        <item>gohan</item>
+        <item>miso</item>
+        <item>ryōri</item>
+        <item>sarada</item>
+        <item>dezāto</item>
+        <item>pan</item>
+        <item>sandoitchi</item>
+        <item>oyatsu, kanshoku</item>
+        <item>aisukurīmu</item>
+    </string-array>
 
     <string-array name="drinkRM">
-	<item>nomimono</item>
-	<item>"cha"</item>
-	<item>ocha</item>
-	<item>kōhī</item>
-	<item>gyūnyū</item>
-	<item>"mizu"</item>
-	<item>"bīru"</item>
-	<item>"wain"</item>
-</string-array>
+        <item>nomimono</item>
+        <item>"cha"</item>
+        <item>ocha</item>
+        <item>kōhī</item>
+        <item>gyūnyū</item>
+        <item>"mizu"</item>
+        <item>"bīru"</item>
+        <item>"wain"</item>
+    </string-array>
 
     <string-array name="seasoningRM">
-	<item>satō</item>
-	<item>shio</item>
-	<item>shōyu</item>
-</string-array>
+        <item>satō</item>
+        <item>shio</item>
+        <item>shōyu</item>
+    </string-array>
 
     <string-array name="weekRM">
-	<item>nichi-yōbi</item>
-	<item>getsu-yōbi</item>
-	<item>ka-yōbi</item>
-	<item>sui-yōbi</item>
-	<item>moku-yōbi</item>
-	<item>kin-yōbi</item>
-	<item>do-yōbi</item>
-</string-array>
+        <item>nichi-yōbi</item>
+        <item>getsu-yōbi</item>
+        <item>ka-yōbi</item>
+        <item>sui-yōbi</item>
+        <item>moku-yōbi</item>
+        <item>kin-yōbi</item>
+        <item>do-yōbi</item>
+    </string-array>
 
     <string-array name="weatherRM">
-	<item>taiyō</item>
-	<item>tsuki</item>
-	<item>hoshi</item>
-	<item>tenki</item>
-	<item>hare</item>
-	<item>ame</item>
-	<item>kumori</item>
-	<item>yuki</item>
-	<item>kaze</item>
-	<item>kaminari</item>
-	<item>taifū</item>
-	<item>arashi</item>
-	<item>sora</item>
-</string-array>
+        <item>taiyō</item>
+        <item>tsuki</item>
+        <item>hoshi</item>
+        <item>tenki</item>
+        <item>hare</item>
+        <item>ame</item>
+        <item>kumori</item>
+        <item>yuki</item>
+        <item>kaze</item>
+        <item>kaminari</item>
+        <item>taifū</item>
+        <item>arashi</item>
+        <item>sora</item>
+    </string-array>
 
     <string-array name="directionsRM">
-	<item>kita</item>
-	<item>higashi</item>
-	<item>minami</item>
-	<item>nishi</item>
-	<item>koko</item>
-	<item>soko</item>
-	<item>asoko</item>
-	<item>migi</item>
-	<item>hidari</item>
-	<item>ue</item>
-	<item>shita</item>
-	<item>mae</item>
-	<item>ushiro</item>
-	<item>mukō</item>
-	<item>naname</item>
-	<item>temae</item>
-	<item>tooi</item>
-	<item>chikai</item>
-</string-array>
+        <item>kita</item>
+        <item>higashi</item>
+        <item>minami</item>
+        <item>nishi</item>
+        <item>koko</item>
+        <item>soko</item>
+        <item>asoko</item>
+        <item>migi</item>
+        <item>hidari</item>
+        <item>ue</item>
+        <item>shita</item>
+        <item>mae</item>
+        <item>ushiro</item>
+        <item>mukō</item>
+        <item>naname</item>
+        <item>temae</item>
+        <item>tooi</item>
+        <item>chikai</item>
+    </string-array>
 
     <string-array name="materialsRM">
-	<item>mizu</item>
-	<item>yu</item>
-	<item>kōri</item>
-	<item>yuge</item>
-	<item>hi</item>
-	<item>gasu</item>
-	<item>kūki</item>
-	<item>tsuchi</item>
-	<item>kinzoku</item>
-	<item>doro</item>
-	<item>kemuri</item>
-	<item>tetsu</item>
-	<item>dō</item>
-	<item>kin</item>
-	<item>gin</item>
-	<item>namari</item>
-	<item>shio</item>
-</string-array>
+        <item>mizu</item>
+        <item>yu</item>
+        <item>kōri</item>
+        <item>yuge</item>
+        <item>hi</item>
+        <item>gasu</item>
+        <item>kūki</item>
+        <item>tsuchi</item>
+        <item>kinzoku</item>
+        <item>doro</item>
+        <item>kemuri</item>
+        <item>tetsu</item>
+        <item>dō</item>
+        <item>kin</item>
+        <item>gin</item>
+        <item>namari</item>
+        <item>shio</item>
+    </string-array>
 
     <string-array name="weightsRM">
-	<item>mētoru</item>
-	<item>rittoru</item>
-	<item>guramu</item>
-	<item>kiro</item>
-	<item>miri</item>
-	<item>senchi</item>
-	<item>inchi</item>
-</string-array>
+        <item>mētoru</item>
+        <item>rittoru</item>
+        <item>guramu</item>
+        <item>kiro</item>
+        <item>miri</item>
+        <item>senchi</item>
+        <item>inchi</item>
+    </string-array>
 
     <string-array name="societyRM">
-	<item>shakai</item>
-	<item>keizai</item>
-	<item>kaisha</item>
-	<item>kaigi</item>
-	<item>gakkō</item>
-	<item>yakusho</item>
-	<item>mise</item>
-	<item>hoteru</item>
-	<item>kōjō</item>
-	<item>satsu</item>
-	<item>kozeni</item>
-	<item>tsurisen</item>
-	<item>jidōhanbaiki</item>
-	<item>kippu</item>
-	<item>kitte</item>
-</string-array>
+        <item>shakai</item>
+        <item>keizai</item>
+        <item>kaisha</item>
+        <item>kaigi</item>
+        <item>gakkō</item>
+        <item>yakusho</item>
+        <item>mise</item>
+        <item>hoteru</item>
+        <item>kōjō</item>
+        <item>satsu</item>
+        <item>kozeni</item>
+        <item>tsurisen</item>
+        <item>jidōhanbaiki</item>
+        <item>kippu</item>
+        <item>kitte</item>
+    </string-array>
 
     <string-array name="homeRM">
-	<item>tsukue</item>
-	<item>isu</item>
-	<item>tatami</item>
-	<item>to</item>
-	<item>tobira</item>
-	<item>doa</item>
-	<item>mado</item>
-	<item>futon</item>
-	<item>genkan</item>
-	<item>ie</item>
-	<item>erebētā</item>
-	<item>esukarētā</item>
-	<item>denki</item>
-</string-array>
+        <item>tsukue</item>
+        <item>isu</item>
+        <item>tatami</item>
+        <item>to</item>
+        <item>tobira</item>
+        <item>doa</item>
+        <item>mado</item>
+        <item>futon</item>
+        <item>genkan</item>
+        <item>ie</item>
+        <item>erebētā</item>
+        <item>esukarētā</item>
+        <item>denki</item>
+    </string-array>
 
     <string-array name="toolsRM">
-	<item>kugi</item>
-	<item>himo</item>
-	<item>nawa</item>
-	<item>fukuro</item>
-	<item>kaban</item>
-	<item>kasa</item>
-	<item>kagi</item>
-	<item>chōkoku</item>
-</string-array>
+        <item>kugi</item>
+        <item>himo</item>
+        <item>nawa</item>
+        <item>fukuro</item>
+        <item>kaban</item>
+        <item>kasa</item>
+        <item>kagi</item>
+        <item>chōkoku</item>
+    </string-array>
 
     <string-array name="stationeryRM">
-	<item>bunbōgu</item>
-	<item>inku</item>
-	<item>pen</item>
-	<item>bōrupen</item>
-	<item>mannenhitsu</item>
-	<item>enpitsu</item>
-	<item>fude</item>
-	<item>chōku</item>
-	<item>keshigomu</item>
-	<item>jōgi</item>
-	<item>nōto</item>
-	<item>nikki</item>
-	<item>kabā</item>
-	<item>fūtō</item>
-	<item>hasami</item>
-	<item>hotchikisu</item>
-</string-array>
+        <item>bunbōgu</item>
+        <item>inku</item>
+        <item>pen</item>
+        <item>bōrupen</item>
+        <item>mannenhitsu</item>
+        <item>enpitsu</item>
+        <item>fude</item>
+        <item>chōku</item>
+        <item>keshigomu</item>
+        <item>jōgi</item>
+        <item>nōto</item>
+        <item>nikki</item>
+        <item>kabā</item>
+        <item>fūtō</item>
+        <item>hasami</item>
+        <item>hotchikisu</item>
+    </string-array>
 
     <string-array name="clothesRM">
-	<item>fuku</item>
-	<item>yōfuku</item>
-	<item>kimono</item>
-	<item>wafuku</item>
-	<item>sode</item>
-	<item>eri</item>
-	<item>botan</item>
-	<item>chakku</item>
-	<item>beruto</item>
-	<item>kutsu</item>
-	<item>kutsushita</item>
-	<item>megane</item>
-</string-array>
+        <item>fuku</item>
+        <item>yōfuku</item>
+        <item>kimono</item>
+        <item>wafuku</item>
+        <item>sode</item>
+        <item>eri</item>
+        <item>botan</item>
+        <item>chakku</item>
+        <item>beruto</item>
+        <item>kutsu</item>
+        <item>kutsushita</item>
+        <item>megane</item>
+    </string-array>
 
     <string-array name="transportRM">
-	<item>tetsudō</item>
-	<item>eki</item>
-	<item>hikōki</item>
-	<item>kūkō</item>
-	<item>michi</item>
-	<item>dōro</item>
-	<item>basutei</item>
-	<item>tōri</item>
-	<item>densha</item>
-	<item>kuruma</item>
-</string-array>
+        <item>tetsudō</item>
+        <item>eki</item>
+        <item>hikōki</item>
+        <item>kūkō</item>
+        <item>michi</item>
+        <item>dōro</item>
+        <item>basutei</item>
+        <item>tōri</item>
+        <item>densha</item>
+        <item>kuruma</item>
+    </string-array>
 
     <string-array name="languageRM">
-	<item>moji</item>
-	<item>ji</item>
-	<item>kanji</item>
-	<item>hiragana</item>
-	<item>katakana</item>
-	<item>sūji</item>
-	<item>arufabetto</item>
-	<item>rōmaji</item>
-	<item>gaikokugo</item>
-	<item>nihongo</item>
-	<item>eigo</item>
-	<item>chūgokugo</item>
-	<item>doitsugo</item>
-	<item>supeingo</item>
-	<item>furansugo</item>
-	<item>chōsengo</item>
-</string-array>
+        <item>moji</item>
+        <item>ji</item>
+        <item>kanji</item>
+        <item>hiragana</item>
+        <item>katakana</item>
+        <item>sūji</item>
+        <item>arufabetto</item>
+        <item>rōmaji</item>
+        <item>gaikokugo</item>
+        <item>nihongo</item>
+        <item>eigo</item>
+        <item>chūgokugo</item>
+        <item>doitsugo</item>
+        <item>supeingo</item>
+        <item>furansugo</item>
+        <item>chōsengo</item>
+    </string-array>
 
     <string-array name="mediaRM">
-	<item>hon</item>
-	<item>kami</item>
-	<item>tegami</item>
-	<item>shinbun</item>
-	<item>jisho</item>
-	<item>pasokon</item>
-</string-array>
+        <item>hon</item>
+        <item>kami</item>
+        <item>tegami</item>
+        <item>shinbun</item>
+        <item>jisho</item>
+        <item>pasokon</item>
+    </string-array>
 
     <string-array name="colorsRM">
-	<item>iro</item>
-	<item>aka</item>
-	<item>kiiro</item>
-	<item>midori</item>
-	<item>ao</item>
-	<item>murasaki</item>
-	<item>shiro</item>
-	<item>kuro</item>
-	<item>pinku</item>
-	<item>chairo</item>
-	<item>haiiro</item>
-	<item>orenji</item>
-</string-array>
+        <item>iro</item>
+        <item>aka</item>
+        <item>kiiro</item>
+        <item>midori</item>
+        <item>ao</item>
+        <item>murasaki</item>
+        <item>shiro</item>
+        <item>kuro</item>
+        <item>pinku</item>
+        <item>chairo</item>
+        <item>haiiro</item>
+        <item>orenji</item>
+    </string-array>
 
     <string-array name="othersRM">
-	<item>e</item>
-	<item>ongaku</item>
-	<item>rika</item>
-	<item>sansū</item>
-	<item>rekishi</item>
-	<item>chiri</item>
-	<item>taiiku</item>
-	<item>supōtsu</item>
-	<item>shisutemu</item>
-	<item>jōhō</item>
-	<item>hitsuyō</item>
-	<item>benkyō</item>
-	<item>irai</item>
-</string-array>
+        <item>e</item>
+        <item>ongaku</item>
+        <item>rika</item>
+        <item>sansū</item>
+        <item>rekishi</item>
+        <item>chiri</item>
+        <item>taiiku</item>
+        <item>supōtsu</item>
+        <item>shisutemu</item>
+        <item>jōhō</item>
+        <item>hitsuyō</item>
+        <item>benkyō</item>
+        <item>irai</item>
+    </string-array>
 
     <string-array name="asbstractRM">
-	<item>kore</item>
-	<item>sore</item>
-	<item>are</item>
-	<item>dore</item>
-	<item>kochira</item>
-	<item>sochira</item>
-	<item>achira</item>
-	<item>dochira</item>
-	<item>himitsu</item>
-	<item>jidō</item>
-	<item>naiyō</item>
-	<item>haba</item>
-	<item>seishiki</item>
-	<item>kekkon</item>
-	<item>genzai</item>
-	<item>ima</item>
-	<item>kako</item>
-	<item>mirai</item>
-</string-array>
+        <item>kore</item>
+        <item>sore</item>
+        <item>are</item>
+        <item>dore</item>
+        <item>kochira</item>
+        <item>sochira</item>
+        <item>achira</item>
+        <item>dochira</item>
+        <item>himitsu</item>
+        <item>jidō</item>
+        <item>naiyō</item>
+        <item>haba</item>
+        <item>seishiki</item>
+        <item>kekkon</item>
+        <item>genzai</item>
+        <item>ima</item>
+        <item>kako</item>
+        <item>mirai</item>
+    </string-array>
 
-<string-array name="familyFR">
-	<item>famille</item>
-	<item>Parents</item>
-	<item>enfants</item>
-	<item>père</item>
-	<item>mère</item>
-	<item>épouse</item>
-	<item>mari</item>
-	<item>grand frère</item>
-	<item>sœur aînée</item>
-	<item>frère cadet</item>
-	<item>sœur cadette</item>
-	<item>frères, frères et sœurs</item>
-	<item>sœurs</item>
-	<item>grand-père</item>
-	<item>grand-mère</item>
-	<item>petit enfant</item>
-	<item>oncle</item>
-	<item>tante</item>
-	<item>cousin</item>
-	<item>nièce</item>
-	<item>neveu</item>
-</string-array>
-
-
-<string-array name="animalsFR">
-	<item>créatures vivantes</item>
-	<item>monstre</item>
-	<item>animal</item>
-	<item>guépard</item>
-	<item>chien</item>
-	<item>chat</item>
-	<item>vache</item>
-	<item>porc</item>
-	<item>cheval</item>
-	<item>mouton</item>
-	<item>singe</item>
-	<item>souris</item>
-	<item>tigre</item>
-	<item>Loup</item>
-	<item>lapin</item>
-	<item>dragon</item>
-	<item>cerf</item>
-	<item>grenouille</item>
-	<item>crapaud</item>
-	<item>Lion</item>
-	<item>girafe</item>
-	<item>éléphant</item>
-	<item>oiseau</item>
-	<item>poulet</item>
-	<item>moineau</item>
-	<item>corbeau</item>
-	<item>Aigle</item>
-	<item>faucon</item>
-	<item>poisson</item>
-	<item>vivaneau</item>
-	<item>crevettes, homard</item>
-	<item>sardine</item>
-	<item>thon</item>
-	<item>bonito</item>
-	<item>brochet</item>
-	<item>chinchard</item>
-	<item>maquereau</item>
-	<item>calamar</item>
-	<item>poulpe</item>
-	<item>insecte</item>
-	<item>papillon</item>
-	<item>papillon de nuit</item>
-	<item>cigale</item>
-	<item>libellule</item>
-	<item>sauterelle</item>
-	<item>araignée</item>
-	<item>luciole</item>
-	<item>mouche domestique</item>
-	<item>moustique, moucheron</item>
-	<item>cafard</item>
-	<item>escargot</item>
-	<item>limace</item>
-	<item>ver de terre</item>
-	<item>fruits de mer</item>
-	<item>coquille</item>
-	<item>lézard</item>
-	<item>serpent</item>
-	<item>ours</item>
-</string-array>
+    <string-array name="familyFR">
+        <item>famille</item>
+        <item>Parents</item>
+        <item>enfants</item>
+        <item>père</item>
+        <item>mère</item>
+        <item>épouse</item>
+        <item>mari</item>
+        <item>grand frère</item>
+        <item>sœur aînée</item>
+        <item>frère cadet</item>
+        <item>sœur cadette</item>
+        <item>frères, frères et sœurs</item>
+        <item>sœurs</item>
+        <item>grand-père</item>
+        <item>grand-mère</item>
+        <item>petit enfant</item>
+        <item>oncle</item>
+        <item>tante</item>
+        <item>cousin</item>
+        <item>nièce</item>
+        <item>neveu</item>
+    </string-array>
 
 
-<string-array name="plantsFR">
-	<item>plantes</item>
-	<item>herbe</item>
-	<item>fleur</item>
-	<item>fruit</item>
-	<item>arbre</item>
-	<item>feuille</item>
-	<item>racine</item>
-	<item>tige</item>
-	<item>champignon</item>
-	<item>chrysanthème</item>
-	<item>fleur de cerisier</item>
-	<item>pin</item>
-	<item>prune japonaise ou abricot</item>
-</string-array>
+    <string-array name="animalsFR">
+        <item>créatures vivantes</item>
+        <item>monstre</item>
+        <item>animal</item>
+        <item>guépard</item>
+        <item>chien</item>
+        <item>chat</item>
+        <item>vache</item>
+        <item>porc</item>
+        <item>cheval</item>
+        <item>mouton</item>
+        <item>singe</item>
+        <item>souris</item>
+        <item>tigre</item>
+        <item>Loup</item>
+        <item>lapin</item>
+        <item>dragon</item>
+        <item>cerf</item>
+        <item>grenouille</item>
+        <item>crapaud</item>
+        <item>Lion</item>
+        <item>girafe</item>
+        <item>éléphant</item>
+        <item>oiseau</item>
+        <item>poulet</item>
+        <item>moineau</item>
+        <item>corbeau</item>
+        <item>Aigle</item>
+        <item>faucon</item>
+        <item>poisson</item>
+        <item>vivaneau</item>
+        <item>crevettes, homard</item>
+        <item>sardine</item>
+        <item>thon</item>
+        <item>bonito</item>
+        <item>brochet</item>
+        <item>chinchard</item>
+        <item>maquereau</item>
+        <item>calamar</item>
+        <item>poulpe</item>
+        <item>insecte</item>
+        <item>papillon</item>
+        <item>papillon de nuit</item>
+        <item>cigale</item>
+        <item>libellule</item>
+        <item>sauterelle</item>
+        <item>araignée</item>
+        <item>luciole</item>
+        <item>mouche domestique</item>
+        <item>moustique, moucheron</item>
+        <item>cafard</item>
+        <item>escargot</item>
+        <item>limace</item>
+        <item>ver de terre</item>
+        <item>fruits de mer</item>
+        <item>coquille</item>
+        <item>lézard</item>
+        <item>serpent</item>
+        <item>ours</item>
+    </string-array>
 
 
-<string-array name="cropsFR">
-	<item>riz pas cuit</item>
-	<item>riziculture dans un champ</item>
-	<item>blé, orge, avoine</item>
-	<item>légume</item>
-	<item>fruits à manger</item>
-	<item>igname, pomme de terre, taro</item>
-	<item>haricots, pois</item>
-	<item>Radis blanc japonais</item>
-	<item>carotte</item>
-	<item>Pomme</item>
-	<item>mandarine</item>
-	<item>banane</item>
-	<item>poire</item>
-	<item>châtaignier</item>
-	<item>pêche</item>
-	<item>tomate</item>
-	<item>pastèque</item>
-</string-array>
+    <string-array name="plantsFR">
+        <item>plantes</item>
+        <item>herbe</item>
+        <item>fleur</item>
+        <item>fruit</item>
+        <item>arbre</item>
+        <item>feuille</item>
+        <item>racine</item>
+        <item>tige</item>
+        <item>champignon</item>
+        <item>chrysanthème</item>
+        <item>fleur de cerisier</item>
+        <item>pin</item>
+        <item>prune japonaise ou abricot</item>
+    </string-array>
 
 
-<string-array name="foodFR">
-	<item>nourriture</item>
-	<item>petit déjeuner</item>
-	<item>le déjeuner</item>
-	<item>dîner</item>
-	<item>riz ou repas cuit</item>
-	<item>miso</item>
-	<item>cuisine</item>
-	<item>salade</item>
-	<item>dessert</item>
-	<item>pain</item>
-	<item>sandwich</item>
-	<item>casse-croûte</item>
-	<item>crème glacée</item>
-</string-array>
+    <string-array name="cropsFR">
+        <item>riz pas cuit</item>
+        <item>riziculture dans un champ</item>
+        <item>blé, orge, avoine</item>
+        <item>légume</item>
+        <item>fruits à manger</item>
+        <item>igname, pomme de terre, taro</item>
+        <item>haricots, pois</item>
+        <item>Radis blanc japonais</item>
+        <item>carotte</item>
+        <item>Pomme</item>
+        <item>mandarine</item>
+        <item>banane</item>
+        <item>poire</item>
+        <item>châtaignier</item>
+        <item>pêche</item>
+        <item>tomate</item>
+        <item>pastèque</item>
+    </string-array>
 
 
-<string-array name="drinkFR">
-	<item>boisson</item>
-	<item>thé</item>
-	<item>thé vert</item>
-	<item>café</item>
-	<item>Lait</item>
-	<item>eau</item>
-	<item>Bière</item>
-	<item>du vin</item>
-</string-array>
+    <string-array name="foodFR">
+        <item>nourriture</item>
+        <item>petit déjeuner</item>
+        <item>le déjeuner</item>
+        <item>dîner</item>
+        <item>riz ou repas cuit</item>
+        <item>miso</item>
+        <item>cuisine</item>
+        <item>salade</item>
+        <item>dessert</item>
+        <item>pain</item>
+        <item>sandwich</item>
+        <item>casse-croûte</item>
+        <item>crème glacée</item>
+    </string-array>
 
 
-<string-array name="seasoneryFR">
-	<item>sucre</item>
-	<item>sel</item>
-	<item>sauce soja</item>
-</string-array>
+    <string-array name="drinkFR">
+        <item>boisson</item>
+        <item>thé</item>
+        <item>thé vert</item>
+        <item>café</item>
+        <item>Lait</item>
+        <item>eau</item>
+        <item>Bière</item>
+        <item>du vin</item>
+    </string-array>
 
 
-<string-array name="weekFR">
-	<item>dimanche</item>
-	<item>Lundi</item>
-	<item>Mardi</item>
-	<item>Mercredi</item>
-	<item>Jeudi</item>
-	<item>Vendredi</item>
-	<item>samedi</item>
-</string-array>
+    <string-array name="seasoneryFR">
+        <item>sucre</item>
+        <item>sel</item>
+        <item>sauce soja</item>
+    </string-array>
 
 
-<string-array name="weatherFR">
-	<item>Soleil</item>
-	<item>lune</item>
-	<item>étoile</item>
-	<item>temps</item>
-	<item>temps clair</item>
-	<item>pluie</item>
-	<item>nuageux</item>
-	<item>neige</item>
-	<item>vent</item>
-	<item>Un éclair</item>
-	<item>typhon</item>
-	<item>orage</item>
-	<item>ciel</item>
-</string-array>
+    <string-array name="weekFR">
+        <item>dimanche</item>
+        <item>Lundi</item>
+        <item>Mardi</item>
+        <item>Mercredi</item>
+        <item>Jeudi</item>
+        <item>Vendredi</item>
+        <item>samedi</item>
+    </string-array>
 
 
-<string-array name="directionsFR">
-	<item>Nord</item>
-	<item>est</item>
-	<item>Sud</item>
-	<item>Ouest</item>
-	<item>ici</item>
-	<item>Là</item>
-	<item>là bas</item>
-	<item>droite</item>
-	<item>la gauche</item>
-	<item>au-dessus, en haut</item>
-	<item>ci-dessous, bas</item>
-	<item>de face</item>
-	<item>derrière</item>
-	<item>l\'autre côté, côté opposé</item>
-	<item>diagonale</item>
-	<item>plus près, plus devant</item>
-	<item>loin</item>
-	<item>tout près</item>
-</string-array>
+    <string-array name="weatherFR">
+        <item>Soleil</item>
+        <item>lune</item>
+        <item>étoile</item>
+        <item>temps</item>
+        <item>temps clair</item>
+        <item>pluie</item>
+        <item>nuageux</item>
+        <item>neige</item>
+        <item>vent</item>
+        <item>Un éclair</item>
+        <item>typhon</item>
+        <item>orage</item>
+        <item>ciel</item>
+    </string-array>
 
 
-<string-array name="materialsFR">
-	<item>eau</item>
-	<item>eau chaude</item>
-	<item>la glace</item>
-	<item>vapeur</item>
-	<item>Feu</item>
-	<item>gaz</item>
-	<item>air, atmosphère</item>
-	<item>terre</item>
-	<item>métal</item>
-	<item>boue, argile, plâtre</item>
-	<item>fumée, tabac, opium</item>
-	<item>le fer</item>
-	<item>cuivre</item>
-	<item>or</item>
-	<item>argent</item>
-	<item>conduire</item>
-	<item>sel</item>
-</string-array>
+    <string-array name="directionsFR">
+        <item>Nord</item>
+        <item>est</item>
+        <item>Sud</item>
+        <item>Ouest</item>
+        <item>ici</item>
+        <item>Là</item>
+        <item>là bas</item>
+        <item>droite</item>
+        <item>la gauche</item>
+        <item>au-dessus, en haut</item>
+        <item>ci-dessous, bas</item>
+        <item>de face</item>
+        <item>derrière</item>
+        <item>l\'autre côté, côté opposé</item>
+        <item>diagonale</item>
+        <item>plus près, plus devant</item>
+        <item>loin</item>
+        <item>tout près</item>
+    </string-array>
 
 
-<string-array name="weightFR">
-	<item>mètre</item>
-	<item>litre</item>
-	<item>gramme</item>
-	<item>kilo-</item>
-	<item>milli-</item>
-	<item>centimètre</item>
-	<item>pouce</item>
-</string-array>
+    <string-array name="materialsFR">
+        <item>eau</item>
+        <item>eau chaude</item>
+        <item>la glace</item>
+        <item>vapeur</item>
+        <item>Feu</item>
+        <item>gaz</item>
+        <item>air, atmosphère</item>
+        <item>terre</item>
+        <item>métal</item>
+        <item>boue, argile, plâtre</item>
+        <item>fumée, tabac, opium</item>
+        <item>le fer</item>
+        <item>cuivre</item>
+        <item>or</item>
+        <item>argent</item>
+        <item>conduire</item>
+        <item>sel</item>
+    </string-array>
 
 
-<string-array name="societyFR">
-	<item>société</item>
-	<item>économie</item>
-	<item>entreprise</item>
-	<item>réunion</item>
-	<item>école</item>
-	<item>bureau du gouvernement local</item>
-	<item>boutique</item>
-	<item>Hôtel</item>
-	<item>usine</item>
-	<item>argent</item>
-	<item>facture</item>
-	<item>petite monnaie</item>
-	<item>changement</item>
-	<item>distributeur automatique, machine à sous</item>
-	<item>billet</item>
-	<item>timbre</item>
-</string-array>
+    <string-array name="weightFR">
+        <item>mètre</item>
+        <item>litre</item>
+        <item>gramme</item>
+        <item>kilo-</item>
+        <item>milli-</item>
+        <item>centimètre</item>
+        <item>pouce</item>
+    </string-array>
 
 
-<string-array name="homeFR">
-	<item>bureau</item>
-	<item>chaise, poste (en entreprise)</item>
-	<item>un tapis de tatami</item>
-	<item>porte, famille</item>
-	<item>panneau de porte</item>
-	<item>porte</item>
-	<item>fenêtre</item>
-	<item>futon</item>
-	<item>entrée</item>
-	<item>maison</item>
-	<item>ascenseur</item>
-	<item>escalier mécanique</item>
-	<item>électricité</item>
-</string-array>
+    <string-array name="societyFR">
+        <item>société</item>
+        <item>économie</item>
+        <item>entreprise</item>
+        <item>réunion</item>
+        <item>école</item>
+        <item>bureau du gouvernement local</item>
+        <item>boutique</item>
+        <item>Hôtel</item>
+        <item>usine</item>
+        <item>argent</item>
+        <item>facture</item>
+        <item>petite monnaie</item>
+        <item>changement</item>
+        <item>distributeur automatique, machine à sous</item>
+        <item>billet</item>
+        <item>timbre</item>
+    </string-array>
 
 
-<string-array name="toolsFR">
-	<item>clou, pointe</item>
-	<item>ficelle</item>
-	<item>corde</item>
-	<item>poche, sac</item>
-	<item>sac en cuir</item>
-	<item>parapluie, parasol</item>
-	<item>clé</item>
-	<item>sculpture, gravure</item>
-</string-array>
+    <string-array name="homeFR">
+        <item>bureau</item>
+        <item>chaise, poste (en entreprise)</item>
+        <item>un tapis de tatami</item>
+        <item>porte, famille</item>
+        <item>panneau de porte</item>
+        <item>porte</item>
+        <item>fenêtre</item>
+        <item>futon</item>
+        <item>entrée</item>
+        <item>maison</item>
+        <item>ascenseur</item>
+        <item>escalier mécanique</item>
+        <item>électricité</item>
+    </string-array>
 
 
-<string-array name="stationery">
-	<item>papeterie</item>
-	<item>encre</item>
-	<item>stylo</item>
-	<item>stylo à bille</item>
-	<item>stylo plume</item>
-	<item>crayon</item>
-	<item>pinceau pour écrire ou peindre</item>
-	<item>craie</item>
-	<item>la gomme</item>
-	<item>taille-crayon</item>
-	<item>règle</item>
-	<item>carnet</item>
-	<item>journal intime</item>
-	<item>couverture de livre</item>
-	<item>enveloppe</item>
-	<item>les ciseaux</item>
-	<item>agrafeuse</item>
-</string-array>
+    <string-array name="toolsFR">
+        <item>clou, pointe</item>
+        <item>ficelle</item>
+        <item>corde</item>
+        <item>poche, sac</item>
+        <item>sac en cuir</item>
+        <item>parapluie, parasol</item>
+        <item>clé</item>
+        <item>sculpture, gravure</item>
+    </string-array>
 
 
-<string-array name="clothesFR">
-	<item>vêtements</item>
-	<item>vêtements occidentaux</item>
-	<item>kimono</item>
-	<item>Vêtements japonais</item>
-	<item>manche</item>
-	<item>revers, col</item>
-	<item>bouton</item>
-	<item>fermeture éclair</item>
-	<item>ceinture</item>
-	<item>chaussure</item>
-	<item>chaussette</item>
-	<item>des lunettes</item>
-</string-array>
+    <string-array name="stationery">
+        <item>papeterie</item>
+        <item>encre</item>
+        <item>stylo</item>
+        <item>stylo à bille</item>
+        <item>stylo plume</item>
+        <item>crayon</item>
+        <item>pinceau pour écrire ou peindre</item>
+        <item>craie</item>
+        <item>la gomme</item>
+        <item>taille-crayon</item>
+        <item>règle</item>
+        <item>carnet</item>
+        <item>journal intime</item>
+        <item>couverture de livre</item>
+        <item>enveloppe</item>
+        <item>les ciseaux</item>
+        <item>agrafeuse</item>
+    </string-array>
 
 
-<string-array name="transportFR">
-	<item>chemin de fer</item>
-	<item>station</item>
-	<item>avion</item>
-	<item>aéroport</item>
-	<item>rue, chemin, route</item>
-	<item>route</item>
-	<item>arrêt de bus</item>
-	<item>rue</item>
-	<item>train</item>
-	<item>voiture</item>
-</string-array>
+    <string-array name="clothesFR">
+        <item>vêtements</item>
+        <item>vêtements occidentaux</item>
+        <item>kimono</item>
+        <item>Vêtements japonais</item>
+        <item>manche</item>
+        <item>revers, col</item>
+        <item>bouton</item>
+        <item>fermeture éclair</item>
+        <item>ceinture</item>
+        <item>chaussure</item>
+        <item>chaussette</item>
+        <item>des lunettes</item>
+    </string-array>
 
 
-<string-array name="languageFR">
-	<item>lettre, caractère, script</item>
-	<item>une lettre, un caractère</item>
-	<item>caractère chinois</item>
-	<item>hiragana</item>
-	<item>katakana</item>
-	<item>Nombres</item>
-	<item>alphabet</item>
-	<item>Caractères romains, écriture latine</item>
-	<item>une langue étrangère</item>
-	<item>Japonais</item>
-	<item>Anglais</item>
-	<item>chinois</item>
-	<item>allemand</item>
-	<item>Espagnol</item>
-	<item>français</item>
-	<item>coréen</item>
-</string-array>
+    <string-array name="transportFR">
+        <item>chemin de fer</item>
+        <item>station</item>
+        <item>avion</item>
+        <item>aéroport</item>
+        <item>rue, chemin, route</item>
+        <item>route</item>
+        <item>arrêt de bus</item>
+        <item>rue</item>
+        <item>train</item>
+        <item>voiture</item>
+    </string-array>
 
 
-<string-array name="mediasFR">
-	<item>livre</item>
-	<item>papier</item>
-	<item>lettre</item>
-	<item>journal</item>
-	<item>dictionnaire</item>
-	<item>ordinateur personnel</item>
-</string-array>
+    <string-array name="languageFR">
+        <item>lettre, caractère, script</item>
+        <item>une lettre, un caractère</item>
+        <item>caractère chinois</item>
+        <item>hiragana</item>
+        <item>katakana</item>
+        <item>Nombres</item>
+        <item>alphabet</item>
+        <item>Caractères romains, écriture latine</item>
+        <item>une langue étrangère</item>
+        <item>Japonais</item>
+        <item>Anglais</item>
+        <item>chinois</item>
+        <item>allemand</item>
+        <item>Espagnol</item>
+        <item>français</item>
+        <item>coréen</item>
+    </string-array>
 
 
-<string-array name="colorsFR">
-	<item>Couleur</item>
-	<item>rouge</item>
-	<item>Jaune</item>
-	<item>vert</item>
-	<item>bleu</item>
-	<item>violet</item>
-	<item>blanc</item>
-	<item>noir</item>
-	<item>rose</item>
-	<item>marron</item>
-	<item>gris</item>
-	<item>Orange</item>
-</string-array>
+    <string-array name="mediasFR">
+        <item>livre</item>
+        <item>papier</item>
+        <item>lettre</item>
+        <item>journal</item>
+        <item>dictionnaire</item>
+        <item>ordinateur personnel</item>
+    </string-array>
 
 
-<string-array name="othersFR">
-	<item>image</item>
-	<item>la musique</item>
-	<item>science</item>
-	<item>arithmétique</item>
-	<item>histoire</item>
-	<item>la géographie</item>
-	<item>éducation physique</item>
-	<item>sport</item>
-	<item>système</item>
-	<item>informations, actualités</item>
-	<item>(produits de) nécessité</item>
-	<item>étude</item>
-	<item>demande</item>
-</string-array>
-
-<string-array name="asbstractFR">
-	<item>ce qu\'il</item>
-	<item>cette</item>
-	<item>que là-bas</item>
-	<item>lequel</item>
-	<item>cette direction, chose, personne ou lieu</item>
-	<item>cette direction, chose, personne ou endroit</item>
-	<item>cette direction, cette chose, cette personne ou cet endroit là-bas</item>
-	<item>quelle direction, chose, personne ou endroit</item>
-	<item>secret</item>
-	<item>automatique</item>
-	<item>contenu</item>
-	<item>largeur, espace libre, différence</item>
-	<item>formalité</item>
-	<item>mariage</item>
-	<item>actuellement</item>
-	<item>maintenant</item>
-	<item>passé</item>
-	<item>futur</item>
-</string-array>
-
-<string-array name="timeJP"> 
-<item>じかん</item>
-<item>とき</item>
-<item>こよみ</item>
-<item>ふん</item>
-<item>びょう</item>
-<item>ひ</item>
-<item>つき</item>
-<item>とし</item>
-<item>きのう</item>
-<item>きょう</item>
-<item>あした</item>
-<item>あさ</item>
-<item>ひる</item>
-<item>ゆうがた</item>
-<item>ばん</item>
-<item>よる</item>
-<item>ようび</item>
-<item>しゅう</item>
-<item>いっしゅうかん</item>
-</string-array>
+    <string-array name="colorsFR">
+        <item>Couleur</item>
+        <item>rouge</item>
+        <item>Jaune</item>
+        <item>vert</item>
+        <item>bleu</item>
+        <item>violet</item>
+        <item>blanc</item>
+        <item>noir</item>
+        <item>rose</item>
+        <item>marron</item>
+        <item>gris</item>
+        <item>Orange</item>
+    </string-array>
 
 
-<string-array name="timeRM"> 
-<item>jikan</item>
-<item>toki</item>
-<item>koyomi</item>
-<item>fun</item>
-<item>byō</item>
-<item>hi</item>
-<item>tsuki</item>
-<item>toshi</item>
-<item>kinō</item>
-<item>kyō</item>
-<item>ashita</item>
-<item>asa</item>
-<item>hiru</item>
-<item>yūgata</item>
-<item>ban</item>
-<item>yoru</item>
-<item>yōbi</item>
-<item>shū</item>
-<item>isshūkan</item>
-</string-array>
+    <string-array name="othersFR">
+        <item>image</item>
+        <item>la musique</item>
+        <item>science</item>
+        <item>arithmétique</item>
+        <item>histoire</item>
+        <item>la géographie</item>
+        <item>éducation physique</item>
+        <item>sport</item>
+        <item>système</item>
+        <item>informations, actualités</item>
+        <item>(produits de) nécessité</item>
+        <item>étude</item>
+        <item>demande</item>
+    </string-array>
 
-<string-array name="timeFR"> 
-<item>temps</item>
-<item>heures</item>
-<item>calendrier</item>
-<item>minute</item>
-<item>seconde</item>
-<item>journée</item>
-<item>mois</item>
-<item>année</item>
-<item>hier</item>
-<item>aujourd\'hui</item>
-<item>demain</item>
-<item>Matin</item>
-<item>après midi</item>
-<item>soir</item>
-<item>soir</item>
-<item>soir, nuit</item>
-<item>journée</item>
-<item>la semaine</item>
-<item>une semaine</item>
-</string-array>
+    <string-array name="asbstractFR">
+        <item>ce qu\'il</item>
+        <item>cette</item>
+        <item>que là-bas</item>
+        <item>lequel</item>
+        <item>cette direction, chose, personne ou lieu</item>
+        <item>cette direction, chose, personne ou endroit</item>
+        <item>cette direction, cette chose, cette personne ou cet endroit là-bas</item>
+        <item>quelle direction, chose, personne ou endroit</item>
+        <item>secret</item>
+        <item>automatique</item>
+        <item>contenu</item>
+        <item>largeur, espace libre, différence</item>
+        <item>formalité</item>
+        <item>mariage</item>
+        <item>actuellement</item>
+        <item>maintenant</item>
+        <item>passé</item>
+        <item>futur</item>
+    </string-array>
+
+    <string-array name="timeJP">
+        <item>じかん</item>
+        <item>とき</item>
+        <item>こよみ</item>
+        <item>ふん</item>
+        <item>びょう</item>
+        <item>ひ</item>
+        <item>つき</item>
+        <item>とし</item>
+        <item>きのう</item>
+        <item>きょう</item>
+        <item>あした</item>
+        <item>あさ</item>
+        <item>ひる</item>
+        <item>ゆうがた</item>
+        <item>ばん</item>
+        <item>よる</item>
+        <item>ようび</item>
+        <item>しゅう</item>
+        <item>いっしゅうかん</item>
+    </string-array>
+
+
+    <string-array name="timeRM">
+        <item>jikan</item>
+        <item>toki</item>
+        <item>koyomi</item>
+        <item>fun</item>
+        <item>byō</item>
+        <item>hi</item>
+        <item>tsuki</item>
+        <item>toshi</item>
+        <item>kinō</item>
+        <item>kyō</item>
+        <item>ashita</item>
+        <item>asa</item>
+        <item>hiru</item>
+        <item>yūgata</item>
+        <item>ban</item>
+        <item>yoru</item>
+        <item>yōbi</item>
+        <item>shū</item>
+        <item>isshūkan</item>
+    </string-array>
+
+    <string-array name="timeFR">
+        <item>temps</item>
+        <item>heures</item>
+        <item>calendrier</item>
+        <item>minute</item>
+        <item>seconde</item>
+        <item>journée</item>
+        <item>mois</item>
+        <item>année</item>
+        <item>hier</item>
+        <item>aujourd\'hui</item>
+        <item>demain</item>
+        <item>Matin</item>
+        <item>après midi</item>
+        <item>soir</item>
+        <item>soir</item>
+        <item>soir, nuit</item>
+        <item>journée</item>
+        <item>la semaine</item>
+        <item>une semaine</item>
+    </string-array>
 
 
 </resources>

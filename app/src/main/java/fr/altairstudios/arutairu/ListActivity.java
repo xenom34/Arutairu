@@ -6,24 +6,25 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Vector;
 
 public class ListActivity extends AppCompatActivity {
@@ -142,6 +143,13 @@ public class ListActivity extends AppCompatActivity {
             cards.elementAt(i).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    showChoosingWord(finalI);
+                }
+            });
+            cards.elementAt(i).setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), Revision.class);
                     intent.putExtra("LESSON", finalI +1);
                     intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(finalI+1)).length);
@@ -149,8 +157,11 @@ public class ListActivity extends AppCompatActivity {
                     waitingForData = true;
                     startActivity(intent);
                     finish();
+                    return false;
                 }
             });
+
+
         }
 
         for (ImageView imageView:checks) {
@@ -234,6 +245,47 @@ public class ListActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
                 sharedPreferences.edit().putBoolean(FIRST_EXEC, false).apply();
+            }
+        });
+
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                //mSpam = 0;
+            }
+        });
+
+        //finally creating the alert dialog and displaying it
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    private void showChoosingWord(int chapter) {
+        //before inflating the custom alert dialog layout, we will get the current activity viewgroup
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+
+        //then we will inflate the custom alert dialog xml that we created
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_choosing_word, viewGroup, false);
+
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+
+        RecyclerView recyclerView = dialogView.findViewById(R.id.recyclerWord);
+        ArrayList<String> words = new ArrayList<>(Arrays.asList(getResources().getStringArray(lessonsStorage.getJpRes(chapter+1))));
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(chapter+1, words, lessonsCompleted);
+        recyclerView.setLayoutManager(llm);
+        recyclerView.setAdapter(adapter);
+
+        //Now we need an AlertDialog.Builder object
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView);
+
+
+        builder.setPositiveButton("Lancez-vous !", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
             }
         });
 
