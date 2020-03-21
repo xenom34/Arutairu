@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">Arutairu</string>
     <string name="jpAltair">アルタイル</string>
-    <string name="textwelcome">Merci d\'avoir téléchargé cette application ! Ici, le but est de vous familiariser avec le japonais, en aprenant un maximum de vocabulaire. Ce mode d\'aprantissage peut vous permettre de communiquer de manière très simple avec les locaux.\n\nDésormais, séléctionnez un chapitre, mémorisez-les et recopiez-les en japonais.\n</string>
+    <string name="textwelcome">Merci d\'avoir téléchargé cette application ! Ici, le but est de vous familiariser avec le japonais, en apprenant un maximum de vocabulaire. Ce mode d\'apprentissage peut vous permettre de communiquer de manière très simple avec les locaux.\n\nDésormais, sélectionnez un chapitre, mémorisez-les et recopiez-les en japonais.\n\nNotez que vous pouvez d\'abord vous entrainer en effectuant un appuie long sur une leçon, et ainsi, choisir manuellement les mots que vous souhaitez. Sachez que dans ce mode, vos résultats ne sont pas enregistrés, cela serait bien trop facile !</string>
     <string name="le_ons">Leçons</string>
+    <string name="keyboard">L\'utilisation d\'Arutairu nécessite un clavier japonais configuré sur votre téléphone. Il est recommandé d\'utiliser votre clavier en écriture manuscrite pour mieux vous entraîner.</string>
     <string-array name="hiraganaJP">
         <item>あ</item>
         <item>い</item>

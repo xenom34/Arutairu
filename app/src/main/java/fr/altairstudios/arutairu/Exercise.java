@@ -26,6 +26,7 @@ public class Exercise extends AppCompatActivity {
     private TextInputEditText mAnswer;
     private MaterialButton mSubmit;
     private ImageView mcheck;
+    private SelectedItemList selectedItemList;
     private InterstitialAd mInterstitialAd;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
     private MaterialTextView mText, mState;
@@ -44,7 +45,7 @@ public class Exercise extends AppCompatActivity {
         setContentView(R.layout.activity_exercise);
 
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.setAdUnitId("ca-app-pub-9369103706924521/2427690661");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
         mInterstitialAd.setAdListener(new AdListener(){
             @Override
@@ -64,11 +65,21 @@ public class Exercise extends AppCompatActivity {
 
         lessonsCompleted = (LessonsCompleted) getIntent().getSerializableExtra("COMPLETED");
 
-        lesson = getIntent().getIntExtra("LESSON", Integer.MAX_VALUE);
-        max = getResources().getStringArray(lessonsStorage.getJpRes(lesson)).length;
+        if (!getIntent().getBooleanExtra("RETRIEVE", false)){
+            lesson = getIntent().getIntExtra("LESSON", Integer.MAX_VALUE);
+            mEnglish = getResources().getStringArray(lessonsStorage.getSrcRes(lesson));
+            mJpn = getResources().getStringArray(lessonsStorage.getJpRes(lesson));
+            mRomaji = getResources().getStringArray(lessonsStorage.getRmRes(lesson));
+            max = getIntent().getIntExtra("MAX", Integer.MAX_VALUE);
+        }else{
+            selectedItemList = (SelectedItemList) getIntent().getSerializableExtra("LESSON");
+            assert selectedItemList != null;
+            mEnglish = selectedItemList.getmFrench().toArray(new String[0]);
+            mJpn = selectedItemList.getmJP().toArray(new String[0]);
+            mRomaji = selectedItemList.getmRomaji().toArray(new String[0]);
+        }
 
-        mEnglish = getResources().getStringArray(lessonsStorage.getSrcRes(lesson));
-        mJpn = getResources().getStringArray(lessonsStorage.getJpRes(lesson));
+        max = getIntent().getIntExtra("MAX", Integer.MAX_VALUE);
 
         mcheck = findViewById(R.id.checkExercise);
 
@@ -80,30 +91,60 @@ public class Exercise extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(mAnswer.getText().toString().equals(mJpn[state])){
+                if(!getIntent().getBooleanExtra("RETRIEVE", false)){
+                    if(mAnswer.getText().toString().equals(mJpn[state])){
 
-                    if (completed && !lessonsCompleted.isCompleted(lesson, state)){
-                        lessonsCompleted.addCompleted(lesson, state);
-                    }
-
-                    mSubmit.setBackgroundColor(getResources().getColor(R.color.green));
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            state++;
-                            if (state != max){
-                                completed = true;
-                                refresh();
-                                mAnswer.setText("");
-                            }else{
-                                congrats();
-                            }
-                            mSubmit.setBackgroundColor(getResources().getColor(R.color.grey));
+                        if (completed && !lessonsCompleted.isCompleted(lesson, state)){
+                            lessonsCompleted.addCompleted(lesson, state);
                         }
-                    },1000);
+
+                        mSubmit.setBackgroundColor(getResources().getColor(R.color.green));
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                state++;
+                                if (state != max){
+                                    completed = true;
+                                    refresh();
+                                    mAnswer.setText("");
+                                }else{
+                                    congrats();
+                                }
+                                mSubmit.setBackgroundColor(getResources().getColor(R.color.grey));
+                            }
+                        },1000);
+                    }else{
+                        completed = false;
+                        showDialog();
+
+                    }
                 }else{
-                    completed = false;
-                    showDialog();
+                    if(mAnswer.getText().toString().equals(mJpn[state])){
+
+                        //if (completed && !lessonsCompleted.isCompleted(selectedItemList.getCorrespondingLesson()+1, selectedItemList.getCorrespondingIndex(state))){
+                            //lessonsCompleted.addCompleted(selectedItemList.getCorrespondingLesson()+1, selectedItemList.getCorrespondingIndex(state));
+                        //}
+
+                        mSubmit.setBackgroundColor(getResources().getColor(R.color.green));
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                state++;
+                                if (state != max){
+                                    completed = true;
+                                    refresh();
+                                    mAnswer.setText("");
+                                }else{
+                                    congrats();
+                                }
+                                mSubmit.setBackgroundColor(getResources().getColor(R.color.grey));
+                            }
+                        },1000);
+                    }else{
+                        completed = false;
+                        showDialog();
+
+                    }
 
                 }
             }
@@ -207,10 +248,19 @@ public class Exercise extends AppCompatActivity {
     }
 
     private void refresh() {
-        if (lessonsCompleted.isCompleted(lesson, state)){
-            mcheck.setAlpha(1f);
+        if(!getIntent().getBooleanExtra("RETRIEVE", false)){
+            if (lessonsCompleted.isCompleted(lesson, state)){
+                mcheck.setAlpha(1f);
+            }else{
+                mcheck.setAlpha(0f);
+            }
         }else{
-            mcheck.setAlpha(0f);
+
+            if(lessonsCompleted.isCompleted(selectedItemList.getCorrespondingLesson()+1, selectedItemList.getCorrespondingIndex(state))){
+                mcheck.setAlpha(1f);
+            }else{
+                mcheck.setAlpha(0f);
+            }
         }
         mText.setText(mEnglish[state]);
         String s = state+1+"/"+max;

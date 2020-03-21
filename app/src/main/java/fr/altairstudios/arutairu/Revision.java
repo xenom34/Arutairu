@@ -26,6 +26,7 @@ public class Revision extends AppCompatActivity {
     String[] mEnglish, mRomaji, mJpn;
     private Button mNext;
     LessonsCompleted lessonsCompleted;
+    SelectedItemList selectedItemList;
     private TextView mShowJpn, mShowEnglish, mShowRomaji, mCount;
     private LessonsStorage lessonsStorage = new LessonsStorage();
 
@@ -40,13 +41,22 @@ public class Revision extends AppCompatActivity {
 
         lessonsCompleted = (LessonsCompleted) getIntent().getSerializableExtra("COMPLETED");
 
-        max = getIntent().getIntExtra("MAX", Integer.MAX_VALUE);
-        lesson = getIntent().getIntExtra("LESSON", Integer.MAX_VALUE);
-
         mSound = findViewById(R.id.sound);
-        mEnglish = getResources().getStringArray(lessonsStorage.getSrcRes(lesson));
-        mJpn = getResources().getStringArray(lessonsStorage.getJpRes(lesson));
-        mRomaji = getResources().getStringArray(lessonsStorage.getRmRes(lesson));
+        if (!getIntent().getBooleanExtra("RETRIEVE", false)){
+            max = getIntent().getIntExtra("MAX", Integer.MAX_VALUE);
+            lesson = getIntent().getIntExtra("LESSON", Integer.MAX_VALUE);
+            mEnglish = getResources().getStringArray(lessonsStorage.getSrcRes(lesson));
+            mJpn = getResources().getStringArray(lessonsStorage.getJpRes(lesson));
+            mRomaji = getResources().getStringArray(lessonsStorage.getRmRes(lesson));
+            max = getIntent().getIntExtra("MAX", Integer.MAX_VALUE);
+        }else{
+            selectedItemList = (SelectedItemList) getIntent().getSerializableExtra("LESSON");
+            assert selectedItemList != null;
+            mEnglish = selectedItemList.getmFrench().toArray(new String[0]);
+            mJpn = selectedItemList.getmJP().toArray(new String[0]);
+            mRomaji = selectedItemList.getmRomaji().toArray(new String[0]);
+            max = mEnglish.length;
+        }
         mNext = findViewById(R.id.next);
         mShowRomaji = findViewById(R.id.romaji);
         mShowEnglish = findViewById(R.id.english);
@@ -62,7 +72,13 @@ public class Revision extends AppCompatActivity {
                 }else{
                     Intent intent = new Intent(getApplicationContext(), Exercise.class);
                     intent.putExtra("MAX", max);
-                    intent.putExtra("LESSON", lesson);
+                    if(getIntent().getBooleanExtra("RETRIEVE", false)){
+                        intent.putExtra("RETRIEVE", true);
+                        intent.putExtra("LESSON", selectedItemList);
+                    }else{
+                        intent.putExtra("LESSON", lesson);
+                        intent.putExtra("RETRIEVE", false);
+                    }
                     intent.putExtra("COMPLETED", lessonsCompleted);
                     startActivity(intent);
                     finish();

@@ -42,7 +42,9 @@ public class WordsAdapter extends ArrayAdapter<String> {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    selectedItemList.addSelected(position);
+                    if (!selectedItemList.getSelected().contains(position)){
+                        selectedItemList.addSelected(position);
+                    }
                 }else{
                     selectedItemList.removeSelected(position);
                 }

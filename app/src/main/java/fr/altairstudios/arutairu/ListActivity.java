@@ -142,19 +142,21 @@ public class ListActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    showChoosingWord(finalI);
+                    Intent intent = new Intent(getApplicationContext(), Revision.class);
+                    intent.putExtra("LESSON", finalI +1);
+                    intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(finalI+1)).length);
+                    intent.putExtra("COMPLETED", lessonsCompleted);
+                    intent.putExtra("RETRIEVE", false);
+                    waitingForData = true;
+                    startActivity(intent);
+                    finish();
+
                 }
             });
             cards.elementAt(i).setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    Intent intent = new Intent(getApplicationContext(), Revision.class);
-                    intent.putExtra("LESSON", finalI +1);
-                    intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(finalI+1)).length);
-                    intent.putExtra("COMPLETED", lessonsCompleted);
-                    waitingForData = true;
-                    startActivity(intent);
-                    finish();
+                    showChoosingWord(finalI);
                     return false;
                 }
             });
@@ -224,6 +226,38 @@ public class ListActivity extends AppCompatActivity {
 
     }
 
+    private void keyboardDialog() {
+        //before inflating the custom alert dialog layout, we will get the current activity viewgroup
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+
+        //then we will inflate the custom alert dialog xml that we created
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.keyboard_dialog, viewGroup, false);
+
+        //Now we need an AlertDialog.Builder object
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView);
+
+
+        builder.setPositiveButton("D'accord !", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                //mSpam = 0;
+            }
+        });
+
+        //finally creating the alert dialog and displaying it
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
     private void showDialog() {
         //before inflating the custom alert dialog layout, we will get the current activity viewgroup
         ViewGroup viewGroup = findViewById(android.R.id.content);
@@ -243,6 +277,7 @@ public class ListActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
                 sharedPreferences.edit().putBoolean(FIRST_EXEC, false).apply();
+                keyboardDialog();
             }
         });
 
@@ -250,6 +285,9 @@ public class ListActivity extends AppCompatActivity {
             @Override
             public void onDismiss(DialogInterface dialogInterface) {
                 //mSpam = 0;
+                SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
+                sharedPreferences.edit().putBoolean(FIRST_EXEC, false).apply();
+                keyboardDialog();
             }
         });
 
@@ -258,7 +296,7 @@ public class ListActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-    private void showChoosingWord(int chapter) {
+    private void showChoosingWord(final int chapter) {
         //before inflating the custom alert dialog layout, we will get the current activity viewgroup
         ViewGroup viewGroup = findViewById(android.R.id.content);
 
@@ -266,8 +304,8 @@ public class ListActivity extends AppCompatActivity {
         View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_choosing_word, viewGroup, false);
 
         ListView listView = dialogView.findViewById(R.id.listWords);
-        ArrayList<String> words = new ArrayList<>(Arrays.asList(getResources().getStringArray(lessonsStorage.getJpRes(chapter+1))));
-        WordsAdapter wordsAdapter = new WordsAdapter(this, words, chapter, lessonsCompleted);
+        final ArrayList<String> words = new ArrayList<>(Arrays.asList(getResources().getStringArray(lessonsStorage.getJpRes(chapter+1))));
+        final WordsAdapter wordsAdapter = new WordsAdapter(this, words, chapter, lessonsCompleted);
         listView.setAdapter(wordsAdapter);
         //Now we need an AlertDialog.Builder object
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -279,7 +317,27 @@ public class ListActivity extends AppCompatActivity {
         builder.setPositiveButton("Lancez-vous !", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                if(!wordsAdapter.selectedItemList.getSelected().isEmpty()) {
+                    SelectedItemList selectedItemList = wordsAdapter.selectedItemList;
+                    String[] tempJP = getResources().getStringArray(lessonsStorage.getJpRes(chapter + 1));
+                    String[] tempRomaji = getResources().getStringArray(lessonsStorage.getRmRes(chapter + 1));
+                    String[] tempFr = getResources().getStringArray(lessonsStorage.getSrcRes(chapter + 1));
+                    for (int j : selectedItemList.getSelected()) {
+                        selectedItemList.addJp(tempJP[j]);
+                        selectedItemList.addRomaji(tempRomaji[j]);
+                        selectedItemList.addFrench(tempFr[j]);
+                        selectedItemList.addCorrespondingIndex(j);
+                    }
+                    selectedItemList.setCorrespondingLesson(chapter);
 
+                    Intent intent = new Intent(getApplicationContext(), Revision.class);
+                    intent.putExtra("LESSON", selectedItemList);
+                    intent.putExtra("COMPLETED", lessonsCompleted);
+                    intent.putExtra("RETRIEVE", true);
+                    waitingForData = true;
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
 

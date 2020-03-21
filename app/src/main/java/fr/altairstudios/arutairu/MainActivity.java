@@ -78,28 +78,30 @@ public class MainActivity extends AppCompatActivity {
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
-                Animation fadeAltair =
-                        AnimationUtils.loadAnimation(getApplicationContext(),
-                                R.anim.fade);
-                mAltair.startAnimation(fadeAltair);
 
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mArutairu.setAlpha(1f);
-                        mStart.setAlpha(1f);
-                        mWelcome.setAlpha(1f);
-                        mCurrentLanguage.setAlpha(1f);
-                        mBg.setAlpha(0.5f);
-                        mArutairu.startAnimation(fadeAltair2);
-                        mStart.startAnimation(fadeAltair2);
-                        mCurrentLanguage.startAnimation(fadeAltair2);
-                        mWelcome.startAnimation(fadeAltair2);
-                        mBg.startAnimation(fadeAltair3);
-                    }
-                },3000);
             }
         });
+
+        Animation fadeAltair =
+                AnimationUtils.loadAnimation(getApplicationContext(),
+                        R.anim.fade);
+        mAltair.startAnimation(fadeAltair);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mArutairu.setAlpha(1f);
+                mStart.setAlpha(1f);
+                mWelcome.setAlpha(1f);
+                mCurrentLanguage.setAlpha(1f);
+                mBg.setAlpha(0.5f);
+                mArutairu.startAnimation(fadeAltair2);
+                mStart.startAnimation(fadeAltair2);
+                mCurrentLanguage.startAnimation(fadeAltair2);
+                mWelcome.startAnimation(fadeAltair2);
+                mBg.startAnimation(fadeAltair3);
+            }
+        },3000);
 
 
     }
