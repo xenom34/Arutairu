@@ -9,14 +9,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -267,14 +265,10 @@ public class ListActivity extends AppCompatActivity {
         //then we will inflate the custom alert dialog xml that we created
         View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_choosing_word, viewGroup, false);
 
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-
-        RecyclerView recyclerView = dialogView.findViewById(R.id.recyclerWord);
+        ListView listView = dialogView.findViewById(R.id.listWords);
         ArrayList<String> words = new ArrayList<>(Arrays.asList(getResources().getStringArray(lessonsStorage.getJpRes(chapter+1))));
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(chapter+1, words, lessonsCompleted);
-        recyclerView.setLayoutManager(llm);
-        recyclerView.setAdapter(adapter);
-
+        WordsAdapter wordsAdapter = new WordsAdapter(this, words, chapter, lessonsCompleted);
+        listView.setAdapter(wordsAdapter);
         //Now we need an AlertDialog.Builder object
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
