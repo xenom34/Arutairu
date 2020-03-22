@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -240,9 +241,12 @@ public class ListActivity extends AppCompatActivity {
         builder.setView(dialogView);
 
 
-        builder.setPositiveButton("D'accord !", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Configurer !", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                startActivity(new Intent(getApplicationContext(), ListActivity.class));
+                finish();
+                startActivityForResult(new Intent(Settings.ACTION_INPUT_METHOD_SUBTYPE_SETTINGS), 0);
             }
         });
 

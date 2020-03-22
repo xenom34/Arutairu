@@ -30,7 +30,7 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:text="Appuie long pour s'entraîner"
+                android:text="Appui long pour s'entraîner"
                 android:textAlignment="center"
                 android:textSize="16sp"
                 android:textStyle="bold"
