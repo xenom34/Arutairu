@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="128px"
         android:backgroundTint="@color/colorAccent"
-        android:text="はじめましょう！"
+        android:text="@string/le_ons"
         android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

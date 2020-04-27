@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView mCurrentLanguage;
     private com.google.android.material.textview.MaterialTextView mWelcome;
     private TextView mArutairu;
-    private com.google.android.material.button.MaterialButton mStart;
+    private com.google.android.material.button.MaterialButton mStart, mRequired;
     private Animation fadeAltair2, fadeAltair3;
     private ShuffleBg shuffleBg = new ShuffleBg();
 

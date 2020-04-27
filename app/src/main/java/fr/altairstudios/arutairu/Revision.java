@@ -24,7 +24,7 @@ public class Revision extends AppCompatActivity {
     private int max, lesson;
     private AdView mAdView;
     String[] mEnglish, mRomaji, mJpn;
-    private Button mNext;
+    private Button mNext, mBack;
     LessonsCompleted lessonsCompleted;
     SelectedItemList selectedItemList;
     private TextView mShowJpn, mShowEnglish, mShowRomaji, mCount;
@@ -58,6 +58,7 @@ public class Revision extends AppCompatActivity {
             max = mEnglish.length;
         }
         mNext = findViewById(R.id.next);
+        mBack = findViewById(R.id.back);
         mShowRomaji = findViewById(R.id.romaji);
         mShowEnglish = findViewById(R.id.english);
         mShowJpn = findViewById(R.id.jpn);
@@ -82,6 +83,18 @@ public class Revision extends AppCompatActivity {
                     intent.putExtra("COMPLETED", lessonsCompleted);
                     startActivity(intent);
                     finish();
+                }
+            }
+        });
+
+        mBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                state--;
+                if (state != -1){
+                    refresh();
+                }else{
+                    state++;
                 }
             }
         });

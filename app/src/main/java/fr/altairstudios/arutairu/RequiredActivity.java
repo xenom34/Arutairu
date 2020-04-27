@@ -1,5 +1,7 @@
 package fr.altairstudios.arutairu;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,12 +12,11 @@ import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.material.card.MaterialCardView;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -26,9 +27,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Vector;
 
-public class ListActivity extends AppCompatActivity {
+public class RequiredActivity extends AppCompatActivity {
 
-    private Vector<com.google.android.material.card.MaterialCardView> cards = new Vector<>();
+    private Vector<MaterialCardView> cards = new Vector<>();
     private LessonsStorage lessonsStorage = new LessonsStorage();
     private boolean firstExec;
     private Vector<ImageView> checks = new Vector<>();
@@ -38,13 +39,14 @@ public class ListActivity extends AppCompatActivity {
     static boolean waitingForData = false;
     SharedPreferences sharedPreferences;
     LessonsCompleted lessonsCompleted;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list);
+        setContentView(R.layout.activity_required);
+
 
         sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
-
         firstExec = sharedPreferences.getBoolean(FIRST_EXEC, true);
 
         cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnHiragana));
@@ -52,98 +54,20 @@ public class ListActivity extends AppCompatActivity {
         cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnKata));
         cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnDakutenKata));
         cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnNumbers));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnBody));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnJobs));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnPeople));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnFamily));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnAnimals));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnPlants));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnCrops));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnFood));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnDrink));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnSeasoning));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnDays));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnWeather));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnDirections));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnMaterials));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnWeights));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnSociety));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnHome));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnTools));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnStationery));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnClothes));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnTransport));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnLanguage));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnMedia));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnColors));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnOthers));
-        cards.add((com.google.android.material.card.MaterialCardView) findViewById(R.id.btnAbstract));
 
         progresses.add((ProgressBar) findViewById(R.id.hiraganaProgress));
         progresses.add((ProgressBar) findViewById(R.id.dakutenProgress));
         progresses.add((ProgressBar) findViewById(R.id.KataProgress));
-        progresses.add((ProgressBar) findViewById(R.id.dakutenProgress));
+        progresses.add((ProgressBar) findViewById(R.id.dakutenKataProgress));
         progresses.add((ProgressBar) findViewById(R.id.numbersProgress));
-        progresses.add((ProgressBar) findViewById(R.id.bodyProgress));
-        progresses.add((ProgressBar) findViewById(R.id.jobsProgress));
-        progresses.add((ProgressBar) findViewById(R.id.peopleProgress));
-        progresses.add((ProgressBar) findViewById(R.id.familyProgress));
-        progresses.add((ProgressBar) findViewById(R.id.animalsProgress));
-        progresses.add((ProgressBar) findViewById(R.id.plantsProgress));
-        progresses.add((ProgressBar) findViewById(R.id.cropProgress));
-        progresses.add((ProgressBar) findViewById(R.id.foodProgress));
-        progresses.add((ProgressBar) findViewById(R.id.drinksProgress));
-        progresses.add((ProgressBar) findViewById(R.id.seasoningProgress));
-        progresses.add((ProgressBar) findViewById(R.id.weeksProgress));
-        progresses.add((ProgressBar) findViewById(R.id.weatherProgress));
-        progresses.add((ProgressBar) findViewById(R.id.directionsProgress));
-        progresses.add((ProgressBar) findViewById(R.id.materialsProgress));
-        progresses.add((ProgressBar) findViewById(R.id.measuresProgress));
-        progresses.add((ProgressBar) findViewById(R.id.societyProgress));
-        progresses.add((ProgressBar) findViewById(R.id.homeProgress));
-        progresses.add((ProgressBar) findViewById(R.id.toolsProgress));
-        progresses.add((ProgressBar) findViewById(R.id.stationeryProgress));
-        progresses.add((ProgressBar) findViewById(R.id.clothesProgress));
-        progresses.add((ProgressBar) findViewById(R.id.transportProgress));
-        progresses.add((ProgressBar) findViewById(R.id.languageProgress));
-        progresses.add((ProgressBar) findViewById(R.id.mediasProgress));
-        progresses.add((ProgressBar) findViewById(R.id.colorsProgress));
-        progresses.add((ProgressBar) findViewById(R.id.othersProgress));
-        progresses.add((ProgressBar) findViewById(R.id.abstractProgress));
 
         checks.add((ImageView) findViewById(R.id.checkHiragana));
         checks.add((ImageView) findViewById(R.id.checkDakuten));
         checks.add((ImageView) findViewById(R.id.checkKata));
         checks.add((ImageView) findViewById(R.id.checkDakutenKata));
         checks.add((ImageView) findViewById(R.id.checkNumbers));
-        checks.add((ImageView) findViewById(R.id.checkPeople));
-        checks.add((ImageView) findViewById(R.id.checkJobs));
-        checks.add((ImageView) findViewById(R.id.checkBody));
-        checks.add((ImageView) findViewById(R.id.checkFamily));
-        checks.add((ImageView) findViewById(R.id.checkAnimals));
-        checks.add((ImageView) findViewById(R.id.checkPlants));
-        checks.add((ImageView) findViewById(R.id.checkCrops));
-        checks.add((ImageView) findViewById(R.id.checkFood));
-        checks.add((ImageView) findViewById(R.id.checkDrinks));
-        checks.add((ImageView) findViewById(R.id.checkSeasoning));
-        checks.add((ImageView) findViewById(R.id.checkWeek));
-        checks.add((ImageView) findViewById(R.id.checkWeather));
-        checks.add((ImageView) findViewById(R.id.checkDirections));
-        checks.add((ImageView) findViewById(R.id.checkMaterials));
-        checks.add((ImageView) findViewById(R.id.checkMeasures));
-        checks.add((ImageView) findViewById(R.id.checkSociety));
-        checks.add((ImageView) findViewById(R.id.checkHome));
-        checks.add((ImageView) findViewById(R.id.checkTools));
-        checks.add((ImageView) findViewById(R.id.checkStationery));
-        checks.add((ImageView) findViewById(R.id.checkClothes));
-        checks.add((ImageView) findViewById(R.id.checkTransport));
-        checks.add((ImageView) findViewById(R.id.checkLanguage));
-        checks.add((ImageView) findViewById(R.id.checkMedias));
-        checks.add((ImageView) findViewById(R.id.checkColors));
-        checks.add((ImageView) findViewById(R.id.checkOthers));
-        checks.add((ImageView) findViewById(R.id.checkAbstract));
 
-        for (int i = 0; i < LessonsStorage.TOTAL; i++) {
+        for (int i = 0; i < LessonsStorage.NUMBERS; i++) {
             final int finalI = i;
             cards.elementAt(i).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -177,7 +101,8 @@ public class ListActivity extends AppCompatActivity {
 
         try {
             loadCompleted();
-        } catch (IOException e) {
+        } catch (
+                IOException e) {
             lessonsCompleted = new LessonsCompleted();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -186,7 +111,7 @@ public class ListActivity extends AppCompatActivity {
 
     void refresh(){
 
-        for (int i = 0; i < LessonsStorage.TOTAL; i++) {
+        for (int i = 0; i < LessonsStorage.NUMBERS; i++) {
             float progress = (float)(lessonsCompleted.howManyCompleted(i+1))/(float)(getResources().getStringArray(lessonsStorage.getJpRes(i+1)).length)*100;
             progresses.elementAt(i).setProgress((int)progress);
             if (progress == 100)

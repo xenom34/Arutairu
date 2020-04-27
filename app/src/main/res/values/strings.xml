@@ -175,6 +175,288 @@
         <item> </item>
         <item> </item>
     </string-array>
+    <string-array name="katakanaRM">
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+    </string-array>
+    <string-array name="dukutenKataRM">
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+    </string-array>
+    <string-array name="dukutenKataFR">
+        <item>ga</item>
+        <item>gi</item>
+        <item>gu</item>
+        <item>ge</item>
+        <item>go</item>
+
+        <item>za</item>
+        <item>ji</item>
+        <item>zu</item>
+        <item>ze</item>
+        <item>zo</item>
+
+        <item>da</item>
+        <item>dzi</item>
+        <item>dzu</item>
+        <item>de</item>
+        <item>do</item>
+
+        <item>ba</item>
+        <item>bi</item>
+        <item>bu</item>
+        <item>be</item>
+        <item>bo</item>
+
+        <item>pa</item>
+        <item>pi</item>
+        <item>pu</item>
+        <item>pe</item>
+        <item>po</item>
+    </string-array>
+    <string-array name="dukutenKataJP">
+        <item>ガ</item>
+        <item>ギ</item>
+        <item>グ</item>
+        <item>ゲ</item>
+        <item>ゴ</item>
+
+        <item>ザ</item>
+        <item>ジ</item>
+        <item>ズ</item>
+        <item>ゼ</item>
+        <item>ゾ</item>
+
+        <item>ダ</item>
+        <item>ヂ</item>
+        <item>ヅ</item>
+        <item>デ</item>
+        <item>ド</item>
+
+        <item>バ</item>
+        <item>ビ</item>
+        <item>ブ</item>
+        <item>ベ</item>
+        <item>ボ</item>
+
+        <item>パ</item>
+        <item>ピ</item>
+        <item>プ</item>
+        <item>ペ</item>
+        <item>ポ</item>
+    </string-array>
+    <string-array name="katakanaJP">
+        <item>ア</item>
+        <item>イ</item>
+        <item>ウ</item>
+        <item>エ</item>
+        <item>オ</item>
+
+        <item>カ</item>
+        <item>キ</item>
+        <item>ク</item>
+        <item>ケ</item>
+        <item>コ</item>
+
+        <item>サ</item>
+        <item>シ</item>
+        <item>ス</item>
+        <item>セ</item>
+        <item>ソ</item>
+
+        <item>タ</item>
+        <item>チ</item>
+        <item>ツ</item>
+        <item>テ</item>
+        <item>ト</item>
+
+        <item>ナ</item>
+        <item>ニ</item>
+        <item>ヌ</item>
+        <item>ネ</item>
+        <item>ノ</item>
+
+        <item>ハ</item>
+        <item>ヒ</item>
+        <item>フ</item>
+        <item>ヘ</item>
+        <item>ホ</item>
+
+        <item>マ</item>
+        <item>ミ</item>
+        <item>ム</item>
+        <item>メ</item>
+        <item>モ</item>
+
+        <item>ヤ</item>
+        <item>ユ</item>
+        <item>ヨ</item>
+
+        <item>ラ</item>
+        <item>リ</item>
+        <item>ル</item>
+        <item>レ</item>
+        <item>ロ</item>
+
+        <item>ワ</item>
+        <item>ヲ</item>
+
+
+        <item>ン</item>
+        <item>ッ</item>
+        <item>ー</item>
+        <item>ヽ</item>
+
+
+    </string-array>
+
+    <string-array name="katakanaFR">
+        <item>a</item>
+        <item>i</item>
+        <item>u</item>
+        <item>e</item>
+        <item>o</item>
+
+        <item>ka</item>
+        <item>ki</item>
+        <item>ku</item>
+        <item>ke</item>
+        <item>ko</item>
+
+        <item>sa</item>
+        <item>shi</item>
+        <item>su</item>
+        <item>se</item>
+        <item>so</item>
+
+        <item>ta</item>
+        <item>chi</item>
+        <item>tsu</item>
+        <item>te</item>
+        <item>to</item>
+
+        <item>na</item>
+        <item>ni</item>
+        <item>nu</item>
+        <item>ne</item>
+        <item>no</item>
+
+        <item>ha</item>
+        <item>hi</item>
+        <item>fu</item>
+        <item>he</item>
+        <item>ho</item>
+
+        <item>ma</item>
+        <item>mi</item>
+        <item>mu</item>
+        <item>me</item>
+        <item>mo</item>
+
+        <item>ya</item>
+        <item>yu</item>
+        <item>yo</item>
+
+        <item>ra</item>
+        <item>ri</item>
+        <item>ru</item>
+        <item>re</item>
+        <item>ro</item>
+
+        <item>wa</item>
+        <item>wo</item>
+
+        <item>n</item>
+        <item>double consonnance</item>
+        <item>longue voyelle</item>
+        <item>syllabe dupliquée</item>
+
+    </string-array>
     <string-array name="dakutenRM">
         <item> </item>
         <item> </item>
@@ -309,8 +591,8 @@
         <item>100</item>
         <item>1 000</item>
         <item>10 000</item>
-        <item>100 000 000</item>
-        <item>1 000 000 000 000</item>
+        <item>Milliard</item>
+        <item>Trillion</item>
     </string-array>
     <string-array name="numbersRM">
         <item>zero</item>
