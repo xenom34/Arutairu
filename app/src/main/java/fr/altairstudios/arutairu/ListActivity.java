@@ -277,7 +277,6 @@ public class ListActivity extends AppCompatActivity {
 
         //Now we need an AlertDialog.Builder object
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
         //setting the view of the builder to our custom view that we already inflated
         builder.setView(dialogView);
 

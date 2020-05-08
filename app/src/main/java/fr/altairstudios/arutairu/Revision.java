@@ -48,7 +48,6 @@ public class Revision extends AppCompatActivity {
             mEnglish = getResources().getStringArray(lessonsStorage.getSrcRes(lesson));
             mJpn = getResources().getStringArray(lessonsStorage.getJpRes(lesson));
             mRomaji = getResources().getStringArray(lessonsStorage.getRmRes(lesson));
-            max = getIntent().getIntExtra("MAX", Integer.MAX_VALUE);
         }else{
             selectedItemList = (SelectedItemList) getIntent().getSerializableExtra("LESSON");
             assert selectedItemList != null;
@@ -71,18 +70,24 @@ public class Revision extends AppCompatActivity {
                 if (state != max){
                     refresh();
                 }else{
-                    Intent intent = new Intent(getApplicationContext(), Exercise.class);
-                    intent.putExtra("MAX", max);
-                    if(getIntent().getBooleanExtra("RETRIEVE", false)){
-                        intent.putExtra("RETRIEVE", true);
-                        intent.putExtra("LESSON", selectedItemList);
+                    if(getIntent().getBooleanExtra("REVISION", false)){
+                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        startActivity(intent);
+                        finish();
                     }else{
-                        intent.putExtra("LESSON", lesson);
-                        intent.putExtra("RETRIEVE", false);
+                        Intent intent = new Intent(getApplicationContext(), Exercise.class);
+                        intent.putExtra("MAX", max);
+                        if(getIntent().getBooleanExtra("RETRIEVE", false)){
+                            intent.putExtra("RETRIEVE", true);
+                            intent.putExtra("LESSON", selectedItemList);
+                        }else{
+                            intent.putExtra("LESSON", lesson);
+                            intent.putExtra("RETRIEVE", false);
+                        }
+                        intent.putExtra("COMPLETED", lessonsCompleted);
+                        startActivity(intent);
+                        finish();
                     }
-                    intent.putExtra("COMPLETED", lessonsCompleted);
-                    startActivity(intent);
-                    finish();
                 }
             }
         });
@@ -131,7 +136,7 @@ public class Revision extends AppCompatActivity {
         builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent = new Intent(getApplicationContext(), ListActivity.class);
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 intent.putExtra("COMPLETED", lessonsCompleted);
                 startActivity(intent);
                 finish();
@@ -145,7 +150,7 @@ public class Revision extends AppCompatActivity {
             }
         });
 
-        builder.setTitle("Quitter la leçons ?");
+        builder.setTitle("Quitter la leçon ?");
 
         builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override

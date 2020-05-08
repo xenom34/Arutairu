@@ -13,9 +13,17 @@ class LessonsCompleted implements Serializable {
         completed.get(lesson-1).add(word);
     }
 
+    int totalCompleted(){
+        int i = 0;
+        for (Vector<Integer> count:completed) {
+            i+=count.size();
+        }
+        return i;
+    }
+
     LessonsCompleted() {
-         completed = new Vector<>();
-        for (int i = 0; i < LessonsStorage.TOTAL; i++) {
+        completed = new Vector<>();
+        for (int i = 0; i < LessonsStorage.TOTAL+1; i++) {
             completed.add(new Vector<Integer>());
         }
     }

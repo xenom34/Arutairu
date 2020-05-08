@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_hiragana"
+            android:icon="@drawable/ic_hiragana"
+            android:title="Hiragana" />
+        <item
+            android:id="@+id/nav_hiragana_d"
+            android:icon="@drawable/ic_dakuten_h"
+            android:title="Dakuten Hiragana" />
+        <item
+            android:id="@+id/nav_katakana"
+            android:icon="@drawable/ic_katakana"
+            android:title="Katakana" />
+        <item
+            android:id="@+id/nav_katakana_d"
+            android:icon="@drawable/ic_dakuten_k"
+            android:title="Dakuten Katakana" />
+        <item
+            android:id="@+id/nav_numbers"
+            android:icon="@drawable/ic_numbers"
+            android:title="Les Nombres" />
+        <item
+            android:id="@+id/nav_people"
+            android:icon="@drawable/ic_people"
+            android:title="Les Gens" />
+        <item
+            android:id="@+id/nav_jobs"
+            android:icon="@drawable/ic_jobs"
+            android:title="Les Métiers" />
+        <item
+            android:id="@+id/nav_body"
+            android:icon="@drawable/ic_body"
+            android:title="Le corps" />
+        <item
+            android:id="@+id/nav_family"
+            android:icon="@drawable/ic_family"
+            android:title="La famille" />
+        <item
+            android:id="@+id/nav_animals"
+            android:icon="@drawable/ic_animals"
+            android:title="Les animaux" />
+        <item
+            android:id="@+id/nav_plants"
+            android:icon="@drawable/ic_plants"
+            android:title="Les plantes" />
+        <item
+            android:id="@+id/nav_crop"
+            android:icon="@drawable/ic_crops"
+            android:title="L'agricuclture" />
+        <item
+            android:id="@+id/nav_food"
+            android:icon="@drawable/ic_food"
+            android:title="La nourriture" />
+        <item
+            android:id="@+id/nav_drinks"
+            android:icon="@drawable/ic_drinks"
+            android:title="Les boissons" />
+        <item
+            android:id="@+id/nav_seasoning"
+            android:icon="@drawable/ic_seasoning"
+            android:title="Les assaisonnements" />
+        <item
+            android:id="@+id/nav_weeks"
+            android:icon="@drawable/ic_days"
+            android:title="Les jours" />
+        <item
+            android:id="@+id/nav_weather"
+            android:icon="@drawable/ic_weather"
+            android:title="La météo" />
+        <item
+            android:id="@+id/nav_directions"
+            android:icon="@drawable/ic_directions"
+            android:title="Les directions" />
+        <item
+            android:id="@+id/nav_materials"
+            android:icon="@drawable/ic_materials"
+            android:title="Les métériaux" />
+        <item
+            android:id="@+id/nav_weights"
+            android:icon="@drawable/ic_weights"
+            android:title="Les mesures" />
+        <item
+            android:id="@+id/nav_society"
+            android:icon="@drawable/ic_society"
+            android:title="La société" />
+        <item
+            android:id="@+id/nav_homes"
+            android:icon="@drawable/ic_home"
+            android:title="La maison" />
+        <item
+            android:id="@+id/nav_tools"
+            android:icon="@drawable/ic_tools"
+            android:title="Les outils" />
+        <item
+            android:id="@+id/nav_stationery"
+            android:icon="@drawable/ic_stationery"
+            android:title="La papeterie" />
+        <item
+            android:id="@+id/nav_clothes"
+            android:icon="@drawable/ic_clothes"
+            android:title="Les vêtements" />
+        <item
+            android:id="@+id/nav_transport"
+            android:icon="@drawable/ic_transport"
+            android:title="Les transports" />
+        <item
+            android:id="@+id/nav_language"
+            android:icon="@drawable/ic_language"
+            android:title="Les langues" />
+        <item
+            android:id="@+id/nav_media"
+            android:icon="@drawable/ic_media"
+            android:title="Les médias" />
+        <item
+            android:id="@+id/nav_colors"
+            android:icon="@drawable/ic_colors"
+            android:title="Les couleurs" />
+        <item
+            android:id="@+id/nav_other"
+            android:icon="@drawable/ic_others"
+            android:title="Autres" />
+        <item
+            android:id="@+id/nav_abstract"
+            android:icon="@drawable/ic_abstract"
+            android:title="Abstrait" />
+
+    </group>
+</menu>

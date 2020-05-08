@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +53,7 @@ public class Exercise extends AppCompatActivity {
             public void onAdClosed() {
                 SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
                 sharedPreferences.edit().putBoolean(Integer.toString(lesson), completed).apply();
-                Intent intent = new Intent(getApplicationContext(), ListActivity.class);
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 intent.putExtra("COMPLETED", lessonsCompleted);
                 startActivity(intent);
                 finish();
@@ -72,6 +73,7 @@ public class Exercise extends AppCompatActivity {
             mRomaji = getResources().getStringArray(lessonsStorage.getRmRes(lesson));
             max = getIntent().getIntExtra("MAX", Integer.MAX_VALUE);
         }else{
+            lesson = getIntent().getIntExtra("CHAPTER", Integer.MAX_VALUE);
             selectedItemList = (SelectedItemList) getIntent().getSerializableExtra("LESSON");
             assert selectedItemList != null;
             mEnglish = selectedItemList.getmFrench().toArray(new String[0]);
@@ -87,70 +89,87 @@ public class Exercise extends AppCompatActivity {
         mSubmit = findViewById(R.id.submitBtn);
         mText = findViewById(R.id.txtArutairu);
         mState = findViewById(R.id.state);
+        mAnswer.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+                    // Perform action on key press
+                    check();
+                    return true;
+                }
+                return false;
+            }
+        });
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(!getIntent().getBooleanExtra("RETRIEVE", false)){
-                    if(mAnswer.getText().toString().equals(mJpn[state])){
-
-                        if (completed && !lessonsCompleted.isCompleted(lesson, state)){
-                            lessonsCompleted.addCompleted(lesson, state);
-                        }
-
-                        mSubmit.setBackgroundColor(getResources().getColor(R.color.green));
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                state++;
-                                if (state != max){
-                                    completed = true;
-                                    refresh();
-                                    mAnswer.setText("");
-                                }else{
-                                    congrats();
-                                }
-                                mSubmit.setBackgroundColor(getResources().getColor(R.color.grey));
-                            }
-                        },1000);
-                    }else{
-                        completed = false;
-                        showDialog();
-
-                    }
-                }else{
-                    if(mAnswer.getText().toString().equals(mJpn[state])){
-
-                        //if (completed && !lessonsCompleted.isCompleted(selectedItemList.getCorrespondingLesson()+1, selectedItemList.getCorrespondingIndex(state))){
-                            //lessonsCompleted.addCompleted(selectedItemList.getCorrespondingLesson()+1, selectedItemList.getCorrespondingIndex(state));
-                        //}
-
-                        mSubmit.setBackgroundColor(getResources().getColor(R.color.green));
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                state++;
-                                if (state != max){
-                                    completed = true;
-                                    refresh();
-                                    mAnswer.setText("");
-                                }else{
-                                    congrats();
-                                }
-                                mSubmit.setBackgroundColor(getResources().getColor(R.color.grey));
-                            }
-                        },1000);
-                    }else{
-                        completed = false;
-                        showDialog();
-
-                    }
-
-                }
+                check();
             }
         });
 
         refresh();
+    }
+
+    private void check(){
+
+        if(getIntent().getBooleanExtra("SAVE", false)){
+            if(mAnswer.getText().toString().equals(mJpn[state])){
+
+                if (completed && !lessonsCompleted.isCompleted(lesson, selectedItemList.getCorrespondingIndex(state))){
+                    lessonsCompleted.addCompleted(lesson, selectedItemList.getCorrespondingIndex(state));
+                }
+
+                mSubmit.setBackgroundColor(getResources().getColor(R.color.green));
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        state++;
+                        if (state != max){
+                            completed = true;
+                            refresh();
+                            mAnswer.setText("");
+                        }else{
+                            congrats();
+                        }
+                        mSubmit.setBackgroundColor(getResources().getColor(R.color.grey));
+                    }
+                },1000);
+            }else{
+                completed = false;
+                showDialog();
+
+            }
+        }else{
+            if(mAnswer.getText().toString().equals(mJpn[state])){
+
+                //if (completed && !lessonsCompleted.isCompleted(selectedItemList.getCorrespondingLesson()+1, selectedItemList.getCorrespondingIndex(state))){
+                //lessonsCompleted.addCompleted(selectedItemList.getCorrespondingLesson()+1, selectedItemList.getCorrespondingIndex(state));
+                //}
+
+                mSubmit.setBackgroundColor(getResources().getColor(R.color.green));
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        state++;
+                        if (state != max){
+                            completed = true;
+                            refresh();
+                            mAnswer.setText("");
+                        }else{
+                            congrats();
+                        }
+                        mSubmit.setBackgroundColor(getResources().getColor(R.color.grey));
+                    }
+                },1000);
+            }else{
+                completed = false;
+                showDialog();
+
+            }
+
+        }
     }
 
     private void congrats() {
@@ -177,7 +196,7 @@ public class Exercise extends AppCompatActivity {
                     Log.d("TAG", "The interstitial wasn't loaded yet.");
                     SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
                     sharedPreferences.edit().putBoolean(Integer.toString(lesson), completed).apply();
-                    Intent intent = new Intent(getApplicationContext(), ListActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                     intent.putExtra("COMPLETED", lessonsCompleted);
                     startActivity(intent);
                     finish();
@@ -213,7 +232,7 @@ public class Exercise extends AppCompatActivity {
         builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent = new Intent(getApplicationContext(), ListActivity.class);
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 intent.putExtra("COMPLETED", lessonsCompleted);
                 startActivity(intent);
                 finish();

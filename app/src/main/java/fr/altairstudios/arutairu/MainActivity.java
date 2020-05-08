@@ -8,12 +8,15 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     private ImageView mAltair, mBg;
@@ -23,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private com.google.android.material.button.MaterialButton mStart, mRequired;
     private Animation fadeAltair2, fadeAltair3;
     private ShuffleBg shuffleBg = new ShuffleBg();
+    private boolean executed = false;
 
     @Override
     protected void onStop() {
@@ -64,12 +68,14 @@ public class MainActivity extends AppCompatActivity {
         mStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), ListActivity.class);
+                Intent intent = new Intent(getBaseContext(), HomeActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
     }
+
+
 
     @Override
     protected void onStart() {
