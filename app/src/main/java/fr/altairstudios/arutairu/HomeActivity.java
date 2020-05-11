@@ -181,7 +181,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
         if(progress == 100)
-            mProgress.setBackgroundColor(getResources().getColor(R.color.green));
+            mProgress.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
     }
 
     private void initMenu(int id){
