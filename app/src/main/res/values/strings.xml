@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Arutairu</string>
     <string name="jpAltair">アルタイル</string>
-    <string name="textwelcome">Merci d\'avoir téléchargé cette application ! Ici, le but est de vous familiariser avec le japonais, en apprenant un maximum de vocabulaire. Ce mode d\'apprentissage peut vous permettre de communiquer de manière très simple avec les locaux.\n\nDésormais, sélectionnez un chapitre, mémorisez-les et recopiez-les en japonais.\n\nNotez que vous pouvez d\'abord vous entrainer en effectuant un appuie long sur une leçon, et ainsi, choisir manuellement les mots que vous souhaitez. Sachez que dans ce mode, vos résultats ne sont pas enregistrés, cela serait bien trop facile !</string>
+    <string name="textwelcome">Merci d\'avoir téléchargé cette application ! Ici, le but est de vous familiariser avec le japonais, en apprenant un maximum de vocabulaire. Ce mode d\'apprentissage peut vous permettre de communiquer de manière très simple avec les locaux.\n\nDésormais, sélectionnez un chapitre, mémorisez-les et recopiez-les en japonais.\n\nNotez que vous pouvez d\'abord vous entrainer et choisir manuellement les mots que vous souhaitez. Sachez que dans ce mode, vos résultats ne sont pas enregistrés, cela serait bien trop facile !</string>
     <string name="le_ons">Leçons</string>
     <string name="keyboard">L\'utilisation d\'Arutairu nécessite un clavier japonais configuré sur votre téléphone. Il est recommandé d\'utiliser votre clavier en écriture manuscrite pour mieux vous entraîner.</string>
     <string-array name="hiraganaJP">
@@ -638,8 +638,8 @@
         <item>humain</item>
         <item>humanité</item>
         <item>personne</item>
-        <item>Homme (genre)</item>
-        <item>Femme (genre)</item>
+        <item>Masculin</item>
+        <item>Féminin</item>
         <item>Homme (nom)</item>
         <item>Femme (nom)</item>
         <item>Jeune homme</item>
@@ -2156,6 +2156,3074 @@
         <item>journée</item>
         <item>la semaine</item>
         <item>une semaine</item>
+    </string-array>
+    <string-array name="JLPT_FR">
+        <item>ah</item>
+        <item>salutation</item>
+        <item>saluer</item>
+        <item>rencontrer</item>
+        <item>bleu</item>
+        <item>bleu</item>
+        <item>rouge</item>
+        <item>rouge</item>
+        <item>clair, lumineux</item>
+        <item>automne</item>
+        <item>s’ouvrir</item>
+        <item>ouvrir</item>
+        <item>donner</item>
+        <item>matin</item>
+        <item>petit déjeuner</item>
+        <item>après-demain, le surlendemain</item>
+        <item>jambe</item>
+        <item>pied</item>
+        <item>demain</item>
+        <item>là-bas (distant du locuteur et de l’interlocuteur)</item>
+        <item>jeu</item>
+        <item>jouer</item>
+        <item>tiède, chaud (pour quelque chose, un objet,…)</item>
+        <item>tête</item>
+        <item>nouveau</item>
+        <item>là-bas (poli) (distant du locuteur et de l’interlocuteur)</item>
+        <item>chaud (pour l’air)</item>
+        <item>épais, lourd</item>
+        <item>là-bas (distant du locuteur et de l’interlocuteur)</item>
+        <item>après, plus tard</item>
+        <item>tu, toi</item>
+        <item>grand frère</item>
+        <item>grande sœur</item>
+        <item>ça (là-bas), ce (distant du locuteur et de l’interlocuteur)</item>
+        <item>eh, euh, donc…</item>
+        <item>appartement</item>
+        <item>asperger, prendre une douche</item>
+        <item>dangereux</item>
+        <item>sucré</item>
+        <item>pas tellement</item>
+        <item>bonbon, sucrerie</item>
+        <item>pluie</item>
+        <item>laver</item>
+        <item>être, se trouver, exister (pour un objet)</item>
+        <item>posséder, avoir</item>
+        <item>marcher</item>
+        <item>ceci (distant du locuteur et de l’interlocuteur)</item>
+        <item>excès, trop plein, surplus</item>
+        <item>bien</item>
+        <item>non</item>
+        <item>dire</item>
+        <item>maison</item>
+        <item>aller</item>
+        <item>combien, quel âge ?</item>
+        <item>combien (prix) ? </item>
+        <item>étang</item>
+        <item>pierre</item>
+        <item>docteur</item>
+        <item>chaise</item>
+        <item>occupé, être occupé</item>
+        <item>douloureux, être douloureux</item>
+        <item>merci (pour ce repas) (formule de reconnaissance et de politesse japonaise)</item>
+        <item>un</item>
+        <item>janvier</item>
+        <item>un jour</item>
+        <item>N°1, le meilleur, le premier</item>
+        <item>quand ?</item>
+        <item>le 5ème jour du mois, 5 jours</item>
+        <item>une semaine (de durée)</item>
+        <item>ensemble</item>
+        <item>cinq (pour dénombrer)</item>
+        <item>plein, beaucoup</item>
+        <item>un verre plein</item>
+        <item>toujours</item>
+        <item>chien</item>
+        <item>maintenant</item>
+        <item>tout de suite</item>
+        <item>sens, signification</item>
+        <item>petite sœur</item>
+        <item>désagréable, déplaisant</item>
+        <item>non</item>
+        <item>bienvenue (dans une boutique, un magasin)</item>
+        <item>entrée</item>
+        <item>avoir besoin, devoir avoir, nécessiter</item>
+        <item>être, se trouver, exister (pour une personne)</item>
+        <item>insérer, mettre dans, introduire</item>
+        <item>couleur</item>
+        <item>divers, variés</item>
+        <item>haut, sur, dessus</item>
+        <item>derrière</item>
+        <item>mince, pâle</item>
+        <item>chant, chanson</item>
+        <item>chanter</item>
+        <item>foyer, maison</item>
+        <item>naître</item>
+        <item>mer</item>
+        <item>vendre</item>
+        <item>veste, manteau</item>
+        <item>image, dessin</item>
+        <item>film</item>
+        <item>cinéma</item>
+        <item>langue anglaise</item>
+        <item>oui, je vois, effectivement</item>
+        <item>gare, station</item>
+        <item>ascenseur</item>
+        <item>Yen</item>
+        <item>crayon</item>
+        <item>préfixe honorifique</item>
+        <item>bon, savoureux, délicieux</item>
+        <item>aller, venir, se trouver</item>
+        <item>grand</item>
+        <item>beaucoup de gens, foule</item>
+        <item>mère</item>
+        <item>confiserie, gâteau</item>
+        <item>argent</item>
+        <item>se réveiller, se lever</item>
+        <item>mettre, placer, poser</item>
+        <item>la femme/l’épouse de quelqu’un</item>
+        <item>envoyer, expédier</item>
+        <item>portez-vous bien, prenez soin de vous</item>
+        <item>grand-père</item>
+        <item>enseigner, instruire</item>
+        <item>oncle</item>
+        <item>pousser, presser</item>
+        <item>tard, lent</item>
+        <item>thé</item>
+        <item>WC, toilettes</item>
+        <item>père</item>
+        <item>petit frère</item>
+        <item>homme</item>
+        <item>garçon</item>
+        <item>avant-hier</item>
+        <item>l’avant dernière année, il y a deux ans</item>
+        <item>adulte</item>
+        <item>ventre, estomac</item>
+        <item>identique, pareil, même</item>
+        <item>frère aîné </item>
+        <item>sœur aînée</item>
+        <item>s’il vous plaît</item>
+        <item>grand-mère</item>
+        <item>tante</item>
+        <item>bonjour (le matin)</item>
+        <item>baignoire</item>
+        <item>bento (boîte à repas)</item>
+        <item>mémoriser, se souvenir</item>
+        <item>policier</item>
+        <item>lourd</item>
+        <item>intéressant</item>
+        <item>bonne nuit</item>
+        <item>nager</item>
+        <item>descendre, sortir (d’un véhicule)</item>
+        <item>finir</item>
+        <item>musique</item>
+        <item>femme</item>
+        <item>fille</item>
+        <item>compteur pour le nombre de fois</item>
+        <item>compteur pour les étages</item>
+        <item>pays étranger</item>
+        <item>étranger</item>
+        <item>société, entreprise</item>
+        <item>escaliers</item>
+        <item>achats, objets achetés, courses, shopping</item>
+        <item>acheter</item>
+        <item>retourner un objet, renvoyer, rendre</item>
+        <item>rentrer à la maison</item>
+        <item>visage</item>
+        <item>prendre (du temps/de l’argent), être couvert (assurance), fermer (à clé), démarrer (un moteur)</item>
+        <item>clé</item>
+        <item>écrire</item>
+        <item>étudiant</item>
+        <item>pendre, suspendre, s’assoir, porter (des lunettes)</item>
+        <item>parapluie</item>
+        <item>prêter</item>
+        <item>un rhume</item>
+        <item>vent</item>
+        <item>famille</item>
+        <item>une personne (poli)</item>
+        <item>une personne, manière, façon</item>
+        <item>Katakana</item>
+        <item>mois de l’année</item>
+        <item>école</item>
+        <item>foyer, ménage, famille</item>
+        <item>coin</item>
+        <item>ma femme, mon épouse</item>
+        <item>sac</item>
+        <item>vase</item>
+        <item>mettre/porter un chapeau</item>
+        <item>porter quelque chose sur la tête, être recouvert (d’eau, de poussière…), supporter (un défaut, un manque…)</item>
+        <item>papier</item>
+        <item>appareil photo</item>
+        <item>mardi</item>
+        <item>épicé</item>
+        <item>corps</item>
+        <item>emprunter, louer</item>
+        <item>léger</item>
+        <item>calendrier</item>
+        <item>rivière, fleuve</item>
+        <item>mignon, joli</item>
+        <item>Kanji</item>
+        <item>arbre</item>
+        <item>jaune</item>
+        <item>jaune</item>
+        <item>disparaître, s’éteindre, s’effacer</item>
+        <item>entendre, écouter, demander</item>
+        <item>nord</item>
+        <item>guitare</item>
+        <item>sale</item>
+        <item>salon de thé</item>
+        <item>café (boutique), salon de thé</item>
+        <item>timbre</item>
+        <item>ticket, billet</item>
+        <item>hier</item>
+        <item>neuf</item>
+        <item>viande de bœuf</item>
+        <item>lait de vache</item>
+        <item>aujourd’hui</item>
+        <item>salle de classe</item>
+        <item>frères et sœurs</item>
+        <item>l’année dernière</item>
+        <item>ne pas aimer, détester</item>
+        <item>couper</item>
+        <item>porter, mettre (un vêtement)</item>
+        <item>beau, propre, joli, clair</item>
+        <item>kilogramme</item>
+        <item>kilomètre</item>
+        <item>banque</item>
+        <item>vendredi</item>
+        <item>neuf (9)</item>
+        <item>septembre</item>
+        <item>médicament</item>
+        <item>formule de politesse pour demander</item>
+        <item>fruit</item>
+        <item>bouche</item>
+        <item>chaussure</item>
+        <item>chaussette</item>
+        <item>pays</item>
+        <item>temps nuageux</item>
+        <item>sombre</item>
+        <item>environ</item>
+        <item>classe</item>
+        <item>gramme</item>
+        <item>venir</item>
+        <item>voiture</item>
+        <item>noir</item>
+        <item>noir</item>
+        <item>ce matin</item>
+        <item>éteindre, effacer</item>
+        <item>remarquable, parfait, satisfaisant, suffisant</item>
+        <item>mariage</item>
+        <item>se marier</item>
+        <item>lundi</item>
+        <item>entrée d’une maison, vestibule</item>
+        <item>en forme, vigueur, santé, vitalité</item>
+        <item>cinq</item>
+        <item>parc, jardin public</item>
+        <item>thé noir</item>
+        <item>Koban (poste de police de proximité)</item>
+        <item>voix</item>
+        <item>manteau</item>
+        <item>café</item>
+        <item>mai</item>
+        <item>ici</item>
+        <item>après-midi</item>
+        <item>le 9ème jour du mois, 9 jours</item>
+        <item>neuf (pour dénombrer)</item>
+        <item>le mari de quelqu’un</item>
+        <item>matin, avant midi</item>
+        <item>réponse</item>
+        <item>répondre</item>
+        <item>merci (pour ce repas) (formule de politesse japonaise à la fin d’un repas)</item>
+        <item>par ici, de ce côté, cet endroit</item>
+        <item>de même, c’est moi (formule de politesse)</item>
+        <item>tasse</item>
+        <item>cette année</item>
+        <item>mot</item>
+        <item>enfant</item>
+        <item>ce (près du locuteur)</item>
+        <item>repas, riz cuit</item>
+        <item>être troublé, être embarrassé, être gêné</item>
+        <item>permettez-moi de rentrer (expression de politesse japonaise lorsqu’on entre dans une maison de son propre chef)</item>
+        <item>désolé, excusez moi, pardon</item>
+        <item>ça, ceci (près du locuteur)</item>
+        <item>environ, vers</item>
+        <item>ce mois</item>
+        <item>cette semaine</item>
+        <item>ce genre de, cette sorte de</item>
+        <item>bonjour</item>
+        <item>ce soir</item>
+        <item>bonsoir</item>
+        <item>bien…, alors…</item>
+        <item>poisson</item>
+        <item>avant, plus tôt, précédent</item>
+        <item>fleurir</item>
+        <item>composition, rédaction</item>
+        <item>alcool, sake</item>
+        <item>ouvrir (un parapluie)</item>
+        <item>magazine</item>
+        <item>sucre</item>
+        <item>froid (pour l’air)</item>
+        <item>au revoir, adieu</item>
+        <item>au revoir</item>
+        <item>assiette</item>
+        <item>dans deux ans</item>
+        <item>trois</item>
+        <item>mars</item>
+        <item>promenade, balade</item>
+        <item>se promener, se balader</item>
+        <item>quatre</item>
+        <item>sel</item>
+        <item>mais, cependant, pourtant, toutefois</item>
+        <item>avril</item>
+        <item>temps (heure)</item>
+        <item>travail</item>
+        <item>dictionnaire</item>
+        <item>silence, calme</item>
+        <item>sous, dessous</item>
+        <item>juillet</item>
+        <item>question</item>
+        <item>poser une question</item>
+        <item>excusez-moi</item>
+        <item>vélo, bicyclette</item>
+        <item>automobile, voiture</item>
+        <item>mourir</item>
+        <item>dictionnaire</item>
+        <item>soi-même</item>
+        <item>se fermer</item>
+        <item>attacher, fixer, serrer</item>
+        <item>fermer</item>
+        <item>bon eh bien</item>
+        <item>photographie</item>
+        <item>prendre une photo</item>
+        <item>chemise</item>
+        <item>douche</item>
+        <item>dix</item>
+        <item>novembre</item>
+        <item>octobre</item>
+        <item>décembre</item>
+        <item>cours, leçon</item>
+        <item>devoirs</item>
+        <item>doué, bon</item>
+        <item>robuste</item>
+        <item>sauce soja</item>
+        <item>salle à manger, cantine</item>
+        <item>savoir, connaître</item>
+        <item>blanc</item>
+        <item>blanc</item>
+        <item>journal (papier)</item>
+        <item>mercredi</item>
+        <item>fumer, respirer, inhaler</item>
+        <item>jupe</item>
+        <item>aimer</item>
+        <item>immédiatement, tout de suite</item>
+        <item>un peu</item>
+        <item>frais</item>
+        <item>poêle, chauffage</item>
+        <item>cuillère</item>
+        <item>sport</item>
+        <item>pantalon</item>
+        <item>désolé, excusez moi</item>
+        <item>vivre, habiter, résider</item>
+        <item>pantoufle</item>
+        <item>faire</item>
+        <item>s’asseoir</item>
+        <item>taille</item>
+        <item>élève</item>
+        <item>pull</item>
+        <item>savon</item>
+        <item>veste, costume</item>
+        <item>étroit</item>
+        <item>zéro</item>
+        <item>mille</item>
+        <item>le mois dernier</item>
+        <item>la semaine dernière</item>
+        <item>enseignant</item>
+        <item>lessive, lavage</item>
+        <item>faire la lessive</item>
+        <item>tout</item>
+        <item>si, oui, c’est vrai</item>
+        <item>ménage</item>
+        <item>faire le ménage</item>
+        <item>ensuite, et puis</item>
+        <item>là (près de l’interlocuteur)</item>
+        <item>là (poli)</item>
+        <item>dehors, extérieur</item>
+        <item>ce (près de l’interlocuteur)</item>
+        <item>autre, à part ça</item>
+        <item>à côté de, proche de</item>
+        <item>ciel</item>
+        <item>ceci (près de l’interlocuteur)</item>
+        <item>après ça, ensuite</item>
+        <item>bien, sur ce, alors, donc, dans ce cas</item>
+        <item>compteur pour le nombre de voitures</item>
+        <item>support, socle, table</item>
+        <item>université</item>
+        <item>ambassade</item>
+        <item>bon, bien, ok, il n’y a pas de problème</item>
+        <item>aimer beaucoup</item>
+        <item>important</item>
+        <item>la plupart du temps, généralement, d’habitude</item>
+        <item>cuisine (le lieu)</item>
+        <item>grave, sérieux, important, affreux</item>
+        <item>haut, cher</item>
+        <item>beaucoup</item>
+        <item>taxi</item>
+        <item>juste, seulement</item>
+        <item>sortir, partir</item>
+        <item>partir, quitter</item>
+        <item>se tenir debout, se lever (de sa chaise)</item>
+        <item>bâtiment</item>
+        <item>agréable, plaisant, amusant</item>
+        <item>demander, faire une requête</item>
+        <item>cigarette</item>
+        <item>peut-être, probablement</item>
+        <item>aliment, nourriture</item>
+        <item>manger</item>
+        <item>œuf</item>
+        <item>qui ?</item>
+        <item>quelqu’un</item>
+        <item>anniversaire</item>
+        <item>progressivement</item>
+        <item>petit</item>
+        <item>près, proche</item>
+        <item>être différent</item>
+        <item>voisinage, environ</item>
+        <item>métro</item>
+        <item>carte, plan</item>
+        <item>mon père</item>
+        <item>marron</item>
+        <item>bol</item>
+        <item>juste</item>
+        <item>un peu</item>
+        <item>le 1er jour du mois</item>
+        <item>utiliser</item>
+        <item>être fatigué</item>
+        <item>suivant</item>
+        <item>clair de lune</item>
+        <item>arriver, atteindre</item>
+        <item>bureau (table)</item>
+        <item>faire, construire, fabriquer, produire</item>
+        <item>allumer (la lumière, la tv,…)</item>
+        <item>faire des efforts, s’appliquer, travailler</item>
+        <item>servir, être employé à</item>
+        <item>ennuyeux, inintéressant</item>
+        <item>froid (pour quelque chose, un objet,…)</item>
+        <item>fort</item>
+        <item>main</item>
+        <item>cassette</item>
+        <item>table</item>
+        <item>magnétophone</item>
+        <item>sortir, partir</item>
+        <item>lettre (courrier)</item>
+        <item>pouvoir (être capable de faire)</item>
+        <item>sortie</item>
+        <item>test</item>
+        <item>bien, sur ce</item>
+        <item>grand magasin, centre commercial</item>
+        <item>partir</item>
+        <item>mais, cependant</item>
+        <item>quitter, sortir</item>
+        <item>télévision</item>
+        <item>temps (météo)</item>
+        <item>électricité, lumière électrique</item>
+        <item>allumer la lumière</item>
+        <item>train</item>
+        <item>téléphone</item>
+        <item>et</item>
+        <item>porte (coulissante)</item>
+        <item>porte</item>
+        <item>WC, toilettes</item>
+        <item>comment ?</item>
+        <item>de rien</item>
+        <item>pourquoi ?</item>
+        <item>je vous en prie (formule de politesse)</item>
+        <item>enchanté, je compte sur vous</item>
+        <item>animal</item>
+        <item>merci</item>
+        <item>merci (poli)</item>
+        <item>dix (pour dénombrer)</item>
+        <item>loin</item>
+        <item>le 10ème jour du mois, 10 jours</item>
+        <item>heure, temps, moment</item>
+        <item>parfois, de temps en temps</item>
+        <item>horloge, montre</item>
+        <item>où ?</item>
+        <item>endroit</item>
+        <item>bibliothèque</item>
+        <item>qui ? par où ? (poli)</item>
+        <item>très</item>
+        <item>qui ? (poli)</item>
+        <item>voisin, à côté</item>
+        <item>lequel ?</item>
+        <item>voler</item>
+        <item>arrêter, stopper</item>
+        <item>ami</item>
+        <item>samedi</item>
+        <item>oiseau</item>
+        <item>viande de volaille</item>
+        <item>prendre (une photo)</item>
+        <item>prendre, emporter</item>
+        <item>quel ?</item>
+        <item>quelle sorte de ?</item>
+        <item>manquant, sans, il n’y a pas</item>
+        <item>couteau</item>
+        <item>dans, à l’intérieur</item>
+        <item>long</item>
+        <item>crier (pour les animaux) : miauler, aboyer, etc…</item>
+        <item>été</item>
+        <item>vacances d’été</item>
+        <item>sept</item>
+        <item>sept (pour dénombrer)</item>
+        <item>quoi ?</item>
+        <item>le 7ème jour du mois, 7 jours</item>
+        <item>nom</item>
+        <item>apprendre (de quelqu’un)</item>
+        <item>faire la queue, s’aligner</item>
+        <item>aligner, énumérer</item>
+        <item>devenir</item>
+        <item>deux</item>
+        <item>février</item>
+        <item>animé (une ville, un quartier,…)</item>
+        <item>viande</item>
+        <item>ouest</item>
+        <item>dimanche</item>
+        <item>langue japonaise</item>
+        <item>bagage</item>
+        <item>actualités, informations</item>
+        <item>jardin</item>
+        <item>enlever (des vêtements), se déshabiller</item>
+        <item>cravate</item>
+        <item>chat</item>
+        <item>dormir, se coucher, aller au lit</item>
+        <item>cahier</item>
+        <item>monter, grimper, gravir, se lever (le soleil)</item>
+        <item>boisson</item>
+        <item>boire</item>
+        <item>prendre, monter, embarquer (dans un véhicule)</item>
+        <item>dent</item>
+        <item>fête</item>
+        <item>oui</item>
+        <item>cendrier</item>
+        <item>entrer, pénétrer</item>
+        <item>carte postale</item>
+        <item>mettre (des chaussures)</item>
+        <item>boîte</item>
+        <item>baguettes (pour manger)</item>
+        <item>pont</item>
+        <item>commencer, débuter</item>
+        <item>début, départ</item>
+        <item>la première fois</item>
+        <item>enchanté (lors d’une première rencontre)</item>
+        <item>débuter, ouvrir</item>
+        <item>courir</item>
+        <item>bus</item>
+        <item>beurre</item>
+        <item>vingt ans</item>
+        <item>travailler</item>
+        <item>huit</item>
+        <item>août</item>
+        <item>le 20ème jour du mois, 20 jours</item>
+        <item>fleur</item>
+        <item>nez</item>
+        <item>histoire, discussion</item>
+        <item>parler</item>
+        <item>ma mère</item>
+        <item>rapide (vitesse)</item>
+        <item>rapide, tôt</item>
+        <item>coller</item>
+        <item>printemps</item>
+        <item>beau temps, temps clair</item>
+        <item>s’éclaircir, s’ensoleiller</item>
+        <item>demi</item>
+        <item>soir</item>
+        <item>pain</item>
+        <item>mouchoir</item>
+        <item>numéro</item>
+        <item>dîner</item>
+        <item>moitié</item>
+        <item>jour</item>
+        <item>Est</item>
+        <item>jouer (d’un instrument)</item>
+        <item>tirer, soustraire, jouer (d’un instrument à cordes)</item>
+        <item>faible, bas</item>
+        <item>avion</item>
+        <item>gauche</item>
+        <item>une personne</item>
+        <item>un (pour dénombrer)</item>
+        <item>un mois</item>
+        <item>une personne</item>
+        <item>libre (temps)</item>
+        <item>cent</item>
+        <item>hôpital</item>
+        <item>malade</item>
+        <item>Hiragana</item>
+        <item>midi</item>
+        <item>le déjeuner, le repas de midi</item>
+        <item>large, spacieux</item>
+        <item>film</item>
+        <item>enveloppe</item>
+        <item>piscine</item>
+        <item>fourchette</item>
+        <item>souffler (vent)</item>
+        <item>vêtements</item>
+        <item>deux (pour dénombrer)</item>
+        <item>viande de porc</item>
+        <item>deux personnes</item>
+        <item>le 2ème jour du mois, 2 jours</item>
+        <item>épais, gros</item>
+        <item>hiver</item>
+        <item>tomber (pluie, neige)</item>
+        <item>vieux</item>
+        <item>phrase, texte, style d’écriture, prose</item>
+        <item>page</item>
+        <item>pas doué, pas bon, maladroit</item>
+        <item>lit</item>
+        <item>chambre</item>
+        <item>côté, partie, zone</item>
+        <item>stylo</item>
+        <item>études</item>
+        <item>étudier</item>
+        <item>pratique</item>
+        <item>côté (direction, vers)</item>
+        <item>chapeau</item>
+        <item>stylo-bille</item>
+        <item>autre</item>
+        <item>poche</item>
+        <item>voulu, désiré</item>
+        <item>mince, fin</item>
+        <item>bouton</item>
+        <item>hôtel</item>
+        <item>livre</item>
+        <item>étagère</item>
+        <item>vraiment</item>
+        <item>chaque matin, tous les matins</item>
+        <item>chaque semaine, toutes les semaines</item>
+        <item>chaque mois, tous les mois</item>
+        <item>chaque année, tous les ans</item>
+        <item>chaque jour, tous les jours</item>
+        <item>chaque soir, tous les soirs</item>
+        <item>devant</item>
+        <item>tourner, se courber, ployer, se plier</item>
+        <item>pas bon (au goût)</item>
+        <item>à plus tard</item>
+        <item>aussi, encore</item>
+        <item>pas encore, encore</item>
+        <item>ville, quartier</item>
+        <item>attendre</item>
+        <item>tout droit, droit devant</item>
+        <item>allumettes</item>
+        <item>fenêtre</item>
+        <item>rond</item>
+        <item>rond, circulaire, harmonieux</item>
+        <item>dix mille</item>
+        <item>stylo-plume</item>
+        <item>polir (un couteau), brosser (les dents)</item>
+        <item>droite</item>
+        <item>court</item>
+        <item>eau</item>
+        <item>boutique, magasin</item>
+        <item>montrer</item>
+        <item>chemin, route, voie</item>
+        <item>le 3ème jour du mois, 3 jours</item>
+        <item>trois (pour dénombrer)</item>
+        <item>sud</item>
+        <item>oreille</item>
+        <item>voir</item>
+        <item>tous le monde, tous</item>
+        <item>tous le monde, tous</item>
+        <item>le 6ème jour du mois, 6 jours</item>
+        <item>au-delà, par-delà, de l’autre côté</item>
+        <item>difficile</item>
+        <item>six (pour dénombrer)</item>
+        <item>œil</item>
+        <item>mètre</item>
+        <item>lunettes</item>
+        <item>déjà, encore, plus</item>
+        <item>jeudi</item>
+        <item>allo</item>
+        <item>bien-sûr</item>
+        <item>avoir, posséder, tenir</item>
+        <item>plus (davantage)</item>
+        <item>chose</item>
+        <item>porte, portail</item>
+        <item>problème</item>
+        <item>magasin de légumes</item>
+        <item>légume</item>
+        <item>gentil, facile</item>
+        <item>pas cher, peu coûteux</item>
+        <item>vacances, congés</item>
+        <item>se reposer</item>
+        <item>huit (pour dénombrer)</item>
+        <item>montagne</item>
+        <item>faire</item>
+        <item>soir, soirée</item>
+        <item>bureau de poste</item>
+        <item>célèbre</item>
+        <item>neige</item>
+        <item>lentement, tranquillement, prendre son temps</item>
+        <item>le 8ème jour du mois, 8 jours</item>
+        <item>vêtements de style occidental</item>
+        <item>souvent, bien</item>
+        <item>coté</item>
+        <item>le 4ème jour du mois, 4 jours</item>
+        <item>quatre (pour dénombrer)</item>
+        <item>appeler</item>
+        <item>lire</item>
+        <item>nuit</item>
+        <item>le mois prochain</item>
+        <item>la semaine prochaine</item>
+        <item>l’année prochaine</item>
+        <item>radio</item>
+        <item>splendide, magnifique</item>
+        <item>étudiant étranger</item>
+        <item>parents</item>
+        <item>cuisine (plats)</item>
+        <item>voyage</item>
+        <item>voyager</item>
+        <item>zéro</item>
+        <item>réfrigérateur, frigo</item>
+        <item>enregistrement, disque (musique)</item>
+        <item>restaurant</item>
+        <item>entrainement</item>
+        <item>s’entraîner, s’exercer</item>
+        <item>six</item>
+        <item>juin</item>
+        <item>chemise blanche</item>
+        <item>jeune</item>
+        <item>comprendre, savoir</item>
+        <item>oublier</item>
+        <item>je, moi</item>
+        <item>remettre, livrer, transmettre</item>
+        <item>traverser</item>
+        <item>mal, mauvais</item>
+        <item>étage</item>
+        <item>fois</item>
+        <item>nombre de mois</item>
+        <item>faire penser que, avoir l’air de, donner l’impression de (en parlant d’une autre personne que soit)</item>
+        <item>côté</item>
+        <item>compteur numérique pour les petits objets</item>
+        <item>langue (langage)</item>
+        <item>ans (âge)</item>
+        <item>compteur numérique pour les livres</item>
+        <item>suffixe honorifique après un nom</item>
+        <item>heure</item>
+        <item>heure (durée)</item>
+        <item>à travers, partout dans, partout en (notion de d’espace)</item>
+        <item>semaine (durée)</item>
+        <item>suffixe pour désigner la nationalité d’une personne</item>
+        <item>passé, plus</item>
+        <item>chaque</item>
+        <item>compteur numérique pour les machines</item>
+        <item>suffixe pour le pluriel</item>
+        <item>pendant, en cours (notion de temps)</item>
+        <item>boutique de, magasin de</item>
+        <item>fois, degrés</item>
+        <item>etc, entre autres</item>
+        <item>compteur numérique pour les personnes</item>
+        <item>année</item>
+        <item>compteur numérique pour les verres pleins</item>
+        <item>N°~, classement</item>
+        <item>compteur numérique pour les petits animaux</item>
+        <item>minutes</item>
+        <item>compteur numérique pour les objets longs</item>
+        <item>compteur numérique pour les objets fins</item>
+        <item>avant, face, devant</item>
+        <item>boutique, magasin</item>
+    </string-array>
+    <string-array name="JLPT_JP">
+        <item>ああ</item>
+        <item>あいさつ</item>
+        <item>あいさつする</item>
+        <item>あう</item>
+        <item>あお</item>
+        <item>あおい</item>
+        <item>あか</item>
+        <item>あかい</item>
+        <item>あかるい</item>
+        <item>あき</item>
+        <item>あく</item>
+        <item>あける</item>
+        <item>あげる</item>
+        <item>あさ</item>
+        <item>あさごはん</item>
+        <item>あさって</item>
+        <item>あし</item>
+        <item>あし</item>
+        <item>あした</item>
+        <item>あそこ</item>
+        <item>あそび</item>
+        <item>あそぶ</item>
+        <item>あたたかい</item>
+        <item>あたま</item>
+        <item>あたらしい</item>
+        <item>あちら</item>
+        <item>あつい</item>
+        <item>あつい</item>
+        <item>あっち</item>
+        <item>あと</item>
+        <item>あなた</item>
+        <item>あに</item>
+        <item>あね</item>
+        <item>あの</item>
+        <item>あの</item>
+        <item>アパート</item>
+        <item>あびる</item>
+        <item>あぶない</item>
+        <item>あまい</item>
+        <item>あまり</item>
+        <item>あめ</item>
+        <item>あめ</item>
+        <item>あらう</item>
+        <item>ある</item>
+        <item>ある</item>
+        <item>あるく</item>
+        <item>あれ</item>
+        <item>あんまり / あまり</item>
+        <item>いい / よい</item>
+        <item>いいえ</item>
+        <item>いう</item>
+        <item>いえ</item>
+        <item>いく / ゆく</item>
+        <item>いくつ</item>
+        <item>いくら</item>
+        <item>いけ</item>
+        <item>いし</item>
+        <item>いしゃ</item>
+        <item>いす</item>
+        <item>いそがしい</item>
+        <item>いたい</item>
+        <item>いただきます</item>
+        <item>いち</item>
+        <item>いちがつ</item>
+        <item>いちにち</item>
+        <item>いちばん</item>
+        <item>いつ</item>
+        <item>いつか</item>
+        <item>いっしゅうかん</item>
+        <item>いっしょ</item>
+        <item>いつつ</item>
+        <item>いっぱい</item>
+        <item>いっぱい</item>
+        <item>いつも</item>
+        <item>いぬ</item>
+        <item>いま</item>
+        <item>いますぐ</item>
+        <item>いみ</item>
+        <item>いもうと</item>
+        <item>いや</item>
+        <item>いや</item>
+        <item>いらっしゃいませ</item>
+        <item>いりぐち</item>
+        <item>いる</item>
+        <item>いる</item>
+        <item>いれる</item>
+        <item>いろ</item>
+        <item>いろいろ</item>
+        <item>うえ</item>
+        <item>うしろ</item>
+        <item>うすい</item>
+        <item>うた</item>
+        <item>うたう</item>
+        <item>うち</item>
+        <item>うまれる</item>
+        <item>うみ</item>
+        <item>うる</item>
+        <item>うわぎ</item>
+        <item>え</item>
+        <item>えいが</item>
+        <item>えいがかん</item>
+        <item>えいご</item>
+        <item>ええ</item>
+        <item>えき</item>
+        <item>エレベータ</item>
+        <item>えん</item>
+        <item>えんぴつ</item>
+        <item>お</item>
+        <item>おいしい</item>
+        <item>おいでになる</item>
+        <item>おおきい</item>
+        <item>おおぜい</item>
+        <item>おかあさん</item>
+        <item>おかし</item>
+        <item>おかね</item>
+        <item>おきる</item>
+        <item>おく</item>
+        <item>おくさん</item>
+        <item>おくる</item>
+        <item>おげんきで</item>
+        <item>おじいさん</item>
+        <item>おしえる</item>
+        <item>おじさん</item>
+        <item>おす</item>
+        <item>おそい</item>
+        <item>おちゃ</item>
+        <item>おてあらい</item>
+        <item>おとうさん</item>
+        <item>おとうと</item>
+        <item>おとこ</item>
+        <item>おとこのこ</item>
+        <item>おととい</item>
+        <item>おととし</item>
+        <item>おとな</item>
+        <item>おなか</item>
+        <item>おなじ</item>
+        <item>おにいさん</item>
+        <item>おねえさん</item>
+        <item>おねがいします</item>
+        <item>おばあさん</item>
+        <item>おばさん</item>
+        <item>おはようございます</item>
+        <item>おふろ</item>
+        <item>おべんとう</item>
+        <item>おぼえる</item>
+        <item>おまわりさん</item>
+        <item>おもい</item>
+        <item>おもしろい</item>
+        <item>おやすみなさい</item>
+        <item>およぐ</item>
+        <item>おりる</item>
+        <item>おわる</item>
+        <item>おんがく</item>
+        <item>おんな</item>
+        <item>おんなのこ</item>
+        <item>かい</item>
+        <item>かい</item>
+        <item>がいこく</item>
+        <item>がいこくじん</item>
+        <item>かいしゃ</item>
+        <item>かいだん</item>
+        <item>かいもの</item>
+        <item>かう</item>
+        <item>かえす</item>
+        <item>かえる</item>
+        <item>かお</item>
+        <item>かかる</item>
+        <item>かぎ</item>
+        <item>かく</item>
+        <item>がくせい</item>
+        <item>かける</item>
+        <item>かさ</item>
+        <item>かす</item>
+        <item>かぜ</item>
+        <item>かぜ</item>
+        <item>かぞく</item>
+        <item>かた</item>
+        <item>かた</item>
+        <item>かたかな</item>
+        <item>がつ</item>
+        <item>がっこう</item>
+        <item>かてい</item>
+        <item>かど</item>
+        <item>かない</item>
+        <item>かばん</item>
+        <item>かびん</item>
+        <item>かぶる</item>
+        <item>かぶる</item>
+        <item>かみ</item>
+        <item>カメラ</item>
+        <item>かようび</item>
+        <item>からい</item>
+        <item>からだ</item>
+        <item>かりる</item>
+        <item>かるい</item>
+        <item>カレンダー</item>
+        <item>かわ</item>
+        <item>かわいい</item>
+        <item>かんじ</item>
+        <item>き</item>
+        <item>きいろ</item>
+        <item>きいろい</item>
+        <item>きえる</item>
+        <item>きく</item>
+        <item>きた</item>
+        <item>ギター</item>
+        <item>きたない</item>
+        <item>きっさ</item>
+        <item>きっさてん</item>
+        <item>きって</item>
+        <item>きっぷ</item>
+        <item>きのう</item>
+        <item>きゅう</item>
+        <item>ぎゅうにく</item>
+        <item>ぎゅうにゅう</item>
+        <item>きょう</item>
+        <item>きょうしつ</item>
+        <item>きょうだい</item>
+        <item>きょねん</item>
+        <item>きらい</item>
+        <item>きる</item>
+        <item>きる</item>
+        <item>きれい</item>
+        <item>キログラム</item>
+        <item>キロメートル</item>
+        <item>ぎんこう</item>
+        <item>きんようび</item>
+        <item>く</item>
+        <item>くがつ</item>
+        <item>くすり</item>
+        <item>ください</item>
+        <item>くだもの</item>
+        <item>くち</item>
+        <item>くつ</item>
+        <item>くつした</item>
+        <item>くに</item>
+        <item>くもり</item>
+        <item>くらい</item>
+        <item>ぐらい</item>
+        <item>クラス</item>
+        <item>グラム</item>
+        <item>くる</item>
+        <item>くるま</item>
+        <item>くろ</item>
+        <item>くろい</item>
+        <item>けさ</item>
+        <item>けす</item>
+        <item>けっこう</item>
+        <item>けっこん</item>
+        <item>けっこんする</item>
+        <item>げつようび</item>
+        <item>げんかん</item>
+        <item>げんき</item>
+        <item>ご</item>
+        <item>こうえん</item>
+        <item>こうちゃ</item>
+        <item>こうばん</item>
+        <item>こえ</item>
+        <item>コート</item>
+        <item>コーヒー</item>
+        <item>ごがつ</item>
+        <item>ここ</item>
+        <item>ごご</item>
+        <item>ここのか</item>
+        <item>ここのつ</item>
+        <item>ごしゅじん</item>
+        <item>ごぜん</item>
+        <item>こたえ</item>
+        <item>こたえる</item>
+        <item>ごちそうさま</item>
+        <item>こちら</item>
+        <item>こちらこそ</item>
+        <item>コップ</item>
+        <item>ことし</item>
+        <item>ことば</item>
+        <item>こども</item>
+        <item>この</item>
+        <item>ごはん</item>
+        <item>こまる</item>
+        <item>ごめんください</item>
+        <item>ごめんなさい</item>
+        <item>これ</item>
+        <item>ころ・ごろ</item>
+        <item>こんげつ</item>
+        <item>こんしゅう</item>
+        <item>こんな</item>
+        <item>こんにちは</item>
+        <item>こんばん</item>
+        <item>こんばんは</item>
+        <item>さあ</item>
+        <item>さかな</item>
+        <item>さき</item>
+        <item>さく</item>
+        <item>さくぶん</item>
+        <item>さけ</item>
+        <item>さす</item>
+        <item>ざっし</item>
+        <item>さとう</item>
+        <item>さむい</item>
+        <item>さようなら</item>
+        <item>さよなら</item>
+        <item>さら</item>
+        <item>さらいねん</item>
+        <item>さん</item>
+        <item>さんがつ</item>
+        <item>さんぽ</item>
+        <item>さんぽする</item>
+        <item>し</item>
+        <item>しお</item>
+        <item>しかし</item>
+        <item>しがつ</item>
+        <item>じかん</item>
+        <item>しごと</item>
+        <item>じしょ</item>
+        <item>しずか</item>
+        <item>した</item>
+        <item>しちがつ</item>
+        <item>しつもん</item>
+        <item>しつもんする</item>
+        <item>しつれいします</item>
+        <item>じてんしゃ</item>
+        <item>じどうしゃ</item>
+        <item>しぬ</item>
+        <item>じびき</item>
+        <item>じぶん</item>
+        <item>しまる</item>
+        <item>しめる</item>
+        <item>しめる</item>
+        <item>じゃ</item>
+        <item>しゃしん</item>
+        <item>しゃしんをとる</item>
+        <item>シャツ</item>
+        <item>シャワー</item>
+        <item>じゅう</item>
+        <item>じゅういちがつ</item>
+        <item>じゅうがつ</item>
+        <item>じゅうにがつ</item>
+        <item>じゅぎょう</item>
+        <item>しゅくだい</item>
+        <item>じょうず</item>
+        <item>じょうぶ</item>
+        <item>しょうゆ</item>
+        <item>しょくどう</item>
+        <item>しる</item>
+        <item>しろ</item>
+        <item>しろい</item>
+        <item>しんぶん</item>
+        <item>すいようび</item>
+        <item>すう</item>
+        <item>スカート</item>
+        <item>すき</item>
+        <item>すぐ</item>
+        <item>すこし</item>
+        <item>すずしい</item>
+        <item>ストーブ</item>
+        <item>スプーン</item>
+        <item>スポーツ</item>
+        <item>ズボン</item>
+        <item>すみません</item>
+        <item>すむ</item>
+        <item>スリッパ</item>
+        <item>する</item>
+        <item>すわる</item>
+        <item>せい</item>
+        <item>せいと</item>
+        <item>セーター</item>
+        <item>せっけん</item>
+        <item>せびろ</item>
+        <item>せまい</item>
+        <item>ゼロ</item>
+        <item>せん</item>
+        <item>せんげつ</item>
+        <item>せんしゅう</item>
+        <item>せんせい</item>
+        <item>せんたく</item>
+        <item>せんたくする</item>
+        <item>ぜんぶ</item>
+        <item>そう</item>
+        <item>そうじ</item>
+        <item>そうじする</item>
+        <item>そうして</item>
+        <item>そこ</item>
+        <item>そちら</item>
+        <item>そと</item>
+        <item>その</item>
+        <item>そのほか</item>
+        <item>そば</item>
+        <item>そら</item>
+        <item>それ</item>
+        <item>それから</item>
+        <item>それでは</item>
+        <item>だい</item>
+        <item>だい</item>
+        <item>だいがく</item>
+        <item>たいしかん</item>
+        <item>だいじょうぶ</item>
+        <item>だいすき</item>
+        <item>たいせつ</item>
+        <item>たいてい</item>
+        <item>だいどころ</item>
+        <item>たいへん</item>
+        <item>たかい</item>
+        <item>たくさん</item>
+        <item>タクシー</item>
+        <item>だけ</item>
+        <item>だす</item>
+        <item>たつ</item>
+        <item>たつ</item>
+        <item>たてもの</item>
+        <item>たのしい</item>
+        <item>たのむ</item>
+        <item>たばこ</item>
+        <item>たぶん</item>
+        <item>たべもの</item>
+        <item>たべる</item>
+        <item>たまご</item>
+        <item>だれ</item>
+        <item>だれか</item>
+        <item>たんじょうび</item>
+        <item>だんだん</item>
+        <item>ちいさい</item>
+        <item>ちかい</item>
+        <item>ちがう</item>
+        <item>ちかく</item>
+        <item>ちかてつ</item>
+        <item>ちず</item>
+        <item>ちち</item>
+        <item>ちゃいろ</item>
+        <item>ちゃわん</item>
+        <item>ちょうど</item>
+        <item>ちょっと</item>
+        <item>ついたち</item>
+        <item>つかう</item>
+        <item>つかれる</item>
+        <item>つぎ</item>
+        <item>つきあかり</item>
+        <item>つく</item>
+        <item>つくえ</item>
+        <item>つくる</item>
+        <item>つける</item>
+        <item>つとめる</item>
+        <item>つとめる</item>
+        <item>つまらない</item>
+        <item>つめたい</item>
+        <item>つよい</item>
+        <item>て</item>
+        <item>テープ</item>
+        <item>テーブル</item>
+        <item>テープレコーダー</item>
+        <item>でかける</item>
+        <item>てがみ</item>
+        <item>できる</item>
+        <item>でぐち</item>
+        <item>テスト</item>
+        <item>では</item>
+        <item>デパート</item>
+        <item>でます</item>
+        <item>でも</item>
+        <item>でる</item>
+        <item>テレビ</item>
+        <item>てんき</item>
+        <item>でんき</item>
+        <item>でんきをつける</item>
+        <item>でんしゃ</item>
+        <item>でんわ</item>
+        <item>と</item>
+        <item>と</item>
+        <item>ドア</item>
+        <item>トイレ</item>
+        <item>どう</item>
+        <item>どういたしまして</item>
+        <item>どうして</item>
+        <item>どうぞ</item>
+        <item>どうぞよろしく</item>
+        <item>どうぶつ</item>
+        <item>どうも</item>
+        <item>どうもありがとうございます</item>
+        <item>とお</item>
+        <item>とおい</item>
+        <item>とおか</item>
+        <item>とき</item>
+        <item>ときどき</item>
+        <item>とけい</item>
+        <item>どこ</item>
+        <item>ところ</item>
+        <item>としょかん</item>
+        <item>どちら</item>
+        <item>とても</item>
+        <item>どなた</item>
+        <item>となり</item>
+        <item>どの</item>
+        <item>とぶ</item>
+        <item>とまる</item>
+        <item>ともだち</item>
+        <item>どようび</item>
+        <item>とり</item>
+        <item>とりにく</item>
+        <item>とる</item>
+        <item>とる</item>
+        <item>どれ</item>
+        <item>どんな</item>
+        <item>ない</item>
+        <item>ナイフ</item>
+        <item>なか</item>
+        <item>ながい</item>
+        <item>なく</item>
+        <item>なつ</item>
+        <item>なつやすみ</item>
+        <item>なな</item>
+        <item>ななつ</item>
+        <item>なに</item>
+        <item>なのか</item>
+        <item>なまえ</item>
+        <item>ならう</item>
+        <item>ならぶ</item>
+        <item>ならべる</item>
+        <item>なる</item>
+        <item>に</item>
+        <item>にがつ</item>
+        <item>にぎやか</item>
+        <item>にく</item>
+        <item>にし</item>
+        <item>にちようび</item>
+        <item>にほんご</item>
+        <item>にもつ</item>
+        <item>ニュース</item>
+        <item>にわ</item>
+        <item>ぬぐ</item>
+        <item>ネクタイ</item>
+        <item>ねこ</item>
+        <item>ねる</item>
+        <item>ノート</item>
+        <item>のぼる</item>
+        <item>のみもの</item>
+        <item>のむ</item>
+        <item>のる</item>
+        <item>は</item>
+        <item>パーティー</item>
+        <item>はい</item>
+        <item>はいざら</item>
+        <item>はいる</item>
+        <item>はがき</item>
+        <item>はく</item>
+        <item>はこ</item>
+        <item>はし</item>
+        <item>はし</item>
+        <item>はじまる</item>
+        <item>はじめ</item>
+        <item>はじめて</item>
+        <item>はじめまして</item>
+        <item>はじめる</item>
+        <item>はしる</item>
+        <item>バス</item>
+        <item>バター</item>
+        <item>はたち</item>
+        <item>はたらく</item>
+        <item>はち</item>
+        <item>はちがつ</item>
+        <item>はつか</item>
+        <item>はな</item>
+        <item>はな</item>
+        <item>はなし</item>
+        <item>はなす</item>
+        <item>はは</item>
+        <item>はやい</item>
+        <item>はやい</item>
+        <item>はる</item>
+        <item>はる</item>
+        <item>はれ</item>
+        <item>はれる</item>
+        <item>はん</item>
+        <item>ばん</item>
+        <item>パン</item>
+        <item>ハンカチ</item>
+        <item>ばんごう</item>
+        <item>ばんごはん</item>
+        <item>はんぶん</item>
+        <item>ひ / にち</item>
+        <item>ひがし</item>
+        <item>ひく</item>
+        <item>ひく</item>
+        <item>ひくい</item>
+        <item>ひこうき</item>
+        <item>ひだり</item>
+        <item>ひと</item>
+        <item>ひとつ</item>
+        <item>ひとつき</item>
+        <item>ひとり</item>
+        <item>ひま</item>
+        <item>ひゃく</item>
+        <item>びょういん</item>
+        <item>びょうき</item>
+        <item>ひらがな</item>
+        <item>ひる</item>
+        <item>ひるごはん</item>
+        <item>ひろい</item>
+        <item>フィルム</item>
+        <item>ふうとう</item>
+        <item>プール</item>
+        <item>フォーク</item>
+        <item>ふく</item>
+        <item>ふく</item>
+        <item>ふたつ</item>
+        <item>ぶたにく</item>
+        <item>ふたり</item>
+        <item>ふつか</item>
+        <item>ふとい</item>
+        <item>ふゆ</item>
+        <item>ふる</item>
+        <item>ふるい</item>
+        <item>ぶんしょう</item>
+        <item>ページ</item>
+        <item>へた</item>
+        <item>ベッド</item>
+        <item>へや</item>
+        <item>へん</item>
+        <item>ぺん</item>
+        <item>べんきょう</item>
+        <item>べんきょうする</item>
+        <item>べんり</item>
+        <item>ほう</item>
+        <item>ぼうし</item>
+        <item>ボールペン</item>
+        <item>ほか</item>
+        <item>ポケット</item>
+        <item>ほしい</item>
+        <item>ほそい</item>
+        <item>ボタン</item>
+        <item>ホテル</item>
+        <item>ほん</item>
+        <item>ほんだな</item>
+        <item>ほんとう</item>
+        <item>まいあさ</item>
+        <item>まいしゅう</item>
+        <item>まいつき/まいげつ</item>
+        <item>まいとし/まいねん</item>
+        <item>まいにち</item>
+        <item>まいばん</item>
+        <item>まえ</item>
+        <item>まがる</item>
+        <item>まずい</item>
+        <item>また</item>
+        <item>また</item>
+        <item>まだ</item>
+        <item>まち</item>
+        <item>まつ</item>
+        <item>まっすぐ</item>
+        <item>マッチ</item>
+        <item>まど</item>
+        <item>まるい</item>
+        <item>まるい</item>
+        <item>まん</item>
+        <item>まんねんひつ</item>
+        <item>みがく</item>
+        <item>みぎ</item>
+        <item>みじかい</item>
+        <item>みず</item>
+        <item>みせ</item>
+        <item>みせる</item>
+        <item>みち</item>
+        <item>みっか</item>
+        <item>みっつ</item>
+        <item>みなみ</item>
+        <item>みみ</item>
+        <item>みる</item>
+        <item>みんな / みな</item>
+        <item>みんなさん / みなさん</item>
+        <item>むいか</item>
+        <item>むこう</item>
+        <item>むずかしい</item>
+        <item>むっつ</item>
+        <item>め</item>
+        <item>メートル</item>
+        <item>めがね</item>
+        <item>もう</item>
+        <item>もくようび</item>
+        <item>もしもし</item>
+        <item>もちろん</item>
+        <item>もつ</item>
+        <item>もっと</item>
+        <item>もの</item>
+        <item>もん</item>
+        <item>もんだい</item>
+        <item>やおや</item>
+        <item>やさい</item>
+        <item>やさしい</item>
+        <item>やすい</item>
+        <item>やすみ</item>
+        <item>やすむ</item>
+        <item>やっつ</item>
+        <item>やま</item>
+        <item>やる</item>
+        <item>ゆうがた</item>
+        <item>ゆうびんきょく</item>
+        <item>ゆうめい</item>
+        <item>ゆき</item>
+        <item>ゆっくり</item>
+        <item>ようか</item>
+        <item>ようふく</item>
+        <item>よく</item>
+        <item>よこ</item>
+        <item>よっか</item>
+        <item>よっつ</item>
+        <item>よぶ</item>
+        <item>よむ</item>
+        <item>よる</item>
+        <item>らいげつ</item>
+        <item>らいしゅう</item>
+        <item>らいねん</item>
+        <item>ラジオ</item>
+        <item>りっぱ</item>
+        <item>りゅうがくせい</item>
+        <item>りょうしん</item>
+        <item>りょうり</item>
+        <item>りょこう</item>
+        <item>りょこうする</item>
+        <item>れい</item>
+        <item>れいぞうこ</item>
+        <item>レコード</item>
+        <item>レストラン</item>
+        <item>れんしゅう</item>
+        <item>れんしゅうする</item>
+        <item>ろく</item>
+        <item>ろくがつ</item>
+        <item>ワイシャツ</item>
+        <item>わかい</item>
+        <item>わかる</item>
+        <item>わすれる</item>
+        <item>わたし</item>
+        <item>わたす</item>
+        <item>わたる</item>
+        <item>わるい</item>
+        <item>~かい</item>
+        <item>~かい</item>
+        <item>~かげつ</item>
+        <item>~がる</item>
+        <item>~がわ</item>
+        <item>~こ</item>
+        <item>~ご</item>
+        <item>~さい</item>
+        <item>~さつ</item>
+        <item>~さん</item>
+        <item>~じ</item>
+        <item>~じかん</item>
+        <item>~じゅう</item>
+        <item>~しゅうかん</item>
+        <item>~じん</item>
+        <item>~すぎ</item>
+        <item>~ずつ</item>
+        <item>~だい</item>
+        <item>~たち</item>
+        <item>~ちゅう</item>
+        <item>~てん</item>
+        <item>~ど</item>
+        <item>~など</item>
+        <item>~にん</item>
+        <item>~ねん</item>
+        <item>~はい</item>
+        <item>~ばん</item>
+        <item>~ひき</item>
+        <item>~ふん / ~ぷん</item>
+        <item>~ほん</item>
+        <item>~まい</item>
+        <item>~まえ</item>
+        <item>~や</item>
+    </string-array>
+    <string-array name="JLPT_RM">
+        <item>ā </item>
+        <item>aisatsu </item>
+        <item>aisatsusuru </item>
+        <item>au </item>
+        <item>a o </item>
+        <item>Aoi </item>
+        <item>aka </item>
+        <item>akai </item>
+        <item>akarui </item>
+        <item>aki </item>
+        <item>aku </item>
+        <item>akeru </item>
+        <item>ageru </item>
+        <item>asa </item>
+        <item>a sa gohan </item>
+        <item>asatte </item>
+        <item>ashi </item>
+        <item>ashi </item>
+        <item>ashita </item>
+        <item>asoko </item>
+        <item>asobi </item>
+        <item>asobu </item>
+        <item>atatakai </item>
+        <item>a tama </item>
+        <item>atarashii </item>
+        <item>achira </item>
+        <item>atsui </item>
+        <item>atsui </item>
+        <item>atchi </item>
+        <item>ato </item>
+        <item>anata </item>
+        <item>ani </item>
+        <item>a ne </item>
+        <item>ano </item>
+        <item>ano </item>
+        <item>apa-to </item>
+        <item>abiru </item>
+        <item>abunai </item>
+        <item>amai </item>
+        <item>amari </item>
+        <item>ame </item>
+        <item>ame </item>
+        <item>arau </item>
+        <item>aru </item>
+        <item>aru </item>
+        <item>aruku </item>
+        <item>are </item>
+        <item>anmari amari </item>
+        <item>ii yoi </item>
+        <item>iie </item>
+        <item>iu </item>
+        <item>ie </item>
+        <item>iku yuku </item>
+        <item>ikutsu </item>
+        <item>ikura </item>
+        <item>ike </item>
+        <item>ishi </item>
+        <item>isha </item>
+        <item>isu </item>
+        <item>isogashii </item>
+        <item>itai </item>
+        <item>itadakimasu </item>
+        <item>ichi </item>
+        <item>ichi ga tsu </item>
+        <item>ichi ni chi </item>
+        <item>ichiban </item>
+        <item>i tsu </item>
+        <item>itsuka </item>
+        <item>isshū kan </item>
+        <item>issho </item>
+        <item>i tsutsu </item>
+        <item>ippai </item>
+        <item>ippai </item>
+        <item>itsumo </item>
+        <item>inu </item>
+        <item>ima </item>
+        <item>ima sugu </item>
+        <item>imi </item>
+        <item>imou to </item>
+        <item>iya </item>
+        <item>iya </item>
+        <item>irasshaimase </item>
+        <item>iri guchi </item>
+        <item>iru </item>
+        <item>iru </item>
+        <item>ireru </item>
+        <item>iro </item>
+        <item>iroiro </item>
+        <item>ue </item>
+        <item>ushi ro </item>
+        <item>usui </item>
+        <item>uta </item>
+        <item>utau </item>
+        <item>uchi </item>
+        <item>umareru </item>
+        <item>umi </item>
+        <item>uru </item>
+        <item>uwa gi </item>
+        <item>e </item>
+        <item>Ei ga </item>
+        <item>Ei ga kan </item>
+        <item>Ei go </item>
+        <item>ē </item>
+        <item>e ki </item>
+        <item>erebe-ta </item>
+        <item>en </item>
+        <item>enpitsu </item>
+        <item>o </item>
+        <item>oishii </item>
+        <item>oide ni naru </item>
+        <item>ōkii </item>
+        <item>ō ze i </item>
+        <item>okāsan </item>
+        <item>okashi </item>
+        <item>o kane </item>
+        <item>okiru </item>
+        <item>oku </item>
+        <item>oku san </item>
+        <item>okuru </item>
+        <item>o genki de </item>
+        <item>ojiisan </item>
+        <item>oshieru </item>
+        <item>ojisan </item>
+        <item>osu </item>
+        <item>osoi </item>
+        <item>o cha </item>
+        <item>o tearai </item>
+        <item>otōsan </item>
+        <item>o tou to </item>
+        <item>o toko </item>
+        <item>oto kono ko </item>
+        <item>ototoi </item>
+        <item>ototoshi </item>
+        <item>otona </item>
+        <item>onaka </item>
+        <item>onaji </item>
+        <item>o niisan </item>
+        <item>o nēsan </item>
+        <item>onegaishimasu </item>
+        <item>obāsan </item>
+        <item>obasan </item>
+        <item>ohayō gozaimasu </item>
+        <item>o furo </item>
+        <item>o be n tou </item>
+        <item>oboeru </item>
+        <item>omawarisan </item>
+        <item>omoi </item>
+        <item>omoshiroi </item>
+        <item>oyasuminasai </item>
+        <item>oyogu </item>
+        <item>oriru </item>
+        <item>owaru </item>
+        <item>on gaku </item>
+        <item>onna </item>
+        <item>onna no ko </item>
+        <item>kai </item>
+        <item>kai </item>
+        <item>ga i koku </item>
+        <item>ga iko kuji n </item>
+        <item>kaisha </item>
+        <item>kai da n </item>
+        <item>kai mo no </item>
+        <item>kau </item>
+        <item>kaesu </item>
+        <item>kaeru </item>
+        <item>kao </item>
+        <item>kakaru </item>
+        <item>kagi </item>
+        <item>kaku </item>
+        <item>ga kuse i </item>
+        <item>kakeru </item>
+        <item>kasa </item>
+        <item>kasu </item>
+        <item>kaze </item>
+        <item>kaze </item>
+        <item>ka zoku </item>
+        <item>Kata </item>
+        <item>Kata </item>
+        <item>kata ka na </item>
+        <item>ga tsu </item>
+        <item>ga kō </item>
+        <item>katei </item>
+        <item>ka do </item>
+        <item>kanai </item>
+        <item>kaban </item>
+        <item>kabin </item>
+        <item>kaburu </item>
+        <item>kaburu </item>
+        <item>kami </item>
+        <item>kamera </item>
+        <item>kayou bi </item>
+        <item>karai </item>
+        <item>kara da </item>
+        <item>kariru </item>
+        <item>karui </item>
+        <item>karenda- </item>
+        <item>ka wa </item>
+        <item>kawaii </item>
+        <item>kanji </item>
+        <item>ki </item>
+        <item>kiiro </item>
+        <item>kiiroi </item>
+        <item>kieru </item>
+        <item>kiku </item>
+        <item>kita </item>
+        <item>gita- </item>
+        <item>kitanai </item>
+        <item>kissa </item>
+        <item>ki sa ten </item>
+        <item>kitte </item>
+        <item>kippu </item>
+        <item>kinō </item>
+        <item>kyū </item>
+        <item>gyūniku </item>
+        <item>gyūnyū </item>
+        <item>kyō </item>
+        <item>kyōshi tsu </item>
+        <item>kyō dai </item>
+        <item>ki nen </item>
+        <item>kirai </item>
+        <item>kiru </item>
+        <item>kiru </item>
+        <item>kirei </item>
+        <item>kiroguramu </item>
+        <item>kirome-toru </item>
+        <item>gin kō </item>
+        <item>kin\'yō bi </item>
+        <item>ku </item>
+        <item>ku ga tsu </item>
+        <item>kusuri </item>
+        <item>kudasai </item>
+        <item>kudamono </item>
+        <item>kuchi </item>
+        <item>kutsu </item>
+        <item>kutsushita </item>
+        <item>kuni </item>
+        <item>kumori </item>
+        <item>kurai </item>
+        <item>gurai </item>
+        <item>kurasu </item>
+        <item>Guramu </item>
+        <item>kuru </item>
+        <item>kuruma </item>
+        <item>kuro </item>
+        <item>kuroi </item>
+        <item>kesa </item>
+        <item>kesu </item>
+        <item>kekkō </item>
+        <item>kekkon </item>
+        <item>kekkonsuru </item>
+        <item>ge tsuyō bi </item>
+        <item>genka n </item>
+        <item>genki </item>
+        <item>go </item>
+        <item>kōen </item>
+        <item>kou cha </item>
+        <item>kō ban </item>
+        <item>koe </item>
+        <item>ko-to </item>
+        <item>ko-hi- </item>
+        <item>go ga tsu </item>
+        <item>koko </item>
+        <item>go go </item>
+        <item>koko no ka </item>
+        <item>koko no tsu </item>
+        <item>go shi jin </item>
+        <item>go zen </item>
+        <item>kotae </item>
+        <item>kotaeru </item>
+        <item>gochisōsama </item>
+        <item>kochira </item>
+        <item>kochira koso </item>
+        <item>koppu </item>
+        <item>kotoshi </item>
+        <item>kotoba </item>
+        <item>kodomo </item>
+        <item>kono </item>
+        <item>gohan </item>
+        <item>komaru </item>
+        <item>gomenkudasai </item>
+        <item>gomennasai </item>
+        <item>kore </item>
+        <item>koro goro </item>
+        <item>Konge tsu </item>
+        <item>Kon shū </item>
+        <item>konna </item>
+        <item>konnichiha </item>
+        <item>Kon ban </item>
+        <item>konbanha </item>
+        <item>sā </item>
+        <item>sakana </item>
+        <item>saki </item>
+        <item>saku </item>
+        <item>saku bun </item>
+        <item>sake </item>
+        <item>sasu </item>
+        <item>zasshi </item>
+        <item>Satō </item>
+        <item>samui </item>
+        <item>sayōnara </item>
+        <item>sayonara </item>
+        <item>sara </item>
+        <item>sarai nen </item>
+        <item>san </item>
+        <item>san ga tsu </item>
+        <item>sanpo </item>
+        <item>sanposuru </item>
+        <item>shi </item>
+        <item>shi o </item>
+        <item>shikashi </item>
+        <item>shi ga tsu </item>
+        <item>ji ka n </item>
+        <item>shigoto </item>
+        <item>jisho </item>
+        <item>shizuka </item>
+        <item>shita </item>
+        <item>shi chi ga tsu </item>
+        <item>shi tsu mon </item>
+        <item>shi tsu mon suru </item>
+        <item>shi tsu rei shimasu </item>
+        <item>jitensha </item>
+        <item>ji dōsha </item>
+        <item>shinu </item>
+        <item>jibiki </item>
+        <item>ji bun </item>
+        <item>shimaru </item>
+        <item>Shimeru </item>
+        <item>Shimeru </item>
+        <item>ja </item>
+        <item>shashin </item>
+        <item>shi shinwotoru </item>
+        <item>shatsu </item>
+        <item>shawa- </item>
+        <item>jū </item>
+        <item>ji uichigatsu </item>
+        <item>jū ga tsu </item>
+        <item>jū ni ga tsu </item>
+        <item>ji gyō </item>
+        <item>shuku dai </item>
+        <item>jōzu </item>
+        <item>jōbu </item>
+        <item>shōyu </item>
+        <item>shoku dō </item>
+        <item>shiru </item>
+        <item>shiro </item>
+        <item>shiroi </item>
+        <item>shinbun </item>
+        <item>suiyō bi </item>
+        <item>suu </item>
+        <item>suka-to </item>
+        <item>suki </item>
+        <item>sugu </item>
+        <item>sukoshi </item>
+        <item>suzushii </item>
+        <item>suto-bu </item>
+        <item>supu-n </item>
+        <item>supo-tsu </item>
+        <item>zubon </item>
+        <item>sumimasen </item>
+        <item>sumu </item>
+        <item>surippa </item>
+        <item>suru </item>
+        <item>suwaru </item>
+        <item>sei </item>
+        <item>sei to </item>
+        <item>se-ta- </item>
+        <item>sekken </item>
+        <item>sebiro </item>
+        <item>semai </item>
+        <item>zero </item>
+        <item>sen </item>
+        <item>senge tsu </item>
+        <item>senshū </item>
+        <item>sensei </item>
+        <item>sentaku </item>
+        <item>sen takusuru </item>
+        <item>zenbu </item>
+        <item>sō </item>
+        <item>sō ji </item>
+        <item>sō jisuru </item>
+        <item>sōshite </item>
+        <item>soko </item>
+        <item>sochira </item>
+        <item>so to </item>
+        <item>sono </item>
+        <item>sono hoka </item>
+        <item>soba </item>
+        <item>sora </item>
+        <item>sore </item>
+        <item>sorekara </item>
+        <item>soredeha </item>
+        <item>dai </item>
+        <item>dai </item>
+        <item>dai gaku </item>
+        <item>tai shikan </item>
+        <item>daijōbu </item>
+        <item>dai suki </item>
+        <item>taise tsu </item>
+        <item>taitei </item>
+        <item>daidokoro </item>
+        <item>taihen </item>
+        <item>takai </item>
+        <item>takusan </item>
+        <item>takushi- </item>
+        <item>dake </item>
+        <item>dasu </item>
+        <item>tatsu </item>
+        <item>tatsu </item>
+        <item>tate mo no </item>
+        <item>tanoshii </item>
+        <item>tanomu </item>
+        <item>tabako </item>
+        <item>tabun </item>
+        <item>tabe mo no </item>
+        <item>taberu </item>
+        <item>tama go </item>
+        <item>dare </item>
+        <item>dare ka </item>
+        <item>tanjō bi </item>
+        <item>dandan </item>
+        <item>chiisai </item>
+        <item>chikai </item>
+        <item>chigau </item>
+        <item>chikaku </item>
+        <item>Chika tetsu </item>
+        <item>chizu </item>
+        <item>chi chi </item>
+        <item>chai ro </item>
+        <item>chawan </item>
+        <item>chōdo </item>
+        <item>chotto </item>
+        <item>tsuitachi </item>
+        <item>tsukau </item>
+        <item>tsukareru </item>
+        <item>tsugi </item>
+        <item>tsuki Akari </item>
+        <item>tsuku </item>
+        <item>tsuku e </item>
+        <item>tsukuru </item>
+        <item>tsukeru </item>
+        <item>tsutomeru </item>
+        <item>tsutomeru </item>
+        <item>tsumaranai </item>
+        <item>tsumetai </item>
+        <item>tsuyoi </item>
+        <item>te </item>
+        <item>te-pu </item>
+        <item>te-buru </item>
+        <item>te-pureko-da- </item>
+        <item>de kakeru </item>
+        <item>e ga mi </item>
+        <item>dekiru </item>
+        <item>de guchi </item>
+        <item>tesuto </item>
+        <item>de wa </item>
+        <item>depa-to </item>
+        <item>demasu </item>
+        <item>demo </item>
+        <item>deru </item>
+        <item>terebi </item>
+        <item>tenki </item>
+        <item>den ki </item>
+        <item>den ki o tsukeru </item>
+        <item>densha </item>
+        <item>denwa </item>
+        <item>to </item>
+        <item>to </item>
+        <item>doa </item>
+        <item>toire </item>
+        <item>dō </item>
+        <item>dōitashimashite </item>
+        <item>dōshite </item>
+        <item>dōzo </item>
+        <item>dōzo yoroshiku </item>
+        <item>dō butsu </item>
+        <item>dōmo </item>
+        <item>dōmo arigatō gozaimasu </item>
+        <item>to o </item>
+        <item>tōi </item>
+        <item>tō ka </item>
+        <item>toki </item>
+        <item>tokidoki </item>
+        <item>tokei </item>
+        <item>doko </item>
+        <item>tokoro </item>
+        <item>to sho kan </item>
+        <item>dochira </item>
+        <item>totemo </item>
+        <item>donata </item>
+        <item>tonari </item>
+        <item>dono </item>
+        <item>tobu </item>
+        <item>to maru </item>
+        <item>tomodachi </item>
+        <item>do yō bi </item>
+        <item>tori </item>
+        <item>tori niku </item>
+        <item>toru </item>
+        <item>toru </item>
+        <item>dore </item>
+        <item>donna </item>
+        <item>nai </item>
+        <item>naifu </item>
+        <item>naka </item>
+        <item>nagai </item>
+        <item>naku </item>
+        <item>Natsu </item>
+        <item>Natsu Yasumi </item>
+        <item>na na </item>
+        <item>na Natsu </item>
+        <item>nani </item>
+        <item>na no ka </item>
+        <item>nama e </item>
+        <item>narau </item>
+        <item>narabu </item>
+        <item>naraberu </item>
+        <item>naru </item>
+        <item>ni </item>
+        <item>ni ga tsu </item>
+        <item>nigiyaka </item>
+        <item>niku </item>
+        <item>ni shi </item>
+        <item>ni chi yō bi </item>
+        <item>ni hon go </item>
+        <item>ni motsu </item>
+        <item>nyu-su </item>
+        <item>ni wa </item>
+        <item>nugu </item>
+        <item>nekutai </item>
+        <item>neko </item>
+        <item>neru </item>
+        <item>no-to </item>
+        <item>Noboru </item>
+        <item>nomi mo no </item>
+        <item>nomu </item>
+        <item>noru </item>
+        <item>wa </item>
+        <item>pa-thi- </item>
+        <item>hai </item>
+        <item>hai zara </item>
+        <item>wa iru </item>
+        <item>hagaki </item>
+        <item>haku </item>
+        <item>hako </item>
+        <item>hashi </item>
+        <item>hashi </item>
+        <item>hajimaru </item>
+        <item>hajime </item>
+        <item>hajimete </item>
+        <item>hajimemashite </item>
+        <item>hajimeru </item>
+        <item>hashiru </item>
+        <item>basu </item>
+        <item>bata- </item>
+        <item>hatachi </item>
+        <item>hataraku </item>
+        <item>wa chi </item>
+        <item>wa chi ga tsu </item>
+        <item>hatsu ka </item>
+        <item>Hana </item>
+        <item>Hana </item>
+        <item>hanashi </item>
+        <item>hanasu </item>
+        <item>wa wa </item>
+        <item>hayai </item>
+        <item>hayai </item>
+        <item>Haru </item>
+        <item>Haru </item>
+        <item>hare </item>
+        <item>hareru </item>
+        <item>han </item>
+        <item>ban </item>
+        <item>pan </item>
+        <item>hankachi </item>
+        <item>ban go u </item>
+        <item>ban gohan </item>
+        <item>han bun </item>
+        <item>hi ni chi </item>
+        <item>higashi </item>
+        <item>hiku </item>
+        <item>hiku </item>
+        <item>hikui </item>
+        <item>hi kōki </item>
+        <item>hidari </item>
+        <item>hito </item>
+        <item>hitotsu </item>
+        <item>hitotsuki </item>
+        <item>hitori </item>
+        <item>hima </item>
+        <item>hyaku </item>
+        <item>byō in </item>
+        <item>byō ki </item>
+        <item>hira ga na </item>
+        <item>hiru </item>
+        <item>hiru gohan </item>
+        <item>hiroi </item>
+        <item>fyirumu </item>
+        <item>fuutou </item>
+        <item>pu-ru </item>
+        <item>fuxo-ku </item>
+        <item>fuku </item>
+        <item>fuku </item>
+        <item>futatsu </item>
+        <item>buta niku </item>
+        <item>futari </item>
+        <item>futsu ka </item>
+        <item>futoi </item>
+        <item>Fuyu </item>
+        <item>furu </item>
+        <item>furui </item>
+        <item>bun shō </item>
+        <item>pe-ji </item>
+        <item>heta </item>
+        <item>beddo </item>
+        <item>heya </item>
+        <item>hen </item>
+        <item>pen </item>
+        <item>be n kyō </item>
+        <item>be n kyōsuru </item>
+        <item>be n ri </item>
+        <item>hō </item>
+        <item>boushi </item>
+        <item>bo-rupen </item>
+        <item>hoka </item>
+        <item>poketto </item>
+        <item>hoshii </item>
+        <item>hosoi </item>
+        <item>botan </item>
+        <item>hoteru </item>
+        <item>hon </item>
+        <item>hon da na </item>
+        <item>hontō </item>
+        <item>mai asa </item>
+        <item>ma ishū </item>
+        <item>maitsuki maige tsu </item>
+        <item>mai to shi mai nen </item>
+        <item>mai ni chi </item>
+        <item>mai ban </item>
+        <item>mae </item>
+        <item>magaru </item>
+        <item>mazui </item>
+        <item>mata </item>
+        <item>mata </item>
+        <item>mada </item>
+        <item>machi </item>
+        <item>matsu </item>
+        <item>massugu </item>
+        <item>matchi </item>
+        <item>ma do </item>
+        <item>marui </item>
+        <item>marui </item>
+        <item>ma n </item>
+        <item>man nen hitsu </item>
+        <item>migaku </item>
+        <item>migi </item>
+        <item>mijikai </item>
+        <item>mizu </item>
+        <item>mise </item>
+        <item>miseru </item>
+        <item>michi </item>
+        <item>mi ka </item>
+        <item>mi tsu </item>
+        <item>Minami </item>
+        <item>mi mi </item>
+        <item>miru </item>
+        <item>minna mina </item>
+        <item>minna san minasan </item>
+        <item>mui ka </item>
+        <item>mukou </item>
+        <item>muzukashii </item>
+        <item>muttsu </item>
+        <item>me </item>
+        <item>me-toru </item>
+        <item>megane </item>
+        <item>mō </item>
+        <item>mo ku yō bi </item>
+        <item>moshimoshi </item>
+        <item>mochiron </item>
+        <item>motsu </item>
+        <item>motto </item>
+        <item>mono </item>
+        <item>mon </item>
+        <item>mon dai </item>
+        <item>yaoya </item>
+        <item>yasai </item>
+        <item>yasashii </item>
+        <item>yasui </item>
+        <item>yasumi </item>
+        <item>yasumu </item>
+        <item>ya tsu </item>
+        <item>ya ma </item>
+        <item>yaru </item>
+        <item>yuu gata </item>
+        <item>yuu bin kyoku </item>
+        <item>yuu mei </item>
+        <item>yuki </item>
+        <item>yukkuri </item>
+        <item>yō ka </item>
+        <item>yō fuku </item>
+        <item>yoku </item>
+        <item>yo ko </item>
+        <item>yo ka </item>
+        <item>yo tsu </item>
+        <item>yobu </item>
+        <item>yomu </item>
+        <item>yoru </item>
+        <item>raige tsu </item>
+        <item>rai shū </item>
+        <item>rai nen </item>
+        <item>rajio </item>
+        <item>rippa </item>
+        <item>ryū ga kuse i </item>
+        <item>ryō shin </item>
+        <item>ryōri </item>
+        <item>ri kou </item>
+        <item>ri kousuru </item>
+        <item>rei </item>
+        <item>rei zo uko </item>
+        <item>reko-do </item>
+        <item>resutoran </item>
+        <item>ren shū </item>
+        <item>ren shūsuru </item>
+        <item>roku </item>
+        <item>roku ga tsu </item>
+        <item>waishatsu </item>
+        <item>wakai </item>
+        <item>wakaru </item>
+        <item>wasureru </item>
+        <item>watashi </item>
+        <item>watasu </item>
+        <item>wataru </item>
+        <item>warui </item>
+        <item>kai </item>
+        <item>kai </item>
+        <item>kage tsu </item>
+        <item>garu </item>
+        <item>ga wa </item>
+        <item>ko </item>
+        <item>go </item>
+        <item>sai </item>
+        <item>sa tsu </item>
+        <item>san </item>
+        <item>ji </item>
+        <item>ji ka n </item>
+        <item>jū </item>
+        <item>shū kan </item>
+        <item>jin </item>
+        <item>sugi </item>
+        <item>zutsu </item>
+        <item>dai </item>
+        <item>tachi </item>
+        <item>chi u </item>
+        <item>ten </item>
+        <item>do </item>
+        <item>nado </item>
+        <item>ni n </item>
+        <item>nen </item>
+        <item>hai </item>
+        <item>ban </item>
+        <item>hiki </item>
+        <item>fun pun </item>
+        <item>hon </item>
+        <item>mai </item>
+        <item>mae </item>
+        <item>ya </item>
+    </string-array>
+    <string-array name="JLPT_KJ">
+        <item>ああ</item>
+        <item>挨拶</item>
+        <item>挨拶する</item>
+        <item>会う</item>
+        <item>青</item>
+        <item>青い</item>
+        <item>赤</item>
+        <item>赤い</item>
+        <item>明るい</item>
+        <item>秋</item>
+        <item>開く</item>
+        <item>開ける</item>
+        <item>上げる</item>
+        <item>朝</item>
+        <item>朝ご飯</item>
+        <item>あさって</item>
+        <item>足</item>
+        <item>足</item>
+        <item>明日</item>
+        <item>あそこ</item>
+        <item>遊び</item>
+        <item>遊ぶ</item>
+        <item>温かい</item>
+        <item>頭</item>
+        <item>新しい</item>
+        <item>あちら</item>
+        <item>暑い</item>
+        <item>厚い</item>
+        <item></item>
+        <item>後</item>
+        <item>貴方</item>
+        <item>兄</item>
+        <item>姉</item>
+        <item>あの</item>
+        <item>あの</item>
+        <item>アパート</item>
+        <item>浴びる</item>
+        <item>危ない</item>
+        <item>甘い</item>
+        <item>あまり</item>
+        <item>飴</item>
+        <item>雨</item>
+        <item>洗う</item>
+        <item>在る</item>
+        <item>有る</item>
+        <item>歩く</item>
+        <item>あれ</item>
+        <item>余り</item>
+        <item>良い</item>
+        <item></item>
+        <item>言う</item>
+        <item>家</item>
+        <item>行く</item>
+        <item>幾つ</item>
+        <item>幾ら</item>
+        <item>池</item>
+        <item>石</item>
+        <item>医者</item>
+        <item>椅子</item>
+        <item>忙しい</item>
+        <item>痛い</item>
+        <item>いただきます</item>
+        <item>一</item>
+        <item>一月</item>
+        <item>一日</item>
+        <item>一番</item>
+        <item>何時</item>
+        <item>五日</item>
+        <item>一週間</item>
+        <item>一緒</item>
+        <item>五つ</item>
+        <item>一杯</item>
+        <item>一杯</item>
+        <item>何時も</item>
+        <item>犬</item>
+        <item>今</item>
+        <item>今すぐ</item>
+        <item>意味</item>
+        <item>妹</item>
+        <item>嫌</item>
+        <item>否</item>
+        <item>いらっしゃいませ</item>
+        <item>入口</item>
+        <item>要る</item>
+        <item>いる</item>
+        <item>入れる</item>
+        <item>色</item>
+        <item>色々</item>
+        <item>上</item>
+        <item>後ろ</item>
+        <item>薄い</item>
+        <item>歌</item>
+        <item>歌う</item>
+        <item>内</item>
+        <item>生まれる</item>
+        <item>海</item>
+        <item>売る</item>
+        <item>上着</item>
+        <item>絵</item>
+        <item>映画</item>
+        <item>映画館</item>
+        <item>英語</item>
+        <item>ええ</item>
+        <item>駅</item>
+        <item>エレベータ</item>
+        <item>円</item>
+        <item>鉛筆</item>
+        <item>御</item>
+        <item>美味しい</item>
+        <item>お出でになる</item>
+        <item>大きい</item>
+        <item>大勢</item>
+        <item>お母さん</item>
+        <item>お菓子</item>
+        <item>お金</item>
+        <item>起きる</item>
+        <item>置く</item>
+        <item>奥さん</item>
+        <item>送る</item>
+        <item>お元気で</item>
+        <item>お爺さん</item>
+        <item>教える</item>
+        <item>伯父さん</item>
+        <item>押す</item>
+        <item>遅い</item>
+        <item>お茶</item>
+        <item>お手洗い</item>
+        <item>お父さん</item>
+        <item>弟</item>
+        <item>男</item>
+        <item>男の子</item>
+        <item>一昨日</item>
+        <item>一昨年</item>
+        <item>大人</item>
+        <item>お腹</item>
+        <item>同じ</item>
+        <item>お兄さん</item>
+        <item>お姉さん</item>
+        <item>お願いします</item>
+        <item>おばあさん</item>
+        <item>伯母さん</item>
+        <item>おはようございます</item>
+        <item>お風呂</item>
+        <item>お弁当</item>
+        <item>覚える</item>
+        <item>お巡りさん</item>
+        <item>重い</item>
+        <item>面白い</item>
+        <item>お休みなさい</item>
+        <item>泳ぐ</item>
+        <item>降りる</item>
+        <item>終わる</item>
+        <item>音楽</item>
+        <item>女</item>
+        <item>女の子</item>
+        <item>回</item>
+        <item>階</item>
+        <item>外国</item>
+        <item>外国人</item>
+        <item>会社</item>
+        <item>階段</item>
+        <item>買い物</item>
+        <item>買う</item>
+        <item>返す</item>
+        <item>帰る</item>
+        <item>顔</item>
+        <item>掛かる</item>
+        <item>鍵</item>
+        <item>書く</item>
+        <item>学生</item>
+        <item>掛ける</item>
+        <item>傘</item>
+        <item>貸す</item>
+        <item>風邪</item>
+        <item>風</item>
+        <item>家族</item>
+        <item>方</item>
+        <item>方</item>
+        <item>片仮名</item>
+        <item>月</item>
+        <item>学校</item>
+        <item>家庭</item>
+        <item>角</item>
+        <item>家内</item>
+        <item>鞄</item>
+        <item>花瓶</item>
+        <item>冠る</item>
+        <item>被る</item>
+        <item>紙</item>
+        <item>カメラ</item>
+        <item>火曜日</item>
+        <item>辛い</item>
+        <item>体</item>
+        <item>借りる</item>
+        <item>軽い</item>
+        <item>カレンダー</item>
+        <item>川</item>
+        <item>可愛い</item>
+        <item>漢字</item>
+        <item>木</item>
+        <item>黄色</item>
+        <item>黄色い</item>
+        <item>消える</item>
+        <item>聞く</item>
+        <item>北</item>
+        <item>ギター</item>
+        <item>汚い</item>
+        <item>喫茶</item>
+        <item>喫茶店</item>
+        <item>切手</item>
+        <item>切符</item>
+        <item>昨日</item>
+        <item>九</item>
+        <item>牛肉</item>
+        <item>牛乳</item>
+        <item>今日</item>
+        <item>教室</item>
+        <item>兄弟</item>
+        <item>去年</item>
+        <item>嫌い</item>
+        <item>切る</item>
+        <item>着る</item>
+        <item>綺麗 / 奇麗</item>
+        <item>キログラム</item>
+        <item>キロメートル</item>
+        <item>銀行</item>
+        <item>金曜日</item>
+        <item>九</item>
+        <item>九月</item>
+        <item>薬</item>
+        <item>下さい</item>
+        <item>果物</item>
+        <item>口</item>
+        <item>靴</item>
+        <item>靴下</item>
+        <item>国</item>
+        <item>曇り</item>
+        <item>暗い</item>
+        <item>ぐらい</item>
+        <item>クラス</item>
+        <item>グラム</item>
+        <item>来る</item>
+        <item>車</item>
+        <item>黒</item>
+        <item>黒い</item>
+        <item>今朝</item>
+        <item>消す</item>
+        <item>結構</item>
+        <item>結婚</item>
+        <item>結婚する</item>
+        <item>月曜日</item>
+        <item>玄関</item>
+        <item>元気</item>
+        <item>五</item>
+        <item>公園</item>
+        <item>紅茶</item>
+        <item>交番</item>
+        <item>声</item>
+        <item>コート</item>
+        <item>コーヒー</item>
+        <item>五月</item>
+        <item>ここ</item>
+        <item>午後</item>
+        <item>九日</item>
+        <item>九つ</item>
+        <item>ご主人</item>
+        <item>午前</item>
+        <item>答え / 応え</item>
+        <item>答える</item>
+        <item>ご馳走様</item>
+        <item>こちら</item>
+        <item>こちらこそ</item>
+        <item>コップ</item>
+        <item>今年</item>
+        <item>言葉</item>
+        <item>子供</item>
+        <item>この</item>
+        <item>御飯</item>
+        <item>困る</item>
+        <item>御免下さい</item>
+        <item>御免なさい</item>
+        <item>これ</item>
+        <item>ころ・ごろ</item>
+        <item>今月</item>
+        <item>今週</item>
+        <item>こんな</item>
+        <item>今日は</item>
+        <item>今晩</item>
+        <item>今晩は</item>
+        <item>さあ</item>
+        <item>魚</item>
+        <item>先</item>
+        <item>咲く</item>
+        <item>作文</item>
+        <item>酒</item>
+        <item>差す</item>
+        <item>雑誌</item>
+        <item>砂糖</item>
+        <item>寒い</item>
+        <item>左様なら</item>
+        <item>さよなら</item>
+        <item>皿</item>
+        <item>再来年</item>
+        <item>三</item>
+        <item>三月</item>
+        <item>散歩</item>
+        <item>散歩する</item>
+        <item>四</item>
+        <item>塩</item>
+        <item>併し</item>
+        <item>四月</item>
+        <item>時間</item>
+        <item>仕事</item>
+        <item>辞書</item>
+        <item>静か</item>
+        <item>下</item>
+        <item>七月</item>
+        <item>質問</item>
+        <item>質問する</item>
+        <item>失礼します</item>
+        <item>自転車</item>
+        <item>自動車</item>
+        <item>死ぬ</item>
+        <item>字引</item>
+        <item>自分</item>
+        <item>閉まる</item>
+        <item>締める</item>
+        <item>閉める</item>
+        <item>じゃ</item>
+        <item>写真</item>
+        <item>写真を撮る</item>
+        <item>シャツ</item>
+        <item>シャワー</item>
+        <item>十</item>
+        <item>十一月</item>
+        <item>十月</item>
+        <item>十二月</item>
+        <item>授業</item>
+        <item>宿題</item>
+        <item>上手</item>
+        <item>丈夫</item>
+        <item>醤油</item>
+        <item>食堂</item>
+        <item>知る</item>
+        <item>白</item>
+        <item>白い</item>
+        <item>新聞</item>
+        <item>水曜日</item>
+        <item>吸う</item>
+        <item>スカート</item>
+        <item>好き</item>
+        <item>直ぐ</item>
+        <item>少し</item>
+        <item>涼しい</item>
+        <item>ストーブ</item>
+        <item>スプーン</item>
+        <item>スポーツ</item>
+        <item>ズボン</item>
+        <item>済みません</item>
+        <item>住む</item>
+        <item>スリッパ</item>
+        <item>する</item>
+        <item>座る</item>
+        <item>背</item>
+        <item>生徒</item>
+        <item>セーター</item>
+        <item>石鹸</item>
+        <item>背広</item>
+        <item>狭い</item>
+        <item>ゼロ</item>
+        <item>千</item>
+        <item>先月</item>
+        <item>先週</item>
+        <item>先生</item>
+        <item>洗濯</item>
+        <item>洗濯する</item>
+        <item>全部</item>
+        <item></item>
+        <item>掃除</item>
+        <item>掃除する</item>
+        <item>そうして</item>
+        <item>そこ</item>
+        <item>そちら</item>
+        <item>外</item>
+        <item>その</item>
+        <item>その他</item>
+        <item>そば</item>
+        <item>空</item>
+        <item>それ</item>
+        <item>それから</item>
+        <item>それでは</item>
+        <item>台</item>
+        <item>台</item>
+        <item>大学</item>
+        <item>大使館</item>
+        <item>大丈夫</item>
+        <item>大好き</item>
+        <item>大切</item>
+        <item>大抵</item>
+        <item>台所</item>
+        <item>大変</item>
+        <item>高い</item>
+        <item>沢山</item>
+        <item>タクシー</item>
+        <item>丈</item>
+        <item>出す</item>
+        <item>発つ</item>
+        <item>立つ</item>
+        <item>建物</item>
+        <item>楽しい</item>
+        <item>頼む</item>
+        <item>たばこ</item>
+        <item>多分</item>
+        <item>食べ物</item>
+        <item>食べる</item>
+        <item>卵</item>
+        <item>誰</item>
+        <item>誰か</item>
+        <item>誕生日</item>
+        <item>段々</item>
+        <item>小さい</item>
+        <item>近い</item>
+        <item>違う</item>
+        <item>近く</item>
+        <item>地下鉄</item>
+        <item>地図</item>
+        <item>父</item>
+        <item>茶色</item>
+        <item>茶碗</item>
+        <item>丁度</item>
+        <item>ちょっと</item>
+        <item>一日</item>
+        <item>使う</item>
+        <item>疲れる</item>
+        <item>次</item>
+        <item>月明かり</item>
+        <item>着く</item>
+        <item>机</item>
+        <item>作る</item>
+        <item>点ける</item>
+        <item>努める</item>
+        <item>勤める</item>
+        <item>詰らない</item>
+        <item>冷たい</item>
+        <item>強い</item>
+        <item>手</item>
+        <item>テープ</item>
+        <item>テーブル</item>
+        <item>テープレコーダー</item>
+        <item>出かける</item>
+        <item>手紙</item>
+        <item>出来る</item>
+        <item>出口</item>
+        <item>テスト</item>
+        <item>では</item>
+        <item>デパート</item>
+        <item>出ます</item>
+        <item>でも</item>
+        <item>出る</item>
+        <item>テレビ</item>
+        <item>天気</item>
+        <item>電気</item>
+        <item>電気を点ける</item>
+        <item>電車</item>
+        <item>電話</item>
+        <item>と</item>
+        <item>戸</item>
+        <item>ドア</item>
+        <item>トイレ</item>
+        <item>どう</item>
+        <item>どう致しまして</item>
+        <item>どうして</item>
+        <item>どうぞ</item>
+        <item>どうぞ宜しく</item>
+        <item>動物</item>
+        <item>どうも</item>
+        <item>どうもありがとうございます</item>
+        <item>十</item>
+        <item>遠い</item>
+        <item>十日</item>
+        <item>時</item>
+        <item>時々</item>
+        <item>時計</item>
+        <item></item>
+        <item>所</item>
+        <item>図書館</item>
+        <item>どちら</item>
+        <item>とても</item>
+        <item>どなた</item>
+        <item>隣り</item>
+        <item>どの</item>
+        <item>飛ぶ</item>
+        <item>止まる</item>
+        <item>友達</item>
+        <item>土曜日</item>
+        <item>鳥</item>
+        <item>鶏肉</item>
+        <item>撮る</item>
+        <item>取る</item>
+        <item>どれ</item>
+        <item>どんな</item>
+        <item>無い</item>
+        <item>ナイフ</item>
+        <item>中</item>
+        <item>長い</item>
+        <item>鳴く</item>
+        <item>夏</item>
+        <item>夏休み</item>
+        <item>七</item>
+        <item>七つ</item>
+        <item>何</item>
+        <item>七日</item>
+        <item>名前</item>
+        <item>習う</item>
+        <item>並ぶ</item>
+        <item>並べる</item>
+        <item>成る</item>
+        <item>二</item>
+        <item>二月</item>
+        <item>賑やか</item>
+        <item>肉</item>
+        <item>西</item>
+        <item>日曜日</item>
+        <item>日本語</item>
+        <item>荷物</item>
+        <item>ニュース</item>
+        <item>庭</item>
+        <item>脱ぐ</item>
+        <item>ネクタイ</item>
+        <item>猫</item>
+        <item>寝る</item>
+        <item>ノート</item>
+        <item>登る</item>
+        <item>飲み物 / 飲物</item>
+        <item>飲む</item>
+        <item>乗る</item>
+        <item>歯</item>
+        <item>パーティー</item>
+        <item>はい</item>
+        <item>灰皿</item>
+        <item>入る</item>
+        <item>葉書</item>
+        <item>履く</item>
+        <item>箱</item>
+        <item>箸</item>
+        <item>橋</item>
+        <item>始まる</item>
+        <item>始め</item>
+        <item>初めて</item>
+        <item>初めまして</item>
+        <item>始める</item>
+        <item>走る</item>
+        <item>バス</item>
+        <item>バター</item>
+        <item>二十歳</item>
+        <item>働く</item>
+        <item>八</item>
+        <item>八月</item>
+        <item>二十日</item>
+        <item>花</item>
+        <item>鼻</item>
+        <item>話</item>
+        <item>話す</item>
+        <item>母</item>
+        <item>速い</item>
+        <item>早い</item>
+        <item>張る</item>
+        <item>春</item>
+        <item>晴れ</item>
+        <item>晴れる</item>
+        <item>半</item>
+        <item>晩</item>
+        <item>パン</item>
+        <item>ハンカチ</item>
+        <item>番号</item>
+        <item>晩ご飯</item>
+        <item>半分</item>
+        <item>日</item>
+        <item>東</item>
+        <item>弾く</item>
+        <item>引く</item>
+        <item>低い</item>
+        <item>飛行機</item>
+        <item>左</item>
+        <item>人</item>
+        <item>一つ</item>
+        <item>一月</item>
+        <item>一人</item>
+        <item>暇</item>
+        <item>百</item>
+        <item>病院</item>
+        <item>病気</item>
+        <item>平仮名</item>
+        <item>昼</item>
+        <item>昼ご飯</item>
+        <item>広い</item>
+        <item></item>
+        <item>封筒</item>
+        <item>プール</item>
+        <item>フォーク</item>
+        <item>吹く</item>
+        <item>服</item>
+        <item>二つ</item>
+        <item>豚肉</item>
+        <item>二人</item>
+        <item>二日</item>
+        <item>太い</item>
+        <item>冬</item>
+        <item>降る</item>
+        <item>古い</item>
+        <item>文章</item>
+        <item>ページ</item>
+        <item>下手</item>
+        <item>ベッド</item>
+        <item>部屋</item>
+        <item>辺</item>
+        <item>ぺん</item>
+        <item>勉強</item>
+        <item>勉強する</item>
+        <item>便利</item>
+        <item>方</item>
+        <item>帽子</item>
+        <item>ボールペン</item>
+        <item>他</item>
+        <item>ポケット</item>
+        <item>欲しい</item>
+        <item>細い</item>
+        <item>ボタン</item>
+        <item>ホテル</item>
+        <item>本</item>
+        <item>本棚</item>
+        <item>本当</item>
+        <item>毎朝</item>
+        <item>毎週</item>
+        <item>毎月</item>
+        <item>毎年</item>
+        <item>毎日</item>
+        <item>毎晩</item>
+        <item>前</item>
+        <item>曲がる</item>
+        <item>不味い</item>
+        <item>また</item>
+        <item>また</item>
+        <item>まだ</item>
+        <item>町・街</item>
+        <item>待つ</item>
+        <item>真っ直ぐ</item>
+        <item>マッチ</item>
+        <item>窓</item>
+        <item>丸い</item>
+        <item>円い</item>
+        <item>万</item>
+        <item>万年筆</item>
+        <item>磨く</item>
+        <item>右</item>
+        <item>短い</item>
+        <item>水</item>
+        <item>店</item>
+        <item>見せる</item>
+        <item>道</item>
+        <item>三日</item>
+        <item>三つ</item>
+        <item>南</item>
+        <item>耳</item>
+        <item>見る</item>
+        <item>皆</item>
+        <item>皆さん</item>
+        <item>六日</item>
+        <item>向こう</item>
+        <item>難しい</item>
+        <item>六つ</item>
+        <item>目</item>
+        <item>メートル</item>
+        <item>眼鏡</item>
+        <item>もう</item>
+        <item>木曜日</item>
+        <item>もしもし</item>
+        <item>勿論</item>
+        <item>持つ</item>
+        <item>もっと</item>
+        <item>物</item>
+        <item>門</item>
+        <item>問題</item>
+        <item>八百屋</item>
+        <item>野菜</item>
+        <item>優しい</item>
+        <item>安い</item>
+        <item>休み</item>
+        <item>休む</item>
+        <item>八つ</item>
+        <item>山</item>
+        <item>やる</item>
+        <item>夕方</item>
+        <item>郵便局</item>
+        <item>有名</item>
+        <item>雪</item>
+        <item>ゆっくり</item>
+        <item>八日</item>
+        <item>洋服</item>
+        <item>よく</item>
+        <item>横</item>
+        <item>四日</item>
+        <item>四つ</item>
+        <item>呼ぶ</item>
+        <item>読む</item>
+        <item>夜</item>
+        <item>来月</item>
+        <item>来週</item>
+        <item>来年</item>
+        <item>ラジオ</item>
+        <item>立派</item>
+        <item>留学生</item>
+        <item>両親</item>
+        <item>料理</item>
+        <item>旅行</item>
+        <item>旅行する</item>
+        <item>零</item>
+        <item>冷蔵庫</item>
+        <item>レコード</item>
+        <item>レストラン</item>
+        <item>練習</item>
+        <item>練習する</item>
+        <item>六</item>
+        <item>六月</item>
+        <item>ワイシャツ</item>
+        <item>若い</item>
+        <item>分かる</item>
+        <item>忘れる</item>
+        <item>私</item>
+        <item>渡す</item>
+        <item>渡る</item>
+        <item>悪い</item>
+        <item>~階</item>
+        <item>~回</item>
+        <item>~か月</item>
+        <item>~がる</item>
+        <item>~側</item>
+        <item>~個</item>
+        <item>~語</item>
+        <item>~歳</item>
+        <item>~冊</item>
+        <item>~さん</item>
+        <item>~時</item>
+        <item>~時間</item>
+        <item>~中</item>
+        <item>~週間</item>
+        <item>~人</item>
+        <item>~過ぎ</item>
+        <item>~ずつ</item>
+        <item>~台</item>
+        <item>~達</item>
+        <item>~中</item>
+        <item>~店</item>
+        <item>~度</item>
+        <item>~など</item>
+        <item>~人</item>
+        <item>~年</item>
+        <item>~はい</item>
+        <item>~番</item>
+        <item>~匹</item>
+        <item>~分</item>
+        <item>~本</item>
+        <item>~枚</item>
+        <item>~前</item>
+        <item>~屋</item>
     </string-array>
     <string name="title_activity_home">HomeActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>

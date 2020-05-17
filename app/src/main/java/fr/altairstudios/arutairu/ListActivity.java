@@ -313,8 +313,9 @@ public class ListActivity extends AppCompatActivity {
         View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_choosing_word, viewGroup, false);
 
         ListView listView = dialogView.findViewById(R.id.listWords);
+        final ArrayList<String> wordsFr = new ArrayList<>(Arrays.asList(getResources().getStringArray(lessonsStorage.getSrcRes(chapter+1))));
         final ArrayList<String> words = new ArrayList<>(Arrays.asList(getResources().getStringArray(lessonsStorage.getJpRes(chapter+1))));
-        final WordsAdapter wordsAdapter = new WordsAdapter(this, words, chapter, lessonsCompleted);
+        final WordsAdapter wordsAdapter = new WordsAdapter(this, words, wordsFr, chapter, lessonsCompleted);
         listView.setAdapter(wordsAdapter);
         //Now we need an AlertDialog.Builder object
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

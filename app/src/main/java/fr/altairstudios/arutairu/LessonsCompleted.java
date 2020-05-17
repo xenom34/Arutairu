@@ -23,7 +23,7 @@ class LessonsCompleted implements Serializable {
 
     LessonsCompleted() {
         completed = new Vector<>();
-        for (int i = 0; i < LessonsStorage.TOTAL+1; i++) {
+        for (int i = 0; i < 50; i++) {
             completed.add(new Vector<Integer>());
         }
     }

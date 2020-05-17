@@ -7,8 +7,8 @@ android {
         applicationId "fr.altairstudios.arutairu"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 10
-        versionName "preRelease3"
+        versionCode 12
+        versionName "preRelease4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

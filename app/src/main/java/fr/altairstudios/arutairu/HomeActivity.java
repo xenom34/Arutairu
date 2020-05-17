@@ -36,6 +36,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import org.w3c.dom.Text;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -51,6 +53,7 @@ public class HomeActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private DrawerLayout drawerLayout;
     private LessonsStorage lessonsStorage = new LessonsStorage();
+    private int maxWords;
     private boolean firstExec;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
     public static final String FIRST_EXEC = "first";
@@ -160,7 +163,7 @@ public class HomeActivity extends AppCompatActivity {
         mPractice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showChoosingWord(state-1);
+                selector();
             }
         });
         float progress = (float)(lessonsCompleted.howManyCompleted(state))/(float)(getResources().getStringArray(lessonsStorage.getJpRes(state)).length)*100;
@@ -182,6 +185,8 @@ public class HomeActivity extends AppCompatActivity {
         });
         if(progress == 100)
             mProgress.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
+        else
+            mProgress.setProgressTintList(ColorStateList.valueOf(Color.RED));
     }
 
     private void initMenu(int id){
@@ -310,6 +315,14 @@ public class HomeActivity extends AppCompatActivity {
                 topImage.setImageResource(R.drawable.abstracts);
                 state = LessonsStorage.ABSTRACT;
                 break;
+            case R.id.nav_n5:
+                topImage.setImageResource(R.drawable.tokyo);
+                state = LessonsStorage.N5;
+                break;
+            case R.id.nav_n5_kj:
+                topImage.setImageResource(R.drawable.tokyo);
+                state = LessonsStorage.N5_KANJI;
+                break;
         }
 
         sharedPreferences.edit().putInt("STATE", state).apply();
@@ -362,7 +375,8 @@ public class HomeActivity extends AppCompatActivity {
 
         ListView listView = dialogView.findViewById(R.id.listWords);
         final ArrayList<String> words = new ArrayList<>(Arrays.asList(getResources().getStringArray(lessonsStorage.getJpRes(chapter+1))));
-        final WordsAdapter wordsAdapter = new WordsAdapter(this, words, chapter, lessonsCompleted);
+        final ArrayList<String> wordsFr = new ArrayList<>(Arrays.asList(getResources().getStringArray(lessonsStorage.getSrcRes(chapter+1))));
+        final WordsAdapter wordsAdapter = new WordsAdapter(this, words,wordsFr, chapter, lessonsCompleted);
         listView.setAdapter(wordsAdapter);
         //Now we need an AlertDialog.Builder object
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -406,6 +420,74 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         //finally creating the alert dialog and displaying it
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    private void selector() {
+        //before inflating the custom alert dialog layout, we will get the current activity viewgroup
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+
+        //then we will inflate the custom alert dialog xml that we created
+        final View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_selector, viewGroup, false);
+        final String[] tempJP = getResources().getStringArray(lessonsStorage.getJpRes(state));
+        final String[] tempRomaji = getResources().getStringArray(lessonsStorage.getRmRes(state));
+        final String[] tempFr = getResources().getStringArray(lessonsStorage.getSrcRes(state));
+        final TextView min = dialogView.findViewById(R.id.min);
+        final TextView max = dialogView.findViewById(R.id.max);
+        min.setText(1+"");
+        max.setText(tempJP.length+"");
+
+        //Now we need an AlertDialog.Builder object
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView);
+        builder.setNeutralButton("Sélecteur", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                showChoosingWord(state-1);
+            }
+        });
+
+        builder.setPositiveButton("C'est parti !", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (!(Integer.parseInt(min.getText() + "") < 1 || Integer.parseInt(max.getText() + "") > tempJP.length)) {
+                    SelectedItemList selector = new SelectedItemList();
+
+                    Random random = new Random();
+                    int randomNumber;
+                    Vector<Integer> indexes = new Vector<>();
+
+                    for (int i = Integer.parseInt(min.getText() + "") - 1; i != Integer.parseInt(max.getText() + ""); i++) {
+                        indexes.add(i);
+                    }
+
+                    int size = indexes.size();
+
+                    for (int i = 0; i != size; i++) {
+                        randomNumber = indexes.elementAt(random.nextInt(indexes.size()));
+                        selector.addJp(tempJP[randomNumber]);
+                        selector.addRomaji(tempRomaji[randomNumber]);
+                        selector.addFrench(tempFr[randomNumber]);
+                        selector.addCorrespondingIndex(randomNumber);
+                        indexes.removeElement(randomNumber);
+                    }
+
+                    selector.setCorrespondingLesson(state);
+
+                    Intent intent = new Intent(getApplicationContext(), Revision.class);
+                    intent.putExtra("LESSON", selector);
+                    intent.putExtra("COMPLETED", lessonsCompleted);
+                    intent.putExtra("RETRIEVE", true);
+                    waitingForData = true;
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
+
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
@@ -629,6 +711,16 @@ public class HomeActivity extends AppCompatActivity {
                 navigationView.setCheckedItem(R.id.nav_abstract);
                 initMenu(R.id.nav_abstract);
                 refresh(state, "Abstrait");
+                break;
+            case LessonsStorage.N5:
+                navigationView.setCheckedItem(R.id.nav_n5);
+                initMenu(R.id.nav_n5);
+                refresh(state, "JLPT N5 (KANA)");
+                break;
+            case LessonsStorage.N5_KANJI:
+                navigationView.setCheckedItem(R.id.nav_n5_kj);
+                initMenu(R.id.nav_n5_kj);
+                refresh(state, "JLPT N5 (KANJI)");
                 break;
         }
     }

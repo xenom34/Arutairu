@@ -35,7 +35,9 @@ class LessonsStorage {
     static final int COLORS = 29;
     static final int OTHERS = 30;
     static final int ABSTRACT = 31;
-    static final int TOTAL = 31;
+    static final int N5 = 32;
+    static final int N5_KANJI = 33;
+    static final int TOTAL = 33;
     
 
     LessonsStorage() {
@@ -70,6 +72,9 @@ class LessonsStorage {
         storage.put(COLORS, new Lesson(R.array.colorsJP, R.array.colorsRM, R.array.colorsFR));
         storage.put(OTHERS, new Lesson(R.array.othersJP, R.array.othersRM, R.array.othersFR));
         storage.put(ABSTRACT, new Lesson(R.array.abstractJP, R.array.asbstractRM, R.array.asbstractFR));
+        storage.put(N5, new Lesson(R.array.JLPT_JP, R.array.JLPT_RM, R.array.JLPT_FR));
+        storage.put(N5_KANJI, new Lesson(R.array.JLPT_KJ, R.array.JLPT_RM, R.array.JLPT_FR));
+
     }
     int getJpRes(int i){
         return storage.get(i).getJpn();
