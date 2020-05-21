@@ -131,11 +131,11 @@
         <item
             android:id="@+id/nav_n5"
             android:icon="@drawable/ic_n5"
-            android:title="JLPT N5 (KANA)" />
+            android:title="JLPT Débutant (KANA)" />
         <item
             android:id="@+id/nav_n5_kj"
             android:icon="@drawable/ic_n5"
-            android:title="JLPT N5 (KANJI)" />
+            android:title="JLPT Débutant (KANJI)" />
 
     </group>
 </menu>

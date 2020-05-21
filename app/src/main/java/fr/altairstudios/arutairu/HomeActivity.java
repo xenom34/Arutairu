@@ -12,32 +12,21 @@ import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Menu;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.core.view.GravityCompat;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import org.w3c.dom.Text;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -54,9 +43,10 @@ public class HomeActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private LessonsStorage lessonsStorage = new LessonsStorage();
     private int maxWords;
-    private boolean firstExec;
+    private boolean firstExec, revisionDialog;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
     public static final String FIRST_EXEC = "first";
+    public static final String FIRST_REVISION = "revision";
     static boolean waitingForData = false;
     SharedPreferences sharedPreferences;
     LessonsCompleted lessonsCompleted;
@@ -178,6 +168,8 @@ public class HomeActivity extends AppCompatActivity {
                 intent.putExtra("COMPLETED", lessonsCompleted);
                 intent.putExtra("RETRIEVE", false);
                 intent.putExtra("REVISION", true);
+                intent.putExtra("FIRST", revisionDialog);
+                sharedPreferences.edit().putBoolean(FIRST_REVISION, false).apply();
                 waitingForData = false;
                 startActivity(intent);
                 finish();
@@ -393,11 +385,18 @@ public class HomeActivity extends AppCompatActivity {
                     String[] tempJP = getResources().getStringArray(lessonsStorage.getJpRes(chapter + 1));
                     String[] tempRomaji = getResources().getStringArray(lessonsStorage.getRmRes(chapter + 1));
                     String[] tempFr = getResources().getStringArray(lessonsStorage.getSrcRes(chapter + 1));
-                    for (int j : selectedItemList.getSelected()) {
-                        selectedItemList.addJp(tempJP[j]);
-                        selectedItemList.addRomaji(tempRomaji[j]);
-                        selectedItemList.addFrench(tempFr[j]);
-                        selectedItemList.addCorrespondingIndex(j);
+                    Random random = new Random();
+                    int randomNumber;
+                    Vector<Integer> indexes = new Vector<>(selectedItemList.getSelected());
+                    int size = indexes.size();
+
+                    for (int k = 0; k != size; k++) {
+                        randomNumber = indexes.elementAt(random.nextInt(indexes.size()));
+                        selectedItemList.addJp(tempJP[randomNumber]);
+                        selectedItemList.addRomaji(tempRomaji[randomNumber]);
+                        selectedItemList.addFrench(tempFr[randomNumber]);
+                        selectedItemList.addCorrespondingIndex(randomNumber);
+                        indexes.removeElement(randomNumber);
                     }
                     selectedItemList.setCorrespondingLesson(chapter);
 
@@ -405,6 +404,8 @@ public class HomeActivity extends AppCompatActivity {
                     intent.putExtra("LESSON", selectedItemList);
                     intent.putExtra("COMPLETED", lessonsCompleted);
                     intent.putExtra("RETRIEVE", true);
+                    intent.putExtra("FIRST", revisionDialog);
+                    sharedPreferences.edit().putBoolean(FIRST_REVISION, false).apply();
                     waitingForData = true;
                     startActivity(intent);
                     finish();
@@ -481,6 +482,8 @@ public class HomeActivity extends AppCompatActivity {
                     intent.putExtra("LESSON", selector);
                     intent.putExtra("COMPLETED", lessonsCompleted);
                     intent.putExtra("RETRIEVE", true);
+                    intent.putExtra("FIRST", revisionDialog);
+                    sharedPreferences.edit().putBoolean(FIRST_REVISION, false).apply();
                     waitingForData = true;
                     startActivity(intent);
                     finish();
@@ -546,7 +549,10 @@ public class HomeActivity extends AppCompatActivity {
 
         if(firstExec){
             showDialog();
+            revisionDialog = true;
+            sharedPreferences.edit().putBoolean(FIRST_REVISION, true).apply();
         }
+        revisionDialog = sharedPreferences.getBoolean(FIRST_REVISION, true);
         state = sharedPreferences.getInt("STATE", 6);
 
         checkingFirstMenuItem(state);

@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -20,6 +21,7 @@ import java.util.Locale;
 public class Revision extends AppCompatActivity {
     private com.google.android.material.floatingactionbutton.FloatingActionButton mSound;
     TextToSpeech t1;
+    private Boolean mFirst;
     private int state = 0;
     private int max, lesson;
     private AdView mAdView;
@@ -34,6 +36,8 @@ public class Revision extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_revision);
+
+        mFirst  = getIntent().getBooleanExtra("FIRST", false);
 
         mAdView = findViewById(R.id.adViewRevision);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -66,29 +70,25 @@ public class Revision extends AppCompatActivity {
         mNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                state++;
-                if (state != max){
-                    refresh();
-                }else{
-                    if(getIntent().getBooleanExtra("REVISION", false)){
-                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }else{
-                        Intent intent = new Intent(getApplicationContext(), Exercise.class);
-                        intent.putExtra("MAX", max);
-                        if(getIntent().getBooleanExtra("RETRIEVE", false)){
-                            intent.putExtra("RETRIEVE", true);
-                            intent.putExtra("LESSON", selectedItemList);
-                        }else{
-                            intent.putExtra("LESSON", lesson);
-                            intent.putExtra("RETRIEVE", false);
-                        }
-                        intent.putExtra("COMPLETED", lessonsCompleted);
-                        startActivity(intent);
-                        finish();
-                    }
-                }
+                up();
+            }
+        });
+
+        mNext.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                state = max-3;
+                up();
+                return false;
+            }
+        });
+
+        mBack.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                state = -1;
+                up();
+                return true;
             }
         });
 
@@ -122,6 +122,76 @@ public class Revision extends AppCompatActivity {
 
         refresh();
 
+    }
+
+    private void up() {
+        state++;
+        if (state != max){
+            refresh();
+        }else{
+            if(getIntent().getBooleanExtra("REVISION", false)){
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+                finish();
+            }else{
+                Intent intent = new Intent(getApplicationContext(), Exercise.class);
+                intent.putExtra("MAX", max);
+                if(getIntent().getBooleanExtra("RETRIEVE", false)){
+                    intent.putExtra("RETRIEVE", true);
+                    intent.putExtra("LESSON", selectedItemList);
+                }else{
+                    intent.putExtra("LESSON", lesson);
+                    intent.putExtra("RETRIEVE", false);
+                }
+                intent.putExtra("COMPLETED", lessonsCompleted);
+                startActivity(intent);
+                finish();
+            }
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if(mFirst){
+            showTuto();
+
+        }
+    }
+
+    private void showTuto() {
+
+        //before inflating the custom alert dialog layout, we will get the current activity viewgroup
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+
+        //then we will inflate the custom alert dialog xml that we created
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_revision, viewGroup, false);
+
+        //Now we need an AlertDialog.Builder object
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView);
+
+
+        builder.setPositiveButton("Compris !", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                //mSpam = 0;
+            }
+        });
+
+        //finally creating the alert dialog and displaying it
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
     private void showDialog(){
