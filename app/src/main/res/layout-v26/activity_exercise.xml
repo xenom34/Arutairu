@@ -13,8 +13,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-9369103706924521/6558507368"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:adUnitId="ca-app-pub-9369103706924521/6558507368"        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -62,7 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Submit"
+        android:text="@string/submit"
         android:textColor="@color/white"
         android:backgroundTint="@color/grey"
         app:layout_constraintEnd_toEndOf="parent"

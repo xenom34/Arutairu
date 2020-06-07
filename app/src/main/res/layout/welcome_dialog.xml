@@ -27,7 +27,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="16dp"
-                    android:text="Bienvenue dans Arutairu !"
+                    android:text="@string/bienvenue_dans_arutairu"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 

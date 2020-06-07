@@ -6,9 +6,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,8 +20,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.textview.MaterialTextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -34,6 +39,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Random;
 import java.util.Vector;
 
@@ -51,23 +57,38 @@ public class HomeActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     LessonsCompleted lessonsCompleted;
     private int state;
+    private Switch mSwitch;
     private ImageView topImage;
-    private TextView mTitle, mTextProgress, mNbLearn;
+    private TextView mTitle, mTextProgress, mNbLearn, mKanji, mKana;
     private ProgressBar mProgress;
     private Button mPractice, mTest, mRevision;
     private NavigationView navigationView;
+    private MaterialTextView mUnavailableKanji;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
+
+        conf.setLocale(new Locale(sharedPreferences.getString("LOCALE", Locale.getDefault().getLanguage())));
+
+        res.updateConfiguration(conf, dm);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setBackgroundColor(getResources().getColor(R.color.darkGrey));
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
+        mKanji = findViewById(R.id.txtKanji);
+        mKana = findViewById(R.id.txtKana);
+        mSwitch = findViewById(R.id.switch1);
         topImage = findViewById(R.id.imageView2);
         mTitle = findViewById(R.id.textView2);
+        mUnavailableKanji = findViewById(R.id.choiceUnavailable);
         mTextProgress = findViewById(R.id.textProgress);
         mProgress = findViewById(R.id.progressBar);
         mPractice = findViewById(R.id.practice);
@@ -90,7 +111,7 @@ public class HomeActivity extends AppCompatActivity {
 
                 initMenu(item.getItemId());
 
-                refresh(item.getItemId(), item.getTitle());
+                refresh(state, item.getTitle());
                 return true;
             }
         });
@@ -100,7 +121,7 @@ public class HomeActivity extends AppCompatActivity {
 
         final ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
-        actionBar.setTitle("Leçons");
+        actionBar.setTitle(R.string.le_ons);
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
 
@@ -116,21 +137,50 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SelectedItemList selectedItemList = new SelectedItemList();
-                String[] tempJP = getResources().getStringArray(lessonsStorage.getJpRes(state));
-                String[] tempRomaji = getResources().getStringArray(lessonsStorage.getRmRes(state));
-                String[] tempFr = getResources().getStringArray(lessonsStorage.getSrcRes(state));
+                String[] tempJP;
+                String[] tempRomaji;
+                if (mSwitch.isChecked()){
+                    tempJP = getResources().getStringArray(lessonsStorage.getKjRes(state));
+                }else{
+                    tempJP = getResources().getStringArray(lessonsStorage.getJpRes(state));
+                }
+                boolean romaji;
+                if(lessonsStorage.haveRomaji(state)){
+                    tempRomaji = getResources().getStringArray(lessonsStorage.getRmRes(state));
+                    romaji = true;
+                }else{
+                    tempRomaji = null;
+                    romaji = false;
+                }
+                String[] tempFr;
+                if(sharedPreferences.getString("LOCALE", "en").equals("fr")){
+                    tempFr = getResources().getStringArray(lessonsStorage.getSrcRes(state));
+                }else{
+                    tempFr = getResources().getStringArray(lessonsStorage.getEnRes(state));
+                }
                 Random random = new Random();
                 int randomNumber;
                 Vector<Integer> indexes = new Vector<>();
 
                 for (int i = 0; i != tempJP.length; i++){
-                    indexes.add(i);
+                        indexes.add(i);
                 }
 
-                for (int i = 0; i != tempJP.length; i++){
-                    randomNumber = indexes.elementAt(random.nextInt(indexes.size()));
+                int limit = 20;
+
+                if (tempJP.length < 20)
+                    limit = tempJP.length;
+
+                if (tempJP.length-lessonsCompleted.howManyCompleted(state) <20){
+                    limit = tempJP.length-lessonsCompleted.howManyCompleted(state);
+                }
+
+                for (int i = 0; i != limit; i++){
+                    do{
+                        randomNumber = indexes.elementAt(random.nextInt(indexes.size()));
+                    }while (lessonsCompleted.isCompleted(state, randomNumber));
                     selectedItemList.addJp(tempJP[randomNumber]);
-                    selectedItemList.addRomaji(tempRomaji[randomNumber]);
+                    assert tempRomaji != null;
                     selectedItemList.addFrench(tempFr[randomNumber]);
                     selectedItemList.addCorrespondingIndex(randomNumber);
                     indexes.removeElement(randomNumber);
@@ -141,10 +191,11 @@ public class HomeActivity extends AppCompatActivity {
                 intent.putExtra("LESSON", selectedItemList);
                 intent.putExtra("COMPLETED", lessonsCompleted);
                 intent.putExtra("RETRIEVE", true);
+                intent.putExtra("ROMAJI", romaji);
                 intent.putExtra("SAVE", true);
                 intent.putExtra("CHAPTER", state);
                 intent.putExtra("REVISION", false);
-                intent.putExtra("MAX", tempJP.length);
+                intent.putExtra("MAX", limit);
                 waitingForData = true;
                 startActivity(intent);
                 finish();
@@ -168,17 +219,28 @@ public class HomeActivity extends AppCompatActivity {
                 intent.putExtra("COMPLETED", lessonsCompleted);
                 intent.putExtra("RETRIEVE", false);
                 intent.putExtra("REVISION", true);
+                if(!lessonsStorage.haveRomaji(state)){
+                    intent.putExtra("ROMAJI", false);
+                }else{
+                    intent.putExtra("ROMAJI", true);
+                }
+                intent.putExtra("LOCALE", sharedPreferences.getString("LOCALE", "en"));
                 intent.putExtra("FIRST", revisionDialog);
+                intent.putExtra("KANJI", mSwitch.isChecked());
                 sharedPreferences.edit().putBoolean(FIRST_REVISION, false).apply();
                 waitingForData = false;
                 startActivity(intent);
                 finish();
             }
         });
-        if(progress == 100)
+        if(progress == 100){
             mProgress.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
-        else
+            mTest.setClickable(false);
+        }
+        else{
             mProgress.setProgressTintList(ColorStateList.valueOf(Color.RED));
+            mTest.setClickable(true);
+        }
     }
 
     private void initMenu(int id){
@@ -239,10 +301,6 @@ public class HomeActivity extends AppCompatActivity {
                 topImage.setImageResource(R.drawable.drinks);
                 state = LessonsStorage.DRINK;
                 break;
-            case R.id.nav_seasoning:
-                topImage.setImageResource(R.drawable.seasoning);
-                state = LessonsStorage.SEASONING;
-                break;
             case R.id.nav_weeks:
                 topImage.setImageResource(R.drawable.week);
                 state = LessonsStorage.DAYS;
@@ -299,28 +357,81 @@ public class HomeActivity extends AppCompatActivity {
                 topImage.setImageResource(R.drawable.colors);
                 state = LessonsStorage.COLORS;
                 break;
-            case R.id.nav_other:
-                topImage.setImageResource(R.drawable.others);
-                state = LessonsStorage.OTHERS;
+            case R.id.nav_subject:
+                topImage.setImageResource(R.drawable.subject);
+                state = LessonsStorage.SUBJECT;
                 break;
-            case R.id.nav_abstract:
-                topImage.setImageResource(R.drawable.abstracts);
-                state = LessonsStorage.ABSTRACT;
+            case R.id.nav_time:
+                topImage.setImageResource(R.drawable.time);
+                state = LessonsStorage.TIME;
                 break;
             case R.id.nav_n5:
-                topImage.setImageResource(R.drawable.tokyo);
+                topImage.setImageResource(R.drawable.n5);
                 state = LessonsStorage.N5;
                 break;
-            case R.id.nav_n5_kj:
-                topImage.setImageResource(R.drawable.tokyo);
-                state = LessonsStorage.N5_KANJI;
+            case R.id.nav_n4:
+                topImage.setImageResource(R.drawable.n4);
+                state = LessonsStorage.N4;
+                break;
+            case R.id.nav_n3:
+                topImage.setImageResource(R.drawable.n3);
+                state = LessonsStorage.N3;
+                break;
+            case R.id.nav_n2:
+                topImage.setImageResource(R.drawable.n2);
+                state = LessonsStorage.N2;
+                break;
+            case R.id.nav_n1:
+                topImage.setImageResource(R.drawable.n1);
+                state = LessonsStorage.N1;
+                break;
+            case R.id.nav_k11:
+                topImage.setImageResource(R.drawable.n1);
+                state = LessonsStorage.K1;
+                break;
+            case R.id.nav_k2:
+                topImage.setImageResource(R.drawable.n2);
+                state = LessonsStorage.K2;
+                break;
+            case R.id.nav_k3:
+                topImage.setImageResource(R.drawable.n3);
+                state = LessonsStorage.K3;
+                break;
+            case R.id.nav_k4:
+                topImage.setImageResource(R.drawable.n4);
+                state = LessonsStorage.K4;
+                break;
+            case R.id.nav_k5:
+                topImage.setImageResource(R.drawable.n5);
+                state = LessonsStorage.K5;
+                break;
+            case R.id.nav_radicals:
+                topImage.setImageResource(R.drawable.two);
+                state = LessonsStorage.RADICALS;
                 break;
         }
+
+        setSwitch(state);
 
         sharedPreferences.edit().putInt("STATE", state).apply();
     }
 
-
+    private void setSwitch(int state) {
+        if(lessonsStorage.haveKanji(state)){
+            mSwitch.setVisibility(View.VISIBLE);
+            mSwitch.setClickable(true);
+            mUnavailableKanji.setVisibility(View.INVISIBLE);
+            mKana.setVisibility(View.VISIBLE);
+            mKanji.setVisibility(View.VISIBLE);
+        }else {
+            mSwitch.setChecked(false);
+            mSwitch.setVisibility(View.INVISIBLE);
+            mSwitch.setClickable(false);
+            mUnavailableKanji.setVisibility(View.VISIBLE);
+            mKana.setVisibility(View.INVISIBLE);
+            mKanji.setVisibility(View.INVISIBLE);
+        }
+    }
 
 
     private void keyboardDialog() {
@@ -337,12 +448,12 @@ public class HomeActivity extends AppCompatActivity {
         builder.setView(dialogView);
 
 
-        builder.setPositiveButton("Configurer !", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.configure, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                 finish();
-                startActivityForResult(new Intent(Settings.ACTION_INPUT_METHOD_SUBTYPE_SETTINGS), 0);
+                startActivityForResult(new Intent(Settings.ACTION_SETTINGS), 0);
             }
         });
 
@@ -366,8 +477,18 @@ public class HomeActivity extends AppCompatActivity {
         View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_choosing_word, viewGroup, false);
 
         ListView listView = dialogView.findViewById(R.id.listWords);
-        final ArrayList<String> words = new ArrayList<>(Arrays.asList(getResources().getStringArray(lessonsStorage.getJpRes(chapter+1))));
-        final ArrayList<String> wordsFr = new ArrayList<>(Arrays.asList(getResources().getStringArray(lessonsStorage.getSrcRes(chapter+1))));
+        ArrayList<String> words;
+        if (mSwitch.isChecked()){
+            words = new ArrayList<>(Arrays.asList(getResources().getStringArray(lessonsStorage.getKjRes(chapter+1))));
+        }else{
+            words = new ArrayList<>(Arrays.asList(getResources().getStringArray(lessonsStorage.getJpRes(chapter+1))));
+        }
+        ArrayList<String> wordsFr;
+        if(sharedPreferences.getString("LOCALE", "en").equals("fr")){
+            wordsFr = new ArrayList<>(Arrays.asList(getResources().getStringArray(lessonsStorage.getSrcRes(chapter+1))));
+        }else {
+            wordsFr = new ArrayList<>(Arrays.asList(getResources().getStringArray(lessonsStorage.getEnRes(chapter+1))));
+        }
         final WordsAdapter wordsAdapter = new WordsAdapter(this, words,wordsFr, chapter, lessonsCompleted);
         listView.setAdapter(wordsAdapter);
         //Now we need an AlertDialog.Builder object
@@ -377,14 +498,35 @@ public class HomeActivity extends AppCompatActivity {
         builder.setView(dialogView);
 
 
-        builder.setPositiveButton("Lancez-vous !", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.go, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if(!wordsAdapter.selectedItemList.getSelected().isEmpty()) {
                     SelectedItemList selectedItemList = wordsAdapter.selectedItemList;
-                    String[] tempJP = getResources().getStringArray(lessonsStorage.getJpRes(chapter + 1));
-                    String[] tempRomaji = getResources().getStringArray(lessonsStorage.getRmRes(chapter + 1));
-                    String[] tempFr = getResources().getStringArray(lessonsStorage.getSrcRes(chapter + 1));
+                    String[] tempJP;
+                    if (mSwitch.isChecked()){
+                        tempJP = getResources().getStringArray(lessonsStorage.getKjRes(chapter + 1));
+                    }else{
+                        tempJP = getResources().getStringArray(lessonsStorage.getJpRes(chapter + 1));
+                    }
+                    boolean romaji;
+                    String[] tempRomaji;
+                    if (lessonsStorage.haveRomaji(chapter + 1)){
+                        tempRomaji = getResources().getStringArray(lessonsStorage.getRmRes(chapter + 1));
+                        romaji = true;
+                    }else{
+                        tempRomaji = new String[tempJP.length+3];
+                        for (int e = 0; e!= tempJP.length +2; e++){
+                            tempRomaji[e] = "Romaji not available";
+                        }
+                        romaji = false;
+                    }
+                    String[] tempFr;
+                    if(sharedPreferences.getString("LOCALE", "en").equals("fr")){
+                        tempFr = getResources().getStringArray(lessonsStorage.getSrcRes(chapter + 1));
+                    }else{
+                        tempFr = getResources().getStringArray(lessonsStorage.getEnRes(chapter + 1));
+                    }
                     Random random = new Random();
                     int randomNumber;
                     Vector<Integer> indexes = new Vector<>(selectedItemList.getSelected());
@@ -405,6 +547,7 @@ public class HomeActivity extends AppCompatActivity {
                     intent.putExtra("COMPLETED", lessonsCompleted);
                     intent.putExtra("RETRIEVE", true);
                     intent.putExtra("FIRST", revisionDialog);
+                    intent.putExtra("ROMAJI", romaji);
                     sharedPreferences.edit().putBoolean(FIRST_REVISION, false).apply();
                     waitingForData = true;
                     startActivity(intent);
@@ -431,9 +574,26 @@ public class HomeActivity extends AppCompatActivity {
 
         //then we will inflate the custom alert dialog xml that we created
         final View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_selector, viewGroup, false);
-        final String[] tempJP = getResources().getStringArray(lessonsStorage.getJpRes(state));
-        final String[] tempRomaji = getResources().getStringArray(lessonsStorage.getRmRes(state));
-        final String[] tempFr = getResources().getStringArray(lessonsStorage.getSrcRes(state));
+        final String[] tempJP;
+        if (mSwitch.isChecked()){
+            tempJP = getResources().getStringArray(lessonsStorage.getKjRes(state));
+        }else{
+            tempJP = getResources().getStringArray(lessonsStorage.getJpRes(state));
+        }
+        final String[] tempRomaji;
+        boolean romaji;
+        if (lessonsStorage.haveRomaji(state)){
+            tempRomaji = getResources().getStringArray(lessonsStorage.getRmRes(state));
+            romaji = true;
+        }else{
+            tempRomaji = null;
+        }
+        final String[] tempFr;
+        if (sharedPreferences.getString("LOCALE", "en").equals("fr")){
+            tempFr = getResources().getStringArray(lessonsStorage.getSrcRes(state));
+        }else{
+            tempFr = getResources().getStringArray(lessonsStorage.getEnRes(state));
+        }
         final TextView min = dialogView.findViewById(R.id.min);
         final TextView max = dialogView.findViewById(R.id.max);
         min.setText(1+"");
@@ -444,17 +604,17 @@ public class HomeActivity extends AppCompatActivity {
 
         //setting the view of the builder to our custom view that we already inflated
         builder.setView(dialogView);
-        builder.setNeutralButton("Sélecteur", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton(R.string.selector, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 showChoosingWord(state-1);
             }
         });
 
-        builder.setPositiveButton("C'est parti !", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.ctipar, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if (!(Integer.parseInt(min.getText() + "") < 1 || Integer.parseInt(max.getText() + "") > tempJP.length)) {
+                if (!(Integer.parseInt(min.getText() + "") < 1 || Integer.parseInt(max.getText() + "") > tempJP.length || Integer.parseInt(min.getText() + "") > Integer.parseInt(max.getText() + ""))) {
                     SelectedItemList selector = new SelectedItemList();
 
                     Random random = new Random();
@@ -470,7 +630,9 @@ public class HomeActivity extends AppCompatActivity {
                     for (int i = 0; i != size; i++) {
                         randomNumber = indexes.elementAt(random.nextInt(indexes.size()));
                         selector.addJp(tempJP[randomNumber]);
-                        selector.addRomaji(tempRomaji[randomNumber]);
+                        if (lessonsStorage.haveRomaji(state)){
+                            selector.addRomaji(tempRomaji[randomNumber]);
+                        }
                         selector.addFrench(tempFr[randomNumber]);
                         selector.addCorrespondingIndex(randomNumber);
                         indexes.removeElement(randomNumber);
@@ -482,6 +644,11 @@ public class HomeActivity extends AppCompatActivity {
                     intent.putExtra("LESSON", selector);
                     intent.putExtra("COMPLETED", lessonsCompleted);
                     intent.putExtra("RETRIEVE", true);
+                    if (lessonsStorage.haveRomaji(state)){
+                        intent.putExtra("ROMAJI", true);
+                    }else{
+                        intent.putExtra("ROMAJI", false);
+                    }
                     intent.putExtra("FIRST", revisionDialog);
                     sharedPreferences.edit().putBoolean(FIRST_REVISION, false).apply();
                     waitingForData = true;
@@ -509,7 +676,7 @@ public class HomeActivity extends AppCompatActivity {
         builder.setView(dialogView);
 
 
-        builder.setPositiveButton("Lancez-vous !", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.go, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
@@ -554,9 +721,10 @@ public class HomeActivity extends AppCompatActivity {
         }
         revisionDialog = sharedPreferences.getBoolean(FIRST_REVISION, true);
         state = sharedPreferences.getInt("STATE", 6);
+        setSwitch(state);
 
         checkingFirstMenuItem(state);
-        String s = "Nombres de mots appris : " + lessonsCompleted.totalCompleted();
+        String s = getResources().getString(R.string.nombres_de_mots_appris) + lessonsCompleted.totalCompleted();
         mNbLearn.setText(s);
 
     }
@@ -566,173 +734,213 @@ public class HomeActivity extends AppCompatActivity {
             case LessonsStorage.HIRAGANA:
                 navigationView.setCheckedItem(R.id.nav_hiragana);
                 initMenu(R.id.nav_hiragana);
-                refresh(state, "Hiragana");
+                refresh(state, getResources().getString(R.string.hiragana));
                 break;
             case LessonsStorage.DAKUTEN:
                 navigationView.setCheckedItem(R.id.nav_hiragana_d);
                 initMenu(R.id.nav_hiragana_d);
-                refresh(state, "Dakuten Hiragana");
+                refresh(state, getResources().getString(R.string.dakuten_hiragana));
                 break;
             case LessonsStorage.KATAKANA:
                 navigationView.setCheckedItem(R.id.nav_katakana);
                 initMenu(R.id.nav_katakana);
-                refresh(state, "Katakana");
+                refresh(state, getResources().getString(R.string.katakana));
                 break;
             case LessonsStorage.DAKUTENKATA:
                 navigationView.setCheckedItem(R.id.nav_katakana_d);
                 initMenu(R.id.nav_katakana_d);
-                refresh(state, "Dakuten Katakana");
+                refresh(state, getResources().getString(R.string.dakuten_katakana));
                 break;
             case LessonsStorage.NUMBERS:
                 navigationView.setCheckedItem(R.id.nav_numbers);
                 initMenu(R.id.nav_numbers);
-                refresh(state, "Les nombres");
+                refresh(state, getResources().getString(R.string.les_nombres));
                 break;
             case LessonsStorage.PEOPLE:
                 navigationView.setCheckedItem(R.id.nav_people);
                 initMenu(R.id.nav_people);
-                refresh(state, "Les gens");
+                refresh(state, getResources().getString(R.string.les_gens));
                 break;
             case LessonsStorage.JOBS:
                 navigationView.setCheckedItem(R.id.nav_jobs);
                 initMenu(R.id.nav_people);
-                refresh(state, "Les métiers");
+                refresh(state, getResources().getString(R.string.les_m_tiers));
                 break;
             case LessonsStorage.BODY:
                 navigationView.setCheckedItem(R.id.nav_body);
                 initMenu(R.id.nav_body);
-                refresh(state, "Le corps");
+                refresh(state, getResources().getString(R.string.le_corps));
                 break;
             case LessonsStorage.FAMILY:
                 navigationView.setCheckedItem(R.id.nav_family);
                 initMenu(R.id.nav_family);
-                refresh(state, "La famille");
+                refresh(state, getResources().getString(R.string.la_famille));
                 break;
             case LessonsStorage.ANIMALS:
                 navigationView.setCheckedItem(R.id.nav_animals);
                 initMenu(R.id.nav_animals);
-                refresh(state, "Les animaux");
+                refresh(state, getResources().getString(R.string.les_animaux));
                 break;
             case LessonsStorage.PLANTS:
                 navigationView.setCheckedItem(R.id.nav_plants);
                 initMenu(R.id.nav_plants);
-                refresh(state, "Les plantes");
+                refresh(state, getResources().getString(R.string.les_plantes));
                 break;
             case LessonsStorage.CROPS:
                 navigationView.setCheckedItem(R.id.nav_crop);
                 initMenu(R.id.nav_crop);
-                refresh(state, "L'agriculture");
+                refresh(state, getResources().getString(R.string.l_agricuclture));
                 break;
             case LessonsStorage.FOOD:
                 navigationView.setCheckedItem(R.id.nav_food);
                 initMenu(R.id.nav_food);
-                refresh(state, "La nourriture");
+                refresh(state, getResources().getString(R.string.la_nourriture));
                 break;
             case LessonsStorage.DRINK:
                 navigationView.setCheckedItem(R.id.nav_drinks);
                 initMenu(R.id.nav_drinks);
-                refresh(state, "Les boissons");
-                break;
-            case LessonsStorage.SEASONING:
-                navigationView.setCheckedItem(R.id.nav_seasoning);
-                initMenu(R.id.nav_seasoning);
-                refresh(state, "Les assaisonnements");
+                refresh(state, getResources().getString(R.string.les_boissons));
                 break;
             case LessonsStorage.DAYS:
                 navigationView.setCheckedItem(R.id.nav_weeks);
                 initMenu(R.id.nav_weeks);
-                refresh(state, "Les jours");
+                refresh(state, getResources().getString(R.string.les_jours));
                 break;
             case LessonsStorage.WEATHER:
                 navigationView.setCheckedItem(R.id.nav_weather);
                 initMenu(R.id.nav_weather);
-                refresh(state, "La météo");
+                refresh(state, getResources().getString(R.string.la_m_t_o));
                 break;
             case LessonsStorage.DIRECTIONS:
                 navigationView.setCheckedItem(R.id.nav_directions);
                 initMenu(R.id.nav_directions);
-                refresh(state, "Les directions");
+                refresh(state, getResources().getString(R.string.les_directions));
                 break;
             case LessonsStorage.MATERIALS:
                 navigationView.setCheckedItem(R.id.nav_materials);
                 initMenu(R.id.nav_materials);
-                refresh(state, "Les matériaux");
+                refresh(state, getResources().getString(R.string.les_m_t_riaux));
                 break;
             case LessonsStorage.WEIGHTS:
                 navigationView.setCheckedItem(R.id.nav_weights);
                 initMenu(R.id.nav_weights);
-                refresh(state, "Les mesures");
+                refresh(state, getResources().getString(R.string.les_mesures));
                 break;
             case LessonsStorage.SOCIETY:
                 navigationView.setCheckedItem(R.id.nav_society);
                 initMenu(R.id.nav_society);
-                refresh(state, "La société");
+                refresh(state, getResources().getString(R.string.la_soci_t));
                 break;
             case LessonsStorage.HOME:
                 navigationView.setCheckedItem(R.id.nav_homes);
                 initMenu(R.id.nav_homes);
-                refresh(state, "La maison");
+                refresh(state, getResources().getString(R.string.la_maison));
                 break;
             case LessonsStorage.TOOLS:
                 navigationView.setCheckedItem(R.id.nav_tools);
                 initMenu(R.id.nav_tools);
-                refresh(state, "Les outils");
+                refresh(state, getResources().getString(R.string.les_outils));
                 break;
             case LessonsStorage.STATIONERY:
                 navigationView.setCheckedItem(R.id.nav_stationery);
                 initMenu(R.id.nav_stationery);
-                refresh(state, "La papeterie");
+                refresh(state, getResources().getString(R.string.la_papeterie));
                 break;
             case LessonsStorage.CLOTHES:
                 navigationView.setCheckedItem(R.id.nav_clothes);
                 initMenu(R.id.nav_clothes);
-                refresh(state, "Les vêtements");
+                refresh(state, getResources().getString(R.string.les_v_tements));
                 break;
             case LessonsStorage.TRANSPORT:
                 navigationView.setCheckedItem(R.id.nav_transport);
                 initMenu(R.id.nav_transport);
-                refresh(state, "Les transports");
+                refresh(state, getResources().getString(R.string.les_transports));
                 break;
             case LessonsStorage.LANGUAGE:
                 navigationView.setCheckedItem(R.id.nav_language);
                 initMenu(R.id.nav_language);
-                refresh(state, "Les langues");
+                refresh(state, getResources().getString(R.string.les_langues));
                 break;
             case LessonsStorage.MEDIA:
                 navigationView.setCheckedItem(R.id.nav_media);
                 initMenu(R.id.nav_media);
-                refresh(state, "Les médias");
+                refresh(state, getResources().getString(R.string.les_m_dias));
                 break;
             case LessonsStorage.COLORS:
                 navigationView.setCheckedItem(R.id.nav_colors);
                 initMenu(R.id.nav_colors);
-                refresh(state, "Les couleurs");
+                refresh(state, getResources().getString(R.string.les_couleurs));
                 break;
-            case LessonsStorage.OTHERS:
-                navigationView.setCheckedItem(R.id.nav_other);
-                initMenu(R.id.nav_other);
-                refresh(state, "Autres");
+            case LessonsStorage.SUBJECT:
+                navigationView.setCheckedItem(R.id.nav_subject);
+                initMenu(R.id.nav_subject);
+                refresh(state, getResources().getString(R.string.sujets_d_tudes));
                 break;
-            case LessonsStorage.ABSTRACT:
-                navigationView.setCheckedItem(R.id.nav_abstract);
-                initMenu(R.id.nav_abstract);
-                refresh(state, "Abstrait");
+            case LessonsStorage.TIME:
+                navigationView.setCheckedItem(R.id.nav_time);
+                initMenu(R.id.nav_time);
+                refresh(state, getResources().getString(R.string.le_temps));
                 break;
             case LessonsStorage.N5:
                 navigationView.setCheckedItem(R.id.nav_n5);
                 initMenu(R.id.nav_n5);
-                refresh(state, "JLPT N5 (KANA)");
+                refresh(state, getResources().getString(R.string.jlpt_novice));
                 break;
-            case LessonsStorage.N5_KANJI:
-                navigationView.setCheckedItem(R.id.nav_n5_kj);
-                initMenu(R.id.nav_n5_kj);
-                refresh(state, "JLPT N5 (KANJI)");
+            case LessonsStorage.N4:
+                navigationView.setCheckedItem(R.id.nav_n4);
+                initMenu(R.id.nav_n4);
+                refresh(state, getResources().getString(R.string.jlpt_d_butant));
+                break;
+            case LessonsStorage.N3:
+                navigationView.setCheckedItem(R.id.nav_n3);
+                initMenu(R.id.nav_n3);
+                refresh(state, getResources().getString(R.string.jlpt_interm_diaire));
+                break;
+            case LessonsStorage.N2:
+                navigationView.setCheckedItem(R.id.nav_n2);
+                initMenu(R.id.nav_n2);
+                refresh(state, getResources().getString(R.string.jlpt_avanc));
+                break;
+            case LessonsStorage.N1:
+                navigationView.setCheckedItem(R.id.nav_n1);
+                initMenu(R.id.nav_n1);
+                refresh(state, getResources().getString(R.string.jlpt_expert));
+                break;
+            case LessonsStorage.K1:
+                navigationView.setCheckedItem(R.id.nav_k11);
+                initMenu(R.id.nav_k11);
+                refresh(state, getResources().getString(R.string.kanji_expert));
+                break;
+            case LessonsStorage.K2:
+                navigationView.setCheckedItem(R.id.nav_k2);
+                initMenu(R.id.nav_k2);
+                refresh(state, getResources().getString(R.string.kanji_avanc));
+                break;
+            case LessonsStorage.K3:
+                navigationView.setCheckedItem(R.id.nav_k3);
+                initMenu(R.id.nav_k3);
+                refresh(state, getResources().getString(R.string.kanji_interm_diaire));
+                break;
+            case LessonsStorage.K4:
+                navigationView.setCheckedItem(R.id.nav_k4);
+                initMenu(R.id.nav_k3);
+                refresh(state, getResources().getString(R.string.kanji_d_butant));
+                break;
+            case LessonsStorage.K5:
+                navigationView.setCheckedItem(R.id.nav_k5);
+                initMenu(R.id.nav_k5);
+                refresh(state, getResources().getString(R.string.kanji_novice));
+                break;
+            case LessonsStorage.RADICALS:
+                navigationView.setCheckedItem(R.id.nav_radicals);
+                initMenu(R.id.nav_radicals);
+                refresh(state, getResources().getString(R.string.les_radicaux));
                 break;
         }
     }
 
     void saveCompleted() throws IOException {
-        FileOutputStream fos = getApplicationContext().openFileOutput("save.dat", Context.MODE_PRIVATE);
+        FileOutputStream fos = getApplicationContext().openFileOutput("saves.dat", Context.MODE_PRIVATE);
         ObjectOutputStream os = new ObjectOutputStream(fos);
         os.writeObject(lessonsCompleted);
         os.close();
@@ -740,7 +948,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     void loadCompleted() throws IOException, ClassNotFoundException {
-        FileInputStream fis = getApplicationContext().openFileInput("save.dat");
+        FileInputStream fis = getApplicationContext().openFileInput("saves.dat");
         ObjectInputStream is = new ObjectInputStream(fis);
         lessonsCompleted = (LessonsCompleted) is.readObject();
         is.close();

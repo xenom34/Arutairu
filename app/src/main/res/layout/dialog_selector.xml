@@ -38,7 +38,7 @@
         android:textSize="20sp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Mots à sélectionner"
+        android:text="@string/selectionner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

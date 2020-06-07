@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Bienvenue !"
+        android:text="@string/bienvenue"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/logo"
@@ -60,10 +60,21 @@
         android:backgroundTint="@color/colorAccent"
         android:text="@string/le_ons"
         android:textColor="@color/white"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/tst" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/tst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/darkGrey"
+        android:text="language"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/startBtn"
+        app:layout_constraintEnd_toStartOf="@+id/startBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/startBtn" />
 
     <ImageView
         android:id="@+id/bg"

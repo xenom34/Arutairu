@@ -4,138 +4,200 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_hiragana"
-            android:icon="@drawable/ic_hiragana"
-            android:title="Hiragana" />
-        <item
-            android:id="@+id/nav_hiragana_d"
-            android:icon="@drawable/ic_dakuten_h"
-            android:title="Dakuten Hiragana" />
-        <item
-            android:id="@+id/nav_katakana"
-            android:icon="@drawable/ic_katakana"
-            android:title="Katakana" />
-        <item
-            android:id="@+id/nav_katakana_d"
-            android:icon="@drawable/ic_dakuten_k"
-            android:title="Dakuten Katakana" />
+        <item android:title="Kana">
+            <menu>
+                <group
+                    android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_hiragana"
+                    android:icon="@drawable/ic_hiragana"
+                    android:title="@string/hiragana" />
+                <item
+                    android:id="@+id/nav_hiragana_d"
+                    android:icon="@drawable/ic_dakuten_h"
+                    android:title="@string/dakuten_hiragana" />
+                <item
+                    android:id="@+id/nav_katakana"
+                    android:icon="@drawable/ic_katakana"
+                    android:title="@string/katakana" />
+                <item
+                    android:id="@+id/nav_katakana_d"
+                    android:icon="@drawable/ic_dakuten_k"
+                    android:title="@string/dakuten_katakana" />
+                </group>
+            </menu>
+        </item>
+        <item android:title="@string/categories">
+        <menu>
+            <group
+                android:checkableBehavior="single">
         <item
             android:id="@+id/nav_numbers"
             android:icon="@drawable/ic_numbers"
-            android:title="Les Nombres" />
+            android:title="@string/les_nombres" />
         <item
             android:id="@+id/nav_people"
             android:icon="@drawable/ic_people"
-            android:title="Les Gens" />
+            android:title="@string/les_gens" />
         <item
             android:id="@+id/nav_jobs"
             android:icon="@drawable/ic_jobs"
-            android:title="Les Métiers" />
+            android:title="@string/les_m_tiers" />
         <item
             android:id="@+id/nav_body"
             android:icon="@drawable/ic_body"
-            android:title="Le corps" />
+            android:title="@string/le_corps" />
         <item
             android:id="@+id/nav_family"
             android:icon="@drawable/ic_family"
-            android:title="La famille" />
+            android:title="@string/la_famille" />
         <item
             android:id="@+id/nav_animals"
             android:icon="@drawable/ic_animals"
-            android:title="Les animaux" />
+            android:title="@string/les_animaux" />
         <item
             android:id="@+id/nav_plants"
             android:icon="@drawable/ic_plants"
-            android:title="Les plantes" />
+            android:title="@string/les_plantes" />
         <item
             android:id="@+id/nav_crop"
             android:icon="@drawable/ic_crops"
-            android:title="L'agricuclture" />
+            android:title="@string/l_agricuclture" />
         <item
             android:id="@+id/nav_food"
             android:icon="@drawable/ic_food"
-            android:title="La nourriture" />
+            android:title="@string/la_nourriture" />
         <item
             android:id="@+id/nav_drinks"
             android:icon="@drawable/ic_drinks"
-            android:title="Les boissons" />
-        <item
-            android:id="@+id/nav_seasoning"
-            android:icon="@drawable/ic_seasoning"
-            android:title="Les assaisonnements" />
+            android:title="@string/les_boissons" />
         <item
             android:id="@+id/nav_weeks"
             android:icon="@drawable/ic_days"
-            android:title="Les jours" />
+            android:title="@string/les_jours" />
         <item
             android:id="@+id/nav_weather"
             android:icon="@drawable/ic_weather"
-            android:title="La météo" />
+            android:title="@string/la_m_t_o" />
         <item
             android:id="@+id/nav_directions"
             android:icon="@drawable/ic_directions"
-            android:title="Les directions" />
+            android:title="@string/les_directions" />
         <item
             android:id="@+id/nav_materials"
             android:icon="@drawable/ic_materials"
-            android:title="Les métériaux" />
+            android:title="@string/les_m_t_riaux" />
         <item
             android:id="@+id/nav_weights"
             android:icon="@drawable/ic_weights"
-            android:title="Les mesures" />
+            android:title="@string/les_mesures" />
         <item
             android:id="@+id/nav_society"
             android:icon="@drawable/ic_society"
-            android:title="La société" />
+            android:title="@string/la_soci_t" />
         <item
             android:id="@+id/nav_homes"
             android:icon="@drawable/ic_home"
-            android:title="La maison" />
+            android:title="@string/la_maison" />
         <item
             android:id="@+id/nav_tools"
             android:icon="@drawable/ic_tools"
-            android:title="Les outils" />
+            android:title="@string/les_outils" />
         <item
             android:id="@+id/nav_stationery"
             android:icon="@drawable/ic_stationery"
-            android:title="La papeterie" />
+            android:title="@string/la_papeterie" />
         <item
             android:id="@+id/nav_clothes"
             android:icon="@drawable/ic_clothes"
-            android:title="Les vêtements" />
+            android:title="@string/les_v_tements" />
         <item
             android:id="@+id/nav_transport"
             android:icon="@drawable/ic_transport"
-            android:title="Les transports" />
+            android:title="@string/les_transports" />
         <item
             android:id="@+id/nav_language"
             android:icon="@drawable/ic_language"
-            android:title="Les langues" />
+            android:title="@string/les_langues" />
         <item
             android:id="@+id/nav_media"
             android:icon="@drawable/ic_media"
-            android:title="Les médias" />
+            android:title="@string/les_m_dias" />
         <item
             android:id="@+id/nav_colors"
             android:icon="@drawable/ic_colors"
-            android:title="Les couleurs" />
+            android:title="@string/les_couleurs" />
         <item
-            android:id="@+id/nav_other"
-            android:icon="@drawable/ic_others"
-            android:title="Autres" />
+            android:id="@+id/nav_subject"
+            android:icon="@drawable/ic_book"
+            android:title="@string/sujets_d_tudes" />
         <item
-            android:id="@+id/nav_abstract"
-            android:icon="@drawable/ic_abstract"
-            android:title="Abstrait" />
-        <item
-            android:id="@+id/nav_n5"
-            android:icon="@drawable/ic_n5"
-            android:title="JLPT Débutant (KANA)" />
-        <item
-            android:id="@+id/nav_n5_kj"
-            android:icon="@drawable/ic_n5"
-            android:title="JLPT Débutant (KANJI)" />
+            android:id="@+id/nav_time"
+            android:icon="@drawable/ic_calendar1"
+            android:title="@string/le_temps" />
+            </group>
+        </menu>
+        </item>
+
+        <item android:title="@string/jlpt_vocabulaire_en_masse">
+            <menu>
+                <group
+                    android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/nav_n5"
+                        android:icon="@drawable/ic_n5"
+                        android:title="@string/jlpt_novice" />
+                    <item
+                        android:id="@+id/nav_n4"
+                        android:icon="@drawable/ic_n4"
+                        android:title="@string/jlpt_d_butant" />
+                    <item
+                        android:id="@+id/nav_n3"
+                        android:icon="@drawable/ic_n3"
+                        android:title="@string/jlpt_interm_diaire" />
+                    <item
+                        android:id="@+id/nav_n2"
+                        android:icon="@drawable/ic_n2"
+                        android:title="@string/jlpt_avanc" />
+                    <item
+                        android:id="@+id/nav_n1"
+                        android:icon="@drawable/ic_n1"
+                        android:title="@string/jlpt_expert" />
+                </group>
+            </menu>
+        </item>
+
+        <item android:title="Kanji">
+            <menu>
+                <group
+                    android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/nav_radicals"
+                        android:icon="@drawable/ic_kanji"
+                        android:title="@string/les_radicaux" />
+                    <item
+                        android:id="@+id/nav_k5"
+                        android:icon="@drawable/ic_n5"
+                        android:title="@string/kanji_novice" />
+                    <item
+                        android:id="@+id/nav_k4"
+                        android:icon="@drawable/ic_n4"
+                        android:title="@string/kanji_d_butant" />
+                    <item
+                        android:id="@+id/nav_k3"
+                        android:icon="@drawable/ic_n3"
+                        android:title="@string/kanji_interm_diaire" />
+                    <item
+                        android:id="@+id/nav_k2"
+                        android:icon="@drawable/ic_n2"
+                        android:title="@string/kanji_avanc" />
+                    <item
+                        android:id="@+id/nav_k11"
+                        android:icon="@drawable/ic_n1"
+                        android:title="@string/kanji_expert" />
+                </group>
+            </menu>
+        </item>
 
     </group>
 </menu>

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Revision">
+    tools:context=".Revision"
+    android:id="@+id/revisionactivity">
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adViewRevision"
@@ -14,14 +15,15 @@
         android:layout_centerHorizontal="true"
         app:adSize="BANNER"
         app:adUnitId="ca-app-pub-9369103706924521/7289420516"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageView
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:id="@+id/play"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:elevation="20dp"
         android:src="@drawable/ic_play"
         app:layout_constraintBottom_toBottomOf="@+id/sound"
@@ -30,8 +32,8 @@
         app:layout_constraintTop_toTopOf="@+id/sound" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:id="@+id/sound"
         android:backgroundTint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="@+id/materialCardView"
@@ -49,7 +51,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="@id/count">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -66,11 +68,12 @@
             <TextView
                 android:id="@+id/jpn"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="64px"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="JPN"
                 android:textAlignment="center"
-                android:textSize="40sp"
+                android:textSize="30dp"
+                android:height="100dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -91,12 +94,12 @@
                 android:id="@+id/english"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                android:height="60dp"
-                android:autoSizeTextType="uniform"
+                android:layout_marginBottom="20dp"
+                android:gravity="bottom"
+                android:height="100dp"
                 android:text="TextView"
                 android:textAlignment="center"
-                android:textSize="40sp"
+                android:textSize="24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -113,7 +116,7 @@
         app:layout_constraintBottom_toTopOf="@+id/materialCardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/adViewRevision"
         app:layout_constraintVertical_bias="0.7" />
 
     <Button
@@ -121,19 +124,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/green"
-        android:text="SUIVANT"
+        android:text="@string/next"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/adViewRevision"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/back"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+        app:layout_constraintVertical_bias="0.25" />
 
     <Button
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/red"
-        android:text="PRÉCÉDENT"
+        android:text="@string/back"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/next"
         app:layout_constraintEnd_toStartOf="@+id/next"

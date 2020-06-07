@@ -29,7 +29,8 @@
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity
             android:name=".Revision"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">

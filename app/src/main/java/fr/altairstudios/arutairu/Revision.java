@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Locale;
 
@@ -49,9 +50,19 @@ public class Revision extends AppCompatActivity {
         if (!getIntent().getBooleanExtra("RETRIEVE", false)){
             max = getIntent().getIntExtra("MAX", Integer.MAX_VALUE);
             lesson = getIntent().getIntExtra("LESSON", Integer.MAX_VALUE);
-            mEnglish = getResources().getStringArray(lessonsStorage.getSrcRes(lesson));
-            mJpn = getResources().getStringArray(lessonsStorage.getJpRes(lesson));
-            mRomaji = getResources().getStringArray(lessonsStorage.getRmRes(lesson));
+            if(getIntent().getStringExtra("LOCALE").equals("fr")){
+                mEnglish = getResources().getStringArray(lessonsStorage.getSrcRes(lesson));
+            }else{
+                mEnglish = getResources().getStringArray(lessonsStorage.getEnRes(lesson));
+            }
+            if(getIntent().getBooleanExtra("KANJI", false)){
+                mJpn = getResources().getStringArray(lessonsStorage.getKjRes(lesson));
+            }else{
+                mJpn = getResources().getStringArray(lessonsStorage.getJpRes(lesson));
+            }
+            if(getIntent().getBooleanExtra("ROMAJI", false)){
+                mRomaji = getResources().getStringArray(lessonsStorage.getRmRes(lesson));
+            }
         }else{
             selectedItemList = (SelectedItemList) getIntent().getSerializableExtra("LESSON");
             assert selectedItemList != null;
@@ -117,8 +128,15 @@ public class Revision extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 t1.speak(mShowJpn.getText(), TextToSpeech.QUEUE_FLUSH, null, "1");
+                Snackbar.make(findViewById(R.id.revisionactivity), mShowRomaji.getText(), Snackbar.LENGTH_SHORT)
+                        .show();
             }
         });
+
+        if (!getIntent().getBooleanExtra("ROMAJI", false)){
+            mSound.setClickable(false);
+            mSound.setVisibility(View.INVISIBLE);
+        }
 
         refresh();
 
@@ -154,6 +172,13 @@ public class Revision extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        mShowRomaji.setVisibility(View.INVISIBLE);
+
+        if (!getIntent().getBooleanExtra("ROMAJI", true)){
+            mSound.setVisibility(View.INVISIBLE);
+            findViewById(R.id.play).setVisibility(View.INVISIBLE);
+        }
+
         if(mFirst){
             showTuto();
 
@@ -175,7 +200,7 @@ public class Revision extends AppCompatActivity {
         builder.setView(dialogView);
 
 
-        builder.setPositiveButton("Compris !", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.understood, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -203,7 +228,7 @@ public class Revision extends AppCompatActivity {
 
         //setting the view of the builder to our custom view that we already inflated
 
-        builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
@@ -213,14 +238,14 @@ public class Revision extends AppCompatActivity {
             }
         });
 
-        builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
             }
         });
 
-        builder.setTitle("Quitter la leçon ?");
+        builder.setTitle(R.string.exitlesson);
 
         builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
@@ -242,7 +267,9 @@ public class Revision extends AppCompatActivity {
     private void refresh() {
         mShowJpn.setText(mJpn[state]);
         mShowEnglish.setText(mEnglish[state]);
-        mShowRomaji.setText(mRomaji[state]);
+        if (getIntent().getBooleanExtra("ROMAJI", false)){
+            mShowRomaji.setText(mRomaji[state]);
+        }
         String s = state+1+"/"+max;
         mCount.setText(s);
     }

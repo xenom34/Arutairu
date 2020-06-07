@@ -31,6 +31,6 @@
         android:id="@+id/nbLearn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nombres de mots appris :" />
+        android:text="@string/nombres_de_mots_appris" />
 
 </LinearLayout>

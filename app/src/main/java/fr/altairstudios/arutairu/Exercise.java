@@ -70,7 +70,7 @@ public class Exercise extends AppCompatActivity {
             lesson = getIntent().getIntExtra("LESSON", Integer.MAX_VALUE);
             mEnglish = getResources().getStringArray(lessonsStorage.getSrcRes(lesson));
             mJpn = getResources().getStringArray(lessonsStorage.getJpRes(lesson));
-            mRomaji = getResources().getStringArray(lessonsStorage.getRmRes(lesson));
+            //mRomaji = getResources().getStringArray(lessonsStorage.getRmRes(lesson));
             max = getIntent().getIntExtra("MAX", Integer.MAX_VALUE);
         }else{
             lesson = getIntent().getIntExtra("CHAPTER", Integer.MAX_VALUE);
@@ -78,7 +78,7 @@ public class Exercise extends AppCompatActivity {
             assert selectedItemList != null;
             mEnglish = selectedItemList.getmFrench().toArray(new String[0]);
             mJpn = selectedItemList.getmJP().toArray(new String[0]);
-            mRomaji = selectedItemList.getmRomaji().toArray(new String[0]);
+            //mRomaji = selectedItemList.getmRomaji().toArray(new String[0]);
         }
 
         max = getIntent().getIntExtra("MAX", Integer.MAX_VALUE);
@@ -149,6 +149,7 @@ public class Exercise extends AppCompatActivity {
                 //}
 
                 mSubmit.setBackgroundColor(getResources().getColor(R.color.green));
+                mSubmit.setClickable(false);
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -161,6 +162,7 @@ public class Exercise extends AppCompatActivity {
                             congrats();
                         }
                         mSubmit.setBackgroundColor(getResources().getColor(R.color.grey));
+                        mSubmit.setClickable(true);
                     }
                 },1000);
             }else{
@@ -187,7 +189,7 @@ public class Exercise extends AppCompatActivity {
         builder.setView(dialogView);
 
 
-        builder.setPositiveButton("Revenir aux leçons", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.backlessons, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (mInterstitialAd.isLoaded()) {
@@ -229,7 +231,7 @@ public class Exercise extends AppCompatActivity {
         //setting the view of the builder to our custom view that we already inflated
 
 
-        builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
@@ -239,9 +241,9 @@ public class Exercise extends AppCompatActivity {
             }
         });
 
-        builder.setTitle("Quitter la leçons ?");
+        builder.setTitle(R.string.exitlesson);
 
-        builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
