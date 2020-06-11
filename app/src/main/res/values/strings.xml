@@ -3,7 +3,7 @@
     <string name="jpAltair" translatable="false">アルタイル</string>
     <string name="textwelcome">Thank you for downloading this application! In a few clicks, you will be able to learn Japanese, thanks to vocabulary lists. In this learning mode, you will be able to communicate in a very simple and fast way with the locals.  From now on, select a chapter, memorize them and copy them in Japanese.  Note that you can first practice and manually choose the words you want. Please note that in this mode, your results are not saved, it would be far too easy!</string>
     <string name="le_ons">Lessons</string>
-    <string name="keyboard">The use of Arutairu requires a Japanese keyboard on your phone. It is recommended that you configure the input so you can enter kanas or kanjis by drawing them on your smartphone (handwriting mode).</string>
+    <string name="keyboard">The use of Arutairu requires a Japanese keyboard on your phone. We recommend you to set up the input so you can enter kanas or kanjis by drawing them on your smartphone (handwriting mode).\n\nFor some devices, you need to press the \"gear\" symbol at the top of your keyboard.</string>
     <string-array name="hiraganaJP">
         <item>あ</item>
         <item>い</item>
@@ -52773,6 +52773,10 @@
     <string name="bienvenue_dans_arutairu">Hey, Bienvenue !</string>
     <string name="configure">Configuration !</string>
     <string name="aucun_choix_possible">No choice possible</string>
+    <string name="gboard_tutorial">GBOARD TUTORIAL</string>
+    <string name="keyboardMenu">Keyboard</string>
+    <string name="settings">Settings</string>
+    <string name="test_your_keyboard_here">Test your keyboard here !</string>
 
 
 </resources>

@@ -9,6 +9,7 @@ import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
@@ -16,12 +17,15 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textview.MaterialTextView;
 
@@ -109,9 +113,13 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 drawerLayout.closeDrawer(GravityCompat.START);
 
-                initMenu(item.getItemId());
-
-                refresh(state, item.getTitle());
+                if (item.getItemId() == R.id.nav_keyboard){
+                    keyboardDialog();
+                    return false;
+                }else{
+                    initMenu(item.getItemId());
+                    refresh(state, item.getTitle());
+                }
                 return true;
             }
         });
@@ -447,13 +455,23 @@ public class HomeActivity extends AppCompatActivity {
         //setting the view of the builder to our custom view that we already inflated
         builder.setView(dialogView);
 
+        MaterialButton mConfigure = dialogView.findViewById(R.id.configure);
+        MaterialButton mGboard = dialogView.findViewById(R.id.gboard);
 
-        builder.setPositiveButton(R.string.configure, new DialogInterface.OnClickListener() {
+        mConfigure.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                finish();
-                startActivityForResult(new Intent(Settings.ACTION_SETTINGS), 0);
+            public void onClick(View v) {
+                InputMethodManager imeManager = (InputMethodManager) getApplicationContext().getSystemService(INPUT_METHOD_SERVICE);
+                assert imeManager != null;
+                imeManager.showInputMethodPicker();
+            }
+        });
+
+        mGboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browse = new Intent( Intent.ACTION_VIEW , Uri.parse( "https://support.google.com/gboard/answer/7068494?co=GENIE.Platform%3DAndroid&hl=en" ) );
+                startActivity( browse );
             }
         });
 
@@ -681,7 +699,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
                 sharedPreferences.edit().putBoolean(FIRST_EXEC, false).apply();
-                keyboardDialog();
+                firstExec = false;
             }
         });
 
@@ -691,7 +709,7 @@ public class HomeActivity extends AppCompatActivity {
                 //mSpam = 0;
                 SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
                 sharedPreferences.edit().putBoolean(FIRST_EXEC, false).apply();
-                keyboardDialog();
+                firstExec = false;
             }
         });
 
@@ -937,6 +955,16 @@ public class HomeActivity extends AppCompatActivity {
                 refresh(state, getResources().getString(R.string.les_radicaux));
                 break;
         }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     void saveCompleted() throws IOException {

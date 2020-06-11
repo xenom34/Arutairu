@@ -3,6 +3,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -16,12 +25,6 @@
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,10 +36,47 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:padding="8dp"
+            android:textSize="16sp"
             android:text="@string/keyboard"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:layout_height="wrap_content">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/configure"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:layout_width="match_parent"
+                android:text="@string/configure"
+                android:textColor="@color/white"
+                android:layout_height="match_parent"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/gboard"
+                android:layout_weight="1"
+                android:backgroundTint="@color/darkGrey"
+                android:layout_marginStart="8dp"
+                android:textSize="12sp"
+                android:layout_width="match_parent"
+                android:text="@string/gboard_tutorial"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:hint="@string/test_your_keyboard_here"/>
+
     </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

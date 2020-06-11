@@ -4,6 +4,17 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+        <item android:title="@string/settings">
+            <menu>
+                <group
+                    android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/nav_keyboard"
+                        android:icon="@drawable/ic_hardware"
+                        android:title="@string/keyboardMenu" />
+                </group>
+            </menu>
+        </item>
         <item android:title="Kana">
             <menu>
                 <group

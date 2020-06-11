@@ -11,6 +11,8 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +24,8 @@ import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textview.MaterialTextView;
+
+import java.util.Locale;
 
 public class Exercise extends AppCompatActivity {
     private TextInputEditText mAnswer;
@@ -108,6 +112,8 @@ public class Exercise extends AppCompatActivity {
                 check();
             }
         });
+
+        mAnswer.setTextLocale(new Locale("jp"));
 
         refresh();
     }
