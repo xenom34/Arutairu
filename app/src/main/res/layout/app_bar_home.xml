@@ -172,7 +172,7 @@
                     android:backgroundTint="@color/deepBlue"
                     android:drawableLeft="@drawable/ic_document"
                     android:text="@string/evaluation"
-                    android:layout_marginBottom="48dp"
+                    android:layout_marginBottom="64dp"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 

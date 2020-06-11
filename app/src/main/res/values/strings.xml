@@ -1994,6 +1994,7 @@
         <item>mise</item>
         <item>hoteru</item>
         <item>kōjō</item>
+        <item>kane</item>
         <item>satsu</item>
         <item>kozeni</item>
         <item>tsurisen</item>
@@ -52735,7 +52736,7 @@
     <string name="les_langues">Languages</string>
     <string name="les_m_dias">Medias</string>
     <string name="les_couleurs">Colors</string>
-    <string name="sujets_d_tudes">FIeld of study</string>
+    <string name="sujets_d_tudes">Study</string>
     <string name="le_temps">Time</string>
     <string name="jlpt_vocabulaire_en_masse">JLPT</string>
     <string name="jlpt_novice">JLPT Novice</string>

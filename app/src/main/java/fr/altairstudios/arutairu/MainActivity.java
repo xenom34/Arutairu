@@ -62,6 +62,11 @@ public class MainActivity extends AppCompatActivity {
 
         conf.setLocale(new Locale(sharedPreferences.getString("LOCALE", Locale.getDefault().getLanguage())));
 
+        if(sharedPreferences.getBoolean("RAN", true)){
+            sharedPreferences.edit().putBoolean("RAN", false).apply();
+            sharedPreferences.edit().putString("LOCALE", Locale.getDefault().getLanguage()).apply();
+        }
+
         res.updateConfiguration(conf, dm);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
