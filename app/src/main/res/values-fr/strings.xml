@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="le_ons">Leçons</string>
-    <string name="keyboard">L\'utilisation d\'Arutairu nécessite un clavier japonais sur votre téléphone. Il est recommandé de le configurer de manière à pouvoir saisir les kanas ou les kanjis en les dessinant sur votre smartphone (mode écriture manuscrite).\n\n Pour certains appareils, vous devez appuyer sur l\'icône \"engrenage\" situé en haut de votre clavier.</string>
+    <string name="keyboard">L\'utilisation d\'Arutairu nécessite une configuration de votre clavier. Le japonais n\'utilisant pas notre alphabet, vous devez ajouter la langue dans ses paramètres.\n Il est recommandé de le configurer de manière à pouvoir saisir les kanas ou les kanjis en les dessinant sur votre smartphone (mode écriture manuscrite).\n\n Pour certains appareils, vous devez appuyer sur l\'icône \"engrenage\" situé en haut de votre clavier.</string>
     <string name="disclaimer_revision">Effectuer un appui long sur l\'un de ces boutons permet de revenir au début ou à la fin de la liste.</string>
     <string name="submit">Valider</string>
     <string name="bienvenue">Bienvenue !</string>
@@ -70,4 +70,5 @@
     <string name="keyboardMenu">Clavier</string>
     <string name="settings">Paramètres</string>
     <string name="test_your_keyboard_here">Testez votre clavier ici !</string>
+    <string name="useful_sentences">Phrases utiles</string>
 </resources>

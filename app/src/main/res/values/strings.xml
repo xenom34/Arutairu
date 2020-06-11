@@ -3,7 +3,7 @@
     <string name="jpAltair" translatable="false">アルタイル</string>
     <string name="textwelcome">Thank you for downloading this application! In a few clicks, you will be able to learn Japanese, thanks to vocabulary lists. In this learning mode, you will be able to communicate in a very simple and fast way with the locals.  From now on, select a chapter, memorize them and copy them in Japanese.  Note that you can first practice and manually choose the words you want. Please note that in this mode, your results are not saved, it would be far too easy!</string>
     <string name="le_ons">Lessons</string>
-    <string name="keyboard">The use of Arutairu requires a Japanese keyboard on your phone. We recommend you to set up the input so you can enter kanas or kanjis by drawing them on your smartphone (handwriting mode).\n\nFor some devices, you need to press the \"gear\" symbol at the top of your keyboard.</string>
+    <string name="keyboard">The use of Arutairu requires a few adjustments to your keyboard. Since japanese doesn\'t use our alphabet, you will have to add the language in its settings.\nWe recommend you to set up the input so you can enter kanas or kanjis by drawing them on your smartphone (handwriting mode).\n\nFor some devices, you need to press the \"gear\" symbol at the top of your keyboard.</string>
     <string-array name="hiraganaJP">
         <item>あ</item>
         <item>い</item>
@@ -52777,6 +52777,272 @@
     <string name="keyboardMenu">Keyboard</string>
     <string name="settings">Settings</string>
     <string name="test_your_keyboard_here">Test your keyboard here !</string>
+    <string name="useful_sentences">Useful sentences</string>
+
+    <string-array name="sentencesEN">
+        <item>Good morning</item>
+        <item>Good morning (formal)</item>
+        <item>Hello (afternoon) </item>
+        <item>Good evening</item>
+        <item>Good night </item>
+        <item>Good night (formal)</item>
+        <item>How are you ? </item>
+        <item>Very good, thank you. </item>
+        <item>Yes, I\'m fine! </item>
+        <item>Are you busy ? </item>
+        <item>Take care of yourself (E.g: if sick)</item>
+        <item>Nice to meet you</item>
+        <item>I am Brian</item>
+        <item>Pleased to meet you</item>
+        <item>Me too </item>
+        <item>Here\'s my friend (introduction)</item>
+        <item>Here is Miss Suzuki</item>
+        <item>What is your name ? </item>
+        <item>Speak slowly please </item>
+        <item>I get it </item>
+        <item>I do not understand </item>
+        <item>Farewell </item>
+        <item>Yes </item>
+        <item>No (knowing that we don\'t usually say no directly)</item>
+        <item>Please </item>
+        <item>Thank you </item>
+        <item>Thank you very much </item>
+        <item>I appreciate it </item>
+        <item>You\'re welcome... </item>
+        <item>Sorry (colloquial, causative form)</item>
+        <item>I am really sorry </item>
+        <item>Excuse me please </item>
+        <item>Excuse me (shitsurei litt: odd, rudeness.)</item>
+        <item>Excuse me (when we are about to disturb.)</item>
+        <item>I am sorry for that </item>
+        <item>It\'s my fault </item>
+        <item>Excuse me </item>
+        <item>I will not do it again</item>
+        <item>I apologize</item>
+        <item>Please / go ahead. </item>
+        <item>Thank you for this meal</item>
+        <item>It was delicious (said after meals)</item>
+        <item>Congratulations</item>
+        <item>Congratulations (stronger)</item>
+        <item>Happy Birthday </item>
+        <item>I\'m going ! </item>
+        <item>Have a nice day (in return for the previous sentence)</item>
+        <item>I\'m home! </item>
+        <item>Welcome home ! </item>
+        <item>Well see you tomorrow</item>
+    </string-array>
+
+    <string-array name="sentencesFR">
+        <item>Bonjour (le matin)</item>
+        <item>Bonjour (le matin, formel)</item>
+        <item>Bonjour (l’après-midi)</item>
+        <item>Bonsoir</item>
+        <item>Bonne nuit</item>
+        <item>Bonne nuit (formel)</item>
+        <item>Comment allez-vous ?</item>
+        <item>Très bien, je vous remercie.</item>
+        <item>Oui, je vais bien!</item>
+        <item>Êtes-vous occupé ?</item>
+        <item>Prenez soin de vous (ex: si malade)</item>
+        <item>Enchanté(e)</item>
+        <item>Je m\'appelle Brian</item>
+        <item>Heureux de faire votre connaissance</item>
+        <item>Moi de même</item>
+        <item>Je vous présente mon ami</item>
+        <item>Voici Mlle Suzuki</item>
+        <item>Quel est votre nom ?</item>
+        <item>Parlez lentement s\'il vous plaît</item>
+        <item>J\'ai compris</item>
+        <item>Je ne comprends pas</item>
+        <item>Adieu</item>
+        <item>Oui</item>
+        <item>Non (sachant du\'on ne dit pas généralement non directement)</item>
+        <item>S\'il vous plaît</item>
+        <item>Merci</item>
+        <item>Merci beaucoup</item>
+        <item>Je vous en suis reconnaissant</item>
+        <item>Je vous en prie...</item>
+        <item>Désolé (forme familière, causative)</item>
+        <item>Je suis vraiment désolé</item>
+        <item>Excusez-moi / S\'il vous plaît</item>
+        <item>Excusez-moi (shitsurei litt: impair, impolitesse.)</item>
+        <item>Excusez-moi (lorsque l\'on s\'apprête à déranger.)</item>
+        <item>Je m\'en excuse</item>
+        <item>C\'est ma faute</item>
+        <item>Pardonnez-moi</item>
+        <item>Je ne le ferai plus</item>
+        <item>Je vous excuse</item>
+        <item>Je vous en prie/allez-y.</item>
+        <item>Merci pour ce repas</item>
+        <item>Ce fut délicieux (dit après les repas)</item>
+        <item>Félicitations</item>
+        <item>Félicitations (plus fortes)</item>
+        <item>Joyeux anniversaire</item>
+        <item>J\'y vais !</item>
+        <item>Bonne journée (en retour de la phrase précédente)</item>
+        <item>Je suis rentré !</item>
+        <item>Bienvenue à la maison !</item>
+        <item>Eh bien à demain</item>
+    </string-array>
+    
+    <string-array name="sentencesRM">
+        <item>ohayō</item>
+        <item>ohayō gozaimasu</item>
+        <item>konnichiwa</item>
+        <item>konbanwa</item>
+        <item>oyasumi</item>
+        <item>oyasumi nasai</item>
+        <item>ogenki desu ka</item>
+        <item>hai, okagesamade.</item>
+        <item>hai, ogenki desu</item>
+        <item>oisogashī desuka</item>
+        <item>odaiji ni</item>
+        <item>hajimemashite</item>
+        <item>watashi wa... desu</item>
+        <item>dōzo yoroshiku</item>
+        <item>kochira koso</item>
+        <item>tomodachi wo shōkai shimasu</item>
+        <item>kochira wa suzuki-san desu</item>
+        <item>onamae wa nan desu ka</item>
+        <item>yukkuri hanashite kudasai</item>
+        <item>wakarimashita</item>
+        <item>wakarimasen</item>
+        <item>sayōnara</item>
+        <item>hai</item>
+        <item>iie</item>
+        <item>kudasai</item>
+        <item>arigatō</item>
+        <item>arigatō gozaimasu</item>
+        <item>kansashite imasu</item>
+        <item>dō itashimashite</item>
+        <item>gomen</item>
+        <item>gomen nasai</item>
+        <item>sumimasen</item>
+        <item>shitsurei shimashita</item>
+        <item>shitsurei shimasu</item>
+        <item>ayamarimasu</item>
+        <item>watashi ga waruino desu</item>
+        <item>yurushite kudasai</item>
+        <item>mō shimasen</item>
+        <item>yurushite ageru</item>
+        <item>dōzo</item>
+        <item>Itadakimasu</item>
+        <item>gochisō sama deshita</item>
+        <item>omedetō</item>
+        <item>omedetō gozaimasu</item>
+        <item>otanjōbi omedetō</item>
+        <item>ittekimasu</item>
+        <item>itterasshai</item>
+        <item>tadaima</item>
+        <item>okaerinasai</item>
+        <item>ja mata ashita</item>
+    </string-array>
+
+    <string-array name="sentencesJP">
+        <item>おはよう。</item>
+        <item>おはようございます。</item>
+        <item>こんにちは。</item>
+        <item>こんばんは。</item>
+        <item>おやすみ。</item>
+        <item>おやすみなさい。</item>
+        <item>おげんきですか。</item>
+        <item>はい、おかげさまで。</item>
+        <item>はい、おげんきです。</item>
+        <item>おいそがしいですか。</item>
+        <item>おだいじに。</item>
+        <item>はじめまして。</item>
+        <item>わたしはブライアンです。</item>
+        <item>どうぞよろしく。</item>
+        <item>こちらこそ。</item>
+        <item>ともだちをしょうかいします。</item>
+        <item>こちらはすずきさんです。</item>
+        <item>おなまえはなんですか</item>
+        <item>ゆっくりはなしてください</item>
+        <item>わかりました</item>
+        <item>わかりません</item>
+        <item>さようなら。</item>
+        <item>はい。</item>
+        <item>いいえ。</item>
+        <item>ください。</item>
+        <item>ありがとう</item>
+        <item>ありがとうございます</item>
+        <item>かんしゃしています。</item>
+        <item>どういたしまして</item>
+        <item>ごめん。</item>
+        <item>ごめんなさい</item>
+        <item>すみません</item>
+        <item>しつれいしました</item>
+        <item>しつれいします</item>
+        <item>あやまります。</item>
+        <item>わたしがわるいのです。</item>
+        <item>ゆるしてください。</item>
+        <item>もうしません。</item>
+        <item>ゆるしてあげる。</item>
+        <item>どうぞ</item>
+        <item>いただきます</item>
+        <item>ごちそうさまでした</item>
+        <item>おめでとう</item>
+        <item>おめでとうございます</item>
+        <item>おたんじょうびおめでとう</item>
+        <item>いってきます</item>
+        <item>いってらっしゃい</item>
+        <item>ただいま</item>
+        <item>おかえりなさい</item>
+        <item>じゃまたあした</item>
+    </string-array>
+
+    <string-array name="sentencesKJ">
+        <item>お早う。</item>
+        <item>お早うございます。</item>
+        <item>今日は。</item>
+        <item>今晩は。</item>
+        <item>お休み</item>
+        <item>お休みなさい</item>
+        <item>お元気ですか。</item>
+        <item>はい、お蔭様で。</item>
+        <item>はい、お元気です。</item>
+        <item>お忙しいですか。</item>
+        <item>お大事に。</item>
+        <item>初めまして。</item>
+        <item>私はブライアンです。</item>
+        <item>どうぞ宜しく。</item>
+        <item>こちらこそ。</item>
+        <item>友だちを紹介します。</item>
+        <item>こちらは鈴木さんです。</item>
+        <item>お名前は何ですか</item>
+        <item>ゆっくり話して下さい</item>
+        <item>分かりました</item>
+        <item>分かりません</item>
+        <item>左様なら</item>
+        <item>はい。</item>
+        <item>いいえ。</item>
+        <item>下さい。</item>
+        <item>有難う/有り難う</item>
+        <item>有り難う御座います</item>
+        <item>感謝しています。</item>
+        <item>どういたしまして</item>
+        <item>御免。</item>
+        <item>御免浅い</item>
+        <item>済みません</item>
+        <item>失礼しました</item>
+        <item>失礼します</item>
+        <item>謝ります。</item>
+        <item>私が悪いのです。</item>
+        <item>許して下さい。</item>
+        <item>もうしません。</item>
+        <item>許してあげる。</item>
+        <item>どうぞ</item>
+        <item>いただきます</item>
+        <item>ごちそうさまでした</item>
+        <item>おめでとう</item>
+        <item>おめでとうございます</item>
+        <item>お誕生日おめでとう</item>
+        <item>行ってきます</item>
+        <item>行ってらっしゃい</item>
+        <item>ただいま</item>
+        <item>おかえりなさい</item>
+        <item>じゃまたあした</item>
+    </string-array>
 
 
 </resources>

@@ -417,6 +417,10 @@ public class HomeActivity extends AppCompatActivity {
                 topImage.setImageResource(R.drawable.two);
                 state = LessonsStorage.RADICALS;
                 break;
+            case R.id.nav_conversation:
+                topImage.setImageResource(R.drawable.tokyo);
+                state = LessonsStorage.SENTENCES;
+                break;
         }
 
         setSwitch(state);
@@ -953,6 +957,11 @@ public class HomeActivity extends AppCompatActivity {
                 navigationView.setCheckedItem(R.id.nav_radicals);
                 initMenu(R.id.nav_radicals);
                 refresh(state, getResources().getString(R.string.les_radicaux));
+                break;
+            case LessonsStorage.SENTENCES:
+                navigationView.setCheckedItem(R.id.nav_conversation);
+                initMenu(R.id.nav_conversation);
+                refresh(state, getResources().getString(R.string.useful_sentences));
                 break;
         }
     }

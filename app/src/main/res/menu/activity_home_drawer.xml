@@ -47,6 +47,10 @@
             android:icon="@drawable/ic_numbers"
             android:title="@string/les_nombres" />
         <item
+            android:id="@+id/nav_conversation"
+            android:icon="@drawable/ic_conversation"
+            android:title="@string/useful_sentences" />
+        <item
             android:id="@+id/nav_people"
             android:icon="@drawable/ic_people"
             android:title="@string/les_gens" />
