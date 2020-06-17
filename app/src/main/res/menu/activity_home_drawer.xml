@@ -47,10 +47,6 @@
             android:icon="@drawable/ic_numbers"
             android:title="@string/les_nombres" />
         <item
-            android:id="@+id/nav_conversation"
-            android:icon="@drawable/ic_conversation"
-            android:title="@string/useful_sentences" />
-        <item
             android:id="@+id/nav_people"
             android:icon="@drawable/ic_people"
             android:title="@string/les_gens" />
@@ -150,6 +146,10 @@
             android:id="@+id/nav_time"
             android:icon="@drawable/ic_calendar1"
             android:title="@string/le_temps" />
+        <item
+            android:id="@+id/nav_conversation"
+            android:icon="@drawable/ic_conversation"
+            android:title="@string/useful_sentences" />
             </group>
         </menu>
         </item>
@@ -210,6 +210,17 @@
                         android:id="@+id/nav_k11"
                         android:icon="@drawable/ic_n1"
                         android:title="@string/kanji_expert" />
+                </group>
+            </menu>
+        </item>
+        <item android:title="Arutairu">
+            <menu>
+                <group
+                    android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/nav_rate"
+                        android:icon="@drawable/ic_baseline_star_24"
+                        android:title="@string/support_us" />
                 </group>
             </menu>
         </item>

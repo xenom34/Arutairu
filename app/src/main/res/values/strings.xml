@@ -52778,6 +52778,7 @@
     <string name="settings">Settings</string>
     <string name="test_your_keyboard_here">Test your keyboard here !</string>
     <string name="useful_sentences">Useful sentences</string>
+    <string name="support_us">Support us !</string>
 
     <string-array name="sentencesEN">
         <item>Good morning</item>
@@ -52856,7 +52857,7 @@
         <item>Je ne comprends pas</item>
         <item>Adieu</item>
         <item>Oui</item>
-        <item>Non (sachant du\'on ne dit pas généralement non directement)</item>
+        <item>Non (sachant qu\'on ne dit généralement pas cela directement)</item>
         <item>S\'il vous plaît</item>
         <item>Merci</item>
         <item>Merci beaucoup</item>
@@ -52869,20 +52870,20 @@
         <item>Excusez-moi (lorsque l\'on s\'apprête à déranger.)</item>
         <item>Je m\'en excuse</item>
         <item>C\'est ma faute</item>
-        <item>Pardonnez-moi</item>
-        <item>Je ne le ferai plus</item>
-        <item>Je vous excuse</item>
+        <item>Pardonnez-moi.</item>
+        <item>Je ne le ferai plus.</item>
+        <item>Je vous excuse.</item>
         <item>Je vous en prie/allez-y.</item>
-        <item>Merci pour ce repas</item>
-        <item>Ce fut délicieux (dit après les repas)</item>
-        <item>Félicitations</item>
+        <item>Merci pour ce repas !</item>
+        <item>Ce fut délicieux ! (dit après les repas)</item>
+        <item>Félicitations !</item>
         <item>Félicitations (plus fortes)</item>
-        <item>Joyeux anniversaire</item>
+        <item>Joyeux anniversaire !</item>
         <item>J\'y vais !</item>
         <item>Bonne journée (en retour de la phrase précédente)</item>
         <item>Je suis rentré !</item>
         <item>Bienvenue à la maison !</item>
-        <item>Eh bien à demain</item>
+        <item>Eh bien, à demain !</item>
     </string-array>
     
     <string-array name="sentencesRM">
@@ -52898,7 +52899,7 @@
         <item>oisogashī desuka</item>
         <item>odaiji ni</item>
         <item>hajimemashite</item>
-        <item>watashi wa... desu</item>
+        <item>watashi wa Buraian desu</item>
         <item>dōzo yoroshiku</item>
         <item>kochira koso</item>
         <item>tomodachi wo shōkai shimasu</item>
@@ -52941,8 +52942,8 @@
     <string-array name="sentencesJP">
         <item>おはよう。</item>
         <item>おはようございます。</item>
-        <item>こんにちは。</item>
-        <item>こんばんは。</item>
+        <item>こんにちわ。</item>
+        <item>こんばんわ。</item>
         <item>おやすみ。</item>
         <item>おやすみなさい。</item>
         <item>おげんきですか。</item>
@@ -52994,8 +52995,8 @@
     <string-array name="sentencesKJ">
         <item>お早う。</item>
         <item>お早うございます。</item>
-        <item>今日は。</item>
-        <item>今晩は。</item>
+        <item>今日わ。</item>
+        <item>今晩わ。</item>
         <item>お休み</item>
         <item>お休みなさい</item>
         <item>お元気ですか。</item>
@@ -53017,7 +53018,7 @@
         <item>はい。</item>
         <item>いいえ。</item>
         <item>下さい。</item>
-        <item>有難う/有り難う</item>
+        <item>有難う</item>
         <item>有り難う御座います</item>
         <item>感謝しています。</item>
         <item>どういたしまして</item>
