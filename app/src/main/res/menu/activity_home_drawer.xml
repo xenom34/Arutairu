@@ -213,14 +213,14 @@
                 </group>
             </menu>
         </item>
-        <item android:title="Arutairu">
+        <item android:title="@string/support_us">
             <menu>
                 <group
                     android:checkableBehavior="single">
                     <item
                         android:id="@+id/nav_rate"
                         android:icon="@drawable/ic_baseline_star_24"
-                        android:title="@string/support_us" />
+                        android:title="@string/notez_l_appli" />
                 </group>
             </menu>
         </item>

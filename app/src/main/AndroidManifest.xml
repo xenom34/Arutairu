@@ -14,15 +14,11 @@
             android:label="@string/title_activity_home"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".RequiredActivity" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-9369103706924521~6167910536" />
 
-        <activity
-            android:name=".ListActivity"
-            android:screenOrientation="portrait" />
         <activity
             android:name=".Exercise"
             android:screenOrientation="portrait"
