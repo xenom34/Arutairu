@@ -73,4 +73,6 @@
     <string name="useful_sentences">Phrases utiles</string>
     <string name="support_us">Encouragez-nous !</string>
     <string name="notez_l_appli">Notez l\'appli</string>
+    <string name="signaler_un_probl_me">Signaler un problème</string>
+    <string name="send_mail">Envoyer un email</string>
 </resources>

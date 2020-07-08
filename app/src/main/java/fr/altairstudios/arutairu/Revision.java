@@ -3,8 +3,10 @@ package fr.altairstudios.arutairu;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +15,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Locale;
@@ -23,6 +27,7 @@ public class Revision extends AppCompatActivity {
     private com.google.android.material.floatingactionbutton.FloatingActionButton mSound;
     TextToSpeech t1;
     private Boolean mFirst;
+    private InterstitialAd mInterstitialAd;
     private int state = 0;
     private int max, lesson;
     private AdView mAdView;
@@ -37,6 +42,18 @@ public class Revision extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_revision);
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-9369103706924521/2427690661");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        mInterstitialAd.setAdListener(new AdListener(){
+            @Override
+            public void onAdClosed() {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         mFirst  = getIntent().getBooleanExtra("FIRST", false);
 
@@ -148,9 +165,13 @@ public class Revision extends AppCompatActivity {
             refresh();
         }else{
             if(getIntent().getBooleanExtra("REVISION", false)){
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                startActivity(intent);
-                finish();
+                if(mInterstitialAd.isLoaded()){
+                    mInterstitialAd.show();
+                }else{
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }else{
                 Intent intent = new Intent(getApplicationContext(), Exercise.class);
                 intent.putExtra("MAX", max);
@@ -231,10 +252,13 @@ public class Revision extends AppCompatActivity {
         builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                intent.putExtra("COMPLETED", lessonsCompleted);
-                startActivity(intent);
-                finish();
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                }else{
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
 

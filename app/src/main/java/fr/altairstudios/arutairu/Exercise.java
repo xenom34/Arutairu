@@ -240,10 +240,14 @@ public class Exercise extends AppCompatActivity {
         builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                intent.putExtra("COMPLETED", lessonsCompleted);
-                startActivity(intent);
-                finish();
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                }else{
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    intent.putExtra("COMPLETED", lessonsCompleted);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
 

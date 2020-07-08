@@ -25,6 +25,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
@@ -119,6 +120,8 @@ public class HomeActivity extends AppCompatActivity {
                     return false;
                 }else if (item.getItemId() == R.id.nav_rate){
                     rateThisApp();
+                }else if(item.getItemId() == R.id.nav_mail){
+                    sendEmail();
                 }else{
                     initMenu(item.getItemId());
                     refresh(state, item.getTitle());
@@ -140,6 +143,23 @@ public class HomeActivity extends AppCompatActivity {
 
         firstExec = sharedPreferences.getBoolean(FIRST_EXEC, true);
 
+    }
+
+    private void sendEmail() {
+        String[] TO = {"contact@altair-studios.fr"};
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setData(Uri.parse("mailto:contact@altair-studios.fr"));
+        emailIntent.setType("message/rfc822");
+
+
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, getString(R.string.send_mail)));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(this,
+                    "There is no email client installed.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void rateThisApp(){
