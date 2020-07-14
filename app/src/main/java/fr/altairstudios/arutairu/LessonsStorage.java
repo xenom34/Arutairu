@@ -46,6 +46,8 @@ class LessonsStorage {
     static final int K5 = 41;
     static final int RADICALS = 42;
     static final int SENTENCES = 43;
+    static final int GEOGRAPHY = 44;
+
 
     static final int TOTAL = 42;
     
@@ -91,6 +93,7 @@ class LessonsStorage {
         storage.put(K5, new Lesson(R.array.KANJIN5_JP, R.array.KANJIN5_FR, R.array.KANJIN5_EN));
         storage.put(RADICALS, new Lesson(R.array.radicals_JP, R.array.radicals_FR, R.array.radicals_EN));
         storage.put(SENTENCES, new Lesson(R.array.sentencesKJ, R.array.sentencesJP, R.array.sentencesRM, R.array.sentencesFR, R.array.sentencesEN));
+        storage.put(GEOGRAPHY, new Lesson(R.array.geographyKJ, R.array.geographyJP, R.array.geographyRM, R.array.geographyFR, R.array.geographyEN));
 
 
     }

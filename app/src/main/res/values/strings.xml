@@ -1627,6 +1627,28 @@
         <item>くつ</item>
         <item>くつした</item>
         <item>めがね</item>
+        <item>ゆびわ</item>
+        <item>ブラウス</item>
+        <item>ピアス</item>
+        <item>ぼうし</item>
+        <item>シャツ</item>
+        <item>ネックレス</item>
+        <item>スーツ</item>
+        <item>おむつ</item>
+        <item>パンツ</item>
+        <item>スカーフ</item>
+        <item>てぶくろ</item>
+        <item>ジーンズ</item>
+        <item>スカート</item>
+        <item>ペチコート</item>
+        <item>ミニスカート</item>
+        <item>とけい</item>
+        <item>ズボン</item>
+        <item>サンダル</item>
+        <item>したぎ</item>
+        <item>トレーナー</item>
+        <item>ジャケット</item>
+        <item>ゆかた</item>
     </string-array>
 
     <string-array name="transportJP">
@@ -2131,6 +2153,28 @@
         <item>kutsu</item>
         <item>kutsushita</item>
         <item>megane</item>
+        <item>yubiwa</item>
+        <item>burausu</item>
+        <item>piasu</item>
+        <item>bōshi</item>
+        <item>shatsu</item>
+        <item>nekkuresu</item>
+        <item>sūtsu</item>
+        <item>omutsu</item>
+        <item>pantsu</item>
+        <item>sukāfu</item>
+        <item>tebukuro</item>
+        <item>jīnzu</item>
+        <item>sukāto</item>
+        <item>pechikōto</item>
+        <item>minisukāto</item>
+        <item>tokei</item>
+        <item>zubon</item>
+        <item>sandaru</item>
+        <item>shitagi</item>
+        <item>torēnā</item>
+        <item>jaketto</item>
+        <item>yukata</item>
     </string-array>
 
     <string-array name="transportRM">
@@ -2961,17 +3005,39 @@
 
     <string-array name="clothesFR">
         <item>vêtements</item>
-        <item>vêtements occidentaux</item>
+        <item>vêtements occidentaux</item>
         <item>kimono</item>
-        <item>Vêtements japonais</item>
+        <item>Vêtements japonais</item>
         <item>manche</item>
-        <item>revers, col</item>
+        <item>revers, col</item>
         <item>bouton</item>
-        <item>fermeture éclair</item>
+        <item>fermeture éclair</item>
         <item>ceinture</item>
         <item>chaussure</item>
         <item>chaussette</item>
-        <item>des lunettes</item>
+        <item>des lunettes</item>
+        <item>Bague</item>
+        <item>Blouse</item>
+        <item>Boucle d\'oreille</item>
+        <item>Chapeau</item>
+        <item>Chemise</item>
+        <item>Collier</item>
+        <item>Costume</item>
+        <item>Couche</item>
+        <item>Culotte/Slip</item>
+        <item>Écharpe</item>
+        <item>Gants</item>
+        <item>Jeans</item>
+        <item>Jupe</item>
+        <item>Jupon</item>
+        <item>Jupe</item>
+        <item>Montre</item>
+        <item>Pantalon</item>
+        <item>Sandale</item>
+        <item>Sous-vêtement</item>
+        <item>Sweatshirt</item>
+        <item>Veste</item>
+        <item>Yukata</item>
     </string-array>
 
     <string-array name="clothesEN">
@@ -2987,6 +3053,28 @@
         <item>shoe</item>
         <item>sock</item>
         <item>glasses</item>
+        <item>ring</item>
+        <item>Blouse</item>
+        <item>Earring</item>
+        <item>Hat</item>
+        <item>Shirt</item>
+        <item>Necklace</item>
+        <item>Suit</item>
+        <item>Diaper </item>
+        <item>Panties / Underpants</item>
+        <item>Scarf</item>
+        <item>Gloves</item>
+        <item>Jeans</item>
+        <item>Skirt</item>
+        <item>Petticoat</item>
+        <item>Skirt</item>
+        <item>Watch</item>
+        <item>Trousers</item>
+        <item>Sandal</item>
+        <item>Underwear</item>
+        <item>Sweatshirt</item>
+        <item>Jacket</item>
+        <item>Yukata</item>
     </string-array>
 
     <string-array name="clothesKJ">
@@ -2997,11 +3085,33 @@
         <item>袖</item>
         <item>襟</item>
         <item>釦</item>
-        <item></item>
-        <item></item>
+        <item>チャック</item>
+        <item>ベルト</item>
         <item>靴</item>
         <item>靴下</item>
         <item>眼鏡</item>
+        <item>指輪</item>
+        <item>ブラウス</item>
+        <item>ピアス</item>
+        <item>帽子</item>
+        <item>シャツ</item>
+        <item>ネックレス</item>
+        <item>スーツ</item>
+        <item>御襁褓</item>
+        <item>パンツ</item>
+        <item>スカーフ</item>
+        <item>手袋</item>
+        <item>ジーンズ</item>
+        <item>スカート</item>
+        <item>ペチコート</item>
+        <item>ミニスカート</item>
+        <item>時計</item>
+        <item>ズボン</item>
+        <item>サンダル</item>
+        <item>下着</item>
+        <item>トレーナー</item>
+        <item>ジャケット</item>
+        <item>浴衣</item>
     </string-array>
 
 
@@ -52854,6 +52964,7 @@
     <string name="comment_souhaitez_vous_tre_valu">What would you like to learn?</string>
     <string name="moteur_de_synth_se_vocale_indisponible">Text-to-speech engine unavailable...</string>
     <string name="nous_regrettons_que_vous_ayez_ce_probl_me_mais_votre_appareil_ne_dispose_pas_encore_de_la_langue_japonaise_pour_votre_moteur_de_synth_se_vocale_n_n_arutairu_ne_dispose_pas_encore_d_un_syst_me_embarqu_ind_pendant_pour_pouvoir_vous_garantir_la_prononciation_des_mots">We regret that you have this problem, but your device does not  have the Japanese language for the text-to-speech engine. Arutairu does not yet have an independent embedded system to be able to guarantee the pronunciation of the words.</string>
+    <string name="geography">Geography</string>
 
     <string-array name="sentencesEN">
         <item>Good morning</item>
@@ -53118,6 +53229,550 @@
         <item>ただいま</item>
         <item>おかえりなさい</item>
         <item>じゃまたあした</item>
+    </string-array>
+
+    <string-array name="geographyRM">
+        <item>tairiku</item>
+        <item>afurika</item>
+        <item>hokubei</item>
+        <item>nambei</item>
+        <item>nankyoku tairiku</item>
+        <item>ajia</item>
+        <item>yōroppa</item>
+        <item>ōsutoraria</item>
+        <item>kuni</item>
+        <item>kyouwakoku</item>
+        <item>oukoku</item>
+        <item>minami afurika</item>
+        <item>arujeria</item>
+        <item>ejiputo</item>
+        <item>ribia</item>
+        <item>Morokko</item>
+        <item>chado</item>
+        <item>Chunijia</item>
+        <item>chūgoku</item>
+        <item>kitachōsen</item>
+        <item>kan koku</item>
+        <item>honkon</item>
+        <item>nihon/nippon</item>
+        <item>macao</item>
+        <item>mongoru</item>
+        <item>taiwan</item>
+        <item>burunei</item>
+        <item>kanbojia</item>
+        <item>indoneshia</item>
+        <item>raosu</item>
+        <item>marēshia</item>
+        <item>myanmā</item>
+        <item>firipin</item>
+        <item>shingapōru</item>
+        <item>tai</item>
+        <item>higashi timōru</item>
+        <item>betonamu</item>
+        <item>banguradeshu</item>
+        <item>būtan</item>
+        <item>indo</item>
+        <item>morudibu</item>
+        <item>nepāru</item>
+        <item>pakisutan</item>
+        <item>suriranka</item>
+        <item>chuutou</item>
+        <item>afuganisutan</item>
+        <item>kazafusutan</item>
+        <item>kirugisu</item>
+        <item>uzubekisutan</item>
+        <item>tajikisutan</item>
+        <item>torukumenisutan</item>
+        <item>arubania</item>
+        <item>doitsu</item>
+        <item>andora</item>
+        <item>igirisu</item>
+        <item>ingurando</item>
+        <item>sukottorando</item>
+        <item>kita airurando</item>
+        <item>wēruzu</item>
+        <item>ōsutoria</item>
+        <item>berugī</item>
+        <item>hakuroshia / berarūshi</item>
+        <item>bosunia herutsegobina</item>
+        <item>burugaria</item>
+        <item>kuroachia</item>
+        <item>denmāku</item>
+        <item>supein</item>
+        <item>esutonia</item>
+        <item>finrando</item>
+        <item>furansu</item>
+        <item>girisia / girisha</item>
+        <item>hangarī</item>
+        <item>airurando</item>
+        <item>aisurando</item>
+        <item>itaria</item>
+        <item>ratobia</item>
+        <item>ritoania</item>
+        <item>rukusenburuku</item>
+        <item>maruta</item>
+        <item>morudoba</item>
+        <item>noruwē</item>
+        <item>oranda</item>
+        <item>pōrando</item>
+        <item>porutogaru</item>
+        <item>cheko</item>
+        <item>rūmania</item>
+        <item>roshia</item>
+        <item>serubia monteneguro</item>
+        <item>surobakia</item>
+        <item>surobenia</item>
+        <item>suwēden</item>
+        <item>suisu</item>
+        <item>toruko</item>
+        <item>Ukuraina</item>
+        <item>kanada</item>
+        <item>kȳba</item>
+        <item>beikoku</item>
+        <item>jamaika</item>
+        <item>haichi</item>
+        <item>mekishiko</item>
+        <item>panama</item>
+        <item>dominikakoku</item>
+        <item>aruzenchin</item>
+        <item>burajiru</item>
+        <item>ōsutoraria</item>
+        <item>nyū jīrando</item>
+    </string-array>
+
+    <string-array name="geographyJP">
+        <item>たいりく</item>
+        <item>アフリカ</item>
+        <item>ほくべい</item>
+        <item>なんべい</item>
+        <item>なんきょくたいりく</item>
+        <item>アジア</item>
+        <item>ヨーロッパ</item>
+        <item>オーストラリア</item>
+        <item>くに</item>
+        <item>きょうわこく</item>
+        <item>おうこく</item>
+        <item>みなみアフリカ </item>
+        <item>アルジェリア </item>
+        <item>エジプト</item>
+        <item>リビア</item>
+        <item>モロッコ </item>
+        <item>チャド</item>
+        <item>チュニジア </item>
+        <item>ちゅうごく</item>
+        <item>きたちょうせん</item>
+        <item>かんこく</item>
+        <item>ホンコン</item>
+        <item>にほん / にっぽん</item>
+        <item>マカオ</item>
+        <item>モンゴル</item>
+        <item>たいわん</item>
+        <item>ブルネイ</item>
+        <item>カンボジア</item>
+        <item>インドネシア</item>
+        <item>ラオス</item>
+        <item>マレーシア</item>
+        <item>ミャンマー</item>
+        <item>フィリピン</item>
+        <item>シンガポール</item>
+        <item>タイ</item>
+        <item>ひがしティモール</item>
+        <item>ベトナム</item>
+        <item>バングラデシュ</item>
+        <item>ブータン</item>
+        <item>いんど</item>
+        <item>モルディブ</item>
+        <item>ネパール</item>
+        <item>パキスタン</item>
+        <item>スリランカ</item>
+        <item>ちゅうとう</item>
+        <item>アフガニスタン</item>
+        <item>カザフスタン</item>
+        <item>キルギス</item>
+        <item>ウズベキスタン</item>
+        <item>タジキスタン</item>
+        <item>トルクメニスタン</item>
+        <item>アルバニア</item>
+        <item>ドイツ</item>
+        <item>アンドラ</item>
+        <item>イギリス</item>
+        <item>イングランド</item>
+        <item>スコットランド</item>
+        <item>きたアイルランド</item>
+        <item>ウェールズ</item>
+        <item>オーストリア</item>
+        <item>ベルギー</item>
+        <item>ベラルーシ</item>
+        <item>ボスニア ヘルツェゴビナ</item>
+        <item>ブルガリア</item>
+        <item>クロアチア</item>
+        <item>デンマーク</item>
+        <item>スペイン</item>
+        <item>エストニア</item>
+        <item>フィンランド</item>
+        <item>フランス</item>
+        <item>ギリシア / ギリシャ</item>
+        <item>ハンガリー</item>
+        <item>アイルランド</item>
+        <item>アイスランド</item>
+        <item>イタリア</item>
+        <item>ラトビア</item>
+        <item>リトアニア</item>
+        <item>ルクセンブルク</item>
+        <item>マルタ</item>
+        <item>モルドバ</item>
+        <item>ノルウェー</item>
+        <item>オランダ</item>
+        <item>ポーランド</item>
+        <item>ポルトガル</item>
+        <item>チェコ</item>
+        <item>ルーマニア</item>
+        <item>ロシア</item>
+        <item>セルビア モンテネグロ</item>
+        <item>スロバキア</item>
+        <item>スロベニア</item>
+        <item>スウェーデン</item>
+        <item>スイス</item>
+        <item>トルコ</item>
+        <item>ウクライナ</item>
+        <item>カナダ</item>
+        <item>キューバ</item>
+        <item>べいこく</item>
+        <item>ジャマイカ</item>
+        <item>ハイチ</item>
+        <item>メキシコ</item>
+        <item>パナマ</item>
+        <item>ドミニカこく</item>
+        <item>アルゼンチン</item>
+        <item>ブラジル</item>
+        <item>オーストラリア</item>
+        <item>ニュージーランド</item>
+    </string-array>
+
+    <string-array name="geographyKJ">
+        <item>大陸 </item>
+        <item>アフリカ</item>
+        <item>北米</item>
+        <item>南米</item>
+        <item>南極大陸</item>
+        <item>亜細亜</item>
+        <item>ヨーロッパ</item>
+        <item>オーストラリア</item>
+        <item>国</item>
+        <item>共和国</item>
+        <item>王国</item>
+        <item>南アフリカ </item>
+        <item>アルジェリア</item>
+        <item>エジプト </item>
+        <item>リビア</item>
+        <item>モロッコ</item>
+        <item>チャド</item>
+        <item>チュニジア </item>
+        <item>中国</item>
+        <item>北朝鮮</item>
+        <item>韓国</item>
+        <item>香港</item>
+        <item>日本</item>
+        <item>澳門</item>
+        <item>モンゴル</item>
+        <item>台湾</item>
+        <item>ブルネイ</item>
+        <item>カンボジア</item>
+        <item>インドネシア</item>
+        <item>ラオス</item>
+        <item>マレーシア</item>
+        <item>ミャンマー</item>
+        <item>比律賓</item>
+        <item>新嘉坡</item>
+        <item>泰</item>
+        <item>東ティモール</item>
+        <item>越南</item>
+        <item>バングラデシュ</item>
+        <item>ブータン</item>
+        <item>印度</item>
+        <item>モルディブ</item>
+        <item>ネパール</item>
+        <item>パキスタン</item>
+        <item>スリランカ</item>
+        <item>中東</item>
+        <item>アフガニスタン</item>
+        <item>カザフスタン</item>
+        <item>キルギス</item>
+        <item>ウズベキスタン</item>
+        <item>タジキスタン</item>
+        <item>トルクメニスタン</item>
+        <item>アルバニア</item>
+        <item>独逸</item>
+        <item>アンドラ</item>
+        <item>英吉利</item>
+        <item>イングランド</item>
+        <item>スコットランド</item>
+        <item>きたアイルランド</item>
+        <item>ウェールズ</item>
+        <item>墺太利</item>
+        <item>白耳義</item>
+        <item>白ロシア</item>
+        <item>ボスニア ヘルツェゴビナ</item>
+        <item>勃牙利</item>
+        <item>クロアチア</item>
+        <item>丁抹</item>
+        <item>西班牙</item>
+        <item>エストニア</item>
+        <item>芬蘭</item>
+        <item>仏蘭西</item>
+        <item>希臘</item>
+        <item>洪牙利</item>
+        <item>愛蘭</item>
+        <item>アイスランド</item>
+        <item>伊太利</item>
+        <item>ラトビア</item>
+        <item>リトアニア</item>
+        <item>ルクセンブルク</item>
+        <item>マルタ</item>
+        <item>モルドバ</item>
+        <item>諾威</item>
+        <item>阿蘭陀</item>
+        <item>波蘭</item>
+        <item>葡萄牙</item>
+        <item>捷克</item>
+        <item>羅馬尼亜</item>
+        <item>露西亜</item>
+        <item>セルビア モンテネグロ</item>
+        <item>スロバキア</item>
+        <item>スロベニア</item>
+        <item>瑞典</item>
+        <item>瑞西</item>
+        <item>土耳古</item>
+        <item>烏克蘭</item>
+        <item>加奈陀</item>
+        <item>玖馬</item>
+        <item>米国</item>
+        <item>牙買加</item>
+        <item>ハイチ</item>
+        <item>墨西哥</item>
+        <item>巴奈馬</item>
+        <item>ドミニカ国 / 土弥尼加</item>
+        <item>アルゼンチン</item>
+        <item>ブラジル</item>
+        <item>豪州</item>
+        <item>新西蘭</item>
+    </string-array>
+
+    <string-array name="geographyFR">
+        <item>continents </item>
+        <item>Afrique</item>
+        <item>Amérique du nord</item>
+        <item>Amérique du sud</item>
+        <item>Antarctique</item>
+        <item>Asie</item>
+        <item>Europe</item>
+        <item>Océanie</item>
+        <item>pays</item>
+        <item>République</item>
+        <item>monarchie, royaume</item>
+        <item>Afrique du sud</item>
+        <item>Algérie</item>
+        <item>Égypte</item>
+        <item>Libye</item>
+        <item>Maroc</item>
+        <item>Tchad</item>
+        <item>Tunisie</item>
+        <item>Chine</item>
+        <item>Corée du Nord</item>
+        <item>Corée du Sud</item>
+        <item>Hong Kong</item>
+        <item>Japon</item>
+        <item>Macao</item>
+        <item>Mongolie</item>
+        <item>Taiwan</item>
+        <item>Brunei</item>
+        <item>Cambodge</item>
+        <item>Indonésie</item>
+        <item>Laos</item>
+        <item>Malaisie</item>
+        <item>Myanmar</item>
+        <item>Philippines</item>
+        <item>Singapour</item>
+        <item>Thailande</item>
+        <item>Timor oriental</item>
+        <item>Vietnam</item>
+        <item>Bangladesh</item>
+        <item>Bhoutan</item>
+        <item>Inde</item>
+        <item>Maldives</item>
+        <item>Népal</item>
+        <item>Pakistan</item>
+        <item>Sri Lanka</item>
+        <item>Moyen Orient</item>
+        <item>Afghanistan</item>
+        <item>Kazakhstan</item>
+        <item>Kirghizistan</item>
+        <item>Ouzbékistan</item>
+        <item>Tadjikistan</item>
+        <item>Turkménistan</item>
+        <item>Albanie</item>
+        <item>Allemagne</item>
+        <item>Andorre</item>
+        <item>Royaume-uni</item>
+        <item>Angleterre</item>
+        <item>Écosse</item>
+        <item>Irlande du nord</item>
+        <item>Pays de Galle</item>
+        <item>Autriche</item>
+        <item>Belgique</item>
+        <item>Biélorussie</item>
+        <item>Bosnie Herzegovine</item>
+        <item>Bulgarie</item>
+        <item>Croatie</item>
+        <item>Danemark</item>
+        <item>Espagne</item>
+        <item>Estonie</item>
+        <item>Finlande</item>
+        <item>France</item>
+        <item>Grèce</item>
+        <item>Hongrie</item>
+        <item>Irlande</item>
+        <item>Islande</item>
+        <item>Italie</item>
+        <item>Lettonie</item>
+        <item>Lituanie</item>
+        <item>Luxembourg</item>
+        <item>Malte</item>
+        <item>Moldavie</item>
+        <item>Norvège</item>
+        <item>Pays-bas</item>
+        <item>Pologne</item>
+        <item>Portugal</item>
+        <item>République tchèque</item>
+        <item>Roumanie</item>
+        <item>Russie</item>
+        <item>Serbie Montenegro</item>
+        <item>Slovaquie</item>
+        <item>Slovénie</item>
+        <item>Suède</item>
+        <item>Suisse</item>
+        <item>Turquie</item>
+        <item>Ukraine</item>
+        <item>Canada</item>
+        <item>Cuba</item>
+        <item>États-Unis d\'Amérique</item>
+        <item>Jamaïque</item>
+        <item>Haïti</item>
+        <item>Mexique</item>
+        <item>Panama</item>
+        <item>République Dominicaine</item>
+        <item>Argentine</item>
+        <item>Brésil</item>
+        <item>Australie</item>
+        <item>Nouvelle-Zélande</item>
+</string-array>
+    <string-array name="geographyEN">
+        <item>continents </item>
+    <item>Africa</item>
+    <item>North America</item>
+    <item>South America</item>
+    <item>Antarctic</item>
+    <item>Asia</item>
+    <item>Europe</item>
+    <item>Oceania</item>
+    <item>country</item>
+    <item>Republic</item>
+    <item>kingdom, monarchy</item>
+    <item>South Africa</item>
+    <item>Algériea</item>
+    <item>Egypt</item>
+    <item>Libya</item>
+    <item>Morocco</item>
+    <item>Chad</item>
+    <item>Tunisia</item>
+    <item>China</item>
+    <item>North Korea</item>
+    <item>South Korea</item>
+    <item>Hong Kong</item>
+    <item>Japan</item>
+    <item>Macao</item>
+    <item>Mongolia</item>
+    <item>Taiwan</item>
+    <item>Brunei</item>
+    <item>Cambodia</item>
+    <item>Indonesia</item>
+    <item>Laos</item>
+    <item>Malaysia</item>
+    <item>Myanmar</item>
+    <item>Philippines</item>
+    <item>Singapore</item>
+    <item>Thailand</item>
+    <item>East Timor </item>
+    <item>Vietnam</item>
+    <item>Bangladesh</item>
+    <item>Bhutan</item>
+    <item>India</item>
+    <item>Maldives</item>
+    <item>Nepal</item>
+    <item>Pakistan</item>
+    <item>Sri Lanka</item>
+    <item>Middle East</item>
+    <item>Afghanistan</item>
+    <item>Kazakhstan</item>
+    <item>Kirghizistan</item>
+    <item>Ouzbekistan</item>
+    <item>Tadjikistan</item>
+    <item>Turkmenistan</item>
+    <item>Albania</item>
+    <item>Germany</item>
+    <item>Andorra</item>
+    <item>United-Kingdom</item>
+    <item>England</item>
+    <item>Scotland</item>
+    <item>Northern Ireland</item>
+    <item>Wales</item>
+    <item>Austria</item>
+    <item>Belgium </item>
+    <item>Belarus</item>
+    <item>Bosnia and Herzegovina</item>
+    <item>Bulgaria</item>
+    <item>Croatia</item>
+    <item>Denmark</item>
+    <item>Spain</item>
+    <item>Estonia</item>
+    <item>Finland</item>
+    <item>France </item>
+    <item>Greece</item>
+    <item>Hungary</item>
+    <item>Ireland</item>
+    <item>Iceland</item>
+    <item>Italy</item>
+    <item>Latvia</item>
+    <item>Lithuania</item>
+    <item>Luxembourg</item>
+    <item>Malta</item>
+    <item>Moldova</item>
+    <item>Norway</item>
+    <item>Netherlands </item>
+    <item>Poland</item>
+    <item>Portugal</item>
+    <item>Czech republic </item>
+    <item>Romania</item>
+    <item>Russia</item>
+    <item>Serbia Montenegro</item>
+    <item>Slovakia</item>
+    <item>Slovenia</item>
+    <item>Sweden </item>
+    <item>Swiss </item>
+    <item>Turkey </item>
+    <item>Ukraine</item>
+    <item>Canada</item>
+    <item>Cuba</item>
+    <item>United States of America </item>
+    <item>Jamaica</item>
+    <item>Haiti</item>
+    <item>Mexico</item>
+    <item>Panama</item>
+    <item>Dominican Republic </item>
+    <item>Argentina</item>
+    <item>Brazil</item>
+    <item>Australia</item>
+    <item>New Zealand</item>
     </string-array>
 
 

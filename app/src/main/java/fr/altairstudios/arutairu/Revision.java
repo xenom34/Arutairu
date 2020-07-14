@@ -138,7 +138,7 @@ public class Revision extends AppCompatActivity {
             @Override
             public void onInit(int status) {
                 if(status != TextToSpeech.ERROR) {
-                    t1.setLanguage(Locale.JAPAN);
+                    t1.setLanguage(Locale.JAPANESE);
                 }
             }
         });
@@ -146,12 +146,8 @@ public class Revision extends AppCompatActivity {
         mSound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(t1.isLanguageAvailable(Locale.JAPAN) == TextToSpeech.LANG_AVAILABLE) {
                     //Log.d("TEST", String.valueOf(t1.isLanguageAvailable(Locale.JAPAN)));
                     t1.speak(mShowJpn.getText(), TextToSpeech.QUEUE_FLUSH, null, "1");
-                }else{
-                    //showError();
-                }
                 Snackbar.make(findViewById(R.id.revisionactivity), mShowRomaji.getText(), Snackbar.LENGTH_SHORT)
                         .show();
             }

@@ -83,4 +83,5 @@
     <string name="comment_souhaitez_vous_tre_valu">Comment souhaitez-vous être évalué ?</string>
     <string name="moteur_de_synth_se_vocale_indisponible">Moteur de synthèse vocale indisponible...</string>
     <string name="nous_regrettons_que_vous_ayez_ce_probl_me_mais_votre_appareil_ne_dispose_pas_encore_de_la_langue_japonaise_pour_votre_moteur_de_synth_se_vocale_n_n_arutairu_ne_dispose_pas_encore_d_un_syst_me_embarqu_ind_pendant_pour_pouvoir_vous_garantir_la_prononciation_des_mots">Nous regrettons que vous ayez ce problème, mais votre appareil ne dispose pas encore de la langue japonaise pour votre moteur de synthèse vocale.Arutairu ne dispose pas encore d\'un système embarqué indépendant pour pouvoir vous garantir la prononciation des mots.</string>
+    <string name="geography">Géographie</string>
 </resources>

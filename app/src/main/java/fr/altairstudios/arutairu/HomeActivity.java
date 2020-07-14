@@ -460,6 +460,10 @@ public class HomeActivity extends AppCompatActivity {
                 topImage.setImageResource(R.drawable.tokyo);
                 state = LessonsStorage.SENTENCES;
                 break;
+            case R.id.nav_geography:
+                topImage.setImageResource(R.drawable.map);
+                state = LessonsStorage.GEOGRAPHY;
+                break;
         }
 
         setSwitch(state);
@@ -1037,6 +1041,11 @@ public class HomeActivity extends AppCompatActivity {
                 navigationView.setCheckedItem(R.id.nav_conversation);
                 initMenu(R.id.nav_conversation);
                 refresh(state, getResources().getString(R.string.useful_sentences));
+                break;
+            case LessonsStorage.GEOGRAPHY:
+                navigationView.setCheckedItem(R.id.nav_geography);
+                initMenu(R.id.nav_geography);
+                refresh(state, getResources().getString(R.string.geography));
                 break;
         }
     }

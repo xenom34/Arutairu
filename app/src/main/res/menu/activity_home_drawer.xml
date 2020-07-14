@@ -142,6 +142,10 @@
             android:id="@+id/nav_conversation"
             android:icon="@drawable/ic_conversation"
             android:title="@string/useful_sentences" />
+        <item
+            android:id="@+id/nav_geography"
+            android:icon="@drawable/ic_globe"
+            android:title="@string/geography" />
             </group>
         </menu>
         </item>
