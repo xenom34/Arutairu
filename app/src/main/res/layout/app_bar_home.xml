@@ -38,42 +38,56 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtKanji"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Kanji"
-                app:layout_constraintBottom_toBottomOf="@+id/switch1"
-                app:layout_constraintStart_toEndOf="@+id/switch1"
-                app:layout_constraintTop_toTopOf="@+id/switch1" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtKana"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Kana  "
-                app:layout_constraintBottom_toBottomOf="@+id/switch1"
-                app:layout_constraintEnd_toStartOf="@+id/switch1"
-                app:layout_constraintTop_toTopOf="@+id/switch1" />
-
-            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/choiceUnavailable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/aucun_choix_possible"
-                app:layout_constraintBottom_toBottomOf="@+id/switch1"
+                app:layout_constraintBottom_toBottomOf="@+id/radioGroup"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/switch1"/>
+                app:layout_constraintTop_toTopOf="@+id/radioGroup"/>
 
-            <Switch
-                android:id="@+id/switch1"
+            <TextView
+                android:id="@+id/howText"
+                android:layout_margin="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:layout_marginTop="12dp"
-                app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-                app:layout_constraintStart_toStartOf="@+id/linearLayout"
+                android:text="@string/comment_souhaitez_vous_tre_valu"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="16dp"
+                app:layout_constraintTop_toBottomOf="@id/howText">
+
+                <RadioButton
+                    android:id="@+id/radio_kanji"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="Kanji" />
+
+                <RadioButton
+                    android:id="@+id/radio_kana"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Kana" />
+
+                <RadioButton
+                    android:id="@+id/radio_romaji"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Romaji" />
+            </RadioGroup>
+
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -128,7 +142,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@+id/switch1">
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup">
 
                 <LinearLayout
                     android:layout_width="match_parent"

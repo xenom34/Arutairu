@@ -60,6 +60,36 @@
         <item>わ</item>
         <item>を</item>
         <item>ん</item>
+
+        <item>が</item>
+        <item>ぎ</item>
+        <item>ぐ</item>
+        <item>げ</item>
+        <item>ご</item>
+
+        <item>ざ</item>
+        <item>じ</item>
+        <item>ず</item>
+        <item>ぜ</item>
+        <item>ぞ</item>
+
+        <item>だ</item>
+        <item>ぢ</item>
+        <item>づ</item>
+        <item>で</item>
+        <item>ど</item>
+
+        <item>ば</item>
+        <item>び</item>
+        <item>ぶ</item>
+        <item>べ</item>
+        <item>ぼ</item>
+
+        <item>ぱ</item>
+        <item>ぴ</item>
+        <item>ぷ</item>
+        <item>ぺ</item>
+        <item>ぽ</item>
     </string-array>
     <string-array name="hiraganaFR">
         <item>a</item>
@@ -117,6 +147,36 @@
         <item>wa</item>
         <item>wo</item>
         <item>n</item>
+
+        <item>ga</item>
+        <item>gi</item>
+        <item>gu</item>
+        <item>ge</item>
+        <item>go</item>
+
+        <item>za</item>
+        <item>ji</item>
+        <item>zu</item>
+        <item>ze</item>
+        <item>zo</item>
+
+        <item>da</item>
+        <item>ji, dji, jyi</item>
+        <item>dzu, zu</item>
+        <item>de</item>
+        <item>do</item>
+
+        <item>ba</item>
+        <item>bi</item>
+        <item>bu</item>
+        <item>be</item>
+        <item>bo</item>
+
+        <item>pa</item>
+        <item>pi</item>
+        <item>pu</item>
+        <item>pe</item>
+        <item>po</item>
     </string-array>
     <string-array name="hiraganaRM">
         <item> </item>
@@ -171,6 +231,74 @@
         <item> </item>
         <item> </item>
 
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
+        <item> </item>
+
+        <item> </item>
+        <item> </item>
         <item> </item>
         <item> </item>
         <item> </item>
@@ -236,8 +364,6 @@
         <item> </item>
         <item> </item>
 
-    </string-array>
-    <string-array name="dukutenKataRM">
         <item> </item>
         <item> </item>
         <item> </item>
@@ -267,68 +393,43 @@
         <item> </item>
         <item> </item>
         <item> </item>
-    </string-array>
-    <string-array name="dukutenKataFR">
-        <item>ga</item>
-        <item>gi</item>
-        <item>gu</item>
-        <item>ge</item>
-        <item>go</item>
 
-        <item>za</item>
-        <item>ji</item>
-        <item>zu</item>
-        <item>ze</item>
-        <item>zo</item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
 
-        <item>da</item>
-        <item>dzi</item>
-        <item>dzu</item>
-        <item>de</item>
-        <item>do</item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
 
-        <item>ba</item>
-        <item>bi</item>
-        <item>bu</item>
-        <item>be</item>
-        <item>bo</item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
 
-        <item>pa</item>
-        <item>pi</item>
-        <item>pu</item>
-        <item>pe</item>
-        <item>po</item>
-    </string-array>
-    <string-array name="dukutenKataJP">
-        <item>ガ</item>
-        <item>ギ</item>
-        <item>グ</item>
-        <item>ゲ</item>
-        <item>ゴ</item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
 
-        <item>ザ</item>
-        <item>ジ</item>
-        <item>ズ</item>
-        <item>ゼ</item>
-        <item>ゾ</item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
 
-        <item>ダ</item>
-        <item>ヂ</item>
-        <item>ヅ</item>
-        <item>デ</item>
-        <item>ド</item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
 
-        <item>バ</item>
-        <item>ビ</item>
-        <item>ブ</item>
-        <item>ベ</item>
-        <item>ボ</item>
-
-        <item>パ</item>
-        <item>ピ</item>
-        <item>プ</item>
-        <item>ペ</item>
-        <item>ポ</item>
     </string-array>
     <string-array name="katakanaJP">
         <item>ア</item>
@@ -392,6 +493,35 @@
         <item>ー</item>
         <item>ヽ</item>
 
+        <item>ガ</item>
+        <item>ギ</item>
+        <item>グ</item>
+        <item>ゲ</item>
+        <item>ゴ</item>
+
+        <item>ザ</item>
+        <item>ジ</item>
+        <item>ズ</item>
+        <item>ゼ</item>
+        <item>ゾ</item>
+
+        <item>ダ</item>
+        <item>ヂ</item>
+        <item>ヅ</item>
+        <item>デ</item>
+        <item>ド</item>
+
+        <item>バ</item>
+        <item>ビ</item>
+        <item>ブ</item>
+        <item>ベ</item>
+        <item>ボ</item>
+
+        <item>パ</item>
+        <item>ピ</item>
+        <item>プ</item>
+        <item>ペ</item>
+        <item>ポ</item>
 
     </string-array>
 
@@ -452,45 +582,10 @@
         <item>wo</item>
 
         <item>n</item>
-        <item>double consonnance</item>
-        <item>longue voyelle</item>
-        <item>syllabe dupliquée</item>
+        <item>double consonant</item>
+        <item>long vowel</item>
+        <item>duplicated syllable</item>
 
-    </string-array>
-    <string-array name="dakutenRM">
-        <item> </item>
-        <item> </item>
-        <item> </item>
-        <item> </item>
-        <item> </item>
-
-        <item> </item>
-        <item> </item>
-        <item> </item>
-        <item> </item>
-        <item> </item>
-
-        <item> </item>
-        <item> </item>
-        <item> </item>
-        <item> </item>
-        <item> </item>
-
-        <item> </item>
-        <item> </item>
-        <item> </item>
-        <item> </item>
-        <item> </item>
-
-        <item> </item>
-        <item> </item>
-        <item> </item>
-        <item> </item>
-        <item> </item>
-
-    </string-array>
-
-    <string-array name="dakutenFR">
         <item>ga</item>
         <item>gi</item>
         <item>gu</item>
@@ -504,8 +599,8 @@
         <item>zo</item>
 
         <item>da</item>
-        <item>ji, dji, jyi</item>
-        <item>dzu, zu</item>
+        <item>dzi</item>
+        <item>dzu</item>
         <item>de</item>
         <item>do</item>
 
@@ -522,38 +617,7 @@
         <item>po</item>
 
     </string-array>
-    <string-array name="dakutenJP">
-        <item>が</item>
-        <item>ぎ</item>
-        <item>ぐ</item>
-        <item>げ</item>
-        <item>ご</item>
 
-        <item>ざ</item>
-        <item>じ</item>
-        <item>ず</item>
-        <item>ぜ</item>
-        <item>ぞ</item>
-
-        <item>だ</item>
-        <item>ぢ</item>
-        <item>づ</item>
-        <item>で</item>
-        <item>ど</item>
-
-        <item>ば</item>
-        <item>び</item>
-        <item>ぶ</item>
-        <item>べ</item>
-        <item>ぼ</item>
-
-        <item>ぱ</item>
-        <item>ぴ</item>
-        <item>ぷ</item>
-        <item>ぺ</item>
-        <item>ぽ</item>
-
-    </string-array>
     <string-array name="numbersKJ">
         <item>零</item>
         <item>一</item>
@@ -52782,6 +52846,14 @@
     <string name="notez_l_appli">Rate this app</string>
     <string name="signaler_un_probl_me">Report a problem</string>
     <string name="send_mail">Send an email</string>
+    <string name="d_but">Start</string>
+    <string name="fin">End</string>
+    <string name="nombre_de_mots_piocher">Number of words to pick</string>
+    <string name="error_disclaim">Please enter correct parameters in order to create the next lesson.</string>
+    <string name="votre_saisie_est_incorrecte">You have entered incorrect parameters.</string>
+    <string name="comment_souhaitez_vous_tre_valu">What would you like to learn?</string>
+    <string name="moteur_de_synth_se_vocale_indisponible">Text-to-speech engine unavailable...</string>
+    <string name="nous_regrettons_que_vous_ayez_ce_probl_me_mais_votre_appareil_ne_dispose_pas_encore_de_la_langue_japonaise_pour_votre_moteur_de_synth_se_vocale_n_n_arutairu_ne_dispose_pas_encore_d_un_syst_me_embarqu_ind_pendant_pour_pouvoir_vous_garantir_la_prononciation_des_mots">We regret that you have this problem, but your device does not  have the Japanese language for the text-to-speech engine. Arutairu does not yet have an independent embedded system to be able to guarantee the pronunciation of the words.</string>
 
     <string-array name="sentencesEN">
         <item>Good morning</item>

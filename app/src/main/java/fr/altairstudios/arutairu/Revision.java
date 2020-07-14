@@ -74,6 +74,8 @@ public class Revision extends AppCompatActivity {
             }
             if(getIntent().getBooleanExtra("KANJI", false)){
                 mJpn = getResources().getStringArray(lessonsStorage.getKjRes(lesson));
+            }else if (getIntent().getBooleanExtra("WITH_ROMAJI", false)){
+                mJpn = getResources().getStringArray(lessonsStorage.getRmRes(lesson));
             }else{
                 mJpn = getResources().getStringArray(lessonsStorage.getJpRes(lesson));
             }
@@ -144,7 +146,12 @@ public class Revision extends AppCompatActivity {
         mSound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                t1.speak(mShowJpn.getText(), TextToSpeech.QUEUE_FLUSH, null, "1");
+                if(t1.isLanguageAvailable(Locale.JAPAN) == TextToSpeech.LANG_AVAILABLE) {
+                    //Log.d("TEST", String.valueOf(t1.isLanguageAvailable(Locale.JAPAN)));
+                    t1.speak(mShowJpn.getText(), TextToSpeech.QUEUE_FLUSH, null, "1");
+                }else{
+                    //showError();
+                }
                 Snackbar.make(findViewById(R.id.revisionactivity), mShowRomaji.getText(), Snackbar.LENGTH_SHORT)
                         .show();
             }
@@ -157,6 +164,39 @@ public class Revision extends AppCompatActivity {
 
         refresh();
 
+    }
+
+    private void showError() {
+        //before inflating the custom alert dialog layout, we will get the current activity viewgroup
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+
+        //then we will inflate the custom alert dialog xml that we created
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.tts_not_available, viewGroup, false);
+
+        //Now we need an AlertDialog.Builder object
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView);
+
+
+        builder.setPositiveButton(R.string.understood, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                //mSpam = 0;
+            }
+        });
+
+        //finally creating the alert dialog and displaying it
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
     private void up() {

@@ -24,17 +24,9 @@
                     android:icon="@drawable/ic_hiragana"
                     android:title="@string/hiragana" />
                 <item
-                    android:id="@+id/nav_hiragana_d"
-                    android:icon="@drawable/ic_dakuten_h"
-                    android:title="@string/dakuten_hiragana" />
-                <item
                     android:id="@+id/nav_katakana"
                     android:icon="@drawable/ic_katakana"
                     android:title="@string/katakana" />
-                <item
-                    android:id="@+id/nav_katakana_d"
-                    android:icon="@drawable/ic_dakuten_k"
-                    android:title="@string/dakuten_katakana" />
                 </group>
             </menu>
         </item>

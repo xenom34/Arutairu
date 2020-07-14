@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="le_ons">Lessons</string>
-    <string name="keyboard">The use of Arutairu requires a few adjustments to your keyboard. Since japanese doesn\'t use our alphabet, you will have to add the language in its settings. \nWe recommend you to set up the input so you can enter kanas or kanjis by drawing them on your smartphone (handwriting mode).\n\nFor some devices, you need to press the \"gear\" symbol at the top of your keyboard.</string>
+    <string name="keyboard">The use of Arutairu requires a few adjustments to your keyboard. Since japanese doesn\'t use our alphabet, you will have to add the language in the settings.  We recommend you to set up the input so you can enter kanas or kanjis by drawing them on your smartphone (handwriting mode).  For some devices, you need to press the \"gear\" symbol at the top of your keyboard.</string>
     <string name="disclaimer_revision">A long press on one of these buttons will take you back to the beginning or the end of the list.</string>
     <string name="bienvenue">Welcome!</string>
     <string name="back">BACK</string>
@@ -75,4 +75,12 @@
     <string name="notez_l_appli">Rate this app</string>
     <string name="signaler_un_probl_me">Report a problem</string>
     <string name="send_mail">Send an email</string>
+    <string name="nombre_de_mots_piocher">Number of words to pick</string>
+    <string name="fin">End</string>
+    <string name="d_but">Start</string>
+    <string name="votre_saisie_est_incorrecte">You have entered incorrect parameters.</string>
+    <string name="error_disclaim">Please enter correct parameters in order to create the next lesson.</string>
+    <string name="comment_souhaitez_vous_tre_valu">What would you like to learn?</string>
+    <string name="moteur_de_synth_se_vocale_indisponible">Text-to-speech engine unavailable...</string>
+    <string name="nous_regrettons_que_vous_ayez_ce_probl_me_mais_votre_appareil_ne_dispose_pas_encore_de_la_langue_japonaise_pour_votre_moteur_de_synth_se_vocale_n_n_arutairu_ne_dispose_pas_encore_d_un_syst_me_embarqu_ind_pendant_pour_pouvoir_vous_garantir_la_prononciation_des_mots">We regret that you have this problem, but your device does not  have the Japanese language for the text-to-speech engine. Arutairu does not yet have an independent embedded system to be able to guarantee the pronunciation of the words.</string>
 </resources>

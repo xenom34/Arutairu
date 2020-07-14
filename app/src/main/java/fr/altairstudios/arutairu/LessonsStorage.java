@@ -52,9 +52,7 @@ class LessonsStorage {
 
     LessonsStorage() {
         storage.put(HIRAGANA, new Lesson(R.array.hiraganaJP, R.array.hiraganaRM, R.array.hiraganaFR, R.array.hiraganaFR));
-        storage.put(DAKUTEN, new Lesson(R.array.dakutenJP, R.array.dakutenRM, R.array.dakutenFR, R.array.dakutenFR));
         storage.put(KATAKANA, new Lesson(R.array.katakanaJP, R.array.katakanaRM, R.array.katakanaFR, R.array.katakanaFR));
-        storage.put(DAKUTENKATA, new Lesson(R.array.dukutenKataJP, R.array.dakutenRM, R.array.dakutenFR, R.array.dakutenFR));
         storage.put(NUMBERS, new Lesson(R.array.numbersKJ, R.array.numbersJP, R.array.numbersRM, R.array.numbersFR, R.array.numbersFR));
         storage.put(PEOPLE, new Lesson(R.array.peopleKJ, R.array.peopleJS, R.array.peopleRM, R.array.peopleFR, R.array.peopleEN));
         storage.put(JOBS, new Lesson(R.array.jobsKJ, R.array.jobsJP, R.array.jobsRM, R.array.jobsFR, R.array.jobsEN));

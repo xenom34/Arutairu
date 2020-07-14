@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +24,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,9 +66,10 @@ public class HomeActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     LessonsCompleted lessonsCompleted;
     private int state;
-    private Switch mSwitch;
+    private RadioGroup radioGroup;
+    private RadioButton mKanji, mKanas, mRomajis;
     private ImageView topImage;
-    private TextView mTitle, mTextProgress, mNbLearn, mKanji, mKana;
+    private TextView mTitle, mTextProgress, mNbLearn;
     private ProgressBar mProgress;
     private Button mPractice, mTest, mRevision;
     private NavigationView navigationView;
@@ -89,11 +93,12 @@ public class HomeActivity extends AppCompatActivity {
         toolbar.setBackgroundColor(getResources().getColor(R.color.darkGrey));
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
-        mKanji = findViewById(R.id.txtKanji);
-        mKana = findViewById(R.id.txtKana);
-        mSwitch = findViewById(R.id.switch1);
+        radioGroup = findViewById(R.id.radioGroup);
         topImage = findViewById(R.id.imageView2);
         mTitle = findViewById(R.id.textView2);
+        mKanji = findViewById(R.id.radio_kanji);
+        mKanas = findViewById(R.id.radio_kana);
+        mRomajis = findViewById(R.id.radio_romaji);
         mUnavailableKanji = findViewById(R.id.choiceUnavailable);
         mTextProgress = findViewById(R.id.textProgress);
         mProgress = findViewById(R.id.progressBar);
@@ -186,8 +191,10 @@ public class HomeActivity extends AppCompatActivity {
                 SelectedItemList selectedItemList = new SelectedItemList();
                 String[] tempJP;
                 String[] tempRomaji;
-                if (mSwitch.isChecked()){
+                if (mKanji.isChecked()){
                     tempJP = getResources().getStringArray(lessonsStorage.getKjRes(state));
+                }else if (mRomajis.isChecked()){
+                    tempJP = getResources().getStringArray(lessonsStorage.getRmRes(state));
                 }else{
                     tempJP = getResources().getStringArray(lessonsStorage.getJpRes(state));
                 }
@@ -273,7 +280,8 @@ public class HomeActivity extends AppCompatActivity {
                 }
                 intent.putExtra("LOCALE", sharedPreferences.getString("LOCALE", "en"));
                 intent.putExtra("FIRST", revisionDialog);
-                intent.putExtra("KANJI", mSwitch.isChecked());
+                intent.putExtra("KANJI", mKanji.isChecked());
+                intent.putExtra("WITH_ROMAJI", mRomajis.isChecked());
                 sharedPreferences.edit().putBoolean(FIRST_REVISION, false).apply();
                 waitingForData = false;
                 startActivity(intent);
@@ -296,17 +304,9 @@ public class HomeActivity extends AppCompatActivity {
                 topImage.setImageResource(R.drawable.hiragana);
                 state = LessonsStorage.HIRAGANA;
                 break;
-            case R.id.nav_hiragana_d:
-                topImage.setImageResource(R.drawable.dakuten);
-                state = LessonsStorage.DAKUTEN;
-                break;
             case R.id.nav_katakana:
                 topImage.setImageResource(R.drawable.katakana);
                 state = LessonsStorage.KATAKANA;
-                break;
-            case R.id.nav_katakana_d:
-                topImage.setImageResource(R.drawable.dakutenkata);
-                state = LessonsStorage.DAKUTENKATA;
                 break;
             case R.id.nav_numbers:
                 topImage.setImageResource(R.drawable.numbers);
@@ -469,17 +469,17 @@ public class HomeActivity extends AppCompatActivity {
 
     private void setSwitch(int state) {
         if(lessonsStorage.haveKanji(state)){
-            mSwitch.setVisibility(View.VISIBLE);
-            mSwitch.setClickable(true);
+            mKanas.setVisibility(View.VISIBLE);
+            radioGroup.setClickable(true);
             mUnavailableKanji.setVisibility(View.INVISIBLE);
-            mKana.setVisibility(View.VISIBLE);
+            mRomajis.setVisibility(View.VISIBLE);
             mKanji.setVisibility(View.VISIBLE);
         }else {
-            mSwitch.setChecked(false);
-            mSwitch.setVisibility(View.INVISIBLE);
-            mSwitch.setClickable(false);
+            mRomajis.setVisibility(View.INVISIBLE);
+            radioGroup.setClickable(false);
             mUnavailableKanji.setVisibility(View.VISIBLE);
-            mKana.setVisibility(View.INVISIBLE);
+            mKanas.setChecked(true);
+            mKanas.setVisibility(View.INVISIBLE);
             mKanji.setVisibility(View.INVISIBLE);
         }
     }
@@ -539,8 +539,10 @@ public class HomeActivity extends AppCompatActivity {
 
         ListView listView = dialogView.findViewById(R.id.listWords);
         ArrayList<String> words;
-        if (mSwitch.isChecked()){
+        if (mKanji.isChecked()){
             words = new ArrayList<>(Arrays.asList(getResources().getStringArray(lessonsStorage.getKjRes(chapter+1))));
+        }else if (mRomajis.isChecked()){
+            words = new ArrayList<>(Arrays.asList(getResources().getStringArray(lessonsStorage.getRmRes(chapter+1))));
         }else{
             words = new ArrayList<>(Arrays.asList(getResources().getStringArray(lessonsStorage.getJpRes(chapter+1))));
         }
@@ -565,8 +567,10 @@ public class HomeActivity extends AppCompatActivity {
                 if(!wordsAdapter.selectedItemList.getSelected().isEmpty()) {
                     SelectedItemList selectedItemList = wordsAdapter.selectedItemList;
                     String[] tempJP;
-                    if (mSwitch.isChecked()){
+                    if (mKanji.isChecked()){
                         tempJP = getResources().getStringArray(lessonsStorage.getKjRes(chapter + 1));
+                    }else if (mRomajis.isChecked()){
+                        tempJP = getResources().getStringArray(lessonsStorage.getRmRes(chapter + 1));
                     }else{
                         tempJP = getResources().getStringArray(lessonsStorage.getJpRes(chapter + 1));
                     }
@@ -636,8 +640,10 @@ public class HomeActivity extends AppCompatActivity {
         //then we will inflate the custom alert dialog xml that we created
         final View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_selector, viewGroup, false);
         final String[] tempJP;
-        if (mSwitch.isChecked()){
+        if (mKanji.isChecked()){
             tempJP = getResources().getStringArray(lessonsStorage.getKjRes(state));
+        }else if (mRomajis.isChecked()){
+            tempJP = getResources().getStringArray(lessonsStorage.getRmRes(state));
         }else{
             tempJP = getResources().getStringArray(lessonsStorage.getJpRes(state));
         }
@@ -657,6 +663,8 @@ public class HomeActivity extends AppCompatActivity {
         }
         final TextView min = dialogView.findViewById(R.id.min);
         final TextView max = dialogView.findViewById(R.id.max);
+        final TextView nb = dialogView.findViewById(R.id.nb);
+
         min.setText(1+"");
         max.setText(tempJP.length+"");
 
@@ -675,46 +683,51 @@ public class HomeActivity extends AppCompatActivity {
         builder.setPositiveButton(R.string.ctipar, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if (!(Integer.parseInt(min.getText() + "") < 1 || Integer.parseInt(max.getText() + "") > tempJP.length || Integer.parseInt(min.getText() + "") > Integer.parseInt(max.getText() + ""))) {
-                    SelectedItemList selector = new SelectedItemList();
+                try {
+                    if (!(Integer.parseInt(min.getText() + "") < 1 || Integer.parseInt(max.getText() + "") > tempJP.length || Integer.parseInt(min.getText() + "") > Integer.parseInt(max.getText() + "") || Integer.parseInt(nb.getText() + "") < 1 || Integer.parseInt(nb.getText() + "") > tempJP.length)) {
+                        SelectedItemList selector = new SelectedItemList();
 
-                    Random random = new Random();
-                    int randomNumber;
-                    Vector<Integer> indexes = new Vector<>();
+                        Random random = new Random();
+                        int randomNumber;
+                        Vector<Integer> indexes = new Vector<>();
 
-                    for (int i = Integer.parseInt(min.getText() + "") - 1; i != Integer.parseInt(max.getText() + ""); i++) {
-                        indexes.add(i);
-                    }
-
-                    int size = indexes.size();
-
-                    for (int i = 0; i != size; i++) {
-                        randomNumber = indexes.elementAt(random.nextInt(indexes.size()));
-                        selector.addJp(tempJP[randomNumber]);
-                        if (lessonsStorage.haveRomaji(state)){
-                            selector.addRomaji(tempRomaji[randomNumber]);
+                        for (int i = Integer.parseInt(min.getText() + "") - 1; i != Integer.parseInt(max.getText() + ""); i++) {
+                            indexes.add(i);
                         }
-                        selector.addFrench(tempFr[randomNumber]);
-                        selector.addCorrespondingIndex(randomNumber);
-                        indexes.removeElement(randomNumber);
-                    }
 
-                    selector.setCorrespondingLesson(state);
+                        int size = Integer.parseInt(nb.getText().toString());
 
-                    Intent intent = new Intent(getApplicationContext(), Revision.class);
-                    intent.putExtra("LESSON", selector);
-                    intent.putExtra("COMPLETED", lessonsCompleted);
-                    intent.putExtra("RETRIEVE", true);
-                    if (lessonsStorage.haveRomaji(state)){
-                        intent.putExtra("ROMAJI", true);
-                    }else{
-                        intent.putExtra("ROMAJI", false);
+                        for (int i = 0; i != size; i++) {
+                            randomNumber = indexes.elementAt(random.nextInt(indexes.size()));
+                            selector.addJp(tempJP[randomNumber]);
+                            if (lessonsStorage.haveRomaji(state)) {
+                                selector.addRomaji(tempRomaji[randomNumber]);
+                            }
+                            selector.addFrench(tempFr[randomNumber]);
+                            selector.addCorrespondingIndex(randomNumber);
+                            indexes.removeElement(randomNumber);
+                        }
+
+                        selector.setCorrespondingLesson(state);
+
+                        Intent intent = new Intent(getApplicationContext(), Revision.class);
+                        intent.putExtra("LESSON", selector);
+                        intent.putExtra("COMPLETED", lessonsCompleted);
+                        intent.putExtra("RETRIEVE", true);
+                        if (lessonsStorage.haveRomaji(state)) {
+                            intent.putExtra("ROMAJI", true);
+                        } else {
+                            intent.putExtra("ROMAJI", false);
+                        }
+                        intent.putExtra("FIRST", revisionDialog);
+                        sharedPreferences.edit().putBoolean(FIRST_REVISION, false).apply();
+                        waitingForData = false;
+                        startActivity(intent);
+                        finish();
                     }
-                    intent.putExtra("FIRST", revisionDialog);
-                    sharedPreferences.edit().putBoolean(FIRST_REVISION, false).apply();
-                    waitingForData = true;
-                    startActivity(intent);
-                    finish();
+                }catch (Exception e){
+                    showErrorDialog();
+                    Log.d("DIALOG", e.getMessage());
                 }
             }
         });
@@ -761,6 +774,39 @@ public class HomeActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    private void showErrorDialog() {
+        //before inflating the custom alert dialog layout, we will get the current activity viewgroup
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+
+        //then we will inflate the custom alert dialog xml that we created
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.bad_input_dialog, viewGroup, false);
+
+        //Now we need an AlertDialog.Builder object
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView);
+
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                selector();
+            }
+        });
+
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                //mSpam = 0;
+            }
+        });
+
+        //finally creating the alert dialog and displaying it
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -797,20 +843,10 @@ public class HomeActivity extends AppCompatActivity {
                 initMenu(R.id.nav_hiragana);
                 refresh(state, getResources().getString(R.string.hiragana));
                 break;
-            case LessonsStorage.DAKUTEN:
-                navigationView.setCheckedItem(R.id.nav_hiragana_d);
-                initMenu(R.id.nav_hiragana_d);
-                refresh(state, getResources().getString(R.string.dakuten_hiragana));
-                break;
             case LessonsStorage.KATAKANA:
                 navigationView.setCheckedItem(R.id.nav_katakana);
                 initMenu(R.id.nav_katakana);
                 refresh(state, getResources().getString(R.string.katakana));
-                break;
-            case LessonsStorage.DAKUTENKATA:
-                navigationView.setCheckedItem(R.id.nav_katakana_d);
-                initMenu(R.id.nav_katakana_d);
-                refresh(state, getResources().getString(R.string.dakuten_katakana));
                 break;
             case LessonsStorage.NUMBERS:
                 navigationView.setCheckedItem(R.id.nav_numbers);
