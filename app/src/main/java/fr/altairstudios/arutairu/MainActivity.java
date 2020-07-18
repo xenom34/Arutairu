@@ -8,7 +8,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private Animation fadeAltair2, fadeAltair3;
     private ShuffleBg shuffleBg = new ShuffleBg();
     private boolean executed = false;
+    static int VERSION_CODE = 27;
 
     @Override
     protected void onStop() {
@@ -65,6 +65,11 @@ public class MainActivity extends AppCompatActivity {
         if(sharedPreferences.getBoolean("RAN", true)){
             sharedPreferences.edit().putBoolean("RAN", false).apply();
             sharedPreferences.edit().putString("LOCALE", Locale.getDefault().getLanguage()).apply();
+        }
+
+        if (sharedPreferences.getInt("VERSION", 0) != VERSION_CODE){
+            sharedPreferences.edit().putInt("VERSION", VERSION_CODE).apply();
+            sharedPreferences.edit().putInt("STATE", LessonsStorage.PEOPLE).apply();
         }
 
         res.updateConfiguration(conf, dm);

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "624449694727",
+    "firebase_url": "https://arutairu-altair.firebaseio.com",
+    "project_id": "arutairu-altair",
+    "storage_bucket": "arutairu-altair.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:624449694727:android:d8d3453eaaa8a3ffa28ea2",
+        "android_client_info": {
+          "package_name": "fr.altairstudios.arutairu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "624449694727-q6v30kvf59qbe1eflihp9aoedsno9fb4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj4_u0gAdgsIJGjuRofuJxCSqgFNyZVek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "624449694727-q6v30kvf59qbe1eflihp9aoedsno9fb4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
