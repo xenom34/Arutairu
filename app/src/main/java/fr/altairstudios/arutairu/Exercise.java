@@ -24,6 +24,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textview.MaterialTextView;
 
 import java.util.Locale;
+import java.util.Random;
 
 public class Exercise extends AppCompatActivity {
     private TextInputEditText mAnswer;
@@ -35,6 +36,7 @@ public class Exercise extends AppCompatActivity {
     private MaterialTextView mText, mState;
     private LessonsStorage lessonsStorage = new LessonsStorage();
     private int state = 0;
+    private boolean mistake;
     private boolean completed = true;
     private int max, lesson;
     String[] mEnglish, mRomaji, mJpn;
@@ -124,7 +126,7 @@ public class Exercise extends AppCompatActivity {
                 if (completed && !lessonsCompleted.isCompleted(lesson, selectedItemList.getCorrespondingIndex(state))){
                     lessonsCompleted.addCompleted(lesson, selectedItemList.getCorrespondingIndex(state));
                 }
-
+                mSubmit.setClickable(false);
                 mSubmit.setBackgroundColor(getResources().getColor(R.color.green));
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -138,6 +140,7 @@ public class Exercise extends AppCompatActivity {
                             congrats();
                         }
                         mSubmit.setBackgroundColor(getResources().getColor(R.color.grey));
+                        mSubmit.setClickable(true);
                     }
                 },1000);
             }else{
@@ -209,6 +212,47 @@ public class Exercise extends AppCompatActivity {
                 }
             }
         });
+
+        if (getIntent().getBooleanExtra("PRACTICE", false)){
+            builder.setNegativeButton("REFAIRE", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    SelectedItemList shuffledList = new SelectedItemList();
+                    Random random = new Random();
+                    int randomNumber;
+
+                    int size = selectedItemList.getmFrench().size();
+
+                    for (int i = 0; i != size; i++){
+                        randomNumber = random.nextInt(selectedItemList.getmFrench().size());
+                        shuffledList.addJp(selectedItemList.getmJP().elementAt(randomNumber));
+                        shuffledList.addRomaji(selectedItemList.getmRomaji().elementAt(randomNumber));
+                        shuffledList.addFrench(selectedItemList.getmFrench().elementAt(randomNumber));
+                        shuffledList.addCorrespondingIndex(selectedItemList.getCorrespondingIndex(randomNumber));
+
+
+                        selectedItemList.getmFrench().remove(randomNumber);
+                        selectedItemList.getmJP().remove(randomNumber);
+                        selectedItemList.getmRomaji().remove(randomNumber);
+                        selectedItemList.removeCorrespondingIndex(randomNumber);
+                        //randomNumber = selectedItemList.getSelected().elementAt(random.nextInt(indexes.size()));
+                        //selector.addJp(tempJP[randomNumber]);
+                        //if (lessonsStorage.haveRomaji(state)) {
+                        //    selector.addRomaji(tempRomaji[randomNumber]);
+                        //}
+                        //selector.addFrench(tempFr[randomNumber]);
+                        //selector.addCorrespondingIndex(randomNumber);
+                        //indexes.removeElement(randomNumber);
+                    }
+                    selectedItemList = shuffledList;
+                    mEnglish = selectedItemList.getmFrench().toArray(new String[0]);
+                    mJpn = selectedItemList.getmJP().toArray(new String[0]);
+                    state = 0;
+                    mAnswer.setText("");
+                    refresh();
+                }
+            });
+        }
 
         builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override

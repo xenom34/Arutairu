@@ -19,6 +19,10 @@ public class SelectedItemList implements Serializable {
         return correspondingIndex.elementAt(word);
     }
 
+    public void removeCorrespondingIndex(int index){
+        correspondingIndex.remove(index);
+    }
+
     public int getCorrespondingLesson() {
         return correspondingLesson;
     }

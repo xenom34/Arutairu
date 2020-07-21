@@ -20,6 +20,7 @@ import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Locale;
+import java.util.Random;
 
 public class Revision extends AppCompatActivity {
     private com.google.android.material.floatingactionbutton.FloatingActionButton mSound;
@@ -210,12 +211,40 @@ public class Revision extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), Exercise.class);
                 intent.putExtra("MAX", max);
                 if(getIntent().getBooleanExtra("RETRIEVE", false)){
+                    SelectedItemList shuffledList = new SelectedItemList();
+                    Random random = new Random();
+                    int randomNumber;
+
+                    int size = selectedItemList.getmFrench().size();
+
+                    for (int i = 0; i != size; i++){
+                        randomNumber = random.nextInt(selectedItemList.getmFrench().size());
+                        shuffledList.addJp(selectedItemList.getmJP().elementAt(randomNumber));
+                        shuffledList.addRomaji(selectedItemList.getmRomaji().elementAt(randomNumber));
+                        shuffledList.addFrench(selectedItemList.getmFrench().elementAt(randomNumber));
+                        shuffledList.addCorrespondingIndex(selectedItemList.getCorrespondingIndex(randomNumber));
+
+
+                        selectedItemList.getmFrench().remove(randomNumber);
+                        selectedItemList.getmJP().remove(randomNumber);
+                        selectedItemList.getmRomaji().remove(randomNumber);
+                        selectedItemList.removeCorrespondingIndex(randomNumber);
+                        //randomNumber = selectedItemList.getSelected().elementAt(random.nextInt(indexes.size()));
+                        //selector.addJp(tempJP[randomNumber]);
+                        //if (lessonsStorage.haveRomaji(state)) {
+                        //    selector.addRomaji(tempRomaji[randomNumber]);
+                        //}
+                        //selector.addFrench(tempFr[randomNumber]);
+                        //selector.addCorrespondingIndex(randomNumber);
+                        //indexes.removeElement(randomNumber);
+                    }
                     intent.putExtra("RETRIEVE", true);
-                    intent.putExtra("LESSON", selectedItemList);
+                    intent.putExtra("LESSON", shuffledList);
                 }else{
                     intent.putExtra("LESSON", lesson);
                     intent.putExtra("RETRIEVE", false);
                 }
+                intent.putExtra("PRACTICE", true);
                 intent.putExtra("COMPLETED", lessonsCompleted);
                 startActivity(intent);
                 finish();
