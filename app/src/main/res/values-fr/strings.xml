@@ -84,4 +84,10 @@
     <string name="moteur_de_synth_se_vocale_indisponible">Moteur de synthèse vocale indisponible...</string>
     <string name="nous_regrettons_que_vous_ayez_ce_probl_me_mais_votre_appareil_ne_dispose_pas_encore_de_la_langue_japonaise_pour_votre_moteur_de_synth_se_vocale_n_n_arutairu_ne_dispose_pas_encore_d_un_syst_me_embarqu_ind_pendant_pour_pouvoir_vous_garantir_la_prononciation_des_mots">Nous regrettons que vous ayez ce problème, mais votre appareil ne dispose pas encore de la langue japonaise pour votre moteur de synthèse vocale.Arutairu ne dispose pas encore d\'un système embarqué indépendant pour pouvoir vous garantir la prononciation des mots.</string>
     <string name="geography">Géographie</string>
+    <string name="time_to_learn">Hey, c\'est l\'heure d\'apprendre du japonais !</string>
+    <string name="would_you_like_to_set_a_daily_reminder">Souhaitez-vous définir un rappel quotidien ?</string>
+    <string name="it_is_important_to_practice_regularly">Il est important de s\'entraîner régulièrement. A vrai dire, c\'est même crucial si vous voulez devenir à l\'aise avec la langue rapidement ! \n\nNous pouvons si vous le souhaitez, vous envoyer une notification vous permettant de vous rappeler de vous entraîner.</string>
+    <string name="daily_reminder">Rappel quotidien</string>
+    <string name="reminder_time">DÉFINIR HEURE DE RAPPEL</string>
+    <string name="reminder_set">Rappel défini !</string>
 </resources>

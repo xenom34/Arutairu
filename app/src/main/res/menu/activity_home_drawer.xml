@@ -12,6 +12,10 @@
                         android:id="@+id/nav_keyboard"
                         android:icon="@drawable/ic_hardware"
                         android:title="@string/keyboardMenu" />
+                    <item
+                        android:id="@+id/nav_notification"
+                        android:icon="@drawable/ic_baseline_notifications_active_24"
+                        android:title="@string/daily_reminder" />
                 </group>
             </menu>
         </item>

@@ -1,7 +1,11 @@
 package fr.altairstudios.arutairu;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
+import android.app.TimePickerDialog;
 import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,6 +30,7 @@ import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -47,6 +52,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Vector;
@@ -126,6 +132,9 @@ public class HomeActivity extends AppCompatActivity {
                     rateThisApp();
                 }else if(item.getItemId() == R.id.nav_mail){
                     sendEmail();
+                }else if(item.getItemId() == R.id.nav_notification){
+                    showNotificationDialog();
+                    return false;
                 }else{
                     initMenu(item.getItemId());
                     refresh(state, item.getTitle());
@@ -147,6 +156,23 @@ public class HomeActivity extends AppCompatActivity {
 
         firstExec = sharedPreferences.getBoolean(FIRST_EXEC, true);
 
+    }
+
+    public void pickADate(){
+        Calendar cldr = Calendar.getInstance();
+        int hour = cldr.get(Calendar.HOUR_OF_DAY);
+        int minutes = cldr.get(Calendar.MINUTE);
+        // time picker dialog
+        TimePickerDialog picker;
+        picker = new TimePickerDialog(this,
+                new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
+                        enableNotification(sHour, sMinute);
+
+                    }
+                }, hour, minutes, true);
+        picker.show();
     }
 
     private void sendEmail() {
@@ -775,6 +801,66 @@ public class HomeActivity extends AppCompatActivity {
         //finally creating the alert dialog and displaying it
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
+
+    private void showNotificationDialog() {
+        //before inflating the custom alert dialog layout, we will get the current activity viewgroup
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+
+        //then we will inflate the custom alert dialog xml that we created
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.notifications, viewGroup, false);
+
+        //Now we need an AlertDialog.Builder object
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView);
+
+
+        builder.setPositiveButton(R.string.reminder_time, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+               pickADate();
+
+            }
+        });
+        
+        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                sharedPreferences.edit().putBoolean("NOTIFS", false).apply();
+            }
+        });
+
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                //mSpam = 0;
+            }
+        });
+
+        //finally creating the alert dialog and displaying it
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    private void enableNotification(int hour, int minute) {
+        Intent intent = new Intent(getApplicationContext(), DailyReminderBroadcast.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 100, intent, 0);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
+
+        assert alarmManager != null;
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY, pendingIntent);
+
+        sharedPreferences.edit().putBoolean("NOTIFS", true).apply();
+        Toast.makeText(this, R.string.reminder_set, Toast.LENGTH_SHORT).show();
     }
 
     private void showErrorDialog() {
