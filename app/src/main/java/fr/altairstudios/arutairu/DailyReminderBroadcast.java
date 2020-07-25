@@ -28,7 +28,7 @@ public class DailyReminderBroadcast extends BroadcastReceiver {
             Intent dailySurprise = new Intent(context, MainActivity.class);
 
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 100, dailySurprise, PendingIntent.FLAG_UPDATE_CURRENT);
-            Notification notification = new NotificationCompat.Builder(context, context.getString(R.string.daily_reminder))
+            Notification notification = new NotificationCompat.Builder(context, "Daily Reminder")
                     .setSmallIcon(R.drawable.ic_stat_name)
                     .setContentText("こんにちは！ お元気ですか?")
                     .setContentTitle(context.getString(R.string.time_to_learn))

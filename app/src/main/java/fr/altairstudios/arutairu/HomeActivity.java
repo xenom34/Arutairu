@@ -2,6 +2,9 @@ package fr.altairstudios.arutairu;
 
 import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.ActivityNotFoundException;
@@ -15,6 +18,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -37,6 +41,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -168,6 +174,16 @@ public class HomeActivity extends AppCompatActivity {
                 new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && sharedPreferences.getBoolean("NSET", true)) {
+                            CharSequence name = "Daily Reminder";
+                            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+                            NotificationChannel channel = new NotificationChannel("Daily Reminder", name, importance);
+                            // Register the channel with the system; you can't change the importance
+                            // or other notification behaviors after this
+                            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+                            notificationManager.createNotificationChannel(channel);
+                            sharedPreferences.edit().putBoolean("NSET", false).apply();
+                        }
                         enableNotification(sHour, sMinute);
 
                     }

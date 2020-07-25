@@ -1,11 +1,14 @@
 package fr.altairstudios.arutairu;
 
 import android.app.AlertDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
@@ -36,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private Animation fadeAltair2, fadeAltair3;
     private ShuffleBg shuffleBg = new ShuffleBg();
     private boolean executed = false;
-    static int VERSION_CODE = 27;
+    static int VERSION_CODE = 35;
 
     @Override
     protected void onStop() {
@@ -70,6 +73,16 @@ public class MainActivity extends AppCompatActivity {
         if (sharedPreferences.getInt("VERSION", 0) != VERSION_CODE){
             sharedPreferences.edit().putInt("VERSION", VERSION_CODE).apply();
             sharedPreferences.edit().putInt("STATE", LessonsStorage.PEOPLE).apply();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && sharedPreferences.getBoolean("NSET", true)) {
+                CharSequence name = "Daily Reminder";
+                int importance = NotificationManager.IMPORTANCE_HIGH;
+                NotificationChannel channel = new NotificationChannel("Daily Reminder", name, importance);
+                // Register the channel with the system; you can't change the importance
+                // or other notification behaviors after this
+                NotificationManager notificationManager = getSystemService(NotificationManager.class);
+                notificationManager.createNotificationChannel(channel);
+                sharedPreferences.edit().putBoolean("NSET", false).apply();
+            }
         }
 
         res.updateConfiguration(conf, dm);
