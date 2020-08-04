@@ -74,7 +74,7 @@ class LessonsStorage {
         storage.put(HOME, new Lesson(R.array.homeKJ, R.array.homeJP, R.array.homeRM, R.array.homeFR, R.array.homeEN));
         storage.put(TOOLS, new Lesson(R.array.toolsKJ, R.array.toolsJP, R.array.toolsRM, R.array.toolsFR, R.array.toolsEN));
         storage.put(STATIONERY, new Lesson(R.array.stationeryKJ, R.array.stationeryJP, R.array.stationeryRM, R.array.stationeryFR, R.array.stationeryEN));
-        storage.put(CLOTHES, new Lesson(R.array.clothesKJ, R.array.clothesJP, R.array.clothesJP, R.array.clothesFR, R.array.clothesEN));
+        storage.put(CLOTHES, new Lesson(R.array.clothesKJ, R.array.clothesJP, R.array.clothesRM, R.array.clothesFR, R.array.clothesEN));
         storage.put(TRANSPORT, new Lesson(R.array.transportKJ, R.array.transportJP, R.array.transportRM, R.array.transportFR, R.array.transportEN));
         storage.put(LANGUAGE, new Lesson(R.array.languageKJ, R.array.languageJP, R.array.languageRM, R.array.languageFR, R.array.languageEN));
         storage.put(MEDIA, new Lesson(R.array.mediaKJ, R.array.mediaJP, R.array.mediaRM, R.array.mediasFR, R.array.mediaEN));

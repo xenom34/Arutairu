@@ -1474,11 +1474,11 @@
     </string-array>
     <string-array name="weightsKJ">
         <item>米</item>
-        <item></item>
+        <item>リットル</item>
         <item>瓦</item>
         <item>瓩</item>
-        <item></item>
-        <item></item>
+        <item>ミリ</item>
+        <item>センチメートル</item>
         <item>吋</item>
     </string-array>
 
@@ -1528,8 +1528,8 @@
         <item>布団</item>
         <item>玄関</item>
         <item>家</item>
-        <item></item>
-        <item></item>
+        <item>エレベーター</item>
+        <item>エスカレーター</item>
         <item>電気</item>
     </string-array>
 
@@ -2266,11 +2266,11 @@
         <item>手紙</item>
         <item>新聞</item>
         <item>辞書</item>
-        <item></item>
-        <item></item>
-        <item></item>
+        <item>コンピュータ</item>
+        <item>テレビゲーム</item>
+        <item>テレビ</item>
         <item>広告</item>
-        <item></item>
+        <item>ラジオ</item>
         <item>音楽</item>
         <item>雑誌</item>
         <item>掲示板</item>
@@ -2803,14 +2803,14 @@
 <item>東</item>
 <item>南</item>
 <item>西</item>
-<item></item>
+<item>ここ</item>
 <item>其処</item>
 <item>彼処</item>
 <item>右</item>
 <item>左</item>
 <item>上</item>
 <item>下</item>
-<item></item>
+<item>まえ</item>
 <item>後ろ</item>
 <item>向こう</item>
 <item>斜めに</item>
@@ -2964,22 +2964,22 @@
 
     <string-array name="stationeryKJ">
         <item>文房具</item>
-        <item></item>
-        <item></item>
-        <item></item>
+        <item>インク</item>
+        <item>ペン</item>
+        <item>ボールペン</item>
         <item>万年筆</item>
         <item>鉛筆</item>
         <item>筆</item>
-        <item></item>
+        <item>チョーク</item>
         <item>消しゴム</item>
         <item>鉛筆削り</item>
         <item>定規</item>
-        <item></item>
+        <item>ノート</item>
         <item>日記</item>
-        <item></item>
+        <item>カバー</item>
         <item>封筒</item>
         <item>鋏</item>
-        <item></item>
+        <item>ホッチキス</item>
     </string-array>
 
     <string-array name="stationeryEN">
