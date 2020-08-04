@@ -8,8 +8,8 @@ android {
         applicationId "fr.altairstudios.arutairu"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 42
-        versionName "1.2.16"
+        versionCode 43
+        versionName "1.2.17"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
