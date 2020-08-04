@@ -19,9 +19,9 @@
 
                 <ImageView
                     android:layout_width="wrap_content"
-                    android:layout_height="200dp"
+                    android:layout_height="150dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/tokyo" />
+                    android:src="@drawable/fuji" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -35,11 +35,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:justificationMode="inter_word"
-                    android:textSize="16dp"
+                    android:textSize="16sp"
                     android:padding="16dp"
                     android:text="@string/textwelcome"
-                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:padding="16dp"
+                    android:text="@string/how_to_use_arutairu"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:padding="16dp"
+                    android:text="@string/instructions"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
             </LinearLayout>
         </ScrollView>

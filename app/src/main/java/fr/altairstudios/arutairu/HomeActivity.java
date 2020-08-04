@@ -71,7 +71,7 @@ public class HomeActivity extends AppCompatActivity {
     private int maxWords;
     private boolean firstExec, revisionDialog;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
-    public static final String FIRST_EXEC = "first";
+    public static final String FIRST_EXEC = "firsts";
     public static final String FIRST_REVISION = "revision";
     static boolean waitingForData = false;
     SharedPreferences sharedPreferences;
@@ -872,7 +872,7 @@ public class HomeActivity extends AppCompatActivity {
         calendar.set(Calendar.MINUTE, minute);
 
         assert alarmManager != null;
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
                 AlarmManager.INTERVAL_DAY, pendingIntent);
 
         sharedPreferences.edit().putBoolean("NOTIFS", true).apply();
@@ -922,6 +922,7 @@ public class HomeActivity extends AppCompatActivity {
                 saveCompleted();
             } catch (IOException e) {
                 e.printStackTrace();
+                waitingForData = false;
             }
             waitingForData = false;
         }

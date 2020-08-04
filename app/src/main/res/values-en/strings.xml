@@ -38,7 +38,7 @@
     <string name="kanji_interm_diaire">KANJI Medium</string>
     <string name="kanji_avanc">KANJI Advanced</string>
     <string name="kanji_expert">KANJI Master</string>
-    <string name="textwelcome">Thank you for downloading Arutairu! In a few steps, you will learn japanese by practicing as much vocabulary as possible.\n\nSelect a chapter, memorize and copy them in Japanese.  If you want, you can first practice by manually choosing the words you want. Please note that in this mode, your results are not saved (otherwise, it would be too easy).</string>
+    <string name="textwelcome">Hey, welcome! Thank you for downloading Arutairu!</string>
     <string name="submit">Submit</string>
     <string name="next">NEXT</string>
     <string name="revision">Memorize</string>
@@ -63,7 +63,7 @@
     <string name="no">No</string>
     <string name="understood">Understood !</string>
     <string name="exitlesson">Exit the lesson ?</string>
-    <string name="bienvenue_dans_arutairu">Hey, Welcome !</string>
+    <string name="bienvenue_dans_arutairu">ようこそ!</string>
     <string name="configure">Settings !</string>
     <string name="aucun_choix_possible">No choice possible</string>
     <string name="gboard_tutorial">GBOARD TUTORIAL</string>
@@ -90,4 +90,6 @@
     <string name="daily_reminder">Daily reminder</string>
     <string name="reminder_time">SET REMINDER TIME</string>
     <string name="reminder_set">Reminder set!</string>
+    <string name="instructions">There are no specific instructions for the use of this tool. However, we suggest you to start by selecting a chapter and choose the practice mode. With this mode, you can ask the app to pick a limited number of words to make it easier and more efficient for you (for example 10 or 20 words).\n\nMemorize the words that have been selected, then go to the test page by clicking \'next\' when you get to the end of the list. Arutairu will mix those words, and you\'ll have to complete with the translation of the word that will be displayed to you. You can repeat the exercise when you haven\'t successfully answered to all the words. In fact, we recommend that you continue as long as you make mistakes!\n\nFinally, if you feel comfortable, the app can record your performance and keep track of your score (Test mode). The difference is that you don\'t choose the words, the application does it for you on the whole list.\n\nNOTE: Even if we allows you to do the tests with our alphabet (Romajis), it\'s better to try to configure a Japanese keyboard to evaluate yourself in hiragana and katakana (even kanji if you are confident). If you are a beginner, it is better to learn these characters first before learning real words.\n\nWe wish you good luck!</string>
+    <string name="how_to_use_arutairu">How to use Arutairu?</string>
 </resources>
