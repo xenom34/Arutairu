@@ -1474,11 +1474,11 @@
     </string-array>
     <string-array name="weightsKJ">
         <item>米</item>
-        <item></item>
+        <item>リットル</item>
         <item>瓦</item>
         <item>瓩</item>
-        <item></item>
-        <item></item>
+        <item>ミリ</item>
+        <item>センチメートル</item>
         <item>吋</item>
     </string-array>
 
@@ -1528,8 +1528,8 @@
         <item>布団</item>
         <item>玄関</item>
         <item>家</item>
-        <item></item>
-        <item></item>
+        <item>エレベーター</item>
+        <item>エスカレーター</item>
         <item>電気</item>
     </string-array>
 
@@ -2266,11 +2266,11 @@
         <item>手紙</item>
         <item>新聞</item>
         <item>辞書</item>
-        <item></item>
-        <item></item>
-        <item></item>
+        <item>コンピュータ</item>
+        <item>テレビゲーム</item>
+        <item>テレビ</item>
         <item>広告</item>
-        <item></item>
+        <item>ラジオ</item>
         <item>音楽</item>
         <item>雑誌</item>
         <item>掲示板</item>
@@ -2803,14 +2803,14 @@
 <item>東</item>
 <item>南</item>
 <item>西</item>
-<item></item>
+<item>ここ</item>
 <item>其処</item>
 <item>彼処</item>
 <item>右</item>
 <item>左</item>
 <item>上</item>
 <item>下</item>
-<item></item>
+<item>まえ</item>
 <item>後ろ</item>
 <item>向こう</item>
 <item>斜めに</item>
@@ -2964,22 +2964,22 @@
 
     <string-array name="stationeryKJ">
         <item>文房具</item>
-        <item></item>
-        <item></item>
-        <item></item>
+        <item>インク</item>
+        <item>ペン</item>
+        <item>ボールペン</item>
         <item>万年筆</item>
         <item>鉛筆</item>
         <item>筆</item>
-        <item></item>
+        <item>チョーク</item>
         <item>消しゴム</item>
         <item>鉛筆削り</item>
         <item>定規</item>
-        <item></item>
+        <item>ノート</item>
         <item>日記</item>
-        <item></item>
+        <item>カバー</item>
         <item>封筒</item>
         <item>鋏</item>
-        <item></item>
+        <item>ホッチキス</item>
     </string-array>
 
     <string-array name="stationeryEN">
@@ -52933,7 +52933,7 @@
     <string name="dakuten_hiragana" translatable="false">Dakuten Hiragana</string>
     <string name="katakana" translatable="false">Katakana</string>
     <string name="dakuten_katakana" translatable="false">Dakuten Katakana</string>
-    <string name="nombres_de_mots_appris">Words you learnt :</string>
+    <string name="nombres_de_mots_appris">Words you\'ve learned :</string>
     <string name="go">Allons-y !</string>
     <string name="selector">Sélecteur</string>
     <string name="ctipar">C\'est parti !</string>
@@ -52971,6 +52971,8 @@
     <string name="reminder_set">Reminder set!</string>
     <string name="instructions">There are no specific instructions for the use of this tool. However, we suggest you to start by selecting a chapter and choose the practice mode. With this mode, you can ask the app to pick a limited number of words to make it easier and more efficient for you (for example 10 or 20 words).\n\nMemorize the words that have been selected, then go to the test page by clicking \'next\' when you get to the end of the list. Arutairu will mix those words, and you\'ll have to complete with the translation of the word that will be displayed to you. You can repeat the exercise when you haven\'t successfully answered to all the words. In fact, we recommend that you continue as long as you make mistakes!\n\nFinally, if you feel comfortable, the app can record your performance and keep track of your score (Test mode). The difference is that you don\'t choose the words, the application does it for you on the whole list.\n\nNOTE: Even if we allows you do the test with our alphabet (Romajis), it\'s better to try to configure a Japanese keyboard to evaluate yourself in hiragana and katakana (even kanji if you are confident). If you are a beginner, it is better to learn these characters first before learning real words.\n\nWe wish you good luck!</string>
     <string name="how_to_use_arutairu">How to use Arutairu?</string>
+    <string name="message">If the daily reminder was no longer displayed on your device, this new update may fix the problem. Simply set the reminder again on the app.</string>
+    <string name="messagecontent">About our new update :</string>
 
     <string-array name="notifs_fr">
         <item>こんにちは！ お元気ですか?</item>

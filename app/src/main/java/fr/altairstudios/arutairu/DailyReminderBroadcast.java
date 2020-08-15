@@ -20,7 +20,7 @@ public class DailyReminderBroadcast extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
 
-        if (sharedPreferences.getBoolean("NOTIFS", false)) {
+        if (sharedPreferences.getBoolean("NOTIFS", false) && sharedPreferences.getBoolean("MESSAGE1", true)) {
             Log.d("NOTIFS", "WE'RE IN !");
 
             NotificationManagerCompat nManager = NotificationManagerCompat.from(context);
@@ -30,17 +30,18 @@ public class DailyReminderBroadcast extends BroadcastReceiver {
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 100, dailySurprise, PendingIntent.FLAG_UPDATE_CURRENT);
             Notification notification = new NotificationCompat.Builder(context, "Daily Reminder")
                     .setSmallIcon(R.drawable.ic_stat_name)
-                    .setContentText("こんにちは！ お元気ですか?")
-                    .setContentTitle(context.getString(R.string.time_to_learn))
+                    .setContentText(context.getString(R.string.message))
+                    .setContentTitle(context.getString(R.string.messagecontent))
                     .setPriority(NotificationCompat.PRIORITY_HIGH)
                     .setCategory(NotificationCompat.CATEGORY_EVENT)
                     .setContentIntent(pendingIntent)
                     .setStyle(new NotificationCompat.BigTextStyle()
-                            .bigText("こんにちは！ お元気ですか?"))
+                            .bigText(context.getString(R.string.message)))
                     .setAutoCancel(true)
                     .build();
 
             nManager.notify(100,notification);
+            sharedPreferences.edit().putBoolean("MESSAGE1",false).apply();
         }
     }
 }
