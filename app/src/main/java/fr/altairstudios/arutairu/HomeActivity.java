@@ -1,12 +1,11 @@
 package fr.altairstudios.arutairu;
 
-import android.app.AlarmManager;
 import android.app.AlertDialog;
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
@@ -41,8 +40,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -861,7 +858,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void enableNotification(int hour, int minute) {
-        Intent intent = new Intent(getApplicationContext(), DailyReminderBroadcast.class);
+        /*Intent intent = new Intent(getApplicationContext(), DailyReminderBroadcast.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 100, intent, 0);
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
@@ -874,8 +871,31 @@ public class HomeActivity extends AppCompatActivity {
         assert alarmManager != null;
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
                 AlarmManager.INTERVAL_DAY, pendingIntent);
+        */
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
+
+        sharedPreferences.edit().putLong("CALENDAR_VALUE", calendar.getTimeInMillis()).apply();
+
+        ComponentName serviceComponent = new ComponentName(getApplicationContext(), DailyReminderJob.class);
+
+        JobInfo jobInfo = new JobInfo.Builder(1, serviceComponent)
+                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_NONE)
+                .setOverrideDeadline(calendar.getTimeInMillis()+1800000)
+                .setRequiresDeviceIdle(false)
+                .setRequiresCharging(false)
+                .setMinimumLatency(84600000)
+                .setPersisted(true)
+                .build();
+
+        JobScheduler scheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+        scheduler.schedule(jobInfo);
 
         sharedPreferences.edit().putBoolean("NOTIFS", true).apply();
+        sharedPreferences.edit().putInt("HOURS", hour).apply();
+        sharedPreferences.edit().putInt("MIN", minute).apply();
         Toast.makeText(this, R.string.reminder_set, Toast.LENGTH_SHORT).show();
     }
 
