@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -127,7 +129,7 @@ public class Revision extends AppCompatActivity {
             public boolean onLongClick(View v) {
                 state = max-3;
                 up();
-                return false;
+                return true;
             }
         });
 
@@ -142,6 +144,9 @@ public class Revision extends AppCompatActivity {
                 mStop.setVisibility(View.INVISIBLE);
                 releaseAudioFocusForMyApp();
                 execute.interrupt();
+                mSound.setClickable(true);
+                mSound.setVisibility(View.VISIBLE);
+                findViewById(R.id.play).setVisibility(View.VISIBLE);
             }
         });
 
@@ -205,6 +210,9 @@ public class Revision extends AppCompatActivity {
                 mBack.setVisibility(View.INVISIBLE);
                 mStop.setClickable(true);
                 mStop.setVisibility(View.VISIBLE);
+                mSound.setClickable(false);
+                mSound.setVisibility(View.INVISIBLE);
+                findViewById(R.id.play).setVisibility(View.INVISIBLE);
 
                 new Thread(new Runnable() {
                     @Override
@@ -405,6 +413,7 @@ public class Revision extends AppCompatActivity {
 
         if (!getIntent().getBooleanExtra("ROMAJI", true)){
             mSound.setVisibility(View.INVISIBLE);
+            mStop.setClickable(false);
             findViewById(R.id.play).setVisibility(View.INVISIBLE);
         }
 
@@ -463,7 +472,9 @@ public class Revision extends AppCompatActivity {
                 if (focusStatus == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
                     releaseAudioFocusForMyApp();
                 }
-                execute.interrupt();
+                if(execute!=null){
+                    execute.interrupt();
+                }
                 if (mInterstitialAd.isLoaded()) {
                     mInterstitialAd.show();
                 }else{
