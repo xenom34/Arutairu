@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -32,6 +33,7 @@ public class Revision extends AppCompatActivity {
     private Object o = new Object();
     private InterstitialAd mInterstitialAd;
     private int state = 0;
+    private SharedPreferences sharedPreferences;
     private int max, lesson;
     //private AdView mAdView;
     String[] mEnglish, mRomaji, mJpn;
@@ -44,12 +46,14 @@ public class Revision extends AppCompatActivity {
     private Thread execute;
     private AudioManager am;
     private int focusStatus;
+    public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_revision);
         mNextAutoState = false;
+        sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
 
         am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
@@ -176,8 +180,8 @@ public class Revision extends AppCompatActivity {
             @Override
             public void onInit(int status) {
                 if(status != TextToSpeech.ERROR) {
-                    t2.setLanguage(Locale.FRANCE);
-                    t2.setSpeechRate(0.9f);
+                    t2.setLanguage(new Locale(sharedPreferences.getString("LOCALE", Locale.getDefault().getLanguage())));
+                    t2.setSpeechRate(1f);
                 }
             }
         });
@@ -255,21 +259,13 @@ public class Revision extends AppCompatActivity {
         am.abandonAudioFocus(null);
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if (focusStatus == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
-            releaseAudioFocusForMyApp();
-        }
-        execute.interrupt();
-    }
-
     private void play() {
         execute = new Thread(new Runnable() {
             @Override
             public void run() {
                 synchronized (o) {
                     try {
+                        requestAudioFocusForMyApp();
                         boolean isTtsActive = true;
                         t2.speak(mShowEnglish.getText(), TextToSpeech.QUEUE_FLUSH, null, "1");
                         do {
@@ -464,6 +460,10 @@ public class Revision extends AppCompatActivity {
         builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                if (focusStatus == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+                    releaseAudioFocusForMyApp();
+                }
+                execute.interrupt();
                 if (mInterstitialAd.isLoaded()) {
                     mInterstitialAd.show();
                 }else{
