@@ -1,10 +1,13 @@
 package fr.altairstudios.arutairu;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,32 +18,41 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Random;
 
 public class Revision extends AppCompatActivity {
     private com.google.android.material.floatingactionbutton.FloatingActionButton mSound;
-    TextToSpeech t1;
-    private Boolean mFirst;
+    TextToSpeech t1, t2;
+    private Boolean mFirst, mNextAutoState;
+    private Object o = new Object();
     private InterstitialAd mInterstitialAd;
     private int state = 0;
     private int max, lesson;
-    private AdView mAdView;
+    //private AdView mAdView;
     String[] mEnglish, mRomaji, mJpn;
-    private Button mNext, mBack;
+    private Button mNext, mBack, mStop;
     LessonsCompleted lessonsCompleted;
     SelectedItemList selectedItemList;
     private TextView mShowJpn, mShowEnglish, mShowRomaji, mCount;
     private LessonsStorage lessonsStorage = new LessonsStorage();
+    private boolean stopped = false;
+    private Thread execute;
+    private AudioManager am;
+    private int focusStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_revision);
+        mNextAutoState = false;
+
+        am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+
 
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-9369103706924521/2427690661");
@@ -56,9 +68,9 @@ public class Revision extends AppCompatActivity {
 
         mFirst  = getIntent().getBooleanExtra("FIRST", false);
 
-        mAdView = findViewById(R.id.adViewRevision);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        //mAdView = findViewById(R.id.adViewRevision);
+        //AdRequest adRequest = new AdRequest.Builder().build();
+        //mAdView.loadAd(adRequest);
 
         lessonsCompleted = (LessonsCompleted) getIntent().getSerializableExtra("COMPLETED");
 
@@ -95,6 +107,9 @@ public class Revision extends AppCompatActivity {
         mShowEnglish = findViewById(R.id.english);
         mShowJpn = findViewById(R.id.jpn);
         mCount = findViewById(R.id.count);
+        mStop = findViewById(R.id.stop);
+        mStop.setVisibility(View.INVISIBLE);
+        mStop.setClickable(false);
 
         mNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,6 +124,20 @@ public class Revision extends AppCompatActivity {
                 state = max-3;
                 up();
                 return false;
+            }
+        });
+
+        mStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mNext.setVisibility(View.VISIBLE);
+                mBack.setVisibility(View.VISIBLE);
+                mNext.setClickable(true);
+                mNext.setClickable(true);
+                mStop.setClickable(false);
+                mStop.setVisibility(View.INVISIBLE);
+                releaseAudioFocusForMyApp();
+                execute.interrupt();
             }
         });
 
@@ -132,12 +161,23 @@ public class Revision extends AppCompatActivity {
                 }
             }
         });
-
+        
         t1=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
                 if(status != TextToSpeech.ERROR) {
                     t1.setLanguage(Locale.JAPANESE);
+                    t1.setSpeechRate(0.9f);
+                }
+            }
+        });
+
+        t2 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status != TextToSpeech.ERROR) {
+                    t2.setLanguage(Locale.FRANCE);
+                    t2.setSpeechRate(0.9f);
                 }
             }
         });
@@ -152,6 +192,38 @@ public class Revision extends AppCompatActivity {
             }
         });
 
+        mSound.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                mNext.setClickable(false);
+                mBack.setClickable(false);
+                mNext.setVisibility(View.INVISIBLE);
+                mBack.setVisibility(View.INVISIBLE);
+                mStop.setClickable(true);
+                mStop.setVisibility(View.VISIBLE);
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (requestAudioFocusForMyApp()){
+                            while (!stopped){
+                                synchronized (o){
+                                    try {
+                                        play();
+                                        o.wait();
+                                    }catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }).start();
+                return true;
+            }
+        });
+
         if (!getIntent().getBooleanExtra("ROMAJI", false)){
             mSound.setClickable(false);
             mSound.setVisibility(View.INVISIBLE);
@@ -159,6 +231,83 @@ public class Revision extends AppCompatActivity {
 
         refresh();
 
+    }
+
+    private boolean requestAudioFocusForMyApp() {
+        // Request audio focus for playback
+        focusStatus = am.requestAudioFocus(null,
+                // Use the music stream.
+                AudioManager.STREAM_MUSIC,
+                // Request permanent focus.
+                AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK);
+
+        if (focusStatus == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+            Log.d("AudioFocus", "Audio focus received");
+            return true;
+        } else {
+            Log.d("AudioFocus", "Audio focus NOT received");
+            return false;
+        }
+    }
+
+    void releaseAudioFocusForMyApp() {
+        AudioManager am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        am.abandonAudioFocus(null);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (focusStatus == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+            releaseAudioFocusForMyApp();
+        }
+        execute.interrupt();
+    }
+
+    private void play() {
+        execute = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                synchronized (o) {
+                    try {
+                        boolean isTtsActive = true;
+                        t2.speak(mShowEnglish.getText(), TextToSpeech.QUEUE_FLUSH, null, "1");
+                        do {
+                            isTtsActive = t2.isSpeaking();
+                        } while (isTtsActive);
+                        Thread.sleep(1500);
+                        t1.speak(mShowJpn.getText(), TextToSpeech.QUEUE_FLUSH, null, "1");
+                        do {
+                            isTtsActive = t1.isSpeaking();
+                        } while (isTtsActive);
+                        Thread.sleep(1500);
+                        t1.speak(mShowJpn.getText(), TextToSpeech.QUEUE_FLUSH, null, "1");
+                        do {
+                            isTtsActive = t1.isSpeaking();
+                        } while (isTtsActive);
+                        Thread.sleep(1500);
+                        mNextAutoState = true;
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (state+1 != max){
+                                    up();
+                                }else{
+                                    state = 0;
+                                    refresh();
+                                }
+                            }
+                        });
+                        Thread.sleep(500);
+                        o.notifyAll();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
+        execute.start();
     }
 
     private void showError() {

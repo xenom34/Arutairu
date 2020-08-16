@@ -20,28 +20,33 @@ public class DailyReminderJob extends JobService {
     private SharedPreferences sharedPreferences;
     @Override
     public boolean onStartJob(JobParameters params) {
-        sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
-        if (sharedPreferences.getBoolean("NOTIFS", false)){
-            NotificationManagerCompat nManager = NotificationManagerCompat.from(getApplicationContext());
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
+                if (sharedPreferences.getBoolean("NOTIFS", false)){
+                    NotificationManagerCompat nManager = NotificationManagerCompat.from(getApplicationContext());
 
-            Intent dailySurprise = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent dailySurprise = new Intent(getApplicationContext(), MainActivity.class);
 
-            PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 100, dailySurprise, PendingIntent.FLAG_UPDATE_CURRENT);
-            Notification notification = new NotificationCompat.Builder(getApplicationContext(), "Daily Reminder")
-                    .setSmallIcon(R.drawable.ic_stat_name)
-                    .setContentText("こんにちは！ お元気ですか?")
-                    .setContentTitle(getApplicationContext().getString(R.string.time_to_learn))
-                    .setPriority(NotificationCompat.PRIORITY_HIGH)
-                    .setCategory(NotificationCompat.CATEGORY_EVENT)
-                    .setContentIntent(pendingIntent)
-                    .setStyle(new NotificationCompat.BigTextStyle()
-                            .bigText("こんにちは！ お元気ですか?"))
-                    .setAutoCancel(true)
-                    .build();
+                    PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 100, dailySurprise, PendingIntent.FLAG_UPDATE_CURRENT);
+                    Notification notification = new NotificationCompat.Builder(getApplicationContext(), "Daily Reminder")
+                            .setSmallIcon(R.drawable.ic_stat_name)
+                            .setContentText("こんにちは！ お元気ですか?")
+                            .setContentTitle(getApplicationContext().getString(R.string.time_to_learn))
+                            .setPriority(NotificationCompat.PRIORITY_HIGH)
+                            .setCategory(NotificationCompat.CATEGORY_EVENT)
+                            .setContentIntent(pendingIntent)
+                            .setStyle(new NotificationCompat.BigTextStyle()
+                                    .bigText("こんにちは！ お元気ですか?"))
+                            .setAutoCancel(true)
+                            .build();
 
-            nManager.notify(100,notification);
+                    nManager.notify(100,notification);
+                }
+            }
+        });
 
-        }
         return false;
     }
 
