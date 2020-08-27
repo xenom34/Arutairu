@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:layout_marginTop="10dp"
-            android:text="To listen to the pronunciation of the word on your screen, you can press this button.\n\n Also, you can now do a long press, which will start an automatic playback of the selected vocabulary."
+            android:text="@string/to_listen_to_the_pronunciation_of_the_word_on_your_screen_you_can_press_this_button_n_n_also_you_can_now_do_a_long_press_which_will_start_an_automatic_playback_of_the_selected_vocabulary"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 

@@ -12,18 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <receiver android:name=".DailyReminderBroadcast"
-            android:enabled="true"
-            android:exported="true">
+        <receiver android:name=".DailyReminderBroadcast"/>
+        <receiver android:name=".WakeUpConfig"
+            android:exported="true"
+            android:enabled="true">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </receiver>
-        <service
-            android:name=".DailyReminderJob"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"

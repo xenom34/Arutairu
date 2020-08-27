@@ -20,7 +20,7 @@ public class DailyReminderJob extends JobService {
     private SharedPreferences sharedPreferences;
     @Override
     public boolean onStartJob(JobParameters params) {
-        new Thread(new Runnable() {
+        Thread execute = new Thread(new Runnable() {
             @Override
             public void run() {
                 sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
@@ -46,6 +46,8 @@ public class DailyReminderJob extends JobService {
                 }
             }
         });
+
+        execute.start();
 
         return false;
     }
