@@ -2,18 +2,13 @@ package fr.altairstudios.arutairu;
 
 import android.app.Notification;
 import android.app.PendingIntent;
-import android.app.job.JobInfo;
 import android.app.job.JobParameters;
-import android.app.job.JobScheduler;
 import android.app.job.JobService;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
-
-import java.util.Calendar;
 
 public class DailyReminderJob extends JobService {
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
