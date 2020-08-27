@@ -73,7 +73,7 @@ public class Revision extends AppCompatActivity {
             }
         });
 
-        mFirst  = getIntent().getBooleanExtra("FIRST", false);
+        mFirst  = getIntent().getBooleanExtra("FIRST1", false);
 
         //mAdView = findViewById(R.id.adViewRevision);
         //AdRequest adRequest = new AdRequest.Builder().build();
