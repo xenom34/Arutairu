@@ -4,15 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/revisionactivity"
-    tools:context=".Revision">
+    tools:context=".Revision"
+    android:id="@+id/revisionactivity">
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adViewRevision"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:adSize="SMART_BANNER"
+        app:adUnitId="ca-app-pub-9369103706924521/7289420516"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageView
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:elevation="20dp"
         android:id="@+id/play"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:elevation="20dp"
         android:src="@drawable/ic_play"
         app:layout_constraintBottom_toBottomOf="@+id/sound"
         app:layout_constraintEnd_toEndOf="@+id/sound"
@@ -20,8 +32,8 @@
         app:layout_constraintTop_toTopOf="@+id/sound" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:id="@+id/sound"
         android:backgroundTint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="@+id/materialCardView"
@@ -34,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="150dp"
         android:layout_marginBottom="90dp"
         android:backgroundTint="@color/cardview_dark_background"
         app:layout_constraintBottom_toTopOf="@+id/next"
@@ -58,13 +70,11 @@
                 android:id="@+id/jpn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autoSizeTextType="uniform"
                 android:layout_marginTop="20dp"
-                android:text="JPN"
-                android:autoSizeMaxTextSize="40sp"
                 android:height="100dp"
+                android:text="JPN"
                 android:textAlignment="center"
-                android:textSize="40sp"
+                android:textSize="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -74,7 +84,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:autoSizeTextType="uniform"
                 android:text="TextView"
                 android:textAlignment="center"
                 android:textSize="20sp"
@@ -89,11 +98,9 @@
                 android:layout_marginBottom="20dp"
                 android:height="100dp"
                 android:gravity="bottom"
-                android:autoSizeTextType="uniform"
                 android:text="TextView"
-                android:autoSizeMaxTextSize="40sp"
                 android:textAlignment="center"
-                android:textSize="40sp"
+                android:textSize="24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -104,25 +111,13 @@
         android:id="@+id/count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1/10"
         android:layout_marginBottom="10dp"
+        android:text="1/10"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/materialCardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/green"
-        android:text="@string/next"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/back" />
 
     <Button
         android:id="@+id/stop"
@@ -132,6 +127,18 @@
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/red"
         android:text="STOP"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/back" />
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/green"
+        android:text="@string/next"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

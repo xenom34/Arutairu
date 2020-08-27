@@ -31,7 +31,7 @@ import java.util.Random;
 public class Revision extends AppCompatActivity {
     private com.google.android.material.floatingactionbutton.FloatingActionButton mSound;
     TextToSpeech t1, t2;
-    private Boolean mFirst, mNextAutoState;
+    private Boolean mFirst, mNextAutoState, mIsPlayingAudio, mShowError;
     private Object o = new Object();
     private InterstitialAd mInterstitialAd;
     private int state = 0;
@@ -55,6 +55,7 @@ public class Revision extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_revision);
         mNextAutoState = false;
+        mIsPlayingAudio = false;
         sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
 
         am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
@@ -136,19 +137,11 @@ public class Revision extends AppCompatActivity {
         mStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mNext.setVisibility(View.VISIBLE);
-                mBack.setVisibility(View.VISIBLE);
-                mNext.setClickable(true);
-                mNext.setClickable(true);
-                mStop.setClickable(false);
-                mStop.setVisibility(View.INVISIBLE);
-                releaseAudioFocusForMyApp();
-                execute.interrupt();
-                mSound.setClickable(true);
-                mSound.setVisibility(View.VISIBLE);
-                findViewById(R.id.play).setVisibility(View.VISIBLE);
+                stopAudio();
             }
         });
+
+
 
         mBack.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -174,6 +167,12 @@ public class Revision extends AppCompatActivity {
         t1=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
+                if (t1.isLanguageAvailable(Locale.JAPANESE) == TextToSpeech.LANG_NOT_SUPPORTED && !sharedPreferences.getBoolean("ERROR_SHOWN", false)){
+                    mShowError = true;
+                }else{
+                    mShowError = false;
+                }
+
                 if(status != TextToSpeech.ERROR) {
                     t1.setLanguage(Locale.JAPANESE);
                     t1.setSpeechRate(0.9f);
@@ -204,6 +203,7 @@ public class Revision extends AppCompatActivity {
         mSound.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
+                mIsPlayingAudio = true;
                 mNext.setClickable(false);
                 mBack.setClickable(false);
                 mNext.setVisibility(View.INVISIBLE);
@@ -243,6 +243,20 @@ public class Revision extends AppCompatActivity {
 
         refresh();
 
+    }
+
+    private void stopAudio() {
+        mNext.setVisibility(View.VISIBLE);
+        mBack.setVisibility(View.VISIBLE);
+        mNext.setClickable(true);
+        mNext.setClickable(true);
+        mStop.setClickable(false);
+        mStop.setVisibility(View.INVISIBLE);
+        releaseAudioFocusForMyApp();
+        execute.interrupt();
+        mSound.setClickable(true);
+        mSound.setVisibility(View.VISIBLE);
+        findViewById(R.id.play).setVisibility(View.VISIBLE);
     }
 
     private boolean requestAudioFocusForMyApp() {
@@ -314,6 +328,15 @@ public class Revision extends AppCompatActivity {
         execute.start();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if (mIsPlayingAudio){
+            stopAudio();
+        }
+    }
+
     private void showError() {
         //before inflating the custom alert dialog layout, we will get the current activity viewgroup
         ViewGroup viewGroup = findViewById(android.R.id.content);
@@ -331,7 +354,7 @@ public class Revision extends AppCompatActivity {
         builder.setPositiveButton(R.string.understood, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
+                sharedPreferences.edit().putBoolean("ERROR_SHOWN", true).apply();
             }
         });
 
@@ -339,6 +362,7 @@ public class Revision extends AppCompatActivity {
             @Override
             public void onDismiss(DialogInterface dialogInterface) {
                 //mSpam = 0;
+                sharedPreferences.edit().putBoolean("ERROR_SHOWN", true).apply();
             }
         });
 
@@ -418,18 +442,28 @@ public class Revision extends AppCompatActivity {
         }
 
         if(mFirst){
-            showTuto();
+            showTuto(1);
 
         }
     }
 
-    private void showTuto() {
+    private void showTuto(final int message) {
 
         //before inflating the custom alert dialog layout, we will get the current activity viewgroup
         ViewGroup viewGroup = findViewById(android.R.id.content);
+        View dialogView;
 
         //then we will inflate the custom alert dialog xml that we created
-        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_revision, viewGroup, false);
+        switch (message){
+            case 1:
+                dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_revision, viewGroup, false);
+                break;
+            case 2:
+                dialogView = LayoutInflater.from(this).inflate(R.layout.play_words_revision_dialog, viewGroup, false);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + message);
+        }
 
         //Now we need an AlertDialog.Builder object
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -441,7 +475,13 @@ public class Revision extends AppCompatActivity {
         builder.setPositiveButton(R.string.understood, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
+                if (message != 2){
+                    if (mShowError){
+                        showError();
+                    }else{
+                        showTuto(2);
+                    }
+                }
             }
         });
 
