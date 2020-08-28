@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -48,6 +49,7 @@ public class Revision extends AppCompatActivity {
     private Thread execute;
     private AudioManager am;
     private int focusStatus;
+    private AdView mAdView;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
 
     @Override
@@ -60,6 +62,9 @@ public class Revision extends AppCompatActivity {
 
         am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
+        mAdView = findViewById(R.id.adViewRevision);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-9369103706924521/2427690661");
