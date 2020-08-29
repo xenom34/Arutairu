@@ -67,7 +67,7 @@ public class HomeActivity extends AppCompatActivity {
     private int maxWords;
     private boolean firstExec, revisionDialog;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
-    public static final String FIRST_EXEC = "firsts";
+    public static final String FIRST_EXEC = "firsts1";
     public static final String FIRST_REVISION = "revision";
     static boolean waitingForData = false;
     SharedPreferences sharedPreferences;
@@ -857,10 +857,10 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void enableNotification(int hour, int minute) {
-        Intent intent = new Intent(getApplicationContext(), DailyReminderBroadcast.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 100, intent, 0);
+        Intent intent = new Intent(getBaseContext(), DailyReminderBroadcast.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), 100, intent, 0);
 
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        AlarmManager alarmManager = (AlarmManager) getBaseContext().getSystemService(ALARM_SERVICE);
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());

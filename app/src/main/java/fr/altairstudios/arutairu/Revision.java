@@ -46,7 +46,7 @@ public class Revision extends AppCompatActivity {
     private TextView mShowJpn, mShowEnglish, mShowRomaji, mCount;
     private LessonsStorage lessonsStorage = new LessonsStorage();
     private boolean stopped = false;
-    private Thread execute;
+    private Thread execute, fExecute;
     private AudioManager am;
     private int focusStatus;
     private AdView mAdView;
@@ -59,6 +59,25 @@ public class Revision extends AppCompatActivity {
         mNextAutoState = false;
         mIsPlayingAudio = false;
         sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
+
+        fExecute = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (requestAudioFocusForMyApp()){
+                    while (!stopped){
+                        synchronized (o){
+                            try {
+                                play();
+                                o.wait();
+                            }catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                    }
+                }
+            }
+        });
 
         am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
@@ -78,7 +97,7 @@ public class Revision extends AppCompatActivity {
             }
         });
 
-        mFirst  = getIntent().getBooleanExtra("FIRST1", false);
+        mFirst  = getIntent().getBooleanExtra("FIRST", false);
 
         //mAdView = findViewById(R.id.adViewRevision);
         //AdRequest adRequest = new AdRequest.Builder().build();
@@ -199,7 +218,13 @@ public class Revision extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                     //Log.d("TEST", String.valueOf(t1.isLanguageAvailable(Locale.JAPAN)));
+                boolean isTtsActive;
+                requestAudioFocusForMyApp();
                     t1.speak(mShowJpn.getText(), TextToSpeech.QUEUE_FLUSH, null, "1");
+                do {
+                    isTtsActive = t1.isSpeaking();
+                } while (isTtsActive);
+                releaseAudioFocusForMyApp();
                 Snackbar.make(findViewById(R.id.revisionactivity), mShowRomaji.getText(), Snackbar.LENGTH_SHORT)
                         .show();
             }
@@ -218,25 +243,9 @@ public class Revision extends AppCompatActivity {
                 mSound.setClickable(false);
                 mSound.setVisibility(View.INVISIBLE);
                 findViewById(R.id.play).setVisibility(View.INVISIBLE);
+                stopped = false;
 
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (requestAudioFocusForMyApp()){
-                            while (!stopped){
-                                synchronized (o){
-                                    try {
-                                        play();
-                                        o.wait();
-                                    }catch (InterruptedException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-
-                            }
-                        }
-                    }
-                }).start();
+                fExecute.start();
                 return true;
             }
         });
@@ -251,17 +260,25 @@ public class Revision extends AppCompatActivity {
     }
 
     private void stopAudio() {
-        mNext.setVisibility(View.VISIBLE);
-        mBack.setVisibility(View.VISIBLE);
-        mNext.setClickable(true);
-        mNext.setClickable(true);
-        mStop.setClickable(false);
-        mStop.setVisibility(View.INVISIBLE);
-        releaseAudioFocusForMyApp();
-        execute.interrupt();
-        mSound.setClickable(true);
-        mSound.setVisibility(View.VISIBLE);
-        findViewById(R.id.play).setVisibility(View.VISIBLE);
+        if (!stopped) {
+            mNext.setVisibility(View.VISIBLE);
+            mBack.setVisibility(View.VISIBLE);
+            mNext.setClickable(true);
+            mNext.setClickable(true);
+            mStop.setClickable(false);
+            stopped = true;
+            mStop.setVisibility(View.INVISIBLE);
+            releaseAudioFocusForMyApp();
+            while (!execute.isInterrupted()) {
+                execute.interrupt();
+            }
+            while (!fExecute.isInterrupted()) {
+                fExecute.interrupt();
+            }
+            mSound.setClickable(true);
+            mSound.setVisibility(View.VISIBLE);
+            findViewById(R.id.play).setVisibility(View.VISIBLE);
+        }
     }
 
     private boolean requestAudioFocusForMyApp() {

@@ -10,6 +10,8 @@ import android.content.SharedPreferences;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import java.util.Calendar;
+
 import static android.content.Context.MODE_PRIVATE;
 
 public class DailyReminderBroadcast extends BroadcastReceiver {
@@ -22,7 +24,22 @@ public class DailyReminderBroadcast extends BroadcastReceiver {
         sharedPreferences = context.getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
         //Toast.makeText(context, "DING DONG", Toast.LENGTH_SHORT).show();
 
-        if (sharedPreferences.getBoolean("NOTIFS", false)){
+        Calendar c = Calendar.getInstance();
+        // set the calendar to start of today
+        c.set(Calendar.HOUR_OF_DAY, 0);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        c.set(Calendar.MILLISECOND, 0);
+
+        Calendar yersterday = Calendar.getInstance();
+        yersterday.set(Calendar.HOUR_OF_DAY, 0);
+        yersterday.set(Calendar.MINUTE, 0);
+        yersterday.set(Calendar.SECOND, 0);
+        yersterday.set(Calendar.MILLISECOND, 0);
+        yersterday.add(Calendar.DATE, -1);
+
+
+        if (sharedPreferences.getBoolean("NOTIFS", false) && c.getTimeInMillis() != sharedPreferences.getLong("CALENDAR", yersterday.getTimeInMillis())){
             NotificationManagerCompat nManager = NotificationManagerCompat.from(context);
 
             Intent dailySurprise = new Intent(context, MainActivity.class);
@@ -41,6 +58,7 @@ public class DailyReminderBroadcast extends BroadcastReceiver {
                     .build();
 
             nManager.notify(100,notification);
+            sharedPreferences.edit().putLong("CALENDAR", c.getTimeInMillis()).apply();
         }
     }
 }
