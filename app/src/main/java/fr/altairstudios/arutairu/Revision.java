@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -25,14 +23,13 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.HashMap;
 import java.util.Locale;
 import java.util.Random;
 
 public class Revision extends AppCompatActivity {
     private com.google.android.material.floatingactionbutton.FloatingActionButton mSound;
     TextToSpeech t1, t2;
-    private Boolean mFirst, mNextAutoState, mIsPlayingAudio, mShowError;
+    private Boolean mFirst, mNextAutoState, mIsPlayingAudio, mShowError, isTtsActive;;
     private Object o = new Object();
     private InterstitialAd mInterstitialAd;
     private int state = 0;
@@ -58,26 +55,8 @@ public class Revision extends AppCompatActivity {
         setContentView(R.layout.activity_revision);
         mNextAutoState = false;
         mIsPlayingAudio = false;
+        isTtsActive = false;
         sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
-
-        fExecute = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                if (requestAudioFocusForMyApp()){
-                    while (!stopped){
-                        synchronized (o){
-                            try {
-                                play();
-                                o.wait();
-                            }catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-
-                    }
-                }
-            }
-        });
 
         am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
@@ -218,15 +197,21 @@ public class Revision extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                     //Log.d("TEST", String.valueOf(t1.isLanguageAvailable(Locale.JAPAN)));
-                boolean isTtsActive;
-                requestAudioFocusForMyApp();
-                    t1.speak(mShowJpn.getText(), TextToSpeech.QUEUE_FLUSH, null, "1");
-                do {
-                    isTtsActive = t1.isSpeaking();
-                } while (isTtsActive);
-                releaseAudioFocusForMyApp();
-                Snackbar.make(findViewById(R.id.revisionactivity), mShowRomaji.getText(), Snackbar.LENGTH_SHORT)
-                        .show();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(!isTtsActive) {
+                            requestAudioFocusForMyApp();
+                            t1.speak(mShowJpn.getText(), TextToSpeech.QUEUE_FLUSH, null, "1");
+                            do {
+                                isTtsActive = t1.isSpeaking();
+                            } while (isTtsActive);
+                            releaseAudioFocusForMyApp();
+                            Snackbar.make(findViewById(R.id.revisionactivity), mShowRomaji.getText(), Snackbar.LENGTH_SHORT)
+                                    .show();
+                        }
+                    }
+                }).start();
             }
         });
 
@@ -244,6 +229,25 @@ public class Revision extends AppCompatActivity {
                 mSound.setVisibility(View.INVISIBLE);
                 findViewById(R.id.play).setVisibility(View.INVISIBLE);
                 stopped = false;
+
+                fExecute = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (requestAudioFocusForMyApp()){
+                            while (!stopped){
+                                synchronized (o){
+                                    try {
+                                        play();
+                                        o.wait();
+                                    }catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                });
 
                 fExecute.start();
                 return true;

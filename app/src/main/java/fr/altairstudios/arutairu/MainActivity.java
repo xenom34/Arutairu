@@ -11,6 +11,7 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.speech.tts.TextToSpeech;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private Animation fadeAltair2, fadeAltair3;
     private ShuffleBg shuffleBg = new ShuffleBg();
     private boolean executed = false;
+    private TextToSpeech textToSpeech;
     static int VERSION_CODE = 35;
 
     @Override
@@ -181,6 +183,132 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
+    private void showTtsCheck(int dialogs) {
+        //before inflating the custom alert dialog layout, we will get the current activity viewgroup
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+        View dialogView;
+
+        //then we will inflate the custom alert dialog xml that we created!
+        switch (dialogs){
+            case 1:
+                dialogView = LayoutInflater.from(this).inflate(R.layout.check_tts_dialog, viewGroup, false);
+                break;
+            case 2:
+                dialogView = LayoutInflater.from(this).inflate(R.layout.tts_not_available, viewGroup, false);
+                break;
+            case 3:
+                dialogView = LayoutInflater.from(this).inflate(R.layout.tts_available_dialog, viewGroup, false);
+                break;
+            default:
+                dialogView = LayoutInflater.from(this).inflate(R.layout.unexpected_error_dialog, viewGroup, false);
+                break;
+        }
+
+        //Now we need an AlertDialog.Builder object
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView);
+
+        builder.setCancelable(false);
+        if (dialogs != 1){
+            if (dialogs == 3) {
+                builder.setPositiveButton("Super !", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        showMenu();
+                    }
+                });
+            }else{
+                builder.setNegativeButton("Installer manuellement", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        textToSpeech.stop();
+                        textToSpeech.shutdown();
+                        Intent installIntent = new Intent();
+                        installIntent.setAction(
+                                TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
+                        startActivity(installIntent);
+                        showMenu();
+                    }
+                });
+                builder.setPositiveButton("Continuer", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        showMenu();
+                    }
+                });
+            }
+        }
+
+        //finally creating the alert dialog and displaying it
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+        if (dialogs == 1){
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+                        @Override
+                        public void onInit(int status) {
+                            if(status == TextToSpeech.SUCCESS && textToSpeech.isLanguageAvailable(Locale.JAPANESE) != TextToSpeech.LANG_NOT_SUPPORTED) {
+                                textToSpeech.setLanguage(Locale.JAPANESE);
+                                textToSpeech.setSpeechRate(0.9f);
+                                showTtsCheck(3);
+                                alertDialog.hide();
+                            }else if (textToSpeech.isLanguageAvailable(Locale.JAPANESE) == TextToSpeech.LANG_NOT_SUPPORTED) {
+                                showTtsCheck(2);
+                                alertDialog.hide();
+                            }else if (textToSpeech.isLanguageAvailable(Locale.JAPANESE) == TextToSpeech.LANG_AVAILABLE){
+                                showAskForDownloadTts();
+                                alertDialog.hide();
+                            }else{
+                                showTtsCheck(0);
+                            }
+                        }
+                    });
+                }
+            }, 3000);
+        }
+        sharedPreferences.edit().putBoolean("TTS", false).apply();
+        //alertDialog.hide();
+    }
+
+    private void showAskForDownloadTts() {
+            //before inflating the custom alert dialog layout, we will get the current activity viewgroup
+            ViewGroup viewGroup = findViewById(android.R.id.content);
+
+            //then we will inflate the custom alert dialog xml that we created
+            View dialogView = LayoutInflater.from(this).inflate(R.layout.tts_not_available, viewGroup, false);
+
+            //Now we need an AlertDialog.Builder object
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+            //setting the view of the builder to our custom view that we already inflated
+            builder.setView(dialogView);
+
+
+            builder.setPositiveButton(R.string.understood, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    sharedPreferences.edit().putBoolean("ERROR_SHOWN", true).apply();
+                }
+            });
+
+            builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialogInterface) {
+                    //mSpam = 0;
+                    sharedPreferences.edit().putBoolean("ERROR_SHOWN", true).apply();
+                }
+            });
+
+            //finally creating the alert dialog and displaying it
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+    }
+
 
     @Override
     protected void onStart() {
@@ -193,14 +321,35 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Animation fadeAltair =
-                AnimationUtils.loadAnimation(getApplicationContext(),
-                        R.anim.fade);
-        mAltair.startAnimation(fadeAltair);
+        if (!executed) {
 
+            Animation fadeAltair =
+                    AnimationUtils.loadAnimation(getApplicationContext(),
+                            R.anim.fade);
+            mAltair.startAnimation(fadeAltair);
+            mStart.setClickable(false);
+            mRequired.setClickable(false);
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (sharedPreferences.getBoolean("TTS", true)){
+                        showTtsCheck(1);
+                    }else{
+                        showMenu();
+                    }
+                }
+            }, 1500);
+        }
+
+    }
+
+    private void showMenu() {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                mRequired.setClickable(true);
+                mStart.setClickable(true);
                 mArutairu.setAlpha(1f);
                 mStart.setAlpha(1f);
                 mWelcome.setAlpha(1f);
@@ -213,9 +362,8 @@ public class MainActivity extends AppCompatActivity {
                 mCurrentLanguage.startAnimation(fadeAltair2);
                 mWelcome.startAnimation(fadeAltair2);
                 mBg.startAnimation(fadeAltair3);
+                executed = true;
             }
-        },3000);
-
-
+        }, 1500);
     }
 }

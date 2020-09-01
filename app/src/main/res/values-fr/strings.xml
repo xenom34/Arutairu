@@ -96,4 +96,15 @@
     <string name="to_listen_to_the_pronunciation_of_the_word_on_your_screen_you_can_press_this_button_n_n_also_you_can_now_do_a_long_press_which_will_start_an_automatic_playback_of_the_selected_vocabulary">Pour écouter la prononciation du mot sur votre écran, vous pouvez appuyer sur ce bouton (une connexion internet peut être nécessaire).\n\nDe plus, vous pouvez maintenant appuyer longtemps sur ce même bouton, ce qui lancera une lecture automatique du vocabulaire sélectionné.</string>
     <string name="message">Si le rappel quotidien ne s\'affichait plus sur votre appareil, cette nouvelle mise à jour peut permettre de régler ce problème. Il vous suffit de paramétrer de nouveau le rappel sur notre application.</string>
     <string name="use_text_to_speech">Utiliser la synthèse vocale</string>
+    <string name="v_rification_termin_e">Vérification terminée !</string>
+    <string name="vous_avez_les_fichiers_n_cessaires_nous_esp_rons_que_cette_application_vous_plaira">Vous avez les fichiers nécessaires. Nous espérons que vous allez adorer notre application !</string>
+    <string name="une_erreur_inattendue_viens_de_se_produire">Une erreur inattendue viens de se produire...</string>
+    <string name="we_regret_that_lorem_ipsum">Nous regrettons que vous ayez ce problème, mais votre appareil a de réels problèmes avec Arutairu.\n\n Vous n\'entendrez probablement rien sans \"text to speech\", mais vous pouvez toujours apprendre sans cette fonction. \n\nVous pouvez peut-être réessayer en téléchargeant manuellement toutes les données sur l\'écran de sélection.</string>
+    <string name="acc_s_param_tres">Accès paramètres</string>
+    <string name="vous_allez_acc_der_aux_param_tres_du_moteur_de_synth_se_vocale_n_n_dans_l_cran_suivant_veuillez_s_lectionner_la_langue_japonaise_parfois_indiqu_e_comme">Vous allez accéder aux paramètres du moteur de synthèse vocale.\n\nDans l\'écran suivant, veuillez sélectionner la langue japonaise, parfois indiquée comme \'日本語\'. Si cela ne marche pas, essayez d\'accéder manuellement aux paramètres de votre téléphone.</string>
+    <string name="great_news">Bonne nouvelle ! Votre téléphone est compatible ! Vous devez simplement effectuer une dernière manipulation pour télécharger les données de langues japonaises. \n\nPour cela, appuyez sur le bouton ci-dessous, et sélectionnez \"japonais\". Parfois, il peut être indiqué comme \'日本語\'.</string>
+    <string name="we_need_something_from_you">Une action de votre part est nécessaire</string>
+    <string name="please_wait">Veuillez patienter...</string>
+    <string name="to_enjoy_of_all_the_features_of_arutairu_we_check_your_text_to_speech_engine">Pour profiter de toutes les fonctionnalités d\'Arutairu, nous vérifions votre moteur \"text to speech\".</string>
+    <string name="tts_voices">Télécharger les voix</string>
 </resources>

@@ -18,6 +18,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -132,8 +133,13 @@ public class HomeActivity extends AppCompatActivity {
                     return false;
                 }else if (item.getItemId() == R.id.nav_rate){
                     rateThisApp();
+                    return false;
                 }else if(item.getItemId() == R.id.nav_mail){
                     sendEmail();
+                    return false;
+                }else if(item.getItemId() == R.id.nav_tts){
+                    loadVoices();
+                    return false;
                 }else if(item.getItemId() == R.id.nav_notification){
                     showNotificationDialog();
                     return false;
@@ -158,6 +164,10 @@ public class HomeActivity extends AppCompatActivity {
 
         firstExec = sharedPreferences.getBoolean(FIRST_EXEC, true);
 
+    }
+
+    private void loadVoices() {
+            showWarningTts();
     }
 
     public void pickADate(){
@@ -773,6 +783,41 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    private void showWarningTts() {
+        //before inflating the custom alert dialog layout, we will get the current activity viewgroup
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+
+        //then we will inflate the custom alert dialog xml that we created
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.warning_tts_dialog, viewGroup, false);
+
+        //Now we need an AlertDialog.Builder object
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView);
+
+
+        builder.setPositiveButton(R.string.go, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent installIntent = new Intent();
+                installIntent.setAction(
+                        TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
+                startActivity(installIntent);
+            }
+        });
+
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+            }
+        });
+
+        //finally creating the alert dialog and displaying it
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
