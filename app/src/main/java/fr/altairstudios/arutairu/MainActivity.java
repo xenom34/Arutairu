@@ -23,6 +23,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private ShuffleBg shuffleBg = new ShuffleBg();
     private boolean executed = false;
     private TextToSpeech textToSpeech;
+    private InterstitialAd mInterstitialAd;
     static int VERSION_CODE = 35;
 
     @Override
@@ -64,6 +68,18 @@ public class MainActivity extends AppCompatActivity {
         DisplayMetrics dm = res.getDisplayMetrics();
         Configuration conf = res.getConfiguration();
         sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-9369103706924521/9128046879");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        mInterstitialAd.setAdListener(new AdListener(){
+            @Override
+            public void onAdClosed() {
+                Intent intent = new Intent(getBaseContext(), HomeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         conf.setLocale(new Locale(sharedPreferences.getString("LOCALE", Locale.getDefault().getLanguage())));
 
@@ -113,9 +129,13 @@ public class MainActivity extends AppCompatActivity {
         mStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), HomeActivity.class);
-                startActivity(intent);
-                finish();
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                }else{
+                    Intent intent = new Intent(getBaseContext(), HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
 
