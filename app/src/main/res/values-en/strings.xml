@@ -102,9 +102,12 @@
     <string name="to_enjoy_of_all_the_features_of_arutairu_we_check_your_text_to_speech_engine">To enjoy of all the features of Arutairu, we check your \"text to speech\" engine.</string>
     <string name="tts_voices">Download voices</string>
     <string name="v_rification_termin_e">Check completed!</string>
-    <string name="vous_avez_les_fichiers_n_cessaires_nous_esp_rons_que_cette_application_vous_plaira">You have the necessary files. We hope you will love our app!</string>
+    <string name="vous_avez_les_fichiers_n_cessaires_nous_esp_rons_que_cette_application_vous_plaira">You have the necessary files. We hope you will love our app!\n\nIf you still have some problems with the pronunciation help system, you can download the Japanese voices from the main menu.</string>
     <string name="une_erreur_inattendue_viens_de_se_produire">An unexpected error has just occurred...</string>
     <string name="we_regret_that_lorem_ipsum">We regret that you have this problem, but your device have some real issues with Arutairu. \n\nYou probably won\'t hear anything without \"text to speech\", but you can still learn without this feature. \n\nMaybe, you can retry by downloading the data manually on the selection screen.</string>
     <string name="acc_s_param_tres">Settings access</string>
     <string name="vous_allez_acc_der_aux_param_tres_du_moteur_de_synth_se_vocale_n_n_dans_l_cran_suivant_veuillez_s_lectionner_la_langue_japonaise_parfois_indiqu_e_comme">You will access the settings of the text-to-speech engine.\n\nIn the next screen, please select the Japanese language, sometimes indicated as \'日本語\'. If this doesn\'t work, try manually by accessing your phone\'s settings.</string>
+    <string name="settings_tts">Settings</string>
+    <string name="super_tts">Great !</string>
+    <string name="continue_tts">Continue</string>
 </resources>

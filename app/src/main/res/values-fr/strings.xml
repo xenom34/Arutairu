@@ -97,7 +97,7 @@
     <string name="message">Si le rappel quotidien ne s\'affichait plus sur votre appareil, cette nouvelle mise à jour peut permettre de régler ce problème. Il vous suffit de paramétrer de nouveau le rappel sur notre application.</string>
     <string name="use_text_to_speech">Utiliser la synthèse vocale</string>
     <string name="v_rification_termin_e">Vérification terminée !</string>
-    <string name="vous_avez_les_fichiers_n_cessaires_nous_esp_rons_que_cette_application_vous_plaira">Vous avez les fichiers nécessaires. Nous espérons que vous allez adorer notre application !</string>
+    <string name="vous_avez_les_fichiers_n_cessaires_nous_esp_rons_que_cette_application_vous_plaira">Vous avez les fichiers nécessaires. Nous espérons que vous allez adorer notre application !\n\nSi vous avez malgré tout quelques soucis avec le système d\'aide à la prononciation, vous pouvez télécharger les voix japonaises dans le menu principal.</string>
     <string name="une_erreur_inattendue_viens_de_se_produire">Une erreur inattendue viens de se produire...</string>
     <string name="we_regret_that_lorem_ipsum">Nous regrettons que vous ayez ce problème, mais votre appareil a de réels problèmes avec Arutairu.\n\n Vous n\'entendrez probablement rien sans \"text to speech\", mais vous pouvez toujours apprendre sans cette fonction. \n\nVous pouvez peut-être réessayer en téléchargeant manuellement toutes les données sur l\'écran de sélection.</string>
     <string name="acc_s_param_tres">Accès paramètres</string>
@@ -107,4 +107,7 @@
     <string name="please_wait">Veuillez patienter...</string>
     <string name="to_enjoy_of_all_the_features_of_arutairu_we_check_your_text_to_speech_engine">Pour profiter de toutes les fonctionnalités d\'Arutairu, nous vérifions votre moteur \"text to speech\".</string>
     <string name="tts_voices">Télécharger les voix</string>
+    <string name="settings_tts">Paramètres</string>
+    <string name="super_tts">Super !</string>
+    <string name="continue_tts">Continuer</string>
 </resources>

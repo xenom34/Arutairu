@@ -213,14 +213,14 @@ public class MainActivity extends AppCompatActivity {
         builder.setCancelable(false);
         if (dialogs != 1){
             if (dialogs == 3) {
-                builder.setPositiveButton("Super !", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(R.string.super_tts, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         showMenu();
                     }
                 });
             }else{
-                builder.setNegativeButton("Installer manuellement", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(R.string.settings_tts, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         textToSpeech.stop();
@@ -232,7 +232,7 @@ public class MainActivity extends AppCompatActivity {
                         showMenu();
                     }
                 });
-                builder.setPositiveButton("Continuer", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(R.string.continue_tts, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         showMenu();
