@@ -110,4 +110,9 @@
     <string name="settings_tts">Paramètres</string>
     <string name="super_tts">Super !</string>
     <string name="continue_tts">Continuer</string>
+    <string name="remove_ads">Retirer les pubs</string>
+    <string name="we_are_very_grateful_for_your_support_to_arutairu_from_now_on_you_have_the_privilege_of_using_our_app_without_the_ads_n_nwe_wish_you_a_lot_of_success_in_your_learning">Nous vous sommes très reconnaissant pour votre soutiens que vous apportez à Arutairu ! Désormais, vous avez le privilège d\'utiliser notre appli sans les publicités.\n\nNous vous souhaitons beaucoup de réussite dans votre apprentissage !</string>
+    <string name="thank_you_so_much">Merci infiniment !</string>
+    <string name="canceled">ANNULÉ</string>
+    <string name="already_purchased">Vous avez déjà l\'option sans pubs</string>
 </resources>

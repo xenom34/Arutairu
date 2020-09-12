@@ -1,5 +1,6 @@
 package fr.altairstudios.arutairu;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -20,9 +21,23 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.billingclient.api.BillingClient;
+import com.android.billingclient.api.BillingClientStateListener;
+import com.android.billingclient.api.BillingFlowParams;
+import com.android.billingclient.api.BillingResult;
+import com.android.billingclient.api.Purchase;
+import com.android.billingclient.api.PurchaseHistoryRecord;
+import com.android.billingclient.api.PurchaseHistoryResponseListener;
+import com.android.billingclient.api.PurchasesUpdatedListener;
+import com.android.billingclient.api.SkuDetails;
+import com.android.billingclient.api.SkuDetailsParams;
+import com.android.billingclient.api.SkuDetailsResponseListener;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -30,6 +45,8 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -46,6 +63,25 @@ public class MainActivity extends AppCompatActivity {
     private TextToSpeech textToSpeech;
     private InterstitialAd mInterstitialAd;
     static int VERSION_CODE = 35;
+    private PurchasesUpdatedListener purchaseUpdateListener = new PurchasesUpdatedListener() {
+        @Override
+        public void onPurchasesUpdated(BillingResult billingResult, List<Purchase> purchases) {
+            if (!(billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_TIMEOUT || billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_UNAVAILABLE)) {
+
+
+                // To be implemented in a later section.
+                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                    if (purchases.get(0).getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
+                        sharedPreferences.edit().putBoolean("POLARIS", true).apply();
+                    }
+                } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
+                    sharedPreferences.edit().putBoolean("POLARIS", true).apply();
+                } else {
+                    sharedPreferences.edit().putBoolean("POLARIS", false).apply();
+                }
+            }
+        }
+    };
 
     @Override
     protected void onStop() {
@@ -69,17 +105,19 @@ public class MainActivity extends AppCompatActivity {
         Configuration conf = res.getConfiguration();
         sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
 
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-9369103706924521/9128046879");
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-        mInterstitialAd.setAdListener(new AdListener(){
-            @Override
-            public void onAdClosed() {
-                Intent intent = new Intent(getBaseContext(), HomeActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+        if (!sharedPreferences.getBoolean("POLARIS", false)){
+            mInterstitialAd = new InterstitialAd(this);
+            mInterstitialAd.setAdUnitId("ca-app-pub-9369103706924521/9128046879");
+            mInterstitialAd.loadAd(new AdRequest.Builder().build());
+            mInterstitialAd.setAdListener(new AdListener(){
+                @Override
+                public void onAdClosed() {
+                    Intent intent = new Intent(getBaseContext(), HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+        }
 
         conf.setLocale(new Locale(sharedPreferences.getString("LOCALE", Locale.getDefault().getLanguage())));
 
@@ -129,8 +167,14 @@ public class MainActivity extends AppCompatActivity {
         mStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mInterstitialAd.isLoaded()) {
-                    mInterstitialAd.show();
+                if (!sharedPreferences.getBoolean("POLARIS", false)){
+                    if (mInterstitialAd.isLoaded()) {
+                        mInterstitialAd.show();
+                    }else{
+                        Intent intent = new Intent(getBaseContext(), HomeActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }else{
                     Intent intent = new Intent(getBaseContext(), HomeActivity.class);
                     startActivity(intent);
@@ -341,6 +385,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        checkPurchased();
+
         if (!executed) {
 
             Animation fadeAltair =
@@ -364,6 +410,69 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void checkPurchased(){
+        final BillingClient mBillingClient;
+        final Activity activity = this;
+
+        mBillingClient = BillingClient.newBuilder(activity)
+                .setListener(purchaseUpdateListener)
+                .enablePendingPurchases()
+                .build();
+
+        mBillingClient.startConnection(new BillingClientStateListener() {
+            @Override
+            public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
+                if (billingResult.getResponseCode() ==  BillingClient.BillingResponseCode.OK) {
+                    // The BillingClient is ready. You can query purchases here.
+                    List<String> skuList = new ArrayList<>();
+                    skuList.add("no_ads");
+                    SkuDetailsParams.Builder params = SkuDetailsParams.newBuilder();
+                    params.setSkusList(skuList).setType(BillingClient.SkuType.INAPP);
+                    /*mBillingClient.queryPurchaseHistoryAsync(BillingClient.SkuType.INAPP,
+                            new PurchaseHistoryResponseListener() {
+                                @Override
+                                public void onPurchaseHistoryResponse(@NonNull BillingResult billingResult, @Nullable List<PurchaseHistoryRecord> list) {
+                                    if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED
+                                            && list != null) {
+                                        Toast.makeText(activity, "LICENSE OK", Toast.LENGTH_SHORT).show();
+                                        sharedPreferences.edit().putBoolean("POLARIS", true).apply();
+                                    }
+                                }});*/
+                    mBillingClient.querySkuDetailsAsync(params.build(),
+                            new SkuDetailsResponseListener() {
+                                @Override
+                                public void onSkuDetailsResponse(@NonNull BillingResult billingResult,
+                                                                 List<SkuDetails> skuDetailsList) {
+                                    int responseCode = 1000;
+                                    if (skuDetailsList.isEmpty()) {
+                                        Toast.makeText(getApplicationContext(), "Connexion impossible", Toast.LENGTH_SHORT).show();
+                                    }
+                                    if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
+                                        Toast.makeText(activity, "LICENSE OK", Toast.LENGTH_SHORT).show();
+                                        sharedPreferences.edit().putBoolean("POLARIS", true).apply();
+                                    } else {
+                                        //Toast.makeText(activity, R.string.canceled, Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                }else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_UNAVAILABLE){
+                    Toast.makeText(getApplicationContext(), "Service indisponible", Toast.LENGTH_SHORT).show();
+                }else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_DISCONNECTED){
+                    Toast.makeText(getApplicationContext(), "Service déconnecté", Toast.LENGTH_SHORT).show();
+                } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_TIMEOUT){
+                    Toast.makeText(getApplicationContext(), "Timeout", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getApplicationContext(), "Erreur", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onBillingServiceDisconnected() {
+                // Try to restart the connection on the next request to
+                // Google Play by calling the startConnection() method.
+            }
+        });
+    }
+
     private void showMenu() {
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -384,6 +493,6 @@ public class MainActivity extends AppCompatActivity {
                 mBg.startAnimation(fadeAltair3);
                 executed = true;
             }
-        }, 1500);
+        }, 2500);
     }
 }

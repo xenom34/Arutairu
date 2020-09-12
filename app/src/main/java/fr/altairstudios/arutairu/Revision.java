@@ -52,29 +52,33 @@ public class Revision extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_revision);
+        sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
+
+        if (!sharedPreferences.getBoolean("POLARIS", false)){
+            setContentView(R.layout.activity_revision);
+            mAdView = findViewById(R.id.adViewRevision);
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+
+            mInterstitialAd = new InterstitialAd(this);
+            mInterstitialAd.setAdUnitId("ca-app-pub-9369103706924521/2427690661");
+            mInterstitialAd.loadAd(new AdRequest.Builder().build());
+            mInterstitialAd.setAdListener(new AdListener(){
+                @Override
+                public void onAdClosed() {
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+        }else{
+            setContentView(R.layout.activity_revision_no_ads);
+        }
         mNextAutoState = false;
         mIsPlayingAudio = false;
         isTtsActive = false;
-        sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
 
         am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-
-        mAdView = findViewById(R.id.adViewRevision);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-9369103706924521/2427690661");
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-        mInterstitialAd.setAdListener(new AdListener(){
-            @Override
-            public void onAdClosed() {
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
 
         mFirst  = getIntent().getBooleanExtra("FIRST", false);
 
@@ -403,8 +407,14 @@ public class Revision extends AppCompatActivity {
             refresh();
         }else{
             if(getIntent().getBooleanExtra("REVISION", false)){
-                if(mInterstitialAd.isLoaded()){
-                    mInterstitialAd.show();
+                if (!sharedPreferences.getBoolean("POLARIS", false)){
+                    if(mInterstitialAd.isLoaded()){
+                        mInterstitialAd.show();
+                    }else{
+                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }else{
                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(intent);
@@ -541,8 +551,14 @@ public class Revision extends AppCompatActivity {
                 if(execute!=null){
                     execute.interrupt();
                 }
-                if (mInterstitialAd.isLoaded()) {
-                    mInterstitialAd.show();
+                if (!sharedPreferences.getBoolean("POLARIS", false)){
+                    if (mInterstitialAd.isLoaded()) {
+                        mInterstitialAd.show();
+                    }else{
+                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }else{
                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(intent);

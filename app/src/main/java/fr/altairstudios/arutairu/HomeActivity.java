@@ -1,5 +1,6 @@
 package fr.altairstudios.arutairu;
 
+import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.NotificationChannel;
@@ -44,6 +45,15 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.ui.AppBarConfiguration;
 
+import com.android.billingclient.api.BillingClient;
+import com.android.billingclient.api.BillingClientStateListener;
+import com.android.billingclient.api.BillingFlowParams;
+import com.android.billingclient.api.BillingResult;
+import com.android.billingclient.api.Purchase;
+import com.android.billingclient.api.PurchasesUpdatedListener;
+import com.android.billingclient.api.SkuDetails;
+import com.android.billingclient.api.SkuDetailsParams;
+import com.android.billingclient.api.SkuDetailsResponseListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textview.MaterialTextView;
@@ -56,6 +66,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Vector;
@@ -82,14 +93,36 @@ public class HomeActivity extends AppCompatActivity {
     private Button mPractice, mTest, mRevision;
     private NavigationView navigationView;
     private MaterialTextView mUnavailableKanji;
+    private PurchasesUpdatedListener purchaseUpdateListener = new PurchasesUpdatedListener() {
+        @Override
+        public void onPurchasesUpdated(BillingResult billingResult, List<Purchase> purchases) {
+            if (!(billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_TIMEOUT || billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_UNAVAILABLE)) {
 
+
+                // To be implemented in a later section.
+                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                    if (purchases.get(0).getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
+                        Toast.makeText(getApplicationContext(), "PURCHASED", Toast.LENGTH_SHORT).show();
+                        sharedPreferences.edit().putBoolean("POLARIS", true).apply();
+                        showThanksDialog();
+                    }
+                } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
+                    Toast.makeText(getApplicationContext(), "Vous avez déjà ce produit", Toast.LENGTH_SHORT).show();
+                    sharedPreferences.edit().putBoolean("POLARIS", true).apply();
+                } else {
+                    sharedPreferences.edit().putBoolean("POLARIS", false).apply();
+                }
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Resources res = getResources();
+        final Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
         Configuration conf = res.getConfiguration();
         sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
+
 
         conf.setLocale(new Locale(sharedPreferences.getString("LOCALE", Locale.getDefault().getLanguage())));
 
@@ -123,6 +156,7 @@ public class HomeActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.nav_view);
         mNbLearn = navigationView.getHeaderView(0).findViewById(R.id.nbLearn);
         navigationView.setCheckedItem(R.id.nav_people);
+        final Activity activity = this;
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -136,6 +170,68 @@ public class HomeActivity extends AppCompatActivity {
                     return false;
                 }else if(item.getItemId() == R.id.nav_mail){
                     sendEmail();
+                    return false;
+                }else if(item.getItemId() == R.id.nav_no_ads){
+                    if (sharedPreferences.getBoolean("POLARIS", false)){
+                        Toast.makeText(getApplicationContext(), R.string.already_purchased, Toast.LENGTH_SHORT).show();
+                    }else {
+                        final BillingClient mBillingClient;
+
+                        mBillingClient = BillingClient.newBuilder(activity)
+                                .setListener(purchaseUpdateListener)
+                                .enablePendingPurchases()
+                                .build();
+
+                        mBillingClient.startConnection(new BillingClientStateListener() {
+                            @Override
+                            public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
+                                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                                    // The BillingClient is ready. You can query purchases here.
+                                    List<String> skuList = new ArrayList<>();
+                                    skuList.add("no_ads");
+                                    SkuDetailsParams.Builder params = SkuDetailsParams.newBuilder();
+                                    params.setSkusList(skuList).setType(BillingClient.SkuType.INAPP);
+                                    mBillingClient.querySkuDetailsAsync(params.build(),
+                                            new SkuDetailsResponseListener() {
+                                                @Override
+                                                public void onSkuDetailsResponse(@NonNull BillingResult billingResult,
+                                                                                 List<SkuDetails> skuDetailsList) {
+                                                    int responseCode = 1000;
+                                                    if (skuDetailsList.isEmpty()) {
+                                                        Toast.makeText(getApplicationContext(), "Connexion impossible", Toast.LENGTH_SHORT).show();
+                                                    } else {
+                                                        BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
+                                                                .setSkuDetails(skuDetailsList.get(0))
+                                                                .build();
+                                                        responseCode = mBillingClient.launchBillingFlow(activity, billingFlowParams).getResponseCode();
+                                                    }
+                                                    if (responseCode == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
+                                                        Toast.makeText(activity, "LICENSE OK", Toast.LENGTH_SHORT).show();
+                                                        sharedPreferences.edit().putBoolean("POLARIS", true).apply();
+                                                    } else {
+                                                        //Toast.makeText(activity, R.string.canceled, Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+                                            });
+                                } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_UNAVAILABLE) {
+                                    Toast.makeText(getApplicationContext(), "Service indisponible", Toast.LENGTH_SHORT).show();
+                                } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_DISCONNECTED) {
+                                    Toast.makeText(getApplicationContext(), "Service déconnecté", Toast.LENGTH_SHORT).show();
+                                } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_TIMEOUT) {
+                                    Toast.makeText(getApplicationContext(), "Timeout", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Erreur", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                            @Override
+                            public void onBillingServiceDisconnected() {
+                                // Try to restart the connection on the next request to
+                                // Google Play by calling the startConnection() method.
+                            }
+                        });
+                    }
+
                     return false;
                 }else if(item.getItemId() == R.id.nav_tts){
                     loadVoices();
@@ -814,6 +910,39 @@ public class HomeActivity extends AppCompatActivity {
         builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialogInterface) {
+            }
+        });
+
+        //finally creating the alert dialog and displaying it
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    private void showThanksDialog() {
+        //before inflating the custom alert dialog layout, we will get the current activity viewgroup
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+
+        //then we will inflate the custom alert dialog xml that we created
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.purchased_ok_dialog, viewGroup, false);
+
+        //Now we need an AlertDialog.Builder object
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView);
+
+
+        builder.setPositiveButton(R.string.continue_tts, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+
             }
         });
 

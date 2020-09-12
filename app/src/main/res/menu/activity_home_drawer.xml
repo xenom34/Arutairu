@@ -222,6 +222,10 @@
                 <group
                     android:checkableBehavior="single">
                     <item
+                        android:id="@+id/nav_no_ads"
+                        android:icon="@drawable/ic_stat_name"
+                        android:title="@string/remove_ads" />
+                    <item
                         android:id="@+id/nav_rate"
                         android:icon="@drawable/ic_baseline_star_24"
                         android:title="@string/notez_l_appli" />
