@@ -299,6 +299,8 @@ public class HomeActivity extends AppCompatActivity {
         emailIntent.setData(Uri.parse("mailto:contact@altair-studios.fr"));
         emailIntent.setType("message/rfc822");
 
+        Toast.makeText(getApplicationContext(), "contact@altair-studios.fr", Toast.LENGTH_LONG).show();
+
 
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
 
