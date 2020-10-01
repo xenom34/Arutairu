@@ -724,7 +724,7 @@
         <item>personne</item>
         <item>homme</item>
         <item>femme</item>
-        <item>personne de sexe masuclin</item>
+        <item>personne de sexe masculin</item>
         <item>personne de sexe féminin</item>
         <item>garçon, jeune garçon</item>
         <item>fille, petite fille</item>
@@ -733,7 +733,7 @@
         <item>moi-même, je</item>
         <item>moi-même, je (humble)</item>
         <item>moi (parole masculine)</item>
-        <item> moi-même (employé par les hommes, parfois avec un sens d\'arrogance)</item>
+        <item>moi-même (employé par les hommes, parfois avec un sens d\'arrogance)</item>
         <item>moi-même (femmes)</item>
         <item>jeune fille</item>
         <item>jeune garçon</item>
@@ -52961,7 +52961,7 @@
     <string name="votre_saisie_est_incorrecte">You have entered incorrect parameters.</string>
     <string name="comment_souhaitez_vous_tre_valu">What would you like to learn?</string>
     <string name="moteur_de_synth_se_vocale_indisponible">Text-to-speech engine unavailable...</string>
-    <string name="nous_regrettons_que_vous_ayez_ce_probl_me_mais_votre_appareil_ne_dispose_pas_encore_de_la_langue_japonaise_pour_votre_moteur_de_synth_se_vocale_n_n_arutairu_ne_dispose_pas_encore_d_un_syst_me_embarqu_ind_pendant_pour_pouvoir_vous_garantir_la_prononciation_des_mots">We regret that you have this problem, but your device does not  have the Japanese language for the text-to-speech engine. Arutairu does not yet have an independent embedded system to be able to guarantee the pronunciation of the words.</string>
+    <string name="nous_regrettons_que_vous_ayez_ce_probl_me_mais_votre_appareil_ne_dispose_pas_encore_de_la_langue_japonaise_pour_votre_moteur_de_synth_se_vocale_n_n_arutairu_ne_dispose_pas_encore_d_un_syst_me_embarqu_ind_pendant_pour_pouvoir_vous_garantir_la_prononciation_des_mots">We regret that you have this problem, but your device does not  have the Japanese language for the text-to-speech engine. For now, Arutairu does not yet have an independent embedded system to be able to guarantee the pronunciation of the words.</string>
     <string name="geography">Geography</string>
     <string name="time_to_learn">Hey, it\'s time to learn Japanese!</string>
     <string name="would_you_like_to_set_a_daily_reminder">Would you like to set a daily reminder?</string>
@@ -52973,6 +52973,13 @@
     <string name="how_to_use_arutairu">How to use Arutairu?</string>
     <string name="message">If the daily reminder was no longer displayed on your device, this new update may fix the problem. Simply set the reminder again on the app.</string>
     <string name="messagecontent">About our new update :</string>
+    <string name="use_text_to_speech">Use Text to Speech</string>
+    <string name="to_listen_to_the_pronunciation_of_the_word_on_your_screen_you_can_press_this_button_n_n_also_you_can_now_do_a_long_press_which_will_start_an_automatic_playback_of_the_selected_vocabulary">To listen to the pronunciation of the word on your screen, you can press this button (an internet connection may be required).\n\n Also, you can now do a long press, which will start an automatic playback of the selected vocabulary.</string>
+    <string name="great_news">"Great news ! "</string>
+    <string name="we_need_something_from_you">We need you for this</string>
+    <string name="please_wait">Please wait...</string>
+    <string name="to_enjoy_of_all_the_features_of_arutairu_we_check_your_text_to_speech_engine">To enjoy all the features of Arutairu, we check your \'text to speech\' engine.</string>
+    <string name="tts_voices">Download voices</string>
 
     <string-array name="notifs_fr">
         <item>こんにちは！ お元気ですか?</item>
@@ -53786,6 +53793,20 @@
     <item>Australia</item>
     <item>New Zealand</item>
     </string-array>
+    <string name="v_rification_termin_e">Check completed!</string>
+    <string name="vous_avez_les_fichiers_n_cessaires_nous_esp_rons_que_cette_application_vous_plaira">You have the necessary files. We hope you will love our app!\n\nIf you still have some problems with the pronunciation help system, you can download the Japanese voices from the main menu.</string>
+    <string name="une_erreur_inattendue_viens_de_se_produire">An unexpected error has just occurred...</string>
+    <string name="we_regret_that_lorem_ipsum">We regret that you have this problem, but your device have some real issues with Arutairu.\n\nYou probably won\'t hear anything without \"text to speech\", but you can still learn without this feature. \n\nMaybe, you can retry by downloading manually the data on the selection screen.</string>
+    <string name="acc_s_param_tres">Settings access</string>
+    <string name="vous_allez_acc_der_aux_param_tres_du_moteur_de_synth_se_vocale_n_n_dans_l_cran_suivant_veuillez_s_lectionner_la_langue_japonaise_parfois_indiqu_e_comme">You will access the settings of the text-to-speech engine. \n\nIn the next screen, please select the Japanese language, sometimes indicated as \'日本語\'. If this doesn\'t work, try manually by accessing your phone\'s settings.</string>
+    <string name="settings_tts">Settings</string>
+    <string name="super_tts">Great !</string>
+    <string name="continue_tts">Continue</string>
+    <string name="remove_ads">Remove ads</string>
+    <string name="thank_you_so_much">Thank you so much !</string>
+    <string name="we_are_very_grateful_for_your_support_to_arutairu_from_now_on_you_have_the_privilege_of_using_our_app_without_the_ads_n_nwe_wish_you_a_lot_of_success_in_your_learning">We are very grateful for your support to Arutairu! From now on, you have the privilege of using our app without the ads.\n\nWe wish you a lot of success in your learning!</string>
+    <string name="canceled">CANCELED</string>
+    <string name="already_purchased">You already have this option</string>
 
 
 </resources>

@@ -7,18 +7,6 @@
     tools:context=".Revision"
     android:id="@+id/revisionactivity">
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adViewRevision"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        app:adSize="SMART_BANNER"
-        app:adUnitId="ca-app-pub-9369103706924521/7289420516"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
     <ImageView
         android:id="@+id/play"
@@ -46,13 +34,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="150dp"
         android:layout_marginBottom="90dp"
+        android:layout_marginTop="100dp"
         android:backgroundTint="@color/cardview_dark_background"
         app:layout_constraintBottom_toTopOf="@+id/next"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adViewRevision">
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -74,7 +61,7 @@
                 android:height="100dp"
                 android:text="JPN"
                 android:textAlignment="center"
-                android:textSize="30dp"
+                android:textSize="36dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -100,7 +87,7 @@
                 android:gravity="bottom"
                 android:text="TextView"
                 android:textAlignment="center"
-                android:textSize="24dp"
+                android:textSize="30dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

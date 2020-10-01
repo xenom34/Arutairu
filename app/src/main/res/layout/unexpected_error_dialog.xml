@@ -20,20 +20,20 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
-                    android:background="#FF6F00">
+                    android:background="@color/design_default_color_error">
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/ic_baseline_warning_24"/>
+                        android:src="@drawable/ic_baseline_error_24"/>
 
                 </RelativeLayout>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/moteur_de_synth_se_vocale_indisponible"
+                    android:text="@string/une_erreur_inattendue_viens_de_se_produire"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
@@ -43,7 +43,7 @@
                     android:layout_marginTop="10dp"
                     android:padding="8dp"
                     android:textSize="16sp"
-                    android:text="@string/nous_regrettons_que_vous_ayez_ce_probl_me_mais_votre_appareil_ne_dispose_pas_encore_de_la_langue_japonaise_pour_votre_moteur_de_synth_se_vocale_n_n_arutairu_ne_dispose_pas_encore_d_un_syst_me_embarqu_ind_pendant_pour_pouvoir_vous_garantir_la_prononciation_des_mots"
+                    android:text="@string/we_regret_that_lorem_ipsum"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             </LinearLayout>

@@ -43,30 +43,36 @@ public class Exercise extends AppCompatActivity {
     private String mAnswerText;
     LessonsCompleted lessonsCompleted;
     private AdView mAdView;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exercise);
 
+        sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-9369103706924521/2427690661");
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-        mInterstitialAd.setAdListener(new AdListener(){
-            @Override
-            public void onAdClosed() {
-                SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
-                sharedPreferences.edit().putBoolean(Integer.toString(lesson), completed).apply();
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                intent.putExtra("COMPLETED", lessonsCompleted);
-                startActivity(intent);
-                finish();
-            }
-        });
 
-        mAdView = findViewById(R.id.adViewExercise);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        if (!sharedPreferences.getBoolean("POLARIS", false)){
+            setContentView(R.layout.activity_exercise);
+            mAdView = findViewById(R.id.adViewExercise);
+            mInterstitialAd.setAdUnitId("ca-app-pub-9369103706924521/2427690661");
+            mInterstitialAd.loadAd(new AdRequest.Builder().build());
+            mInterstitialAd.setAdListener(new AdListener(){
+                @Override
+                public void onAdClosed() {
+                    SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
+                    sharedPreferences.edit().putBoolean(Integer.toString(lesson), completed).apply();
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    intent.putExtra("COMPLETED", lessonsCompleted);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+            AdRequest adRequest = new AdRequest.Builder().build();
+            mAdView.loadAd(adRequest);
+        }else{
+            setContentView(R.layout.activity_exercise_no_ads);
+        }
 
         lessonsCompleted = (LessonsCompleted) getIntent().getSerializableExtra("COMPLETED");
 
@@ -199,10 +205,19 @@ public class Exercise extends AppCompatActivity {
         builder.setPositiveButton(R.string.backlessons, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                if (mInterstitialAd.isLoaded()) {
-                    mInterstitialAd.show();
-                } else {
-                    Log.d("TAG", "The interstitial wasn't loaded yet.");
+                if (!sharedPreferences.getBoolean("POLARIS", false)){
+                    if (mInterstitialAd.isLoaded()) {
+                        mInterstitialAd.show();
+                    } else {
+                        Log.d("TAG", "The interstitial wasn't loaded yet.");
+                        SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
+                        sharedPreferences.edit().putBoolean(Integer.toString(lesson), completed).apply();
+                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        intent.putExtra("COMPLETED", lessonsCompleted);
+                        startActivity(intent);
+                        finish();
+                    }
+                }else{
                     SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
                     sharedPreferences.edit().putBoolean(Integer.toString(lesson), completed).apply();
                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
@@ -282,8 +297,15 @@ public class Exercise extends AppCompatActivity {
         builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                if (mInterstitialAd.isLoaded()) {
-                    mInterstitialAd.show();
+                if (sharedPreferences.getBoolean("POLARIS", false)){
+                    if (mInterstitialAd.isLoaded()) {
+                        mInterstitialAd.show();
+                    }else{
+                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        intent.putExtra("COMPLETED", lessonsCompleted);
+                        startActivity(intent);
+                        finish();
+                    }
                 }else{
                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                     intent.putExtra("COMPLETED", lessonsCompleted);

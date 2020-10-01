@@ -9,6 +9,7 @@ public class SelectedItemList implements Serializable {
     private Vector<String> mJP;
     private Vector<String> mRomaji;
     private Vector<String> mFrench;
+    private Vector<String> mTts;
     private int correspondingLesson;
 
     public void addCorrespondingIndex(int word){
@@ -47,6 +48,8 @@ public class SelectedItemList implements Serializable {
         return mFrench;
     }
 
+    public Vector<String> getmTts(){return mTts;}
+
     void addRomaji(String word){
         mRomaji.add(word);
     }
@@ -59,12 +62,18 @@ public class SelectedItemList implements Serializable {
         mFrench.add(word);
     }
 
+    void addTts(String word){
+        mTts.add(word);
+    }
+
+
     public SelectedItemList() {
         selected = new Vector<>();
         mRomaji = new Vector<>();
         mFrench = new Vector<>();
         mJP = new Vector<>();
         correspondingIndex = new Vector<>();
+        mTts = new Vector<>();
     }
 
     void addSelected(int word){

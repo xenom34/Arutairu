@@ -1,13 +1,13 @@
 package fr.altairstudios.arutairu;
 
+import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
-import android.app.job.JobInfo;
-import android.app.job.JobScheduler;
 import android.content.ActivityNotFoundException;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,6 +19,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -44,6 +45,15 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.ui.AppBarConfiguration;
 
+import com.android.billingclient.api.BillingClient;
+import com.android.billingclient.api.BillingClientStateListener;
+import com.android.billingclient.api.BillingFlowParams;
+import com.android.billingclient.api.BillingResult;
+import com.android.billingclient.api.Purchase;
+import com.android.billingclient.api.PurchasesUpdatedListener;
+import com.android.billingclient.api.SkuDetails;
+import com.android.billingclient.api.SkuDetailsParams;
+import com.android.billingclient.api.SkuDetailsResponseListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textview.MaterialTextView;
@@ -56,6 +66,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Vector;
@@ -68,7 +79,7 @@ public class HomeActivity extends AppCompatActivity {
     private int maxWords;
     private boolean firstExec, revisionDialog;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
-    public static final String FIRST_EXEC = "firsts";
+    public static final String FIRST_EXEC = "firsts1";
     public static final String FIRST_REVISION = "revision";
     static boolean waitingForData = false;
     SharedPreferences sharedPreferences;
@@ -82,14 +93,36 @@ public class HomeActivity extends AppCompatActivity {
     private Button mPractice, mTest, mRevision;
     private NavigationView navigationView;
     private MaterialTextView mUnavailableKanji;
+    private PurchasesUpdatedListener purchaseUpdateListener = new PurchasesUpdatedListener() {
+        @Override
+        public void onPurchasesUpdated(BillingResult billingResult, List<Purchase> purchases) {
+            if (!(billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_TIMEOUT || billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_UNAVAILABLE)) {
 
+
+                // To be implemented in a later section.
+                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                    if (purchases.get(0).getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
+                        Toast.makeText(getApplicationContext(), "PURCHASED", Toast.LENGTH_SHORT).show();
+                        sharedPreferences.edit().putBoolean("POLARIS", true).apply();
+                        showThanksDialog();
+                    }
+                } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
+                    Toast.makeText(getApplicationContext(), "Vous avez déjà ce produit", Toast.LENGTH_SHORT).show();
+                    sharedPreferences.edit().putBoolean("POLARIS", true).apply();
+                } else {
+                    sharedPreferences.edit().putBoolean("POLARIS", false).apply();
+                }
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Resources res = getResources();
+        final Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
         Configuration conf = res.getConfiguration();
         sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
+
 
         conf.setLocale(new Locale(sharedPreferences.getString("LOCALE", Locale.getDefault().getLanguage())));
 
@@ -123,6 +156,7 @@ public class HomeActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.nav_view);
         mNbLearn = navigationView.getHeaderView(0).findViewById(R.id.nbLearn);
         navigationView.setCheckedItem(R.id.nav_people);
+        final Activity activity = this;
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -133,8 +167,75 @@ public class HomeActivity extends AppCompatActivity {
                     return false;
                 }else if (item.getItemId() == R.id.nav_rate){
                     rateThisApp();
+                    return false;
                 }else if(item.getItemId() == R.id.nav_mail){
                     sendEmail();
+                    return false;
+                }else if(item.getItemId() == R.id.nav_no_ads){
+                    if (sharedPreferences.getBoolean("POLARIS", false)){
+                        Toast.makeText(getApplicationContext(), R.string.already_purchased, Toast.LENGTH_SHORT).show();
+                    }else {
+                        final BillingClient mBillingClient;
+
+                        mBillingClient = BillingClient.newBuilder(activity)
+                                .setListener(purchaseUpdateListener)
+                                .enablePendingPurchases()
+                                .build();
+
+                        mBillingClient.startConnection(new BillingClientStateListener() {
+                            @Override
+                            public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
+                                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                                    // The BillingClient is ready. You can query purchases here.
+                                    List<String> skuList = new ArrayList<>();
+                                    skuList.add("no_ads");
+                                    SkuDetailsParams.Builder params = SkuDetailsParams.newBuilder();
+                                    params.setSkusList(skuList).setType(BillingClient.SkuType.INAPP);
+                                    mBillingClient.querySkuDetailsAsync(params.build(),
+                                            new SkuDetailsResponseListener() {
+                                                @Override
+                                                public void onSkuDetailsResponse(@NonNull BillingResult billingResult,
+                                                                                 List<SkuDetails> skuDetailsList) {
+                                                    int responseCode = 1000;
+                                                    if (skuDetailsList.isEmpty()) {
+                                                        Toast.makeText(getApplicationContext(), "Connexion impossible", Toast.LENGTH_SHORT).show();
+                                                    } else {
+                                                        BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
+                                                                .setSkuDetails(skuDetailsList.get(0))
+                                                                .build();
+                                                        responseCode = mBillingClient.launchBillingFlow(activity, billingFlowParams).getResponseCode();
+                                                    }
+                                                    if (responseCode == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
+                                                        Toast.makeText(activity, "LICENSE OK", Toast.LENGTH_SHORT).show();
+                                                        sharedPreferences.edit().putBoolean("POLARIS", true).apply();
+                                                    } else {
+                                                        //Toast.makeText(activity, R.string.canceled, Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+                                            });
+                                } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_UNAVAILABLE) {
+                                    Toast.makeText(getApplicationContext(), "Service indisponible", Toast.LENGTH_SHORT).show();
+                                } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_DISCONNECTED) {
+                                    Toast.makeText(getApplicationContext(), "Service déconnecté", Toast.LENGTH_SHORT).show();
+                                } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_TIMEOUT) {
+                                    Toast.makeText(getApplicationContext(), "Timeout", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Erreur", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                            @Override
+                            public void onBillingServiceDisconnected() {
+                                // Try to restart the connection on the next request to
+                                // Google Play by calling the startConnection() method.
+                            }
+                        });
+                    }
+
+                    return false;
+                }else if(item.getItemId() == R.id.nav_tts){
+                    loadVoices();
+                    return false;
                 }else if(item.getItemId() == R.id.nav_notification){
                     showNotificationDialog();
                     return false;
@@ -159,6 +260,10 @@ public class HomeActivity extends AppCompatActivity {
 
         firstExec = sharedPreferences.getBoolean(FIRST_EXEC, true);
 
+    }
+
+    private void loadVoices() {
+            showWarningTts();
     }
 
     public void pickADate(){
@@ -193,6 +298,8 @@ public class HomeActivity extends AppCompatActivity {
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setData(Uri.parse("mailto:contact@altair-studios.fr"));
         emailIntent.setType("message/rfc822");
+
+        Toast.makeText(getApplicationContext(), "contact@altair-studios.fr", Toast.LENGTH_LONG).show();
 
 
         emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
@@ -629,11 +736,13 @@ public class HomeActivity extends AppCompatActivity {
                         romaji = false;
                     }
                     String[] tempFr;
+                    String[] tempTts;
                     if(sharedPreferences.getString("LOCALE", "en").equals("fr")){
                         tempFr = getResources().getStringArray(lessonsStorage.getSrcRes(chapter + 1));
                     }else{
                         tempFr = getResources().getStringArray(lessonsStorage.getEnRes(chapter + 1));
                     }
+                    tempTts = getResources().getStringArray(lessonsStorage.getJpRes(chapter+1));
                     Random random = new Random();
                     int randomNumber;
                     Vector<Integer> indexes = new Vector<>(selectedItemList.getSelected());
@@ -645,6 +754,7 @@ public class HomeActivity extends AppCompatActivity {
                         selectedItemList.addRomaji(tempRomaji[randomNumber]);
                         selectedItemList.addFrench(tempFr[randomNumber]);
                         selectedItemList.addCorrespondingIndex(randomNumber);
+                        selectedItemList.addTts(tempTts[randomNumber]);
                         indexes.removeElement(randomNumber);
                     }
                     selectedItemList.setCorrespondingLesson(chapter);
@@ -698,6 +808,7 @@ public class HomeActivity extends AppCompatActivity {
             tempRomaji = null;
         }
         final String[] tempFr;
+        final String[] tempTts;
         if (sharedPreferences.getString("LOCALE", "en").equals("fr")){
             tempFr = getResources().getStringArray(lessonsStorage.getSrcRes(state));
         }else{
@@ -706,6 +817,7 @@ public class HomeActivity extends AppCompatActivity {
         final TextView min = dialogView.findViewById(R.id.min);
         final TextView max = dialogView.findViewById(R.id.max);
         final TextView nb = dialogView.findViewById(R.id.nb);
+        tempTts = getResources().getStringArray(lessonsStorage.getJpRes(state));
 
         min.setText(1+"");
         max.setText(tempJP.length+"");
@@ -746,6 +858,7 @@ public class HomeActivity extends AppCompatActivity {
                                 selector.addRomaji(tempRomaji[randomNumber]);
                             }
                             selector.addFrench(tempFr[randomNumber]);
+                            selector.addTts(tempTts[randomNumber]);
                             selector.addCorrespondingIndex(randomNumber);
                             indexes.removeElement(randomNumber);
                         }
@@ -774,6 +887,74 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    private void showWarningTts() {
+        //before inflating the custom alert dialog layout, we will get the current activity viewgroup
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+
+        //then we will inflate the custom alert dialog xml that we created
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.warning_tts_dialog, viewGroup, false);
+
+        //Now we need an AlertDialog.Builder object
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView);
+
+
+        builder.setPositiveButton(R.string.go, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent installIntent = new Intent();
+                installIntent.setAction(
+                        TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
+                startActivity(installIntent);
+            }
+        });
+
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+            }
+        });
+
+        //finally creating the alert dialog and displaying it
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    private void showThanksDialog() {
+        //before inflating the custom alert dialog layout, we will get the current activity viewgroup
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+
+        //then we will inflate the custom alert dialog xml that we created
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.purchased_ok_dialog, viewGroup, false);
+
+        //Now we need an AlertDialog.Builder object
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView);
+
+
+        builder.setPositiveButton(R.string.continue_tts, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+
+            }
+        });
+
+        //finally creating the alert dialog and displaying it
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
@@ -858,10 +1039,10 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void enableNotification(int hour, int minute) {
-        /*Intent intent = new Intent(getApplicationContext(), DailyReminderBroadcast.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 100, intent, 0);
+        Intent intent = new Intent(getBaseContext(), DailyReminderBroadcast.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), 100, intent, 0);
 
-        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        AlarmManager alarmManager = (AlarmManager) getBaseContext().getSystemService(ALARM_SERVICE);
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
@@ -871,31 +1052,13 @@ public class HomeActivity extends AppCompatActivity {
         assert alarmManager != null;
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
                 AlarmManager.INTERVAL_DAY, pendingIntent);
-        */
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.set(Calendar.HOUR_OF_DAY, hour);
-        calendar.set(Calendar.MINUTE, minute);
+
 
         sharedPreferences.edit().putLong("CALENDAR_VALUE", calendar.getTimeInMillis()).apply();
-
-        ComponentName serviceComponent = new ComponentName(getApplicationContext(), DailyReminderJob.class);
-
-        JobInfo jobInfo = new JobInfo.Builder(1, serviceComponent)
-                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_NONE)
-                .setOverrideDeadline(calendar.getTimeInMillis()+1800000)
-                .setRequiresDeviceIdle(false)
-                .setRequiresCharging(false)
-                .setMinimumLatency(84600000)
-                .setPersisted(true)
-                .build();
-
-        JobScheduler scheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
-        scheduler.schedule(jobInfo);
-
         sharedPreferences.edit().putBoolean("NOTIFS", true).apply();
         sharedPreferences.edit().putInt("HOURS", hour).apply();
         sharedPreferences.edit().putInt("MIN", minute).apply();
+        sharedPreferences.edit().putBoolean("MESSAGE1", false).apply();
         Toast.makeText(this, R.string.reminder_set, Toast.LENGTH_SHORT).show();
     }
 
