@@ -736,11 +736,13 @@ public class HomeActivity extends AppCompatActivity {
                         romaji = false;
                     }
                     String[] tempFr;
+                    String[] tempTts;
                     if(sharedPreferences.getString("LOCALE", "en").equals("fr")){
                         tempFr = getResources().getStringArray(lessonsStorage.getSrcRes(chapter + 1));
                     }else{
                         tempFr = getResources().getStringArray(lessonsStorage.getEnRes(chapter + 1));
                     }
+                    tempTts = getResources().getStringArray(lessonsStorage.getJpRes(chapter+1));
                     Random random = new Random();
                     int randomNumber;
                     Vector<Integer> indexes = new Vector<>(selectedItemList.getSelected());
@@ -752,6 +754,7 @@ public class HomeActivity extends AppCompatActivity {
                         selectedItemList.addRomaji(tempRomaji[randomNumber]);
                         selectedItemList.addFrench(tempFr[randomNumber]);
                         selectedItemList.addCorrespondingIndex(randomNumber);
+                        selectedItemList.addTts(tempTts[randomNumber]);
                         indexes.removeElement(randomNumber);
                     }
                     selectedItemList.setCorrespondingLesson(chapter);
@@ -805,6 +808,7 @@ public class HomeActivity extends AppCompatActivity {
             tempRomaji = null;
         }
         final String[] tempFr;
+        final String[] tempTts;
         if (sharedPreferences.getString("LOCALE", "en").equals("fr")){
             tempFr = getResources().getStringArray(lessonsStorage.getSrcRes(state));
         }else{
@@ -813,6 +817,7 @@ public class HomeActivity extends AppCompatActivity {
         final TextView min = dialogView.findViewById(R.id.min);
         final TextView max = dialogView.findViewById(R.id.max);
         final TextView nb = dialogView.findViewById(R.id.nb);
+        tempTts = getResources().getStringArray(lessonsStorage.getJpRes(state));
 
         min.setText(1+"");
         max.setText(tempJP.length+"");
@@ -853,6 +858,7 @@ public class HomeActivity extends AppCompatActivity {
                                 selector.addRomaji(tempRomaji[randomNumber]);
                             }
                             selector.addFrench(tempFr[randomNumber]);
+                            selector.addTts(tempTts[randomNumber]);
                             selector.addCorrespondingIndex(randomNumber);
                             indexes.removeElement(randomNumber);
                         }

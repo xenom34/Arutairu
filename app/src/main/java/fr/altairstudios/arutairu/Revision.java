@@ -36,7 +36,7 @@ public class Revision extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private int max, lesson;
     //private AdView mAdView;
-    String[] mEnglish, mRomaji, mJpn;
+    String[] mEnglish, mRomaji, mJpn, mTts;
     private Button mNext, mBack, mStop;
     LessonsCompleted lessonsCompleted;
     SelectedItemList selectedItemList;
@@ -97,6 +97,7 @@ public class Revision extends AppCompatActivity {
             }else{
                 mEnglish = getResources().getStringArray(lessonsStorage.getEnRes(lesson));
             }
+            mTts = getResources().getStringArray(lessonsStorage.getJpRes(lesson));
             if(getIntent().getBooleanExtra("KANJI", false)){
                 mJpn = getResources().getStringArray(lessonsStorage.getKjRes(lesson));
             }else if (getIntent().getBooleanExtra("WITH_ROMAJI", false)){
@@ -110,6 +111,7 @@ public class Revision extends AppCompatActivity {
         }else{
             selectedItemList = (SelectedItemList) getIntent().getSerializableExtra("LESSON");
             assert selectedItemList != null;
+            mTts = selectedItemList.getmTts().toArray(new String[0]);
             mEnglish = selectedItemList.getmFrench().toArray(new String[0]);
             mJpn = selectedItemList.getmJP().toArray(new String[0]);
             mRomaji = selectedItemList.getmRomaji().toArray(new String[0]);
@@ -206,7 +208,7 @@ public class Revision extends AppCompatActivity {
                     public void run() {
                         if(!isTtsActive) {
                             requestAudioFocusForMyApp();
-                            t1.speak(mShowJpn.getText(), TextToSpeech.QUEUE_FLUSH, null, "1");
+                            t1.speak(mTts[state], TextToSpeech.QUEUE_FLUSH, null, "1");
                             do {
                                 isTtsActive = t1.isSpeaking();
                             } while (isTtsActive);
@@ -319,17 +321,17 @@ public class Revision extends AppCompatActivity {
                     try {
                         requestAudioFocusForMyApp();
                         boolean isTtsActive = true;
-                        t2.speak(mShowEnglish.getText(), TextToSpeech.QUEUE_FLUSH, null, "1");
+                        t2.speak(mTts[state], TextToSpeech.QUEUE_FLUSH, null, "1");
                         do {
                             isTtsActive = t2.isSpeaking();
                         } while (isTtsActive);
                         Thread.sleep(1500);
-                        t1.speak(mShowJpn.getText(), TextToSpeech.QUEUE_FLUSH, null, "1");
+                        t1.speak(mTts[state], TextToSpeech.QUEUE_FLUSH, null, "1");
                         do {
                             isTtsActive = t1.isSpeaking();
                         } while (isTtsActive);
                         Thread.sleep(1500);
-                        t1.speak(mShowJpn.getText(), TextToSpeech.QUEUE_FLUSH, null, "1");
+                        t1.speak(mTts[state], TextToSpeech.QUEUE_FLUSH, null, "1");
                         do {
                             isTtsActive = t1.isSpeaking();
                         } while (isTtsActive);
