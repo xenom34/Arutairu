@@ -321,7 +321,7 @@ public class Revision extends AppCompatActivity {
                     try {
                         requestAudioFocusForMyApp();
                         boolean isTtsActive = true;
-                        t2.speak(mTts[state], TextToSpeech.QUEUE_FLUSH, null, "1");
+                        t2.speak(mShowEnglish.getText(), TextToSpeech.QUEUE_FLUSH, null, "1");
                         do {
                             isTtsActive = t2.isSpeaking();
                         } while (isTtsActive);
