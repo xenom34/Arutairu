@@ -2285,7 +2285,7 @@
     <string-array name="mediaEN">
         <item>book</item>
         <item>paper</item>
-        <item>lettre</item>
+        <item>letter</item>
         <item>newspaper</item>
         <item>dictionary</item>
         <item>computer</item>
@@ -3195,8 +3195,6 @@
         <item>journal</item>
         <item>dictionnaire</item>
         <item>ordinateur personnel</item>
-        <item>logiciel</item>
-        <item>application mobile</item>
         <item>jeu vidéo</item>
         <item>télévision</item>
         <item>publicité</item>
@@ -3206,7 +3204,6 @@
         <item>Panneaux d’affichage</item>
         <item>cinéma</item>
         <item>téléphone</item>
-        <item>SMS</item>
         <item>appel</item>
         <item>photo</item>
         <item>vidéo</item>
@@ -4051,7 +4048,7 @@
         <item>mauvais, pas bon (goût)</item>
         <item>encore, et</item>
         <item>tant, toujours</item>
-        <item>ville, ville</item>
+        <item>ville</item>
         <item>attendre</item>
         <item>droit devant, direct</item>
         <item>match</item>
@@ -4110,7 +4107,7 @@
         <item>huit jours, le huitième jour du mois</item>
         <item>vêtements de style occidental</item>
         <item>souvent, bien</item>
-        <item>côté, côté, largeur</item>
+        <item>côté, largeur</item>
         <item>quatre jours, le quatrième jour du mois</item>
         <item>quatre (liste détaillée)</item>
         <item>appeler,  inviter</item>

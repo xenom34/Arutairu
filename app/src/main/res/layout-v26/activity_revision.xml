@@ -22,10 +22,10 @@
 
     <ImageView
         android:id="@+id/play"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:elevation="20dp"
-        android:src="@drawable/ic_play"
+        android:src="@drawable/ic_speaker_filled_audio_tool"
         app:layout_constraintBottom_toBottomOf="@+id/sound"
         app:layout_constraintEnd_toEndOf="@+id/sound"
         app:layout_constraintStart_toStartOf="@+id/sound"

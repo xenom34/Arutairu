@@ -457,8 +457,6 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Service déconnecté", Toast.LENGTH_SHORT).show();
                 } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_TIMEOUT){
                     Toast.makeText(getApplicationContext(), "Timeout", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(getApplicationContext(), "Erreur", Toast.LENGTH_SHORT).show();
                 }
             }
             @Override
