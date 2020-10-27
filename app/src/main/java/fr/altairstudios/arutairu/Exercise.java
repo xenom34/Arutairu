@@ -30,7 +30,7 @@ public class Exercise extends AppCompatActivity {
     private TextInputEditText mAnswer;
     private MaterialButton mSubmit;
     private ImageView mcheck;
-    private SelectedItemList selectedItemList;
+    SelectedItemList selectedItemList;
     private InterstitialAd mInterstitialAd;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
     private MaterialTextView mText, mState;

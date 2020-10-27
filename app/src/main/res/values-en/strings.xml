@@ -82,7 +82,7 @@
     <string name="error_disclaim">Please enter correct parameters in order to create the next lesson.</string>
     <string name="comment_souhaitez_vous_tre_valu">What would you like to learn?</string>
     <string name="moteur_de_synth_se_vocale_indisponible">Text-to-speech engine unavailable...</string>
-    <string name="nous_regrettons_que_vous_ayez_ce_probl_me_mais_votre_appareil_ne_dispose_pas_encore_de_la_langue_japonaise_pour_votre_moteur_de_synth_se_vocale_n_n_arutairu_ne_dispose_pas_encore_d_un_syst_me_embarqu_ind_pendant_pour_pouvoir_vous_garantir_la_prononciation_des_mots">We regret that you have this problem, but your device does not  have the Japanese language for the text-to-speech engine. For now, Arutairu does not yet have an independent embedded system to be able to guarantee the pronunciation of the words.</string>
+    <string name="nous_regrettons_que_vous_ayez_ce_probl_me_mais_votre_appareil_ne_dispose_pas_encore_de_la_langue_japonaise_pour_votre_moteur_de_synth_se_vocale_n_n_arutairu_ne_dispose_pas_encore_d_un_syst_me_embarqu_ind_pendant_pour_pouvoir_vous_garantir_la_prononciation_des_mots">We regret that you have this problem, but your device does not have the Japanese language for the text-to-speech engine. But don\'t worry, you can always try to install the TTS of your choice, or click on "download".</string>
     <string name="geography">Geography</string>
     <string name="time_to_learn">Hey, it\'s time to learn Japanese!</string>
     <string name="would_you_like_to_set_a_daily_reminder">Would you like to set a daily reminder?</string>
@@ -115,4 +115,5 @@
     <string name="we_are_very_grateful_for_your_support_to_arutairu_from_now_on_you_have_the_privilege_of_using_our_app_without_the_ads_n_nwe_wish_you_a_lot_of_success_in_your_learning">We are very grateful for your support to Arutairu! From now on, you have the privilege of using our app without the ads.\n\nWe wish you a lot of success in your learning!</string>
     <string name="canceled">CANCELED</string>
     <string name="already_purchased">You already have this option</string>
+    <string name="download">Download</string>
 </resources>
