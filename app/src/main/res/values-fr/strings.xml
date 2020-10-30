@@ -116,4 +116,5 @@
     <string name="canceled">ANNULÉ</string>
     <string name="already_purchased">Vous avez déjà l\'option sans pubs</string>
     <string name="download">Télécharger</string>
+    <string name="refaire">REFAIRE</string>
 </resources>

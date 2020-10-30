@@ -9,13 +9,16 @@ import android.media.AudioManager;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -48,6 +51,10 @@ public class Revision extends AppCompatActivity {
     private int focusStatus;
     private AdView mAdView;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
+
+    private float convertDpToPx(Context context, float dp) {
+        return dp * context.getResources().getDisplayMetrics().density;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -213,8 +220,14 @@ public class Revision extends AppCompatActivity {
                                 isTtsActive = t1.isSpeaking();
                             } while (isTtsActive);
                             releaseAudioFocusForMyApp();
-                            Snackbar.make(findViewById(R.id.revisionactivity), mShowRomaji.getText(), Snackbar.LENGTH_SHORT)
-                                    .show();
+                            Snackbar snackbar = Snackbar.make(findViewById(R.id.revisionactivity), mShowRomaji.getText(), Snackbar.LENGTH_SHORT);
+                            View view = snackbar.getView();
+                            FrameLayout.LayoutParams params =(FrameLayout.LayoutParams)view.getLayoutParams();
+                            params.gravity = Gravity.TOP;
+                            params.topMargin = (int) convertDpToPx(getApplicationContext(), 96);
+
+                            view.setLayoutParams(params);
+                            snackbar.show();
                         }
                     }
                 }).start();

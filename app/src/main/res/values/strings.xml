@@ -52934,7 +52934,7 @@
     <string name="go">Allons-y !</string>
     <string name="selector">Sélecteur</string>
     <string name="ctipar">C\'est parti !</string>
-    <string name="backlessons">Revenir aux leçons</string>
+    <string name="backlessons">Back to lessons</string>
     <string name="yes">Oui</string>
     <string name="exitlesson">Quitter la leçons ?</string>
     <string name="no">Non</string>
@@ -53805,6 +53805,7 @@
     <string name="canceled">CANCELED</string>
     <string name="already_purchased">You already have this option</string>
     <string name="download">Download</string>
+    <string name="refaire">PRACTICE AGAIN</string>
 
 
 </resources>

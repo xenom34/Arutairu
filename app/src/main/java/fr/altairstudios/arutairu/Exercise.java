@@ -229,7 +229,7 @@ public class Exercise extends AppCompatActivity {
         });
 
         if (getIntent().getBooleanExtra("PRACTICE", false)){
-            builder.setNegativeButton("REFAIRE", new DialogInterface.OnClickListener() {
+            builder.setNegativeButton(R.string.refaire, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     SelectedItemList shuffledList = new SelectedItemList();

@@ -116,4 +116,5 @@
     <string name="canceled">CANCELED</string>
     <string name="already_purchased">You already have this option</string>
     <string name="download">Download</string>
+    <string name="refaire">PRACTICE AGAIN</string>
 </resources>
