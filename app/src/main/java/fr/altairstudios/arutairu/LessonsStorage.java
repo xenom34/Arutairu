@@ -61,10 +61,10 @@ class LessonsStorage {
         storage.put(BODY, new Lesson(R.array.bodyKJ, R.array.bodyJP, R.array.bodyRM, R.array.bodyFR, R.array.bodyEN));
         storage.put(FAMILY, new Lesson(R.array.familyKJ, R.array.familyJP, R.array.familyRM, R.array.familyFR, R.array.familyEN));
         storage.put(ANIMALS, new Lesson(R.array.animalsKJ, R.array.animalsJP, R.array.animalsRM, R.array.animalsFR, R.array.animalsEN));
-        storage.put(PLANTS, new Lesson(R.array.animalsKJ, R.array.plantsJP, R.array.plantsRM, R.array.plantsFR, R.array.plantsEN));
+        storage.put(PLANTS, new Lesson(R.array.plantsKJ, R.array.plantsJP, R.array.plantsRM, R.array.plantsFR, R.array.plantsEN));
         storage.put(CROPS, new Lesson(R.array.cropsKJ, R.array.cropsJP, R.array.cropsRM, R.array.cropsFR, R.array.cropsEN));
         storage.put(FOOD, new Lesson(R.array.foodKJ, R.array.foodJP, R.array.foodRM, R.array.foodFR, R.array.foodEN));
-        storage.put(DRINK, new Lesson(R.array.foodKJ, R.array.drinkJP, R.array.drinkRM, R.array.drinkFR, R.array.drinkEN));
+        storage.put(DRINK, new Lesson(R.array.drinkKJ, R.array.drinkJP, R.array.drinkRM, R.array.drinkFR, R.array.drinkEN));
         storage.put(DAYS, new Lesson(R.array.weeksKJ, R.array.weekJP, R.array.weekRM, R.array.weekFR, R.array.weekEN));
         storage.put(WEATHER, new Lesson(R.array.weatherKJ, R.array.weatherJP, R.array.weatherRM, R.array.weatherFR, R.array.weatherEN));
         storage.put(DIRECTIONS, new Lesson(R.array.directionsKJ, R.array.directionsJP, R.array.directionsRM, R.array.directionsFR, R.array.directionsEN));

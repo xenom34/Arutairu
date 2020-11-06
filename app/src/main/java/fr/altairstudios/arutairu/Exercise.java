@@ -200,6 +200,7 @@ public class Exercise extends AppCompatActivity {
 
         //setting the view of the builder to our custom view that we already inflated
         builder.setView(dialogView);
+        builder.setCancelable(false);
 
 
         builder.setPositiveButton(R.string.backlessons, new DialogInterface.OnClickListener() {
@@ -268,13 +269,6 @@ public class Exercise extends AppCompatActivity {
                 }
             });
         }
-
-        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialogInterface) {
-                //mSpam = 0;
-            }
-        });
 
         //finally creating the alert dialog and displaying it
         AlertDialog alertDialog = builder.create();

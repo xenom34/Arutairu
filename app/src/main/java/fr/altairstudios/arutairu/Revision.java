@@ -50,6 +50,7 @@ public class Revision extends AppCompatActivity {
     private AudioManager am;
     private int focusStatus;
     private AdView mAdView;
+    boolean polaris = false;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
 
     private float convertDpToPx(Context context, float dp) {
@@ -60,6 +61,7 @@ public class Revision extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
+        polaris = sharedPreferences.getBoolean("POLARIS", false);
 
         if (!sharedPreferences.getBoolean("POLARIS", false)){
             setContentView(R.layout.activity_revision);
@@ -224,7 +226,11 @@ public class Revision extends AppCompatActivity {
                             View view = snackbar.getView();
                             FrameLayout.LayoutParams params =(FrameLayout.LayoutParams)view.getLayoutParams();
                             params.gravity = Gravity.TOP;
-                            params.topMargin = (int) convertDpToPx(getApplicationContext(), 96);
+                            if (!polaris){
+                                params.topMargin = (int) convertDpToPx(getApplicationContext(), 96);
+                            }else{
+                                params.topMargin = (int) convertDpToPx(getApplicationContext(), 48);
+                            }
 
                             view.setLayoutParams(params);
                             snackbar.show();
