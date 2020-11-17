@@ -1316,6 +1316,68 @@
         <item>さとう</item>
         <item>しお</item>
         <item>しょうゆ</item>
+        <item>シリアル</item>
+        <item>ジャム</item>
+        <item>バター</item>
+        <item>さかな</item>
+        <item>えび</item>
+        <item>にく</item>
+        <item>かに</item>
+        <item>ぎゅうにく</item>
+        <item>とりにく</item>
+        <item>ぶたにく</item>
+        <item>たまご</item>
+        <item>チーズ</item>
+        <item>ヨーグルト</item>
+        <item>やさい</item>
+        <item>キャベツ</item>
+        <item>きゅうり</item>
+        <item>じゃがいも</item>
+        <item>たまねぎ</item>
+        <item>トマト</item>
+        <item>にんじん</item>
+        <item>レタス</item>
+        <item>くだもの</item>
+        <item>いちご</item>
+        <item>すいか</item>
+        <item>バナナ</item>
+        <item>ぶどう</item>
+        <item>みかん</item>
+        <item>りんご</item>
+        <item>レモン</item>
+        <item>おかし</item>
+        <item>あめ</item>
+        <item>クッキー</item>
+        <item>ケーキ</item>
+        <item>チョコレート</item>
+        <item>こめ</item>
+        <item>のり</item>
+        <item>わさび</item>
+        <item>カレー</item>
+        <item>スープ</item>
+        <item>ステーキ</item>
+        <item>スパゲティ</item>
+        <item>チーズバーガー</item>
+        <item>ハンバーガー</item>
+        <item>ピザ</item>
+        <item>フライドポテト</item>
+        <item>ホットドッグ</item>
+        <item>にほんりょうり</item>
+        <item>おにぎり</item>
+        <item>さしみ</item>
+        <item>そば</item>
+        <item>べんとう</item>
+        <item>みそしる</item>
+        <item>ラーメン</item>
+        <item>おいしい</item>
+        <item>まずい</item>
+        <item>あまい</item>
+        <item>からい</item>
+        <item>しょっぱい</item>
+        <item>すっぱい</item>
+        <item>あたたかい</item>
+        <item>あつい</item>
+        <item>つめたい</item>
     </string-array>
 
     <string-array name="drinkJP">
@@ -1881,9 +1943,9 @@
 
     <string-array name="foodRM">
         <item>tabemono</item>
-        <item>chōshoku, asagohan</item>
-        <item>hirugohan</item>
-        <item>bangohan</item>
+        <item>chō shoku</item>
+        <item>hiru gohan</item>
+        <item>ban gohan</item>
         <item>gohan</item>
         <item>miso</item>
         <item>ryōri</item>
@@ -1891,19 +1953,81 @@
         <item>dezāto</item>
         <item>pan</item>
         <item>sandoitchi</item>
-        <item>oyatsu, kanshoku</item>
-        <item>aisukurīmu</item>
+        <item>o yatsu</item>
+        <item>aisukuri-mu</item>
         <item>sushi</item>
-        <item>Udon</item>
-        <item>Tōfu</item>
-        <item>Tempura</item>
-        <item>Natto</item>
+        <item>udon</item>
+        <item>tōfu</item>
+        <item>tempura</item>
+        <item>nattō</item>
         <item>gyoza</item>
         <item>edamame</item>
         <item>yakisoba</item>
-        <item>satou</item>
-        <item>shio</item>
-        <item>shouyu</item>
+        <item>Satō</item>
+        <item>Shio</item>
+        <item>shōyu</item>
+        <item>shiriaru</item>
+        <item>jamu</item>
+        <item>bata-</item>
+        <item>sakana</item>
+        <item>ebi</item>
+        <item>niku</item>
+        <item>kani</item>
+        <item>gyūniku</item>
+        <item>tori niku</item>
+        <item>buta niku</item>
+        <item>tamago</item>
+        <item>chi-zu</item>
+        <item>yo-guruto</item>
+        <item>yasai</item>
+        <item>kyabetsu</item>
+        <item>kyūri</item>
+        <item>jagaimo</item>
+        <item>tamanegi</item>
+        <item>tomato</item>
+        <item>ninjin</item>
+        <item>retasu</item>
+        <item>kudamono</item>
+        <item>ichigo</item>
+        <item>suika</item>
+        <item>banana</item>
+        <item>budō</item>
+        <item>mikan</item>
+        <item>ringo</item>
+        <item>remon</item>
+        <item>okashi</item>
+        <item>ame</item>
+        <item>kukki-</item>
+        <item>ke-ki</item>
+        <item>chokore-to</item>
+        <item>kome</item>
+        <item>nori</item>
+        <item>wasabi</item>
+        <item>kare-</item>
+        <item>su-pu</item>
+        <item>sute-ki</item>
+        <item>supagethi</item>
+        <item>chi-zu Ba-Ga-</item>
+        <item>hanba-ga-</item>
+        <item>piza</item>
+        <item>furaidopoteto</item>
+        <item>hottodoggu</item>
+        <item>nihon ryōri</item>
+        <item>onigiri </item>
+        <item>sashimi</item>
+        <item>soba</item>
+        <item>bentō</item>
+        <item>miso shiru</item>
+        <item>ra-men</item>
+        <item>oishii</item>
+        <item>mazui</item>
+        <item>amai</item>
+        <item>karai</item>
+        <item>shoppai</item>
+        <item>suppai</item>
+        <item>atatakai</item>
+        <item>atsui</item>
+        <item>tsumetai</item>
     </string-array>
 
     <string-array name="drinkRM">
@@ -2640,41 +2764,163 @@
         <item>Tofu</item>
         <item>Tempura</item>
         <item>natto (soja étuvé et fermenté)</item>
-        <item>gyoza sorte de ravioli chinois en forme de croissant et garni de porc émincé</item>
+        <item>gyoza (sorte de ravioli chinois en forme de croissant et garni de porc émincé)</item>
         <item>edamame (fève de soja verte)</item>
         <item>yakisoba (nouilles de sarrasin (blé noir) à la poële)</item>
-        <item>sucre</item>
-        <item>sel</item>
-        <item>sauce soja</item>
-
+        <item>sugar</item>
+        <item>salt</item>
+        <item>soy sauce</item>
+        <item>céréales</item>
+        <item>confiture</item>
+        <item>beure</item>
+        <item>poisson</item>
+        <item>crevettes</item>
+        <item>viande</item>
+        <item>crabes</item>
+        <item>bœuf</item>
+        <item>poulet</item>
+        <item>porc</item>
+        <item>œuf </item>
+        <item>fromage</item>
+        <item>yaourt</item>
+        <item>légumes</item>
+        <item>chou</item>
+        <item>concombre</item>
+        <item>pomme de terre</item>
+        <item>oignon</item>
+        <item>tomate</item>
+        <item>carrote</item>
+        <item>laitue </item>
+        <item>fruit</item>
+        <item>fraise</item>
+        <item>pastèque</item>
+        <item>banane</item>
+        <item>raisin</item>
+        <item>orange</item>
+        <item>pomme</item>
+        <item>citron</item>
+        <item>confiseries, bonbons</item>
+        <item>bonbons</item>
+        <item>cookie</item>
+        <item>gâteau</item>
+        <item>chocolat</item>
+        <item>(grains décortiqués de) riz</item>
+        <item>algues</item>
+        <item>wasabi</item>
+        <item>un curry (riz et curry)</item>
+        <item>soupe</item>
+        <item>steak</item>
+        <item>spaghetti</item>
+        <item>cheeseburger</item>
+        <item>hamburger</item>
+        <item>pizza</item>
+        <item>frites</item>
+        <item>hot dog</item>
+        <item>cuisine japonaise</item>
+        <item>onigiri, boulette de riz</item>
+        <item>sashimi (poisson cru tranché)</item>
+        <item>soba, nouilles japonaises au sarrasin</item>
+        <item>bento, lunch box japonaise</item>
+        <item>soupe miso</item>
+        <item>ramen</item>
+        <item>délicieux</item>
+        <item>pas appétissant</item>
+        <item>doux, au goût sucré</item>
+        <item>épicé, piquant, relevé</item>
+        <item>salé</item>
+        <item>acide, aigre</item>
+        <item>chaud (agréable), doux</item>
+        <item>chaud</item>
+        <item>froid, glacial</item>
     </string-array>
 
         <string-array name="foodKJ">
             <item>食べ物</item>
-            <item>朝食</item>
-            <item>昼ご飯</item>
-            <item>晩御飯</item>
-            <item>ご飯</item>
-            <item>味噌</item>
-            <item>料理</item>
-            <item>サラダ</item>
-            <item>デザート</item>
-            <item>パン</item>
-            <item>サンドイッチ</item>
-            <item>お八つ</item>
-            <item>アイスクリーム</item>
-            <item>寿司</item>
-            <item>饂飩</item>
-            <item>豆腐</item>
-            <item>天ぷら</item>
-            <item>納豆</item>
-            <item>餃子</item>
-            <item>枝豆</item>
-            <item>焼きそば</item>
-            <item>砂糖</item>
-            <item>塩</item>
-            <item>醤油</item>
-
+        <item>朝食</item>
+        <item>昼ご飯</item>
+        <item>晩御飯</item>
+        <item>ご飯</item>
+        <item>味噌</item>
+        <item>料理</item>
+        <item>サラダ</item>
+        <item>デザート</item>
+        <item>パン</item>
+        <item>サンドイッチ</item>
+        <item>お八つ</item>
+        <item>アイスクリーム</item>
+        <item>寿司</item>
+        <item>饂飩</item>
+        <item>豆腐</item>
+        <item>天ぷら</item>
+        <item>納豆</item>
+        <item>餃子</item>
+        <item>枝豆</item>
+        <item>焼きそば</item>
+        <item>砂糖</item>
+        <item>塩</item>
+        <item>醤油</item>
+        <item>シリアル</item>
+        <item>ジャム</item>
+        <item>バター</item>
+        <item>魚</item>
+        <item>海老</item>
+        <item>肉</item>
+        <item>蟹</item>
+        <item>牛肉</item>
+        <item>鶏肉</item>
+        <item>豚肉</item>
+        <item>卵</item>
+        <item>チーズ</item>
+        <item>ヨーグルト</item>
+        <item>野菜</item>
+        <item>キャベツ</item>
+        <item>胡瓜</item>
+        <item>じゃが芋</item>
+        <item>玉葱</item>
+        <item>トマト</item>
+        <item>人参</item>
+        <item>レタス</item>
+        <item>果物</item>
+        <item>苺</item>
+        <item>西瓜</item>
+        <item>バナナ</item>
+        <item>葡萄</item>
+        <item>蜜柑</item>
+        <item>林檎</item>
+        <item>レモン</item>
+        <item>お菓子</item>
+        <item>飴</item>
+        <item>クッキー</item>
+        <item>ケーキ</item>
+        <item>チョコレート</item>
+        <item>米</item>
+        <item>海苔</item>
+        <item>山葵</item>
+        <item>カレー</item>
+        <item>スープ</item>
+        <item>ステーキ</item>
+        <item>スパゲティ</item>
+        <item>チーズバーガー</item>
+        <item>ハンバーガー</item>
+        <item>ピザ</item>
+        <item>フライドポテト</item>
+        <item>ホットドッグ</item>
+        <item>日本料理</item>
+        <item>お握り</item>
+        <item>さしみ</item>
+        <item>蕎麦</item>
+        <item>弁当</item>
+        <item>味噌汁</item>
+        <item>ラーメン</item>
+        <item>美味しい</item>
+        <item>不味い</item>
+        <item>甘い</item>
+        <item>辛い</item>
+        <item>塩っぱい</item>
+        <item>酸っぱい</item>
+        <item>暖かい</item>
+        <item>暑い</item>
+        <item>冷たい</item>
     </string-array>
 
     <string-array name="foodEN">
@@ -2699,11 +2945,71 @@
         <item>gyoza crescent-shaped pan-fried dumplings</item>
         <item>edamame (green soybeans)</item>
         <item>yakisoba (fried noodles)</item>
-        <item>sugar</item>
-        <item>salt</item>
-        <item>soy sauce</item>
-
-
+        <item>sucre</item>
+        <item>sel</item>
+        <item>sauce soja</item>
+        <item>cereal</item>
+        <item>jam</item>
+        <item>butter</item>
+        <item>fish</item>
+        <item>shrimp</item>
+        <item>meat</item>
+        <item>crab</item>
+        <item>beef</item>
+        <item>chicken</item>
+        <item>pork</item>
+        <item>egg</item>
+        <item>cheese</item>
+        <item>yogurt</item>
+        <item>vegetable</item>
+        <item>cabbage</item>
+        <item>cucumber</item>
+        <item>potato</item>
+        <item>onion</item>
+        <item>tomato</item>
+        <item>carrot</item>
+        <item>lettuce</item>
+        <item>fruit</item>
+        <item>strawberry</item>
+        <item>watermelon</item>
+        <item>banana</item>
+        <item>grape</item>
+        <item>orange</item>
+        <item>apple</item>
+        <item>lemon</item>
+        <item>confections, sweets</item>
+        <item>(hard) candy</item>
+        <item>cookie</item>
+        <item>cake</item>
+        <item>chocolate</item>
+        <item>(husked grains of) rice</item>
+        <item>seaweed</item>
+        <item>wasabi</item>
+        <item>(rice and) curry</item>
+        <item>soup</item>
+        <item>steak</item>
+        <item>spaghetti</item>
+        <item>cheeseburger</item>
+        <item>hamburger</item>
+        <item>pizza</item>
+        <item>fried potato, French fries</item>
+        <item>hot dog</item>
+        <item>Japanese cooking</item>
+        <item>onigiri, rice ball</item>
+        <item>sashimi (raw sliced fish)</item>
+        <item>soba, Japanese buckwheat noodles</item>
+        <item>bento, Japanese lunch box</item>
+        <item>miso soup</item>
+        <item>ramen</item>
+        <item>delicious</item>
+        <item>bad taste</item>
+        <item>sweet-tasting</item>
+        <item>spicy, hot</item>
+        <item>salty</item>
+        <item>sour, acid</item>
+        <item>warm, mild, (pleasantly) hot</item>
+        <item>hot, warm</item>
+        <item>cold, icy</item>
     </string-array>
 
 
