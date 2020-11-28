@@ -103,6 +103,23 @@ public class MainActivity extends AppCompatActivity {
         Configuration conf = res.getConfiguration();
         sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
 
+        /*FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w("FKEY", "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        String token = task.getResult();
+
+                        // Log and toast
+                        Log.d("FKEY", token);
+                    }
+                });*/
+
         if (!sharedPreferences.getBoolean("POLARIS", false)){
             mInterstitialAd = new InterstitialAd(this);
             mInterstitialAd.setAdUnitId("ca-app-pub-9369103706924521/9128046879");

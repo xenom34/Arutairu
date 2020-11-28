@@ -1382,13 +1382,18 @@
 
     <string-array name="drinkJP">
         <item>のみもの</item>
-        <item>ちゃ</item>
         <item>おちゃ</item>
+        <item>りょくちゃ</item>
         <item>コーヒー</item>
         <item>ぎゅうにゅう</item>
         <item>みず</item>
         <item>ビール</item>
         <item>ワイン</item>
+        <item>さけ</item>
+        <item>こうちゃ</item>
+        <item>おゆ</item>
+        <item>ウイスキー</item>
+        <item>にほんしゅ</item>
     </string-array>
 
     <string-array name="seasoningJP">
@@ -2038,19 +2043,27 @@
         <item>gyūnyū</item>
         <item>mizu</item>
         <item>bakushu</item>
-        <item>"wain"</item>
+        <item>wain</item>
         <item>sake</item>
+        <item>koucha</item>
+        <item>oyu</item>
+        <item>uisukii</item>
+        <item>nihonshu</item>
     </string-array>
     <string-array name="drinkEN">
         <item>a drink</item>
-        <item>tea</item>
+        <item>japanese tea</item>
         <item>green tea</item>
         <item>coffee</item>
         <item>milk</item>
         <item>water</item>
         <item>beer</item>
         <item>wine</item>
-        <item>sake (alcohol)</item>
+        <item>alcohol</item>
+        <item>black tea</item>
+        <item>hot water</item>
+        <item>whisky</item>
+        <item>japanese sake</item>
     </string-array>
     <string-array name="drinkKJ">
         <item>飲み物</item>
@@ -2059,9 +2072,13 @@
         <item>珈琲</item>
         <item>牛乳</item>
         <item>水</item>
-        <item>麦酒</item>
+        <item>ビール</item>
         <item>ワイン</item>
         <item>酒</item>
+        <item>紅茶</item>
+        <item>お湯</item>
+        <item>ウイスキー</item>
+        <item>日本酒</item>
     </string-array>
 
     <string-array name="seasoningRM">
@@ -3015,14 +3032,18 @@
 
     <string-array name="drinkFR">
         <item>boisson</item>
-        <item>thé</item>
+        <item>thé japonais</item>
         <item>thé vert</item>
         <item>café</item>
         <item>Lait</item>
         <item>eau</item>
-        <item>Bière</item>
-        <item>du vin</item>
-        <item>saké</item>
+        <item>bière</item>
+        <item>vin</item>
+        <item>alcool</item>
+        <item>thé noir</item>
+        <item>eau chaude</item>
+        <item>whisky</item>
+        <item>sake japonais</item>
     </string-array>
 
 
@@ -54112,6 +54133,8 @@
     <string name="already_purchased">You already have this option</string>
     <string name="download">Download</string>
     <string name="refaire">PRACTICE AGAIN</string>
+    <string name="notifications_fire_channel_name">Push notifications</string>
+    <string name="notifications_fire_channel_description">Fresh news about the app.</string>
 
 
 </resources>

@@ -117,4 +117,6 @@
     <string name="already_purchased">Vous avez déjà l\'option sans pubs</string>
     <string name="download">Télécharger</string>
     <string name="refaire">REFAIRE</string>
+    <string name="notifications_fire_channel_name">Push notifications</string>
+    <string name="notifications_fire_channel_description">Des nouvelles fraiches concernant l\'appli.</string>
 </resources>

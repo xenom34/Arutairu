@@ -117,4 +117,6 @@
     <string name="already_purchased">You already have this option</string>
     <string name="download">Download</string>
     <string name="refaire">PRACTICE AGAIN</string>
+    <string name="notifications_fire_channel_name">Push notifications</string>
+    <string name="notifications_fire_channel_description">Fresh news about the app.</string>
 </resources>

@@ -1149,7 +1149,7 @@ public class HomeActivity extends AppCompatActivity {
                 break;
             case LessonsStorage.JOBS:
                 navigationView.setCheckedItem(R.id.nav_jobs);
-                initMenu(R.id.nav_people);
+                initMenu(R.id.nav_jobs);
                 refresh(state, getResources().getString(R.string.les_m_tiers));
                 break;
             case LessonsStorage.BODY:
