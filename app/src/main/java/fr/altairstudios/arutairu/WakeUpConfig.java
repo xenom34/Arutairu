@@ -2,6 +2,8 @@ package fr.altairstudios.arutairu;
 
 import android.app.AlarmManager;
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -25,15 +27,25 @@ public class WakeUpConfig extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         sharedPreferences = context.getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
         enableNotification(context, sharedPreferences.getInt("HOURS", 12), sharedPreferences.getInt("MIN",0));
-        if (sharedPreferences.getBoolean("NOTIFS", false) && sharedPreferences.getBoolean("MESSAGE1", true)) {
+        if (/*sharedPreferences.getBoolean("NOTIFS", false) && */sharedPreferences.getBoolean("MESSAGE2", true)) {
             Log.d("NOTIFS", "WE'RE IN !");
 
             NotificationManagerCompat nManager = NotificationManagerCompat.from(context);
 
+            if(sharedPreferences.getBoolean("GENERAL", true) && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O){
+                CharSequence name = "General";
+                int importance = NotificationManager.IMPORTANCE_DEFAULT;
+                NotificationChannel channel = null;
+                channel = new NotificationChannel("General", name, importance);
+                // Register the channel with the system; you can't change the importance
+                // or other notification behaviors after this
+                nManager.createNotificationChannel(channel);
+                sharedPreferences.edit().putBoolean("GENERAL", false).apply();
+            }
             Intent dailySurprise = new Intent(context, MainActivity.class);
 
-            PendingIntent pendingIntent = PendingIntent.getActivity(context, 100, dailySurprise, PendingIntent.FLAG_UPDATE_CURRENT);
-            Notification notification = new NotificationCompat.Builder(context, "Daily Reminder")
+            PendingIntent pendingIntent = PendingIntent.getActivity(context, 200, dailySurprise, PendingIntent.FLAG_UPDATE_CURRENT);
+            Notification notification = new NotificationCompat.Builder(context, "General")
                     .setSmallIcon(R.drawable.ic_stat_name)
                     .setContentText(context.getString(R.string.message))
                     .setContentTitle(context.getString(R.string.messagecontent))
@@ -45,8 +57,8 @@ public class WakeUpConfig extends BroadcastReceiver {
                     .setAutoCancel(true)
                     .build();
 
-            nManager.notify(100, notification);
-            sharedPreferences.edit().putBoolean("MESSAGE1", false).apply();
+            nManager.notify(200, notification);
+            sharedPreferences.edit().putBoolean("MESSAGE2", false).apply();
         }
     }
 
