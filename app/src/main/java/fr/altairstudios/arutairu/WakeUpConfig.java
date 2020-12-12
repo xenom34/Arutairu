@@ -57,7 +57,7 @@ public class WakeUpConfig extends BroadcastReceiver {
                     .setAutoCancel(true)
                     .build();
 
-            nManager.notify(200, notification);
+            //nManager.notify(200, notification);
             sharedPreferences.edit().putBoolean("MESSAGE2", false).apply();
         }
     }

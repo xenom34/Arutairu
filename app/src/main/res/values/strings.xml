@@ -1582,6 +1582,35 @@
         <item>エレベーター</item>
         <item>エスカレーター</item>
         <item>でんき</item>
+        <item>アパート</item>
+        <item>へや</item>
+        <item>トイレ</item>
+        <item>おふろ</item>
+        <item>だいどころ</item>
+        <item>いま</item>
+        <item>にわ</item>
+        <item>かいだん</item>
+        <item>かべ</item>
+        <item>ベランダ</item>
+        <item>ろうか</item>
+        <item>ソファ</item>
+        <item>テーブル</item>
+        <item>たな</item>
+        <item>ほんだな</item>
+        <item>ベッド</item>
+        <item>カーテン</item>
+        <item>アイロン</item>
+        <item>せんたくき</item>
+        <item>そうじき</item>
+        <item>でんしレンジ</item>
+        <item>れいぞうこ</item>
+        <item>エアコン</item>
+        <item>せんぷうき</item>
+        <item>だんぼう</item>
+        <item>テレビ</item>
+        <item>でんわ</item>
+        <item>ラジオ</item>
+        <item>ざぶとん</item>
     </string-array>
 
     <string-array name="homeKJ">
@@ -1598,6 +1627,35 @@
         <item>エレベーター</item>
         <item>エスカレーター</item>
         <item>電気</item>
+        <item>アパート</item>
+        <item>部屋</item>
+        <item>トイレ</item>
+        <item>お風呂</item>
+        <item>台所</item>
+        <item>居間</item>
+        <item>庭</item>
+        <item>階段</item>
+        <item>壁</item>
+        <item>ベランダ</item>
+        <item>廊下</item>
+        <item>ソファ</item>
+        <item>テーブル</item>
+        <item>棚</item>
+        <item>本棚</item>
+        <item>ベッド</item>
+        <item>カーテン</item>
+        <item>アイロン</item>
+        <item>洗濯機</item>
+        <item>掃除機</item>
+        <item>電子レンジ</item>
+        <item>冷蔵庫</item>
+        <item>エアコン</item>
+        <item>扇風機</item>
+        <item>暖房</item>
+        <item>テレビ</item>
+        <item>電話</item>
+        <item>ラジオ</item>
+        <item>座布団</item>
     </string-array>
 
     <string-array name="homeEN">
@@ -1614,6 +1672,35 @@
         <item>elevator</item>
         <item>escalator</item>
         <item>electricity</item>
+        <item>flat, apartment</item>
+        <item>room</item>
+        <item>toilet</item>
+        <item>bathroom/bath</item>
+        <item>kitchen</item>
+        <item>living room</item>
+        <item>garden</item>
+        <item>staircase</item>
+        <item>wall</item>
+        <item>balcony</item>
+        <item>corridor, hallway</item>
+        <item>sofa</item>
+        <item>table</item>
+        <item>shelf</item>
+        <item>bookshelf</item>
+        <item>bed</item>
+        <item>curtain</item>
+        <item>iron (for pressing clothes)</item>
+        <item>washing machine (laundry)</item>
+        <item>vacuum cleaner</item>
+        <item>microwave oven</item>
+        <item>fridge</item>
+        <item>air conditioner</item>
+        <item>electric fan</item>
+        <item>(indoor) heating</item>
+        <item>television</item>
+        <item>telephone </item>
+        <item>radio</item>
+        <item>zabuton (flat floor cushion)</item>
     </string-array>
 
     <string-array name="toolsJP">
@@ -2241,9 +2328,38 @@
         <item>futon</item>
         <item>genkan</item>
         <item>ie</item>
-        <item>erebētā</item>
-        <item>esukarētā</item>
+        <item>erebe-ta-</item>
+        <item>esukare-ta-</item>
         <item>denki</item>
+        <item>apa-to</item>
+        <item>heya</item>
+        <item>toire</item>
+        <item>ofuro</item>
+        <item>daidokoro</item>
+        <item>ima</item>
+        <item>niwa</item>
+        <item>kaidan</item>
+        <item>kabe</item>
+        <item>beranda</item>
+        <item>rōka</item>
+        <item>sofuxa</item>
+        <item>te-bur</item>
+        <item>tana</item>
+        <item>hondana</item>
+        <item>beddo</item>
+        <item>ka-ten</item>
+        <item>airon</item>
+        <item>sentakuki</item>
+        <item>sōjiki</item>
+        <item>denshirenji</item>
+        <item>reizouko</item>
+        <item>eakon</item>
+        <item>senpuuki</item>
+        <item>danbou</item>
+        <item>terebi</item>
+        <item>denwa</item>
+        <item>rajio</item>
+        <item>zabuton</item>
     </string-array>
 
     <string-array name="toolsRM">
@@ -3237,18 +3353,47 @@
 
     <string-array name="homeFR">
         <item>bureau</item>
-        <item>chaise, poste (en entreprise)</item>
-        <item>un tapis de tatami</item>
-        <item>porte, famille</item>
-        <item>panneau de porte</item>
-        <item>porte</item>
+        <item>chaise, poste (en entreprise)</item>
+        <item>un tapis de tatami</item>
+        <item>porte (coulissante, à la japonaise)</item>
+        <item>panneau de porte</item>
+        <item>porte (à l\'occidentale)</item>
         <item>fenêtre</item>
         <item>futon</item>
         <item>entrée</item>
         <item>maison</item>
         <item>ascenseur</item>
-        <item>escalier mécanique</item>
+        <item>escalier mécanique (escalator)</item>
         <item>électricité</item>
+        <item>appartement</item>
+        <item>pièce, chambre</item>
+        <item>toilettes</item>
+        <item>bain, salle de bain</item>
+        <item>cuisine</item>
+        <item>salon</item>
+        <item>jardin</item>
+        <item>escalier, marches</item>
+        <item>mur</item>
+        <item>balcon</item>
+        <item>couloir</item>
+        <item>canapé </item>
+        <item>table</item>
+        <item>étagère</item>
+        <item>étagère d\'une bibliothèque</item>
+        <item>lit</item>
+        <item>rideau</item>
+        <item>fer à repasser</item>
+        <item>machine à laver (linge)</item>
+        <item>aspirateur</item>
+        <item>four à micro-ondes</item>
+        <item>réfrigérateur</item>
+        <item>climatiseur</item>
+        <item>ventilateur électrique</item>
+        <item>chauffage (intérieur)</item>
+        <item>télévision</item>
+        <item>téléphone</item>
+        <item>radio</item>
+        <item>zabuton (coussin de sol plat)</item>
     </string-array>
 
 
