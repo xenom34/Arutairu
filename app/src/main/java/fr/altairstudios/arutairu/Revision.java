@@ -570,8 +570,10 @@ public class Revision extends AppCompatActivity {
                     releaseAudioFocusForMyApp();
                 }
                 if(execute!=null){
-                    execute.interrupt();
+                    //execute.interrupt();
+                    stopAudio();
                 }
+                stopAudio();
                 if (!sharedPreferences.getBoolean("POLARIS", false)){
                     if (mInterstitialAd.isLoaded()) {
                         mInterstitialAd.show();
