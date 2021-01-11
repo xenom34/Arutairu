@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -45,7 +46,7 @@ public class Revision extends AppCompatActivity {
     SelectedItemList selectedItemList;
     private TextView mShowJpn, mShowEnglish, mShowRomaji, mCount;
     private LessonsStorage lessonsStorage = new LessonsStorage();
-    private boolean stopped = false;
+    private boolean stopped = true;
     private Thread execute, fExecute;
     private AudioManager am;
     private int focusStatus;
@@ -318,6 +319,7 @@ public class Revision extends AppCompatActivity {
                 // Request permanent focus.
                 AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK);
 
+        am.adjustVolume(AudioManager.ADJUST_RAISE,0);
         if (focusStatus == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
             Log.d("AudioFocus", "Audio focus received");
             return true;
