@@ -3758,6 +3758,25 @@
         <item>chimie</item>
         <item>finance, économie</item>
         <item>géométrie</item>
+        <item>étudiant</item>
+        <item>instituteur, maître, professeur</item>
+        <item>école</item>
+        <item>salle de classe</item>
+        <item>cours, leçon</item>
+        <item>classe</item>
+        <item>bureau</item>
+        <item>études</item>
+        <item>entraînement, exercice</item>
+        <item>préparation pour un cours</item>
+        <item>passage en revue, révision</item>
+        <item>devoirs (d'école)</item>
+        <item>épreuve, examen, test</item>
+        <item>test</item>
+        <item>poser une question</item>
+        <item>expliquer</item>
+        <item>consultation, discussion</item>
+        <item>vérifier</item>
+        <item>copier</item>
     </string-array>
 
     <string-array name="subjectEN">
@@ -3773,6 +3792,25 @@
         <item>chemistry</item>
         <item>finance, economy</item>
         <item>geometry</item>
+        <item>student</item>
+        <item>teacher, instructor, master</item>
+        <item>school</item>
+        <item>classroom</item>
+        <item>lesson, class work</item>
+        <item>class</item>
+        <item>office (room)</item>
+        <item>study</item>
+        <item>practice, training</item>
+        <item>preparation for a lesson</item>
+        <item>review (of learned material), revision</item>
+        <item>homework, assignment</item>
+        <item>examination, exam, test</item>
+        <item>test</item>
+        <item>to ask a question</item>
+        <item>to explain</item>
+        <item>consultation, discussion</item>
+        <item>to check</item>
+        <item>to copy</item>
     </string-array>
 
     <string-array name="subjectJP">
@@ -3788,6 +3826,25 @@
         <item>かがく</item>
         <item>りざい</item>
         <item>きかがく</item>
+        <item>がくせい</item>
+        <item>せんせい</item>
+        <item>せんせい</item>
+        <item>きょうしつ</item>
+        <item>じゅぎょう</item>
+        <item>クラス</item>
+        <item>じむしつ</item>
+        <item>べんきょう</item>
+        <item>れんしゅう</item>
+        <item>よしゅう</item>
+        <item>ふくしゅう</item>
+        <item>しゅくだい</item>
+        <item>しけん</item>
+        <item>テスト</item>
+        <item>しつもんをする</item>
+        <item>せつめいをします</item>
+        <item>そうだんをします</item>
+        <item>チェックをします</item>
+        <item>コピーをします</item>
     </string-array>
 
     <string-array name="subjectKJ">
@@ -3803,6 +3860,25 @@
         <item>化学</item>
         <item>理財</item>
         <item>幾何学</item>
+        <item>学生</item>
+        <item>先生</item>
+        <item>学校</item>
+        <item>教室</item>
+        <item>授業</item>
+        <item>クラス</item>
+        <item>事務室</item>
+        <item>勉強</item>
+        <item>練習</item>
+        <item>予習</item>
+        <item>復習</item>
+        <item>宿題</item>
+        <item>試験</item>
+        <item>テスト</item>
+        <item>質問をする</item>
+        <item>説明をします</item>
+        <item>相談をします</item>
+        <item>チェックをします</item>
+        <item>コピーをします</item>
     </string-array>
 
     <string-array name="subjectRM">
@@ -3810,14 +3886,33 @@
         <item>sansuu</item>
         <item>suugaku</item>
         <item>rekishigaku</item>
-        <item>chirigaku</item>
+        <item>rekishigaku</item>
         <item>taiiku</item>
-        <item>keisankikagaku</item>
-        <item>seibutsugaku</item>
-        <item>butsurigaku</item>
-        <item>kagaku</item>
+        <item>keisankika gaku</item>
+        <item>seibutsu gaku</item>
+        <item>butsuri gaku</item>
+        <item>ka gaku</item>
         <item>rizai</item>
-        <item>kikagaku</item>
+        <item>kika gaku</item>
+        <item>gakusei</item>
+        <item>sensei</item>
+        <item>sensei</item>
+        <item>kyōshitsu</item>
+        <item>jigyō</item>
+        <item>kurasu</item>
+        <item>jimushitsu</item>
+        <item>benkyō</item>
+        <item>renshū</item>
+        <item>yoshū</item>
+        <item>fukushū</item>
+        <item>shukudai</item>
+        <item>shiken</item>
+        <item>tesuto</item>
+        <item>shitsumon o suru </item>
+        <item>setsumei o shimasu </item>
+        <item>sōdan o shimasu</item>
+        <item>tyekku o shimasu</item>
+        <item>kopi- o shimasu</item>
     </string-array>
 
 
@@ -53377,7 +53472,7 @@
     <string name="les_langues">Languages</string>
     <string name="les_m_dias">Medias</string>
     <string name="les_couleurs">Colors</string>
-    <string name="sujets_d_tudes">Study</string>
+    <string name="sujets_d_tudes">At school</string>
     <string name="le_temps">Time</string>
     <string name="jlpt_vocabulaire_en_masse">JLPT</string>
     <string name="jlpt_novice">JLPT Novice</string>
