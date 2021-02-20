@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.util.Vector;
 
 public class SelectedItemList implements Serializable {
-    private Vector<Integer> selected;
-    private Vector<Integer> correspondingIndex;
-    private Vector<String> mJP;
-    private Vector<String> mRomaji;
-    private Vector<String> mFrench;
-    private Vector<String> mTts;
+    private final Vector<Integer> selected;
+    private final Vector<Integer> correspondingIndex;
+    private final Vector<String> mJP;
+    private final Vector<String> mRomaji;
+    private final Vector<String> mFrench;
+    private final Vector<String> mTts;
     private int correspondingLesson;
 
     public void addCorrespondingIndex(int word){

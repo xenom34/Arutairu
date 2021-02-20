@@ -3,7 +3,7 @@ package fr.altairstudios.arutairu;
 import java.util.Vector;
 
 public class ShuffleBg {
-    private Vector<Integer> storage = new Vector<>();
+    private final Vector<Integer> storage = new Vector<>();
 
     public ShuffleBg() {
         storage.add(R.drawable.one);

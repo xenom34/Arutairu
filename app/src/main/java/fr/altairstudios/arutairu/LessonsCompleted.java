@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Vector;
 
 class LessonsCompleted implements Serializable {
-    private Vector<Vector<Integer>> completed;
+    private final Vector<Vector<Integer>> completed;
 
     void addCompleted(int lesson, int word){
         if (completed.get(lesson-1) == null){

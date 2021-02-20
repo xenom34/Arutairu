@@ -1,8 +1,13 @@
 package fr.altairstudios.arutairu;
 
 public class Lesson {
-    private int kj, jpn, rom, src,en;
-    private boolean romaji, kanji;
+    private int kj;
+    private final int jpn;
+    private int rom;
+    private final int src;
+    private final int en;
+    private final boolean romaji;
+    private final boolean kanji;
 
     public Lesson(int kj, int jpn, int rom, int src, int en) {
         this.jpn = jpn;

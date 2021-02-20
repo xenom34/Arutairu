@@ -56,12 +56,12 @@ public class MainActivity extends AppCompatActivity {
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
     private com.google.android.material.button.MaterialButton mStart, mRequired;
     private Animation fadeAltair2, fadeAltair3;
-    private ShuffleBg shuffleBg = new ShuffleBg();
+    private final ShuffleBg shuffleBg = new ShuffleBg();
     private boolean executed = false;
     private TextToSpeech textToSpeech;
     private InterstitialAd mInterstitialAd;
     static int VERSION_CODE = 35;
-    private PurchasesUpdatedListener purchaseUpdateListener = new PurchasesUpdatedListener() {
+    private final PurchasesUpdatedListener purchaseUpdateListener = new PurchasesUpdatedListener() {
         @Override
         public void onPurchasesUpdated(BillingResult billingResult, List<Purchase> purchases) {
             if (!(billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_TIMEOUT || billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_UNAVAILABLE)) {
@@ -483,8 +483,6 @@ public class MainActivity extends AppCompatActivity {
                                     if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
                                         Toast.makeText(activity, "LICENSE OK", Toast.LENGTH_SHORT).show();
                                         sharedPreferences.edit().putBoolean("POLARIS", true).apply();
-                                    } else {
-                                        //Toast.makeText(activity, R.string.canceled, Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });

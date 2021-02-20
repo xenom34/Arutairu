@@ -34,7 +34,7 @@ public class Exercise extends AppCompatActivity {
     private InterstitialAd mInterstitialAd;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
     private MaterialTextView mText, mState;
-    private LessonsStorage lessonsStorage = new LessonsStorage();
+    private final LessonsStorage lessonsStorage = new LessonsStorage();
     private int state = 0;
     private boolean mistake;
     private boolean completed = true;
@@ -42,7 +42,6 @@ public class Exercise extends AppCompatActivity {
     String[] mEnglish, mRomaji, mJpn;
     private String mAnswerText;
     LessonsCompleted lessonsCompleted;
-    private AdView mAdView;
     private SharedPreferences sharedPreferences;
 
     @Override
@@ -54,7 +53,7 @@ public class Exercise extends AppCompatActivity {
 
         if (!sharedPreferences.getBoolean("POLARIS", false)){
             setContentView(R.layout.activity_exercise);
-            mAdView = findViewById(R.id.adViewExercise);
+            AdView mAdView = findViewById(R.id.adViewExercise);
             mInterstitialAd.setAdUnitId("ca-app-pub-9369103706924521/2427690661");
             mInterstitialAd.loadAd(new AdRequest.Builder().build());
             mInterstitialAd.setAdListener(new AdListener(){

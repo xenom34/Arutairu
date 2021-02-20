@@ -45,7 +45,7 @@ public class Revision extends AppCompatActivity {
     LessonsCompleted lessonsCompleted;
     SelectedItemList selectedItemList;
     private TextView mShowJpn, mShowEnglish, mShowRomaji, mCount;
-    private LessonsStorage lessonsStorage = new LessonsStorage();
+    private final LessonsStorage lessonsStorage = new LessonsStorage();
     private boolean stopped = true;
     private Thread execute, fExecute;
     private AudioManager am;
@@ -186,11 +186,7 @@ public class Revision extends AppCompatActivity {
         t1=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
-                if (t1.isLanguageAvailable(Locale.JAPANESE) == TextToSpeech.LANG_NOT_SUPPORTED && !sharedPreferences.getBoolean("ERROR_SHOWN", false)){
-                    mShowError = true;
-                }else{
-                    mShowError = false;
-                }
+                mShowError = t1.isLanguageAvailable(Locale.JAPANESE) == TextToSpeech.LANG_NOT_SUPPORTED && !sharedPreferences.getBoolean("ERROR_SHOWN", false);
 
                 if(status != TextToSpeech.ERROR) {
                     t1.setLanguage(Locale.JAPANESE);
@@ -319,7 +315,6 @@ public class Revision extends AppCompatActivity {
                 // Request permanent focus.
                 AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK);
 
-        am.adjustVolume(AudioManager.ADJUST_RAISE,0);
         if (focusStatus == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
             Log.d("AudioFocus", "Audio focus received");
             return true;

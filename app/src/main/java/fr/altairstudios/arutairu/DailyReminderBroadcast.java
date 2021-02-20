@@ -16,12 +16,11 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class DailyReminderBroadcast extends BroadcastReceiver {
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
-    private SharedPreferences sharedPreferences;
 
     @Override
     public void onReceive(final Context context, Intent intent) {
         //android.os.Debug.waitForDebugger();
-        sharedPreferences = context.getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences sharedPreferences = context.getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
         //Toast.makeText(context, "DING DONG", Toast.LENGTH_SHORT).show();
 
         Calendar c = Calendar.getInstance();

@@ -75,7 +75,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private DrawerLayout drawerLayout;
-    private LessonsStorage lessonsStorage = new LessonsStorage();
+    private final LessonsStorage lessonsStorage = new LessonsStorage();
     private int maxWords;
     private boolean firstExec, revisionDialog;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
@@ -93,7 +93,7 @@ public class HomeActivity extends AppCompatActivity {
     private Button mPractice, mTest, mRevision;
     private NavigationView navigationView;
     private MaterialTextView mUnavailableKanji;
-    private PurchasesUpdatedListener purchaseUpdateListener = new PurchasesUpdatedListener() {
+    private final PurchasesUpdatedListener purchaseUpdateListener = new PurchasesUpdatedListener() {
         @Override
         public void onPurchasesUpdated(BillingResult billingResult, List<Purchase> purchases) {
             if (!(billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_TIMEOUT || billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_UNAVAILABLE)) {
@@ -208,8 +208,6 @@ public class HomeActivity extends AppCompatActivity {
                                                     if (responseCode == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
                                                         Toast.makeText(activity, "LICENSE OK", Toast.LENGTH_SHORT).show();
                                                         sharedPreferences.edit().putBoolean("POLARIS", true).apply();
-                                                    } else {
-                                                        //Toast.makeText(activity, R.string.canceled, Toast.LENGTH_SHORT).show();
                                                     }
                                                 }
                                             });
@@ -408,7 +406,7 @@ public class HomeActivity extends AppCompatActivity {
         });
         float progress = (float)(lessonsCompleted.howManyCompleted(state))/(float)(getResources().getStringArray(lessonsStorage.getJpRes(state)).length)*100;
         mProgress.setProgress((int)progress);
-        mTextProgress.setText((int)progress+"%");
+        mTextProgress.setText((int) progress + "%");
         mRevision.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -418,11 +416,7 @@ public class HomeActivity extends AppCompatActivity {
                 intent.putExtra("COMPLETED", lessonsCompleted);
                 intent.putExtra("RETRIEVE", false);
                 intent.putExtra("REVISION", true);
-                if(!lessonsStorage.haveRomaji(state)){
-                    intent.putExtra("ROMAJI", false);
-                }else{
-                    intent.putExtra("ROMAJI", true);
-                }
+                intent.putExtra("ROMAJI", lessonsStorage.haveRomaji(state));
                 intent.putExtra("LOCALE", sharedPreferences.getString("LOCALE", "en"));
                 intent.putExtra("FIRST", revisionDialog);
                 intent.putExtra("KANJI", mKanji.isChecked());
@@ -819,8 +813,8 @@ public class HomeActivity extends AppCompatActivity {
         final TextView nb = dialogView.findViewById(R.id.nb);
         tempTts = getResources().getStringArray(lessonsStorage.getJpRes(state));
 
-        min.setText(1+"");
-        max.setText(tempJP.length+"");
+        min.setText("1");
+        max.setText(tempJP.length);
 
         //Now we need an AlertDialog.Builder object
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -869,11 +863,7 @@ public class HomeActivity extends AppCompatActivity {
                         intent.putExtra("LESSON", selector);
                         intent.putExtra("COMPLETED", lessonsCompleted);
                         intent.putExtra("RETRIEVE", true);
-                        if (lessonsStorage.haveRomaji(state)) {
-                            intent.putExtra("ROMAJI", true);
-                        } else {
-                            intent.putExtra("ROMAJI", false);
-                        }
+                        intent.putExtra("ROMAJI", lessonsStorage.haveRomaji(state));
                         intent.putExtra("FIRST", revisionDialog);
                         sharedPreferences.edit().putBoolean(FIRST_REVISION, false).apply();
                         waitingForData = false;
@@ -1364,12 +1354,9 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        switch (item.getItemId()){
-
-            case android.R.id.home:
-                drawerLayout.openDrawer(GravityCompat.START);
-                return true;
-
+        if (item.getItemId() == android.R.id.home) {
+            drawerLayout.openDrawer(GravityCompat.START);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
