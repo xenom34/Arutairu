@@ -123,7 +123,16 @@ public class MainActivity extends AppCompatActivity {
         if (!sharedPreferences.getBoolean("POLARIS", false)){
             mInterstitialAd = new InterstitialAd(this);
             mInterstitialAd.setAdUnitId("ca-app-pub-9369103706924521/9128046879");
-            mInterstitialAd.loadAd(new AdRequest.Builder().build());
+            mInterstitialAd.loadAd(new AdRequest.Builder()
+                    .addKeyword("japan")
+                    .addKeyword("nihongo")
+                    .addKeyword("tokyo")
+                    .addKeyword("manga")
+                    .addKeyword("anime")
+                    .addKeyword("game")
+                    .addKeyword("language")
+                    .addKeyword("learn")
+                    .addKeyword("travel").build());
             mInterstitialAd.setAdListener(new AdListener(){
                 @Override
                 public void onAdClosed() {
