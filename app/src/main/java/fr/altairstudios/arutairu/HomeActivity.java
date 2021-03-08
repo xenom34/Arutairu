@@ -328,83 +328,13 @@ public class HomeActivity extends AppCompatActivity {
 
     private void refresh(int item, CharSequence title) {
         mTitle.setText(title);
-        mTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SelectedItemList selectedItemList = new SelectedItemList();
-                String[] tempJP;
-                String[] tempRomaji;
-                if (mKanji.isChecked()){
-                    tempJP = getResources().getStringArray(lessonsStorage.getKjRes(state));
-                }else if (mRomajis.isChecked()){
-                    tempJP = getResources().getStringArray(lessonsStorage.getRmRes(state));
-                }else{
-                    tempJP = getResources().getStringArray(lessonsStorage.getJpRes(state));
-                }
-                boolean romaji;
-                if(lessonsStorage.haveRomaji(state)){
-                    tempRomaji = getResources().getStringArray(lessonsStorage.getRmRes(state));
-                    romaji = true;
-                }else{
-                    tempRomaji = null;
-                    romaji = false;
-                }
-                String[] tempFr;
-                if(sharedPreferences.getString("LOCALE", "en").equals("fr")){
-                    tempFr = getResources().getStringArray(lessonsStorage.getSrcRes(state));
-                }else{
-                    tempFr = getResources().getStringArray(lessonsStorage.getEnRes(state));
-                }
-                Random random = new Random();
-                int randomNumber;
-                Vector<Integer> indexes = new Vector<>();
-
-                for (int i = 0; i != tempJP.length; i++){
-                        indexes.add(i);
-                }
-
-                int limit = 20;
-
-                if (tempJP.length < 20)
-                    limit = tempJP.length;
-
-                if (tempJP.length-lessonsCompleted.howManyCompleted(state) <20){
-                    limit = tempJP.length-lessonsCompleted.howManyCompleted(state);
-                }
-
-                for (int i = 0; i != limit; i++){
-                    do{
-                        randomNumber = indexes.elementAt(random.nextInt(indexes.size()));
-                    }while (lessonsCompleted.isCompleted(state, randomNumber));
-                    selectedItemList.addJp(tempJP[randomNumber]);
-                    assert tempRomaji != null;
-                    selectedItemList.addFrench(tempFr[randomNumber]);
-                    selectedItemList.addCorrespondingIndex(randomNumber);
-                    indexes.removeElement(randomNumber);
-                }
-                selectedItemList.setCorrespondingLesson(state);
-
-                Intent intent = new Intent(getApplicationContext(), Exercise.class);
-                intent.putExtra("LESSON", selectedItemList);
-                intent.putExtra("COMPLETED", lessonsCompleted);
-                intent.putExtra("RETRIEVE", true);
-                intent.putExtra("ROMAJI", romaji);
-                intent.putExtra("SAVE", true);
-                intent.putExtra("CHAPTER", state);
-                intent.putExtra("REVISION", false);
-                intent.putExtra("MAX", limit);
-                waitingForData = true;
-                startActivity(intent);
-                finish();
-            }
-        });
         mPractice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 selector();
             }
         });
-        float progress = (float)(lessonsCompleted.howManyCompleted(state))/(float)(getResources().getStringArray(lessonsStorage.getJpRes(state)).length)*100;
+        final float progress = (float)(lessonsCompleted.howManyCompleted(state))/(float)(getResources().getStringArray(lessonsStorage.getJpRes(state)).length)*100;
         mProgress.setProgress((int)progress);
         mTextProgress.setText((int) progress + "%");
         mRevision.setOnClickListener(new View.OnClickListener() {
@@ -429,11 +359,85 @@ public class HomeActivity extends AppCompatActivity {
         });
         if(progress == 100){
             mProgress.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
-            mTest.setClickable(false);
+            mTest.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showReinitTestDialog();
+                }
+            });
         }
         else{
             mProgress.setProgressTintList(ColorStateList.valueOf(Color.RED));
-            mTest.setClickable(true);
+            mTest.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SelectedItemList selectedItemList = new SelectedItemList();
+                    String[] tempJP;
+                    String[] tempRomaji;
+                    if (mKanji.isChecked()){
+                        tempJP = getResources().getStringArray(lessonsStorage.getKjRes(state));
+                    }else if (mRomajis.isChecked()){
+                        tempJP = getResources().getStringArray(lessonsStorage.getRmRes(state));
+                    }else{
+                        tempJP = getResources().getStringArray(lessonsStorage.getJpRes(state));
+                    }
+                    boolean romaji;
+                    if(lessonsStorage.haveRomaji(state)){
+                        tempRomaji = getResources().getStringArray(lessonsStorage.getRmRes(state));
+                        romaji = true;
+                    }else{
+                        tempRomaji = null;
+                        romaji = false;
+                    }
+                    String[] tempFr;
+                    if(sharedPreferences.getString("LOCALE", "en").equals("fr")){
+                        tempFr = getResources().getStringArray(lessonsStorage.getSrcRes(state));
+                    }else{
+                        tempFr = getResources().getStringArray(lessonsStorage.getEnRes(state));
+                    }
+                    Random random = new Random();
+                    int randomNumber;
+                    Vector<Integer> indexes = new Vector<>();
+
+                    for (int i = 0; i != tempJP.length; i++){
+                        indexes.add(i);
+                    }
+
+                    int limit = 20;
+
+                    if (tempJP.length < 20)
+                        limit = tempJP.length;
+
+                    if (tempJP.length-lessonsCompleted.howManyCompleted(state) <20){
+                        limit = tempJP.length-lessonsCompleted.howManyCompleted(state);
+                    }
+
+                    for (int i = 0; i != limit; i++){
+                        do{
+                            randomNumber = indexes.elementAt(random.nextInt(indexes.size()));
+                        }while (lessonsCompleted.isCompleted(state, randomNumber));
+                        selectedItemList.addJp(tempJP[randomNumber]);
+                        assert tempRomaji != null;
+                        selectedItemList.addFrench(tempFr[randomNumber]);
+                        selectedItemList.addCorrespondingIndex(randomNumber);
+                        indexes.removeElement(randomNumber);
+                    }
+                    selectedItemList.setCorrespondingLesson(state);
+
+                    Intent intent = new Intent(getApplicationContext(), Exercise.class);
+                    intent.putExtra("LESSON", selectedItemList);
+                    intent.putExtra("COMPLETED", lessonsCompleted);
+                    intent.putExtra("RETRIEVE", true);
+                    intent.putExtra("ROMAJI", romaji);
+                    intent.putExtra("SAVE", true);
+                    intent.putExtra("CHAPTER", state);
+                    intent.putExtra("REVISION", false);
+                    intent.putExtra("MAX", limit);
+                    waitingForData = true;
+                    startActivity(intent);
+                    finish();
+                }
+            });
         }
     }
 
@@ -814,7 +818,7 @@ public class HomeActivity extends AppCompatActivity {
         tempTts = getResources().getStringArray(lessonsStorage.getJpRes(state));
 
         min.setText("1");
-        max.setText(tempJP.length);
+        max.setText(String.valueOf(tempJP.length));
 
         //Now we need an AlertDialog.Builder object
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -934,6 +938,51 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
+            }
+        });
+
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+
+            }
+        });
+
+        //finally creating the alert dialog and displaying it
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    private void showReinitTestDialog() {
+        //before inflating the custom alert dialog layout, we will get the current activity viewgroup
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+
+        //then we will inflate the custom alert dialog xml that we created
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.reinit_dialog, viewGroup, false);
+
+        //Now we need an AlertDialog.Builder object
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        //setting the view of the builder to our custom view that we already inflated
+        builder.setView(dialogView);
+
+        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                lessonsCompleted.reinitLesson(state);
+                checkingFirstMenuItem(state);
+                try {
+                    saveCompleted();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 

@@ -6,6 +6,10 @@ import java.util.Vector;
 class LessonsCompleted implements Serializable {
     private final Vector<Vector<Integer>> completed;
 
+    void reinitLesson(int lesson){
+        completed.set(lesson-1, new Vector<Integer>());
+    }
+
     void addCompleted(int lesson, int word){
         if (completed.get(lesson-1) == null){
             completed.add(lesson-1, new Vector<Integer>());

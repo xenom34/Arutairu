@@ -119,4 +119,6 @@
     <string name="refaire">REFAIRE</string>
     <string name="notifications_fire_channel_name">Push notifications</string>
     <string name="notifications_fire_channel_description">Des nouvelles fraiches concernant l\'appli.</string>
+    <string name="would_you_like_to_reset_this_lesson_and_restart_from_scratch">Souhaitez-vous réinitialiser cette leçon, et recommencer de zéro ?</string>
+    <string name="you_have_already_managed_to_answer_all_the_elements_of_this_lesson_correctly">Vous avez déjà réussi à répondre correctement à tous les éléments de cette leçon.</string>
 </resources>
