@@ -67,12 +67,30 @@ public class Revision extends AppCompatActivity {
         if (!sharedPreferences.getBoolean("POLARIS", false)){
             setContentView(R.layout.activity_revision);
             mAdView = findViewById(R.id.adViewRevision);
-            AdRequest adRequest = new AdRequest.Builder().build();
+            AdRequest adRequest = new AdRequest.Builder()
+                    .addKeyword(getString(R.string.japanKWords))
+                    .addKeyword("nihongo")
+                    .addKeyword("tokyo")
+                    .addKeyword("manga")
+                    .addKeyword("anime")
+                    .addKeyword(getString(R.string.gameKWord))
+                    .addKeyword(getString(R.string.languageKWord))
+                    .addKeyword(getString(R.string.learnKWord))
+                    .addKeyword(getString(R.string.travelKWord)).build();
             mAdView.loadAd(adRequest);
 
             mInterstitialAd = new InterstitialAd(this);
             mInterstitialAd.setAdUnitId("ca-app-pub-9369103706924521/2427690661");
-            mInterstitialAd.loadAd(new AdRequest.Builder().build());
+            mInterstitialAd.loadAd(new AdRequest.Builder()
+                    .addKeyword(getString(R.string.japanKWords))
+                    .addKeyword("nihongo")
+                    .addKeyword("tokyo")
+                    .addKeyword("manga")
+                    .addKeyword("anime")
+                    .addKeyword(getString(R.string.gameKWord))
+                    .addKeyword(getString(R.string.languageKWord))
+                    .addKeyword(getString(R.string.learnKWord))
+                    .addKeyword(getString(R.string.travelKWord)).build());
             mInterstitialAd.setAdListener(new AdListener(){
                 @Override
                 public void onAdClosed() {

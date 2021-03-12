@@ -27,7 +27,7 @@ public class WakeUpConfig extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         sharedPreferences = context.getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
         enableNotification(context, sharedPreferences.getInt("HOURS", 12), sharedPreferences.getInt("MIN",0));
-        if (/*sharedPreferences.getBoolean("NOTIFS", false) && */sharedPreferences.getBoolean("MESSAGE4", true)) {
+        if (/*sharedPreferences.getBoolean("NOTIFS", false) && */sharedPreferences.getBoolean("MESSAGE5", true)) {
             Log.d("NOTIFS", "WE'RE IN !");
 
             NotificationManagerCompat nManager = NotificationManagerCompat.from(context);
@@ -58,7 +58,7 @@ public class WakeUpConfig extends BroadcastReceiver {
                     .build();
 
             nManager.notify(200, notification);
-            sharedPreferences.edit().putBoolean("MESSAGE4", false).apply();
+            sharedPreferences.edit().putBoolean("MESSAGE5", false).apply();
         }
     }
 
