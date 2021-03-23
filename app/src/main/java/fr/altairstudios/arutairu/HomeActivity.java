@@ -1384,6 +1384,10 @@ public class HomeActivity extends AppCompatActivity {
         super.onResume();
     }
 
+    /**
+     * Ici, on sauvegarde l'objet sérialisable voulu dans "saves.dat"
+     * @throws IOException
+     */
     void saveCompleted() throws IOException {
         FileOutputStream fos = getApplicationContext().openFileOutput("saves.dat", Context.MODE_PRIVATE);
         ObjectOutputStream os = new ObjectOutputStream(fos);
@@ -1392,6 +1396,11 @@ public class HomeActivity extends AppCompatActivity {
         fos.close();
     }
 
+    /**
+     * Ici, on récupère l'objet stocké dans "saves.dat"
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     void loadCompleted() throws IOException, ClassNotFoundException {
         FileInputStream fis = getApplicationContext().openFileInput("saves.dat");
         ObjectInputStream is = new ObjectInputStream(fis);
