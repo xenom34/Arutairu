@@ -3,7 +3,7 @@ package fr.altairstudios.arutairu;
 import android.util.SparseArray;
 
 class LessonsStorage {
-    private SparseArray<Lesson> storage = new SparseArray<>();
+    private final SparseArray<Lesson> storage = new SparseArray<>();
     static final int HIRAGANA = 1;
     static final int DAKUTEN = 2;
     static final int KATAKANA = 3;

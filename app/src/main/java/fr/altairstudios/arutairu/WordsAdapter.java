@@ -41,16 +41,13 @@ public class WordsAdapter extends ArrayAdapter<String> {
         TextView mJp = view.findViewById(R.id.chooserJP);
         TextView mFr = view.findViewById(R.id.chooserFR);
         CheckBox mCheckBox = view.findViewById(R.id.checkBox);
-        mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    if (!selectedItemList.getSelected().contains(position)){
-                        selectedItemList.addSelected(position);
-                    }
-                }else{
-                    selectedItemList.removeSelected(position);
+        mCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(isChecked){
+                if (!selectedItemList.getSelected().contains(position)){
+                    selectedItemList.addSelected(position);
                 }
+            }else{
+                selectedItemList.removeSelected(position);
             }
         });
         mCheckBox.setChecked(selectedItemList.isSelected(position));

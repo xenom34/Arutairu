@@ -1,6 +1,5 @@
 package fr.altairstudios.arutairu;
 
-import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.NotificationChannel;
@@ -45,6 +44,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.ui.AppBarConfiguration;
 
+import com.android.billingclient.api.AcknowledgePurchaseParams;
+import com.android.billingclient.api.AcknowledgePurchaseResponseListener;
 import com.android.billingclient.api.BillingClient;
 import com.android.billingclient.api.BillingClientStateListener;
 import com.android.billingclient.api.BillingFlowParams;
@@ -77,6 +78,7 @@ public class HomeActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private final LessonsStorage lessonsStorage = new LessonsStorage();
     private int maxWords;
+    private BillingClient mBillingClient;
     private boolean firstExec, revisionDialog;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
     public static final String FIRST_EXEC = "firsts1";
@@ -104,7 +106,13 @@ public class HomeActivity extends AppCompatActivity {
                     if (purchases.get(0).getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
                         Toast.makeText(getApplicationContext(), "PURCHASED", Toast.LENGTH_SHORT).show();
                         sharedPreferences.edit().putBoolean("POLARIS", true).apply();
+                        AcknowledgePurchaseParams acknowledgePurchaseParams =
+                                AcknowledgePurchaseParams.newBuilder()
+                                        .setPurchaseToken(purchases.get(0).getPurchaseToken())
+                                        .build();
                         showThanksDialog();
+                        AcknowledgePurchaseResponseListener acknowledgePurchaseResponseListener = billingResult1 -> {};
+                        mBillingClient.acknowledgePurchase(acknowledgePurchaseParams, acknowledgePurchaseResponseListener);
                     }
                 } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
                     Toast.makeText(getApplicationContext(), "Vous avez déjà ce produit", Toast.LENGTH_SHORT).show();
@@ -129,6 +137,11 @@ public class HomeActivity extends AppCompatActivity {
         res.updateConfiguration(conf, dm);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        mBillingClient = BillingClient.newBuilder(this)
+                .setListener(purchaseUpdateListener)
+                .enablePendingPurchases()
+                .build();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setBackgroundColor(getResources().getColor(R.color.darkGrey));
@@ -156,7 +169,6 @@ public class HomeActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.nav_view);
         mNbLearn = navigationView.getHeaderView(0).findViewById(R.id.nbLearn);
         navigationView.setCheckedItem(R.id.nav_people);
-        final Activity activity = this;
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -175,13 +187,6 @@ public class HomeActivity extends AppCompatActivity {
                     if (sharedPreferences.getBoolean("POLARIS", false)){
                         Toast.makeText(getApplicationContext(), R.string.already_purchased, Toast.LENGTH_SHORT).show();
                     }else {
-                        final BillingClient mBillingClient;
-
-                        mBillingClient = BillingClient.newBuilder(activity)
-                                .setListener(purchaseUpdateListener)
-                                .enablePendingPurchases()
-                                .build();
-
                         mBillingClient.startConnection(new BillingClientStateListener() {
                             @Override
                             public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
@@ -203,10 +208,10 @@ public class HomeActivity extends AppCompatActivity {
                                                         BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
                                                                 .setSkuDetails(skuDetailsList.get(0))
                                                                 .build();
-                                                        responseCode = mBillingClient.launchBillingFlow(activity, billingFlowParams).getResponseCode();
+                                                        responseCode = mBillingClient.launchBillingFlow(HomeActivity.this, billingFlowParams).getResponseCode();
                                                     }
                                                     if (responseCode == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
-                                                        Toast.makeText(activity, "LICENSE OK", Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(HomeActivity.this, "LICENSE OK", Toast.LENGTH_SHORT).show();
                                                         sharedPreferences.edit().putBoolean("POLARIS", true).apply();
                                                     }
                                                 }

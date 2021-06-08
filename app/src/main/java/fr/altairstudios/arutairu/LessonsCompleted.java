@@ -7,12 +7,12 @@ class LessonsCompleted implements Serializable {
     private final Vector<Vector<Integer>> completed;
 
     void reinitLesson(int lesson){
-        completed.set(lesson-1, new Vector<Integer>());
+        completed.set(lesson-1, new Vector<>());
     }
 
     void addCompleted(int lesson, int word){
         if (completed.get(lesson-1) == null){
-            completed.add(lesson-1, new Vector<Integer>());
+            completed.add(lesson-1, new Vector<>());
         }
         completed.get(lesson-1).add(word);
     }
@@ -28,7 +28,7 @@ class LessonsCompleted implements Serializable {
     LessonsCompleted() {
         completed = new Vector<>();
         for (int i = 0; i < 60; i++) {
-            completed.add(new Vector<Integer>());
+            completed.add(new Vector<>());
         }
     }
 

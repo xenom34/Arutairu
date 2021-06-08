@@ -13,17 +13,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textview.MaterialTextView;
 
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Random;
 
 public class Exercise extends AppCompatActivity {
@@ -43,40 +48,18 @@ public class Exercise extends AppCompatActivity {
     private String mAnswerText;
     LessonsCompleted lessonsCompleted;
     private SharedPreferences sharedPreferences;
+    private AdRequest adRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
-        mInterstitialAd = new InterstitialAd(this);
 
         if (!sharedPreferences.getBoolean("POLARIS", false)){
             setContentView(R.layout.activity_exercise);
             AdView mAdView = findViewById(R.id.adViewExercise);
-            mInterstitialAd.setAdUnitId("ca-app-pub-9369103706924521/2427690661");
-            mInterstitialAd.loadAd(new AdRequest.Builder()
-                    .addKeyword(getString(R.string.japanKWords))
-                    .addKeyword("nihongo")
-                    .addKeyword("tokyo")
-                    .addKeyword("manga")
-                    .addKeyword("anime")
-                    .addKeyword(getString(R.string.gameKWord))
-                    .addKeyword(getString(R.string.languageKWord))
-                    .addKeyword(getString(R.string.learnKWord))
-                    .addKeyword(getString(R.string.travelKWord)).build());
-            mInterstitialAd.setAdListener(new AdListener(){
-                @Override
-                public void onAdClosed() {
-                    SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
-                    sharedPreferences.edit().putBoolean(Integer.toString(lesson), completed).apply();
-                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                    intent.putExtra("COMPLETED", lessonsCompleted);
-                    startActivity(intent);
-                    finish();
-                }
-            });
-            AdRequest adRequest = new AdRequest.Builder()
+            adRequest = new AdRequest.Builder()
                     .addKeyword(getString(R.string.japanKWords))
                     .addKeyword("nihongo")
                     .addKeyword("tokyo")
@@ -86,6 +69,42 @@ public class Exercise extends AppCompatActivity {
                     .addKeyword(getString(R.string.languageKWord))
                     .addKeyword(getString(R.string.learnKWord))
                     .addKeyword(getString(R.string.travelKWord)).build();
+            InterstitialAd.load(this,"ca-app-pub-9369103706924521/2427690661", adRequest, new InterstitialAdLoadCallback() {
+                @Override
+                public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                    // The mInterstitialAd reference will be null until
+                    // an ad is loaded.
+                    mInterstitialAd = interstitialAd;
+                    mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback(){
+                        @Override
+                        public void onAdDismissedFullScreenContent() {
+                            // Called when fullscreen content is dismissed.
+                            Log.d("TAG", "The ad was dismissed.");
+                        }
+
+                        @Override
+                        public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
+                            // Called when fullscreen content failed to show.
+                            Log.d("TAG", "The ad failed to show.");
+                        }
+
+                        @Override
+                        public void onAdShowedFullScreenContent() {
+                            // Called when fullscreen content is shown.
+                            // Make sure to set your reference to null so you don't
+                            // show it a second time.
+                            mInterstitialAd = null;
+                            Log.d("TAG", "The ad was shown.");
+                        }
+                    });
+                }
+
+                @Override
+                public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                    // Handle the error
+                    mInterstitialAd = null;
+                }
+            });
             mAdView.loadAd(adRequest);
         }else{
             setContentView(R.layout.activity_exercise_no_ads);
@@ -116,25 +135,16 @@ public class Exercise extends AppCompatActivity {
         mSubmit = findViewById(R.id.submitBtn);
         mText = findViewById(R.id.txtArutairu);
         mState = findViewById(R.id.state);
-        mAnswer.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
-                        (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
-                    // Perform action on key press
-                    check();
-                    return true;
-                }
-                return false;
-            }
-        });
-        mSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+        mAnswer.setOnKeyListener((v, keyCode, event) -> {
+            if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                    (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+                // Perform action on key press
                 check();
+                return true;
             }
+            return false;
         });
+        mSubmit.setOnClickListener(v -> check());
 
         mAnswer.setTextLocale(new Locale("jp"));
 
@@ -144,27 +154,24 @@ public class Exercise extends AppCompatActivity {
     private void check(){
 
         if(getIntent().getBooleanExtra("SAVE", false)){
-            if(mAnswer.getText().toString().equals(mJpn[state])){
+            if(Objects.requireNonNull(mAnswer.getText()).toString().equals(mJpn[state])){
 
                 if (completed && !lessonsCompleted.isCompleted(lesson, selectedItemList.getCorrespondingIndex(state))){
                     lessonsCompleted.addCompleted(lesson, selectedItemList.getCorrespondingIndex(state));
                 }
                 mSubmit.setClickable(false);
                 mSubmit.setBackgroundColor(getResources().getColor(R.color.green));
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        state++;
-                        if (state != max){
-                            completed = true;
-                            refresh();
-                            mAnswer.setText("");
-                        }else{
-                            congrats();
-                        }
-                        mSubmit.setBackgroundColor(getResources().getColor(R.color.grey));
-                        mSubmit.setClickable(true);
+                new Handler().postDelayed(() -> {
+                    state++;
+                    if (state != max){
+                        completed = true;
+                        refresh();
+                        mAnswer.setText("");
+                    }else{
+                        congrats();
                     }
+                    mSubmit.setBackgroundColor(getResources().getColor(R.color.grey));
+                    mSubmit.setClickable(true);
                 },1000);
             }else{
                 completed = false;
@@ -172,7 +179,7 @@ public class Exercise extends AppCompatActivity {
 
             }
         }else{
-            if(mAnswer.getText().toString().equals(mJpn[state])){
+            if(Objects.requireNonNull(mAnswer.getText()).toString().equals(mJpn[state])){
 
                 //if (completed && !lessonsCompleted.isCompleted(selectedItemList.getCorrespondingLesson()+1, selectedItemList.getCorrespondingIndex(state))){
                 //lessonsCompleted.addCompleted(selectedItemList.getCorrespondingLesson()+1, selectedItemList.getCorrespondingIndex(state));
@@ -180,20 +187,17 @@ public class Exercise extends AppCompatActivity {
 
                 mSubmit.setBackgroundColor(getResources().getColor(R.color.green));
                 mSubmit.setClickable(false);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        state++;
-                        if (state != max){
-                            completed = true;
-                            refresh();
-                            mAnswer.setText("");
-                        }else{
-                            congrats();
-                        }
-                        mSubmit.setBackgroundColor(getResources().getColor(R.color.grey));
-                        mSubmit.setClickable(true);
+                new Handler().postDelayed(() -> {
+                    state++;
+                    if (state != max){
+                        completed = true;
+                        refresh();
+                        mAnswer.setText("");
+                    }else{
+                        congrats();
                     }
+                    mSubmit.setBackgroundColor(getResources().getColor(R.color.grey));
+                    mSubmit.setClickable(true);
                 },1000);
             }else{
                 completed = false;
@@ -220,22 +224,12 @@ public class Exercise extends AppCompatActivity {
         builder.setCancelable(false);
 
 
-        builder.setPositiveButton(R.string.backlessons, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if (!sharedPreferences.getBoolean("POLARIS", false)){
-                    if (mInterstitialAd.isLoaded()) {
-                        mInterstitialAd.show();
-                    } else {
-                        Log.d("TAG", "The interstitial wasn't loaded yet.");
-                        SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
-                        sharedPreferences.edit().putBoolean(Integer.toString(lesson), completed).apply();
-                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                        intent.putExtra("COMPLETED", lessonsCompleted);
-                        startActivity(intent);
-                        finish();
-                    }
-                }else{
+        builder.setPositiveButton(R.string.backlessons, (dialogInterface, i) -> {
+            if (!sharedPreferences.getBoolean("POLARIS", false)){
+                if (mInterstitialAd != null) {
+                    mInterstitialAd.show(Exercise.this);
+                } else {
+                    Log.d("TAG", "The interstitial wasn't loaded yet.");
                     SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
                     sharedPreferences.edit().putBoolean(Integer.toString(lesson), completed).apply();
                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
@@ -243,47 +237,51 @@ public class Exercise extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
+            }else{
+                SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
+                sharedPreferences.edit().putBoolean(Integer.toString(lesson), completed).apply();
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                intent.putExtra("COMPLETED", lessonsCompleted);
+                startActivity(intent);
+                finish();
             }
         });
 
         if (getIntent().getBooleanExtra("PRACTICE", false)){
-            builder.setNegativeButton(R.string.refaire, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    SelectedItemList shuffledList = new SelectedItemList();
-                    Random random = new Random();
-                    int randomNumber;
+            builder.setNegativeButton(R.string.refaire, (dialog, which) -> {
+                SelectedItemList shuffledList = new SelectedItemList();
+                Random random = new Random();
+                int randomNumber;
 
-                    int size = selectedItemList.getmFrench().size();
+                int size = selectedItemList.getmFrench().size();
 
-                    for (int i = 0; i != size; i++){
-                        randomNumber = random.nextInt(selectedItemList.getmFrench().size());
-                        shuffledList.addJp(selectedItemList.getmJP().elementAt(randomNumber));
-                        shuffledList.addRomaji(selectedItemList.getmRomaji().elementAt(randomNumber));
-                        shuffledList.addFrench(selectedItemList.getmFrench().elementAt(randomNumber));
-                        shuffledList.addCorrespondingIndex(selectedItemList.getCorrespondingIndex(randomNumber));
+                for (int i = 0; i != size; i++){
+                    randomNumber = random.nextInt(selectedItemList.getmFrench().size());
+                    shuffledList.addJp(selectedItemList.getmJP().elementAt(randomNumber));
+                    shuffledList.addRomaji(selectedItemList.getmRomaji().elementAt(randomNumber));
+                    shuffledList.addFrench(selectedItemList.getmFrench().elementAt(randomNumber));
+                    shuffledList.addCorrespondingIndex(selectedItemList.getCorrespondingIndex(randomNumber));
 
 
-                        selectedItemList.getmFrench().remove(randomNumber);
-                        selectedItemList.getmJP().remove(randomNumber);
-                        selectedItemList.getmRomaji().remove(randomNumber);
-                        selectedItemList.removeCorrespondingIndex(randomNumber);
-                        //randomNumber = selectedItemList.getSelected().elementAt(random.nextInt(indexes.size()));
-                        //selector.addJp(tempJP[randomNumber]);
-                        //if (lessonsStorage.haveRomaji(state)) {
-                        //    selector.addRomaji(tempRomaji[randomNumber]);
-                        //}
-                        //selector.addFrench(tempFr[randomNumber]);
-                        //selector.addCorrespondingIndex(randomNumber);
-                        //indexes.removeElement(randomNumber);
-                    }
-                    selectedItemList = shuffledList;
-                    mEnglish = selectedItemList.getmFrench().toArray(new String[0]);
-                    mJpn = selectedItemList.getmJP().toArray(new String[0]);
-                    state = 0;
-                    mAnswer.setText("");
-                    refresh();
+                    selectedItemList.getmFrench().remove(randomNumber);
+                    selectedItemList.getmJP().remove(randomNumber);
+                    selectedItemList.getmRomaji().remove(randomNumber);
+                    selectedItemList.removeCorrespondingIndex(randomNumber);
+                    //randomNumber = selectedItemList.getSelected().elementAt(random.nextInt(indexes.size()));
+                    //selector.addJp(tempJP[randomNumber]);
+                    //if (lessonsStorage.haveRomaji(state)) {
+                    //    selector.addRomaji(tempRomaji[randomNumber]);
+                    //}
+                    //selector.addFrench(tempFr[randomNumber]);
+                    //selector.addCorrespondingIndex(randomNumber);
+                    //indexes.removeElement(randomNumber);
                 }
+                selectedItemList = shuffledList;
+                mEnglish = selectedItemList.getmFrench().toArray(new String[0]);
+                mJpn = selectedItemList.getmJP().toArray(new String[0]);
+                state = 0;
+                mAnswer.setText("");
+                refresh();
             });
         }
 
@@ -305,41 +303,32 @@ public class Exercise extends AppCompatActivity {
         //setting the view of the builder to our custom view that we already inflated
 
 
-        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if (sharedPreferences.getBoolean("POLARIS", false)){
-                    if (mInterstitialAd.isLoaded()) {
-                        mInterstitialAd.show();
-                    }else{
-                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                        intent.putExtra("COMPLETED", lessonsCompleted);
-                        startActivity(intent);
-                        finish();
-                    }
+        builder.setPositiveButton(R.string.yes, (dialogInterface, i) -> {
+            if (sharedPreferences.getBoolean("POLARIS", false)){
+                if (mInterstitialAd != null) {
+                    mInterstitialAd.show(Exercise.this);
                 }else{
                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                     intent.putExtra("COMPLETED", lessonsCompleted);
                     startActivity(intent);
                     finish();
                 }
+            }else{
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                intent.putExtra("COMPLETED", lessonsCompleted);
+                startActivity(intent);
+                finish();
             }
         });
 
         builder.setTitle(R.string.exitlesson);
 
-        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        builder.setNegativeButton(R.string.no, (dialog, which) -> {
 
-            }
         });
 
-        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialogInterface) {
-                //mSpam = 0;
-            }
+        builder.setOnDismissListener(dialogInterface -> {
+            //mSpam = 0;
         });
 
         //finally creating the alert dialog and displaying it
@@ -381,18 +370,12 @@ public class Exercise extends AppCompatActivity {
         builder.setTitle(mJpn[state]);
 
 
-        builder.setPositiveButton("OK !", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        builder.setPositiveButton("OK !", (dialog, which) -> {
 
-            }
         });
 
-        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialogInterface) {
-                //mSpam = 0;
-            }
+        builder.setOnDismissListener(dialogInterface -> {
+            //mSpam = 0;
         });
 
         //finally creating the alert dialog and displaying it
