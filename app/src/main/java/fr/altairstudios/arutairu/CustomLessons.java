@@ -4,13 +4,21 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class CustomLessons implements Serializable {
-    ArrayList<Lesson> listCustomLessons;
+    private final ArrayList<Lesson> listCustomLessons;
 
     public void addLesson(Lesson lesson){
         listCustomLessons.add(lesson);
     }
 
-    public CustomLessons(ArrayList<Lesson> listCustomLessons) {
-        this.listCustomLessons = listCustomLessons;
+    public ArrayList<Lesson> getList() {
+        return listCustomLessons;
+    }
+
+    public boolean isEmpty(){
+        return listCustomLessons.isEmpty();
+    }
+
+    public CustomLessons() {
+        this.listCustomLessons = new ArrayList<>();
     }
 }

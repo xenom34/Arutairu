@@ -16,7 +16,9 @@ import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
@@ -30,17 +32,23 @@ import androidx.navigation.ui.AppBarConfiguration;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import fr.altairstudios.arutairu.databinding.ActivityPersonalizedLessonsBinding;
 
 public class PersonalizedLessonsActivity extends AppCompatActivity {
 
-    private AppBarConfiguration appBarConfiguration;
     private ActivityPersonalizedLessonsBinding binding;
     private ListView listView;
+    private TextView mEmptyMessage;
+    private ImageView mEmptyLogo;
+    private CustomLessons storage;
     private final ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -52,10 +60,10 @@ public class PersonalizedLessonsActivity extends AppCompatActivity {
                             //gérer
                         }
 
-                        File file = new File(getPath(getApplicationContext(), data.getData()));
+                        //File file = new File(getPath(getApplicationContext(), data.getData()));
 
                         //Toast.makeText(getApplicationContext(), file.exists() ? "YES" : "NO", Toast.LENGTH_LONG).show();
-                        Toast.makeText(getApplicationContext(), file.getPath(), Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(), file.getPath(), Toast.LENGTH_LONG).show();
                         try {
                                 processCSV(data.getData());
                         } catch (IOException e) {
@@ -67,15 +75,29 @@ public class PersonalizedLessonsActivity extends AppCompatActivity {
 
     private void processCSV(Uri pathToCSV) throws IOException {
         String row;
+        ArrayList<String> japanese = new ArrayList<>();
+        ArrayList<String> source = new ArrayList<>();
+        ArrayList<String> romaji = new ArrayList<>();
+
+        String title = new File(getPath(getApplicationContext(), pathToCSV)).getName();
 
         BufferedReader bufferedReader = new BufferedReader(new FileReader(getPath(getApplicationContext(), pathToCSV)));
 
         while ((row = bufferedReader.readLine()) != null) {
             String[] data = row.split(";(?=(?:[^”]*”[^”]*”)*(?![^”]*”))");
             // do something with the data
-            Log.d("DATA", Arrays.toString(data));
+            japanese.add(data[0]);
+            romaji.add(data[1]);
+            source.add(data[2]);
         }
         bufferedReader.close();
+
+        storage.addLesson(new Lesson(japanese.toArray(new String[0]), source.toArray(new String[0]), romaji.toArray(new String[0]), title.split("\\.")[0]));
+        saveCustom();
+        final LessonsAdapter lessonsAdapter = new LessonsAdapter(this, storage.getList(), this);
+        listView.setAdapter(lessonsAdapter);
+        mEmptyMessage.setVisibility(View.INVISIBLE);
+        mEmptyLogo.setVisibility(View.INVISIBLE);
     }
 
     public String getPath(final Context context, final Uri uri) {
@@ -223,6 +245,19 @@ public class PersonalizedLessonsActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         listView = findViewById(R.id.listLessons);
+        mEmptyLogo = findViewById(R.id.emptyLogo);
+        mEmptyMessage = findViewById(R.id.emptyMessage);
+
+        try {
+            loadCustom();
+        } catch (IOException e) {
+            storage = new CustomLessons();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        final LessonsAdapter lessonsAdapter = new LessonsAdapter(this, storage.getList(), this);
+        listView.setAdapter(lessonsAdapter);
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -231,6 +266,36 @@ public class PersonalizedLessonsActivity extends AppCompatActivity {
                 openFileChooser();
             }
         });
+
+        if (!storage.isEmpty()){
+            mEmptyMessage.setVisibility(View.INVISIBLE);
+            mEmptyLogo.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    /**
+     * Ici, on sauvegarde l'objet sérialisable voulu dans "saves.dat"
+     * @throws IOException
+     */
+    void saveCustom() throws IOException {
+        FileOutputStream fos = getApplicationContext().openFileOutput("custom.dat", Context.MODE_PRIVATE);
+        ObjectOutputStream os = new ObjectOutputStream(fos);
+        os.writeObject(storage);
+        os.close();
+        fos.close();
+    }
+
+    /**
+     * Ici, on récupère l'objet stocké dans "saves.dat"
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    void loadCustom() throws IOException, ClassNotFoundException {
+        FileInputStream fis = getApplicationContext().openFileInput("custom.dat");
+        ObjectInputStream is = new ObjectInputStream(fis);
+        storage = (CustomLessons) is.readObject();
+        is.close();
+        fis.close();
     }
 
     public void openFileChooser(){

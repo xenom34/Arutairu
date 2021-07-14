@@ -360,8 +360,12 @@ public class Exercise extends AppCompatActivity {
             }
         }else{
 
-            if(lessonsCompleted.isCompleted(selectedItemList.getCorrespondingLesson()+1, selectedItemList.getCorrespondingIndex(state))){
-                mcheck.setAlpha(1f);
+            if(getIntent().getBooleanExtra("CUSTOM", false)){
+                if(lessonsCompleted.isCompleted(selectedItemList.getCorrespondingLesson()+1, selectedItemList.getCorrespondingIndex(state))){
+                    mcheck.setAlpha(1f);
+                }else{
+                    mcheck.setAlpha(0f);
+                }
             }else{
                 mcheck.setAlpha(0f);
             }

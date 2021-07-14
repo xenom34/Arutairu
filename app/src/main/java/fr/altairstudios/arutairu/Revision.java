@@ -180,7 +180,7 @@ public class Revision extends AppCompatActivity {
         mNext.setOnLongClickListener(v -> {
             state = max-3;
             up();
-            return true;
+            return false;
         });
 
         mStop.setOnClickListener(v -> stopAudio());

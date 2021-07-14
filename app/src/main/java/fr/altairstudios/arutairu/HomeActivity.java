@@ -337,7 +337,7 @@ public class HomeActivity extends AppCompatActivity {
             intent.putExtra("REVISION", true);
             intent.putExtra("ROMAJI", lessonsStorage.haveRomaji(state));
             intent.putExtra("LOCALE", sharedPreferences.getString("LOCALE", "en"));
-            intent.putExtra("FIRST", revisionDialog);
+            intent.putExtra("FIRST", firstExec);
             intent.putExtra("KANJI", mKanji.isChecked());
             intent.putExtra("WITH_ROMAJI", mRomajis.isChecked());
             sharedPreferences.edit().putBoolean(FIRST_REVISION, false).apply();
@@ -826,7 +826,7 @@ public class HomeActivity extends AppCompatActivity {
                     intent.putExtra("COMPLETED", lessonsCompleted);
                     intent.putExtra("RETRIEVE", true);
                     intent.putExtra("ROMAJI", lessonsStorage.haveRomaji(state));
-                    intent.putExtra("FIRST", revisionDialog);
+                    intent.putExtra("FIRST", firstExec);
                     sharedPreferences.edit().putBoolean(FIRST_REVISION, false).apply();
                     waitingForData = false;
                     startActivity(intent);

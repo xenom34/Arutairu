@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/emptyLogo"
             android:layout_width="64dp"
             android:layout_height="64dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -23,16 +23,18 @@
             app:srcCompat="@drawable/ic_baseline_info_24" />
 
         <TextView
-            android:id="@+id/textView3"
-            android:fontFamily="@font/russo"
+            android:id="@+id/emptyMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="Il semblerait que vous n'ayez aucune\nleçon personnalisée pour le moment..."
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="@+id/imageView3"
-            app:layout_constraintStart_toStartOf="@+id/imageView3"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/russo"
+            android:text="@string/il_semblerait_que_vous_n_ayez_aucune_nle_on_personnalis_e_pour_le_moment"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="@+id/emptyLogo"
+            app:layout_constraintStart_toStartOf="@+id/emptyLogo"
+            app:layout_constraintTop_toBottomOf="@+id/emptyLogo" />
         <ListView
             android:id="@+id/listLessons"
             android:layout_width="match_parent"
@@ -49,7 +51,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         android:backgroundTint="@color/colorPrimary"
-        android:tint="#FFFFFF"
+        android:tint="@color/red"
         app:srcCompat="@drawable/ic_add_1_" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

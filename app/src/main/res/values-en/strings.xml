@@ -127,4 +127,6 @@
     <string name="learnKWord">learn</string>
     <string name="travelKWord">travel</string>
     <string name="le_ons_personnalis_es">Your lessons</string>
+    <string name="mots">" words"</string>
+    <string name="il_semblerait_que_vous_n_ayez_aucune_nle_on_personnalis_e_pour_le_moment">Whoops, you haven\'t added any lessons for now...</string>
 </resources>
