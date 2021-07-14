@@ -33,7 +33,6 @@ import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -99,7 +98,6 @@ public class HomeActivity extends AppCompatActivity {
         @Override
         public void onPurchasesUpdated(BillingResult billingResult, List<Purchase> purchases) {
             if (!(billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_TIMEOUT || billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_UNAVAILABLE)) {
-
 
                 // To be implemented in a later section.
                 if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
@@ -169,85 +167,81 @@ public class HomeActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.nav_view);
         mNbLearn = navigationView.getHeaderView(0).findViewById(R.id.nbLearn);
         navigationView.setCheckedItem(R.id.nav_people);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                drawerLayout.closeDrawer(GravityCompat.START);
+        navigationView.setNavigationItemSelectedListener(item -> {
+            drawerLayout.closeDrawer(GravityCompat.START);
 
-                if (item.getItemId() == R.id.nav_keyboard){
-                    keyboardDialog();
-                    return false;
-                }else if (item.getItemId() == R.id.nav_rate){
-                    rateThisApp();
-                    return false;
-                }else if(item.getItemId() == R.id.nav_mail){
-                    sendEmail();
-                    return false;
-                }else if(item.getItemId() == R.id.nav_no_ads){
-                    if (sharedPreferences.getBoolean("POLARIS", false)){
-                        Toast.makeText(getApplicationContext(), R.string.already_purchased, Toast.LENGTH_SHORT).show();
-                    }else {
-                        mBillingClient.startConnection(new BillingClientStateListener() {
-                            @Override
-                            public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
-                                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                                    // The BillingClient is ready. You can query purchases here.
-                                    List<String> skuList = new ArrayList<>();
-                                    skuList.add("no_ads");
-                                    SkuDetailsParams.Builder params = SkuDetailsParams.newBuilder();
-                                    params.setSkusList(skuList).setType(BillingClient.SkuType.INAPP);
-                                    mBillingClient.querySkuDetailsAsync(params.build(),
-                                            new SkuDetailsResponseListener() {
-                                                @Override
-                                                public void onSkuDetailsResponse(@NonNull BillingResult billingResult,
-                                                                                 List<SkuDetails> skuDetailsList) {
-                                                    int responseCode = 1000;
-                                                    if (skuDetailsList.isEmpty()) {
-                                                        Toast.makeText(getApplicationContext(), "Connexion impossible", Toast.LENGTH_SHORT).show();
-                                                    } else {
-                                                        BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
-                                                                .setSkuDetails(skuDetailsList.get(0))
-                                                                .build();
-                                                        responseCode = mBillingClient.launchBillingFlow(HomeActivity.this, billingFlowParams).getResponseCode();
-                                                    }
-                                                    if (responseCode == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
-                                                        Toast.makeText(HomeActivity.this, "LICENSE OK", Toast.LENGTH_SHORT).show();
-                                                        sharedPreferences.edit().putBoolean("POLARIS", true).apply();
-                                                    }
-                                                }
-                                            });
-                                } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_UNAVAILABLE) {
-                                    Toast.makeText(getApplicationContext(), "Service indisponible", Toast.LENGTH_SHORT).show();
-                                } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_DISCONNECTED) {
-                                    Toast.makeText(getApplicationContext(), "Service déconnecté", Toast.LENGTH_SHORT).show();
-                                } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_TIMEOUT) {
-                                    Toast.makeText(getApplicationContext(), "Timeout", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(getApplicationContext(), "Erreur", Toast.LENGTH_SHORT).show();
-                                }
+            if (item.getItemId() == R.id.nav_keyboard){
+                keyboardDialog();
+                return false;
+            }else if (item.getItemId() == R.id.nav_rate){
+                rateThisApp();
+                return false;
+            }else if(item.getItemId() == R.id.nav_mail){
+                sendEmail();
+                return false;
+            }else if(item.getItemId() == R.id.nav_no_ads){
+                if (sharedPreferences.getBoolean("POLARIS", false)){
+                    Toast.makeText(getApplicationContext(), R.string.already_purchased, Toast.LENGTH_SHORT).show();
+                }else {
+                    mBillingClient.startConnection(new BillingClientStateListener() {
+                        @Override
+                        public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
+                            if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
+                                // The BillingClient is ready. You can query purchases here.
+                                List<String> skuList = new ArrayList<>();
+                                skuList.add("no_ads");
+                                SkuDetailsParams.Builder params = SkuDetailsParams.newBuilder();
+                                params.setSkusList(skuList).setType(BillingClient.SkuType.INAPP);
+                                mBillingClient.querySkuDetailsAsync(params.build(),
+                                        (billingResult1, skuDetailsList) -> {
+                                            int responseCode = 1000;
+                                            if (skuDetailsList.isEmpty()) {
+                                                Toast.makeText(getApplicationContext(), "Connexion impossible", Toast.LENGTH_SHORT).show();
+                                            } else {
+                                                BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
+                                                        .setSkuDetails(skuDetailsList.get(0))
+                                                        .build();
+                                                responseCode = mBillingClient.launchBillingFlow(HomeActivity.this, billingFlowParams).getResponseCode();
+                                            }
+                                            if (responseCode == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
+                                                Toast.makeText(HomeActivity.this, "LICENSE OK", Toast.LENGTH_SHORT).show();
+                                                sharedPreferences.edit().putBoolean("POLARIS", true).apply();
+                                            }
+                                        });
+                            } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_UNAVAILABLE) {
+                                Toast.makeText(getApplicationContext(), "Service indisponible", Toast.LENGTH_SHORT).show();
+                            } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_DISCONNECTED) {
+                                Toast.makeText(getApplicationContext(), "Service déconnecté", Toast.LENGTH_SHORT).show();
+                            } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_TIMEOUT) {
+                                Toast.makeText(getApplicationContext(), "Timeout", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Erreur", Toast.LENGTH_SHORT).show();
                             }
+                        }
 
-                            @Override
-                            public void onBillingServiceDisconnected() {
-                                // Try to restart the connection on the next request to
-                                // Google Play by calling the startConnection() method.
-                            }
-                        });
-                    }
-
-                    return false;
-                }else if(item.getItemId() == R.id.nav_tts){
-                    loadVoices();
-                    return false;
-                }else if(item.getItemId() == R.id.nav_notification){
-                    showNotificationDialog();
-                    return false;
-                }else{
-                    initMenu(item.getItemId());
-                    refresh(state, item.getTitle());
+                        @Override
+                        public void onBillingServiceDisconnected() {
+                            // Try to restart the connection on the next request to
+                            // Google Play by calling the startConnection() method.
+                        }
+                    });
                 }
-                return true;
+
+                return false;
+            }else if(item.getItemId() == R.id.nav_tts){
+                loadVoices();
+                return false;
+            }else if(item.getItemId() == R.id.nav_notification){
+                showNotificationDialog();
+                return false;
+            }else if (item.getItemId() == R.id.nav_perso){
+                Intent intent = new Intent(getBaseContext(), PersonalizedLessonsActivity.class);
+                startActivity(intent);
+            }else{
+                initMenu(item.getItemId());
+                refresh(state, item.getTitle());
             }
+            return true;
         });
 
         // Passing each menu ID as a set of Ids because each
@@ -276,22 +270,19 @@ public class HomeActivity extends AppCompatActivity {
         // time picker dialog
         TimePickerDialog picker;
         picker = new TimePickerDialog(this,
-                new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && sharedPreferences.getBoolean("NSET", true)) {
-                            CharSequence name = "Daily Reminder";
-                            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-                            NotificationChannel channel = new NotificationChannel("Daily Reminder", name, importance);
-                            // Register the channel with the system; you can't change the importance
-                            // or other notification behaviors after this
-                            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-                            notificationManager.createNotificationChannel(channel);
-                            sharedPreferences.edit().putBoolean("NSET", false).apply();
-                        }
-                        enableNotification(sHour, sMinute);
-
+                (tp, sHour, sMinute) -> {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && sharedPreferences.getBoolean("NSET", true)) {
+                        CharSequence name = "Daily Reminder";
+                        int importance = NotificationManager.IMPORTANCE_DEFAULT;
+                        NotificationChannel channel = new NotificationChannel("Daily Reminder", name, importance);
+                        // Register the channel with the system; you can't change the importance
+                        // or other notification behaviors after this
+                        NotificationManager notificationManager = getSystemService(NotificationManager.class);
+                        notificationManager.createNotificationChannel(channel);
+                        sharedPreferences.edit().putBoolean("NSET", false).apply();
                     }
+                    enableNotification(sHour, sMinute);
+
                 }, hour, minutes, true);
         picker.show();
     }
@@ -333,115 +324,99 @@ public class HomeActivity extends AppCompatActivity {
 
     private void refresh(int item, CharSequence title) {
         mTitle.setText(title);
-        mPractice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selector();
-            }
-        });
+        mPractice.setOnClickListener(v -> selector());
         final float progress = (float)(lessonsCompleted.howManyCompleted(state))/(float)(getResources().getStringArray(lessonsStorage.getJpRes(state)).length)*100;
         mProgress.setProgress((int)progress);
         mTextProgress.setText((int) progress + "%");
-        mRevision.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Revision.class);
-                intent.putExtra("LESSON", state);
-                intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(state)).length);
-                intent.putExtra("COMPLETED", lessonsCompleted);
-                intent.putExtra("RETRIEVE", false);
-                intent.putExtra("REVISION", true);
-                intent.putExtra("ROMAJI", lessonsStorage.haveRomaji(state));
-                intent.putExtra("LOCALE", sharedPreferences.getString("LOCALE", "en"));
-                intent.putExtra("FIRST", revisionDialog);
-                intent.putExtra("KANJI", mKanji.isChecked());
-                intent.putExtra("WITH_ROMAJI", mRomajis.isChecked());
-                sharedPreferences.edit().putBoolean(FIRST_REVISION, false).apply();
-                waitingForData = false;
-                startActivity(intent);
-                finish();
-            }
+        mRevision.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), Revision.class);
+            intent.putExtra("LESSON", state);
+            intent.putExtra("MAX", getResources().getStringArray(lessonsStorage.getJpRes(state)).length);
+            intent.putExtra("COMPLETED", lessonsCompleted);
+            intent.putExtra("RETRIEVE", false);
+            intent.putExtra("REVISION", true);
+            intent.putExtra("ROMAJI", lessonsStorage.haveRomaji(state));
+            intent.putExtra("LOCALE", sharedPreferences.getString("LOCALE", "en"));
+            intent.putExtra("FIRST", revisionDialog);
+            intent.putExtra("KANJI", mKanji.isChecked());
+            intent.putExtra("WITH_ROMAJI", mRomajis.isChecked());
+            sharedPreferences.edit().putBoolean(FIRST_REVISION, false).apply();
+            waitingForData = false;
+            startActivity(intent);
+            finish();
         });
         if(progress == 100){
             mProgress.setProgressTintList(ColorStateList.valueOf(Color.GREEN));
-            mTest.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    showReinitTestDialog();
-                }
-            });
+            mTest.setOnClickListener(v -> showReinitTestDialog());
         }
         else{
             mProgress.setProgressTintList(ColorStateList.valueOf(Color.RED));
-            mTest.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    SelectedItemList selectedItemList = new SelectedItemList();
-                    String[] tempJP;
-                    String[] tempRomaji;
-                    if (mKanji.isChecked()){
-                        tempJP = getResources().getStringArray(lessonsStorage.getKjRes(state));
-                    }else if (mRomajis.isChecked()){
-                        tempJP = getResources().getStringArray(lessonsStorage.getRmRes(state));
-                    }else{
-                        tempJP = getResources().getStringArray(lessonsStorage.getJpRes(state));
-                    }
-                    boolean romaji;
-                    if(lessonsStorage.haveRomaji(state)){
-                        tempRomaji = getResources().getStringArray(lessonsStorage.getRmRes(state));
-                        romaji = true;
-                    }else{
-                        tempRomaji = null;
-                        romaji = false;
-                    }
-                    String[] tempFr;
-                    if(sharedPreferences.getString("LOCALE", "en").equals("fr")){
-                        tempFr = getResources().getStringArray(lessonsStorage.getSrcRes(state));
-                    }else{
-                        tempFr = getResources().getStringArray(lessonsStorage.getEnRes(state));
-                    }
-                    Random random = new Random();
-                    int randomNumber;
-                    Vector<Integer> indexes = new Vector<>();
-
-                    for (int i = 0; i != tempJP.length; i++){
-                        indexes.add(i);
-                    }
-
-                    int limit = 20;
-
-                    if (tempJP.length < 20)
-                        limit = tempJP.length;
-
-                    if (tempJP.length-lessonsCompleted.howManyCompleted(state) <20){
-                        limit = tempJP.length-lessonsCompleted.howManyCompleted(state);
-                    }
-
-                    for (int i = 0; i != limit; i++){
-                        do{
-                            randomNumber = indexes.elementAt(random.nextInt(indexes.size()));
-                        }while (lessonsCompleted.isCompleted(state, randomNumber));
-                        selectedItemList.addJp(tempJP[randomNumber]);
-                        assert tempRomaji != null;
-                        selectedItemList.addFrench(tempFr[randomNumber]);
-                        selectedItemList.addCorrespondingIndex(randomNumber);
-                        indexes.removeElement(randomNumber);
-                    }
-                    selectedItemList.setCorrespondingLesson(state);
-
-                    Intent intent = new Intent(getApplicationContext(), Exercise.class);
-                    intent.putExtra("LESSON", selectedItemList);
-                    intent.putExtra("COMPLETED", lessonsCompleted);
-                    intent.putExtra("RETRIEVE", true);
-                    intent.putExtra("ROMAJI", romaji);
-                    intent.putExtra("SAVE", true);
-                    intent.putExtra("CHAPTER", state);
-                    intent.putExtra("REVISION", false);
-                    intent.putExtra("MAX", limit);
-                    waitingForData = true;
-                    startActivity(intent);
-                    finish();
+            mTest.setOnClickListener(v -> {
+                SelectedItemList selectedItemList = new SelectedItemList();
+                String[] tempJP;
+                String[] tempRomaji;
+                if (mKanji.isChecked()){
+                    tempJP = getResources().getStringArray(lessonsStorage.getKjRes(state));
+                }else if (mRomajis.isChecked()){
+                    tempJP = getResources().getStringArray(lessonsStorage.getRmRes(state));
+                }else{
+                    tempJP = getResources().getStringArray(lessonsStorage.getJpRes(state));
                 }
+                boolean romaji;
+                if(lessonsStorage.haveRomaji(state)){
+                    tempRomaji = getResources().getStringArray(lessonsStorage.getRmRes(state));
+                    romaji = true;
+                }else{
+                    tempRomaji = null;
+                    romaji = false;
+                }
+                String[] tempFr;
+                if(sharedPreferences.getString("LOCALE", "en").equals("fr")){
+                    tempFr = getResources().getStringArray(lessonsStorage.getSrcRes(state));
+                }else{
+                    tempFr = getResources().getStringArray(lessonsStorage.getEnRes(state));
+                }
+                Random random = new Random();
+                int randomNumber;
+                Vector<Integer> indexes = new Vector<>();
+
+                for (int i = 0; i != tempJP.length; i++){
+                    indexes.add(i);
+                }
+
+                int limit = 20;
+
+                if (tempJP.length < 20)
+                    limit = tempJP.length;
+
+                if (tempJP.length-lessonsCompleted.howManyCompleted(state) <20){
+                    limit = tempJP.length-lessonsCompleted.howManyCompleted(state);
+                }
+
+                for (int i = 0; i != limit; i++){
+                    do{
+                        randomNumber = indexes.elementAt(random.nextInt(indexes.size()));
+                    }while (lessonsCompleted.isCompleted(state, randomNumber));
+                    selectedItemList.addJp(tempJP[randomNumber]);
+                    assert tempRomaji != null;
+                    selectedItemList.addFrench(tempFr[randomNumber]);
+                    selectedItemList.addCorrespondingIndex(randomNumber);
+                    indexes.removeElement(randomNumber);
+                }
+                selectedItemList.setCorrespondingLesson(state);
+
+                Intent intent = new Intent(getApplicationContext(), Exercise.class);
+                intent.putExtra("LESSON", selectedItemList);
+                intent.putExtra("COMPLETED", lessonsCompleted);
+                intent.putExtra("RETRIEVE", true);
+                intent.putExtra("ROMAJI", romaji);
+                intent.putExtra("SAVE", true);
+                intent.putExtra("CHAPTER", state);
+                intent.putExtra("REVISION", false);
+                intent.putExtra("MAX", limit);
+                waitingForData = true;
+                startActivity(intent);
+                finish();
             });
         }
     }
@@ -653,28 +628,19 @@ public class HomeActivity extends AppCompatActivity {
         MaterialButton mConfigure = dialogView.findViewById(R.id.configure);
         MaterialButton mGboard = dialogView.findViewById(R.id.gboard);
 
-        mConfigure.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                InputMethodManager imeManager = (InputMethodManager) getApplicationContext().getSystemService(INPUT_METHOD_SERVICE);
-                assert imeManager != null;
-                imeManager.showInputMethodPicker();
-            }
+        mConfigure.setOnClickListener(v -> {
+            InputMethodManager imeManager = (InputMethodManager) getApplicationContext().getSystemService(INPUT_METHOD_SERVICE);
+            assert imeManager != null;
+            imeManager.showInputMethodPicker();
         });
 
-        mGboard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent browse = new Intent( Intent.ACTION_VIEW , Uri.parse( "https://support.google.com/gboard/answer/7068494?co=GENIE.Platform%3DAndroid&hl=en" ) );
-                startActivity( browse );
-            }
+        mGboard.setOnClickListener(v -> {
+            Intent browse = new Intent( Intent.ACTION_VIEW , Uri.parse( "https://support.google.com/gboard/answer/7068494?co=GENIE.Platform%3DAndroid&hl=en" ) );
+            startActivity( browse );
         });
 
-        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialogInterface) {
-                //mSpam = 0;
-            }
+        builder.setOnDismissListener(dialogInterface -> {
+            //mSpam = 0;
         });
 
         //finally creating the alert dialog and displaying it
@@ -713,74 +679,68 @@ public class HomeActivity extends AppCompatActivity {
         builder.setView(dialogView);
 
 
-        builder.setPositiveButton(R.string.go, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if(!wordsAdapter.selectedItemList.getSelected().isEmpty()) {
-                    SelectedItemList selectedItemList = wordsAdapter.selectedItemList;
-                    String[] tempJP;
-                    if (mKanji.isChecked()){
-                        tempJP = getResources().getStringArray(lessonsStorage.getKjRes(chapter + 1));
-                    }else if (mRomajis.isChecked()){
-                        tempJP = getResources().getStringArray(lessonsStorage.getRmRes(chapter + 1));
-                    }else{
-                        tempJP = getResources().getStringArray(lessonsStorage.getJpRes(chapter + 1));
-                    }
-                    boolean romaji;
-                    String[] tempRomaji;
-                    if (lessonsStorage.haveRomaji(chapter + 1)){
-                        tempRomaji = getResources().getStringArray(lessonsStorage.getRmRes(chapter + 1));
-                        romaji = true;
-                    }else{
-                        tempRomaji = new String[tempJP.length+3];
-                        for (int e = 0; e!= tempJP.length +2; e++){
-                            tempRomaji[e] = "Romaji not available";
-                        }
-                        romaji = false;
-                    }
-                    String[] tempFr;
-                    String[] tempTts;
-                    if(sharedPreferences.getString("LOCALE", "en").equals("fr")){
-                        tempFr = getResources().getStringArray(lessonsStorage.getSrcRes(chapter + 1));
-                    }else{
-                        tempFr = getResources().getStringArray(lessonsStorage.getEnRes(chapter + 1));
-                    }
-                    tempTts = getResources().getStringArray(lessonsStorage.getJpRes(chapter+1));
-                    Random random = new Random();
-                    int randomNumber;
-                    Vector<Integer> indexes = new Vector<>(selectedItemList.getSelected());
-                    int size = indexes.size();
-
-                    for (int k = 0; k != size; k++) {
-                        randomNumber = indexes.elementAt(random.nextInt(indexes.size()));
-                        selectedItemList.addJp(tempJP[randomNumber]);
-                        selectedItemList.addRomaji(tempRomaji[randomNumber]);
-                        selectedItemList.addFrench(tempFr[randomNumber]);
-                        selectedItemList.addCorrespondingIndex(randomNumber);
-                        selectedItemList.addTts(tempTts[randomNumber]);
-                        indexes.removeElement(randomNumber);
-                    }
-                    selectedItemList.setCorrespondingLesson(chapter);
-
-                    Intent intent = new Intent(getApplicationContext(), Revision.class);
-                    intent.putExtra("LESSON", selectedItemList);
-                    intent.putExtra("COMPLETED", lessonsCompleted);
-                    intent.putExtra("RETRIEVE", true);
-                    intent.putExtra("FIRST", revisionDialog);
-                    intent.putExtra("ROMAJI", romaji);
-                    sharedPreferences.edit().putBoolean(FIRST_REVISION, false).apply();
-                    waitingForData = false;
-                    startActivity(intent);
-                    finish();
+        builder.setPositiveButton(R.string.go, (dialogInterface, i) -> {
+            if(!wordsAdapter.selectedItemList.getSelected().isEmpty()) {
+                SelectedItemList selectedItemList = wordsAdapter.selectedItemList;
+                String[] tempJP;
+                if (mKanji.isChecked()){
+                    tempJP = getResources().getStringArray(lessonsStorage.getKjRes(chapter + 1));
+                }else if (mRomajis.isChecked()){
+                    tempJP = getResources().getStringArray(lessonsStorage.getRmRes(chapter + 1));
+                }else{
+                    tempJP = getResources().getStringArray(lessonsStorage.getJpRes(chapter + 1));
                 }
+                boolean romaji;
+                String[] tempRomaji;
+                if (lessonsStorage.haveRomaji(chapter + 1)){
+                    tempRomaji = getResources().getStringArray(lessonsStorage.getRmRes(chapter + 1));
+                    romaji = true;
+                }else{
+                    tempRomaji = new String[tempJP.length+3];
+                    for (int e = 0; e!= tempJP.length +2; e++){
+                        tempRomaji[e] = "Romaji not available";
+                    }
+                    romaji = false;
+                }
+                String[] tempFr;
+                String[] tempTts;
+                if(sharedPreferences.getString("LOCALE", "en").equals("fr")){
+                    tempFr = getResources().getStringArray(lessonsStorage.getSrcRes(chapter + 1));
+                }else{
+                    tempFr = getResources().getStringArray(lessonsStorage.getEnRes(chapter + 1));
+                }
+                tempTts = getResources().getStringArray(lessonsStorage.getJpRes(chapter+1));
+                Random random = new Random();
+                int randomNumber;
+                Vector<Integer> indexes = new Vector<>(selectedItemList.getSelected());
+                int size = indexes.size();
+
+                for (int k = 0; k != size; k++) {
+                    randomNumber = indexes.elementAt(random.nextInt(indexes.size()));
+                    selectedItemList.addJp(tempJP[randomNumber]);
+                    selectedItemList.addRomaji(tempRomaji[randomNumber]);
+                    selectedItemList.addFrench(tempFr[randomNumber]);
+                    selectedItemList.addCorrespondingIndex(randomNumber);
+                    selectedItemList.addTts(tempTts[randomNumber]);
+                    indexes.removeElement(randomNumber);
+                }
+                selectedItemList.setCorrespondingLesson(chapter);
+
+                Intent intent = new Intent(getApplicationContext(), Revision.class);
+                intent.putExtra("LESSON", selectedItemList);
+                intent.putExtra("COMPLETED", lessonsCompleted);
+                intent.putExtra("RETRIEVE", true);
+                intent.putExtra("FIRST", revisionDialog);
+                intent.putExtra("ROMAJI", romaji);
+                sharedPreferences.edit().putBoolean(FIRST_REVISION, false).apply();
+                waitingForData = false;
+                startActivity(intent);
+                finish();
             }
         });
 
-        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialogInterface) {
-                //mSpam = 0;
-            }
+        builder.setOnDismissListener(dialogInterface -> {
+            //mSpam = 0;
         });
 
         //finally creating the alert dialog and displaying it
@@ -830,59 +790,51 @@ public class HomeActivity extends AppCompatActivity {
 
         //setting the view of the builder to our custom view that we already inflated
         builder.setView(dialogView);
-        builder.setNeutralButton(R.string.selector, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                showChoosingWord(state-1);
-            }
-        });
+        builder.setNeutralButton(R.string.selector, (dialog, which) -> showChoosingWord(state-1));
 
-        builder.setPositiveButton(R.string.ctipar, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                try {
-                    if (!(Integer.parseInt(min.getText() + "") < 1 || Integer.parseInt(max.getText() + "") > tempJP.length || Integer.parseInt(min.getText() + "") > Integer.parseInt(max.getText() + "") || Integer.parseInt(nb.getText() + "") < 1 || Integer.parseInt(nb.getText() + "") > tempJP.length)) {
-                        SelectedItemList selector = new SelectedItemList();
+        builder.setPositiveButton(R.string.ctipar, (dialog, which) -> {
+            try {
+                if (!(Integer.parseInt(min.getText() + "") < 1 || Integer.parseInt(max.getText() + "") > tempJP.length || Integer.parseInt(min.getText() + "") > Integer.parseInt(max.getText() + "") || Integer.parseInt(nb.getText() + "") < 1 || Integer.parseInt(nb.getText() + "") > tempJP.length)) {
+                    SelectedItemList selector = new SelectedItemList();
 
-                        Random random = new Random();
-                        int randomNumber;
-                        Vector<Integer> indexes = new Vector<>();
+                    Random random = new Random();
+                    int randomNumber;
+                    Vector<Integer> indexes = new Vector<>();
 
-                        for (int i = Integer.parseInt(min.getText() + "") - 1; i != Integer.parseInt(max.getText() + ""); i++) {
-                            indexes.add(i);
-                        }
-
-                        int size = Integer.parseInt(nb.getText().toString());
-
-                        for (int i = 0; i != size; i++) {
-                            randomNumber = indexes.elementAt(random.nextInt(indexes.size()));
-                            selector.addJp(tempJP[randomNumber]);
-                            if (lessonsStorage.haveRomaji(state)) {
-                                selector.addRomaji(tempRomaji[randomNumber]);
-                            }
-                            selector.addFrench(tempFr[randomNumber]);
-                            selector.addTts(tempTts[randomNumber]);
-                            selector.addCorrespondingIndex(randomNumber);
-                            indexes.removeElement(randomNumber);
-                        }
-
-                        selector.setCorrespondingLesson(state);
-
-                        Intent intent = new Intent(getApplicationContext(), Revision.class);
-                        intent.putExtra("LESSON", selector);
-                        intent.putExtra("COMPLETED", lessonsCompleted);
-                        intent.putExtra("RETRIEVE", true);
-                        intent.putExtra("ROMAJI", lessonsStorage.haveRomaji(state));
-                        intent.putExtra("FIRST", revisionDialog);
-                        sharedPreferences.edit().putBoolean(FIRST_REVISION, false).apply();
-                        waitingForData = false;
-                        startActivity(intent);
-                        finish();
+                    for (int i = Integer.parseInt(min.getText() + "") - 1; i != Integer.parseInt(max.getText() + ""); i++) {
+                        indexes.add(i);
                     }
-                }catch (Exception e){
-                    showErrorDialog();
-                    Log.d("DIALOG", e.getMessage());
+
+                    int size = Integer.parseInt(nb.getText().toString());
+
+                    for (int i = 0; i != size; i++) {
+                        randomNumber = indexes.elementAt(random.nextInt(indexes.size()));
+                        selector.addJp(tempJP[randomNumber]);
+                        if (lessonsStorage.haveRomaji(state)) {
+                            selector.addRomaji(tempRomaji[randomNumber]);
+                        }
+                        selector.addFrench(tempFr[randomNumber]);
+                        selector.addTts(tempTts[randomNumber]);
+                        selector.addCorrespondingIndex(randomNumber);
+                        indexes.removeElement(randomNumber);
+                    }
+
+                    selector.setCorrespondingLesson(state);
+
+                    Intent intent = new Intent(getApplicationContext(), Revision.class);
+                    intent.putExtra("LESSON", selector);
+                    intent.putExtra("COMPLETED", lessonsCompleted);
+                    intent.putExtra("RETRIEVE", true);
+                    intent.putExtra("ROMAJI", lessonsStorage.haveRomaji(state));
+                    intent.putExtra("FIRST", revisionDialog);
+                    sharedPreferences.edit().putBoolean(FIRST_REVISION, false).apply();
+                    waitingForData = false;
+                    startActivity(intent);
+                    finish();
                 }
+            }catch (Exception e){
+                showErrorDialog();
+                Log.d("DIALOG", e.getMessage());
             }
         });
 
@@ -904,20 +856,14 @@ public class HomeActivity extends AppCompatActivity {
         builder.setView(dialogView);
 
 
-        builder.setPositiveButton(R.string.go, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Intent installIntent = new Intent();
-                installIntent.setAction(
-                        TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
-                startActivity(installIntent);
-            }
+        builder.setPositiveButton(R.string.go, (dialogInterface, i) -> {
+            Intent installIntent = new Intent();
+            installIntent.setAction(
+                    TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
+            startActivity(installIntent);
         });
 
-        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialogInterface) {
-            }
+        builder.setOnDismissListener(dialogInterface -> {
         });
 
         //finally creating the alert dialog and displaying it
@@ -939,18 +885,12 @@ public class HomeActivity extends AppCompatActivity {
         builder.setView(dialogView);
 
 
-        builder.setPositiveButton(R.string.continue_tts, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
+        builder.setPositiveButton(R.string.continue_tts, (dialogInterface, i) -> {
 
-            }
         });
 
-        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialogInterface) {
+        builder.setOnDismissListener(dialogInterface -> {
 
-            }
         });
 
         //finally creating the alert dialog and displaying it
@@ -971,31 +911,22 @@ public class HomeActivity extends AppCompatActivity {
         //setting the view of the builder to our custom view that we already inflated
         builder.setView(dialogView);
 
-        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        builder.setNegativeButton(R.string.no, (dialog, which) -> {
 
+        });
+
+        builder.setPositiveButton(R.string.yes, (dialogInterface, i) -> {
+            lessonsCompleted.reinitLesson(state);
+            checkingFirstMenuItem(state);
+            try {
+                saveCompleted();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
 
-        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                lessonsCompleted.reinitLesson(state);
-                checkingFirstMenuItem(state);
-                try {
-                    saveCompleted();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        builder.setOnDismissListener(dialogInterface -> {
 
-        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialogInterface) {
-
-            }
         });
 
         //finally creating the alert dialog and displaying it
@@ -1017,23 +948,17 @@ public class HomeActivity extends AppCompatActivity {
         builder.setView(dialogView);
 
 
-        builder.setPositiveButton(R.string.go, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
-                sharedPreferences.edit().putBoolean(FIRST_EXEC, false).apply();
-                firstExec = false;
-            }
+        builder.setPositiveButton(R.string.go, (dialogInterface, i) -> {
+            SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
+            sharedPreferences.edit().putBoolean(FIRST_EXEC, false).apply();
+            firstExec = false;
         });
 
-        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialogInterface) {
-                //mSpam = 0;
-                SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
-                sharedPreferences.edit().putBoolean(FIRST_EXEC, false).apply();
-                firstExec = false;
-            }
+        builder.setOnDismissListener(dialogInterface -> {
+            //mSpam = 0;
+            SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
+            sharedPreferences.edit().putBoolean(FIRST_EXEC, false).apply();
+            firstExec = false;
         });
 
         //finally creating the alert dialog and displaying it
@@ -1055,26 +980,12 @@ public class HomeActivity extends AppCompatActivity {
         builder.setView(dialogView);
 
 
-        builder.setPositiveButton(R.string.reminder_time, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-               pickADate();
-
-            }
-        });
+        builder.setPositiveButton(R.string.reminder_time, (dialogInterface, i) -> pickADate());
         
-        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                sharedPreferences.edit().putBoolean("NOTIFS", false).apply();
-            }
-        });
+        builder.setNegativeButton(R.string.no, (dialog, which) -> sharedPreferences.edit().putBoolean("NOTIFS", false).apply());
 
-        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialogInterface) {
-                //mSpam = 0;
-            }
+        builder.setOnDismissListener(dialogInterface -> {
+            //mSpam = 0;
         });
 
         //finally creating the alert dialog and displaying it
@@ -1120,18 +1031,10 @@ public class HomeActivity extends AppCompatActivity {
         builder.setView(dialogView);
 
 
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                selector();
-            }
-        });
+        builder.setPositiveButton("OK", (dialogInterface, i) -> selector());
 
-        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialogInterface) {
-                //mSpam = 0;
-            }
+        builder.setOnDismissListener(dialogInterface -> {
+            //mSpam = 0;
         });
 
         //finally creating the alert dialog and displaying it

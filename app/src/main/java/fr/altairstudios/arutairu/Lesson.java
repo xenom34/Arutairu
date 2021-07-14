@@ -8,6 +8,7 @@ public class Lesson {
     private final int en;
     private final boolean romaji;
     private final boolean kanji;
+    private String title;
 
     public Lesson(int kj, int jpn, int rom, int src, int en) {
         this.jpn = jpn;
@@ -17,6 +18,10 @@ public class Lesson {
         this.kanji = true;
         this.en = en;
         this.kj = kj;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public boolean haveRomaji() {

@@ -227,7 +227,13 @@ public class Exercise extends AppCompatActivity {
         builder.setPositiveButton(R.string.backlessons, (dialogInterface, i) -> {
             if (!sharedPreferences.getBoolean("POLARIS", false)){
                 if (mInterstitialAd != null) {
+                    SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
+                    sharedPreferences.edit().putBoolean(Integer.toString(lesson), completed).apply();
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    intent.putExtra("COMPLETED", lessonsCompleted);
+                    startActivity(intent);
                     mInterstitialAd.show(Exercise.this);
+                    finish();
                 } else {
                     Log.d("TAG", "The interstitial wasn't loaded yet.");
                     SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
@@ -306,13 +312,16 @@ public class Exercise extends AppCompatActivity {
         builder.setPositiveButton(R.string.yes, (dialogInterface, i) -> {
             if (sharedPreferences.getBoolean("POLARIS", false)){
                 if (mInterstitialAd != null) {
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    intent.putExtra("COMPLETED", lessonsCompleted);
+                    startActivity(intent);
                     mInterstitialAd.show(Exercise.this);
                 }else{
                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                     intent.putExtra("COMPLETED", lessonsCompleted);
                     startActivity(intent);
-                    finish();
                 }
+                finish();
             }else{
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 intent.putExtra("COMPLETED", lessonsCompleted);

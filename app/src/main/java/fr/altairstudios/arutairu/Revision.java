@@ -414,7 +414,10 @@ public class Revision extends AppCompatActivity {
             if(getIntent().getBooleanExtra("REVISION", false)){
                 if (!sharedPreferences.getBoolean("POLARIS", false)){
                     if(mInterstitialAd != null){
+                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        startActivity(intent);
                         mInterstitialAd.show(Revision.this);
+                        finish();
                     }else{
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                         startActivity(intent);
@@ -552,7 +555,10 @@ public class Revision extends AppCompatActivity {
             stopAudio();
             if (!sharedPreferences.getBoolean("POLARIS", false)){
                 if (mInterstitialAd != null) {
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    startActivity(intent);
                     mInterstitialAd.show(Revision.this);
+                    finish();
                 }else{
                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(intent);

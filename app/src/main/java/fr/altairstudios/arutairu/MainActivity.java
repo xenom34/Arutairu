@@ -243,7 +243,10 @@ public class MainActivity extends AppCompatActivity {
         mStart.setOnClickListener(v -> {
             if (!sharedPreferences.getBoolean("POLARIS", false)){
                 if (mInterstitialAd != null) {
+                    Intent intent = new Intent(getBaseContext(), HomeActivity.class);
+                    startActivity(intent);
                     mInterstitialAd.show(MainActivity.this);
+                    finish();
                 }else{
                     Intent intent = new Intent(getBaseContext(), HomeActivity.class);
                     startActivity(intent);
