@@ -86,9 +86,10 @@ public class PersonalizedLessonsActivity extends AppCompatActivity {
         while ((row = bufferedReader.readLine()) != null) {
             String[] data = row.split(";(?=(?:[^”]*”[^”]*”)*(?![^”]*”))");
             // do something with the data
-            japanese.add(data[0]);
-            romaji.add(data[1]);
-            source.add(data[2]);
+
+            japanese.add(cleanTextContent(data[0]));
+            romaji.add(cleanTextContent(data[1]));
+            source.add(cleanTextContent(data[2]));
         }
         bufferedReader.close();
 
@@ -98,6 +99,17 @@ public class PersonalizedLessonsActivity extends AppCompatActivity {
         listView.setAdapter(lessonsAdapter);
         mEmptyMessage.setVisibility(View.INVISIBLE);
         mEmptyLogo.setVisibility(View.INVISIBLE);
+    }
+
+    private String cleanTextContent(String text)
+    {
+        // erases all the ASCII control characters
+        text = text.replaceAll("[\\p{Cntrl}&&[^\r\n\t]]", "");
+
+        // removes non-printable characters from Unicode
+        text = text.replaceAll("\\p{C}", "");
+
+        return text.trim();
     }
 
     public String getPath(final Context context, final Uri uri) {

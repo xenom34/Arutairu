@@ -153,8 +153,11 @@ public class Exercise extends AppCompatActivity {
 
     private void check(){
 
+        char[] japChar = mJpn[state].trim().toCharArray();
+        char[] frChar = Objects.requireNonNull(mAnswer.getText()).toString().trim().toCharArray();
+
         if(getIntent().getBooleanExtra("SAVE", false)){
-            if(Objects.requireNonNull(mAnswer.getText()).toString().equals(mJpn[state])){
+            if(Objects.requireNonNull(mAnswer.getText()).toString().trim().equalsIgnoreCase(mJpn[state].trim())){
 
                 if (completed && !lessonsCompleted.isCompleted(lesson, selectedItemList.getCorrespondingIndex(state))){
                     lessonsCompleted.addCompleted(lesson, selectedItemList.getCorrespondingIndex(state));
@@ -179,7 +182,7 @@ public class Exercise extends AppCompatActivity {
 
             }
         }else{
-            if(Objects.requireNonNull(mAnswer.getText()).toString().equals(mJpn[state])){
+            if(Objects.requireNonNull(mAnswer.getText()).toString().trim().equalsIgnoreCase(mJpn[state].trim())){
 
                 //if (completed && !lessonsCompleted.isCompleted(selectedItemList.getCorrespondingLesson()+1, selectedItemList.getCorrespondingIndex(state))){
                 //lessonsCompleted.addCompleted(selectedItemList.getCorrespondingLesson()+1, selectedItemList.getCorrespondingIndex(state));
