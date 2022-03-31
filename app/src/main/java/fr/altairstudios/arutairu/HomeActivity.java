@@ -85,13 +85,14 @@ public class HomeActivity extends AppCompatActivity {
     static boolean waitingForData = false;
     SharedPreferences sharedPreferences;
     LessonsCompleted lessonsCompleted;
+    private NewLessonsCompleted newLessonsCompleted;
     private int state;
     private RadioGroup radioGroup;
     private RadioButton mKanji, mKanas, mRomajis;
     private ImageView topImage;
     private TextView mTitle, mTextProgress, mNbLearn;
     private ProgressBar mProgress;
-    private Button mPractice, mTest, mRevision;
+    private Button mPractice, mTest, mRevision, mFlashCards;
     private NavigationView navigationView;
     private MaterialTextView mUnavailableKanji;
     private final PurchasesUpdatedListener purchaseUpdateListener = new PurchasesUpdatedListener() {
@@ -156,6 +157,7 @@ public class HomeActivity extends AppCompatActivity {
         mProgress = findViewById(R.id.progressBar);
         mPractice = findViewById(R.id.practice);
         mRevision = findViewById(R.id.list);
+        mFlashCards = findViewById(R.id.flashcards);
         mTest = findViewById(R.id.evaluation);
         try {
             loadCompleted();
@@ -324,7 +326,12 @@ public class HomeActivity extends AppCompatActivity {
 
     private void refresh(int item, CharSequence title) {
         mTitle.setText(title);
-        mPractice.setOnClickListener(v -> selector());
+        mPractice.setOnClickListener(v -> selector(false));
+        mFlashCards.setOnClickListener(v -> selector(true));
+        mFlashCards.setOnLongClickListener(v -> {
+            showReinitTestDialog();
+            return false;
+        });
         final float progress = (float)(lessonsCompleted.howManyCompleted(state))/(float)(getResources().getStringArray(lessonsStorage.getJpRes(state)).length)*100;
         mProgress.setProgress((int)progress);
         mTextProgress.setText((int) progress + "%");
@@ -748,7 +755,7 @@ public class HomeActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-    private void selector() {
+    private void selector(boolean flashcards) {
         //before inflating the custom alert dialog layout, we will get the current activity viewgroup
         ViewGroup viewGroup = findViewById(android.R.id.content);
 
@@ -773,10 +780,19 @@ public class HomeActivity extends AppCompatActivity {
         final String[] tempFr;
         final String[] tempTts;
         if (sharedPreferences.getString("LOCALE", "en").equals("fr")){
-            tempFr = getResources().getStringArray(lessonsStorage.getSrcRes(state));
+            if (mKanji.isChecked()) {
+                tempFr = getResources().getStringArray(lessonsStorage.getJpRes(state));
+
+            }else {
+                tempFr = getResources().getStringArray(lessonsStorage.getSrcRes(state));
+            }
+        }else if (mKanji.isChecked()){
+            tempFr = getResources().getStringArray(lessonsStorage.getJpRes(state));
+
         }else{
             tempFr = getResources().getStringArray(lessonsStorage.getEnRes(state));
         }
+
         final TextView min = dialogView.findViewById(R.id.min);
         final TextView max = dialogView.findViewById(R.id.max);
         final TextView nb = dialogView.findViewById(R.id.nb);
@@ -809,31 +825,37 @@ public class HomeActivity extends AppCompatActivity {
 
                     for (int i = 0; i != size; i++) {
                         randomNumber = indexes.elementAt(random.nextInt(indexes.size()));
-                        selector.addJp(tempJP[randomNumber]);
-                        if (lessonsStorage.haveRomaji(state)) {
-                            selector.addRomaji(tempRomaji[randomNumber]);
+                        if (!lessonsCompleted.isCompleted(tempJP[randomNumber])){
+                            selector.addJp(tempJP[randomNumber]);
+                            if (lessonsStorage.haveRomaji(state)) {
+                                selector.addRomaji(tempRomaji[randomNumber]);
+                            }
+                            selector.addFrench(tempFr[randomNumber]);
+                            selector.addTts(tempTts[randomNumber]);
+                            selector.addCorrespondingIndex(randomNumber);
                         }
-                        selector.addFrench(tempFr[randomNumber]);
-                        selector.addTts(tempTts[randomNumber]);
-                        selector.addCorrespondingIndex(randomNumber);
                         indexes.removeElement(randomNumber);
                     }
 
                     selector.setCorrespondingLesson(state);
 
-                    Intent intent = new Intent(getApplicationContext(), Revision.class);
+                    Intent intent = new Intent(getApplicationContext(), flashcards ? FlashCardsActivity.class : Revision.class);
                     intent.putExtra("LESSON", selector);
                     intent.putExtra("COMPLETED", lessonsCompleted);
                     intent.putExtra("RETRIEVE", true);
                     intent.putExtra("ROMAJI", lessonsStorage.haveRomaji(state));
                     intent.putExtra("FIRST", firstExec);
+                    intent.putExtra("SAVE", true);
+                    intent.putExtra("CHAPTER", state);
+                    intent.putExtra("REVISION", true);
+
                     sharedPreferences.edit().putBoolean(FIRST_REVISION, false).apply();
-                    waitingForData = false;
+                    waitingForData = flashcards;
                     startActivity(intent);
                     finish();
                 }
             }catch (Exception e){
-                showErrorDialog();
+                showErrorDialog(flashcards);
                 Log.d("DIALOG", e.getMessage());
             }
         });
@@ -1017,7 +1039,7 @@ public class HomeActivity extends AppCompatActivity {
         Toast.makeText(this, R.string.reminder_set, Toast.LENGTH_SHORT).show();
     }
 
-    private void showErrorDialog() {
+    private void showErrorDialog(boolean flashcards) {
         //before inflating the custom alert dialog layout, we will get the current activity viewgroup
         ViewGroup viewGroup = findViewById(android.R.id.content);
 
@@ -1031,7 +1053,7 @@ public class HomeActivity extends AppCompatActivity {
         builder.setView(dialogView);
 
 
-        builder.setPositiveButton("OK", (dialogInterface, i) -> selector());
+        builder.setPositiveButton("OK", (dialogInterface, i) -> selector(flashcards));
 
         builder.setOnDismissListener(dialogInterface -> {
             //mSpam = 0;

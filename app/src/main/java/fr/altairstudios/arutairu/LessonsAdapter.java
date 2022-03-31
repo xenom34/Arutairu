@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,6 +49,7 @@ public class LessonsAdapter extends ArrayAdapter<Lesson> {
 
         TextView mJp = view.findViewById(R.id.lessonItem);
         TextView mSec = view.findViewById(R.id.lessonItemSec);
+        ImageButton mDelete = view.findViewById(R.id.delete);
 
         View view1 = view.findViewById(R.id.parentLayoutLesson);
 
@@ -55,6 +57,13 @@ public class LessonsAdapter extends ArrayAdapter<Lesson> {
             @Override
             public void onClick(View v) {
                 selector(position);
+            }
+        });
+
+        mDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 

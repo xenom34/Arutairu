@@ -221,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fadeAltair2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade2);
+        fadeAltair2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slowfadein);
         fadeAltair3 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade3);
 
         mAltair = findViewById(R.id.altair);

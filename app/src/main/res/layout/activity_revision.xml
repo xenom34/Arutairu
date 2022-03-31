@@ -20,27 +20,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <ImageView
-        android:id="@+id/play"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:elevation="20dp"
-        android:src="@drawable/ic_speaker_filled_audio_tool"
-        app:layout_constraintBottom_toBottomOf="@+id/sound"
-        app:layout_constraintEnd_toEndOf="@+id/sound"
-        app:layout_constraintStart_toStartOf="@+id/sound"
-        app:layout_constraintTop_toTopOf="@+id/sound" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:id="@+id/sound"
-        android:backgroundTint="@color/colorAccent"
-        app:layout_constraintBottom_toBottomOf="@+id/materialCardView"
-        app:layout_constraintEnd_toEndOf="@+id/materialCardView"
-        app:layout_constraintStart_toStartOf="@+id/materialCardView"
-        app:layout_constraintTop_toTopOf="@+id/materialCardView" />
-
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
         android:layout_width="match_parent"
@@ -57,6 +36,28 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/sound"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/colorAccent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="NotSibling" />
+
+            <ImageView
+                android:id="@+id/play"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:elevation="20dp"
+                android:src="@drawable/ic_speaker_filled_audio_tool"
+                app:layout_constraintBottom_toBottomOf="@+id/sound"
+                app:layout_constraintEnd_toEndOf="@+id/sound"
+                app:layout_constraintStart_toStartOf="@+id/sound"
+                app:layout_constraintTop_toTopOf="@+id/sound" />
 
             <View
                 android:id="@+id/divider3"

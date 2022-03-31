@@ -5388,7 +5388,7 @@
         <item>上げる</item>
         <item>朝</item>
         <item>朝御飯</item>
-        <item>あさって</item>
+        <item>明後日</item>
         <item>足</item>
         <item>明日</item>
         <item>あそこ</item>
@@ -5402,20 +5402,20 @@
         <item>厚い</item>
         <item>あっち</item>
         <item>後</item>
-        <item>あなた</item>
+        <item>貴方</item>
         <item>兄</item>
         <item>姉</item>
         <item>あの</item>
         <item>あの</item>
         <item>アパート</item>
-        <item>あびる</item>
+        <item>浴びる</item>
         <item>危ない</item>
         <item>甘い</item>
-        <item>あまり</item>
+        <item>余り</item>
         <item>雨</item>
         <item>飴</item>
         <item>洗う</item>
-        <item>ある</item>
+        <item>有る</item>
         <item>歩く</item>
         <item>あれ</item>
         <item>いい/よい</item>
@@ -5433,8 +5433,8 @@
         <item>痛い</item>
         <item>一</item>
         <item>一日</item>
-        <item>いちばん</item>
-        <item>いつ</item>
+        <item>一番</item>
+        <item>何時</item>
         <item>五日</item>
         <item>一緒</item>
         <item>五つ</item>
@@ -5468,7 +5468,7 @@
         <item>駅</item>
         <item>エレベーター</item>
         <item>鉛筆</item>
-        <item>おいしい</item>
+        <item>美味しい</item>
         <item>多い</item>
         <item>大きい</item>
         <item>大きな</item>
@@ -5495,7 +5495,7 @@
         <item>一昨日</item>
         <item>一昨年</item>
         <item>大人</item>
-        <item>おなか</item>
+        <item>お腹</item>
         <item>同じ</item>
         <item>お兄さん</item>
         <item>お姉さん</item>
@@ -5504,9 +5504,9 @@
         <item>お風呂</item>
         <item>お弁当</item>
         <item>覚える</item>
-        <item>おまわりさん</item>
+        <item>お巡りさん</item>
         <item>重い</item>
-        <item>おもしろい</item>
+        <item>面白い</item>
         <item>泳ぐ</item>
         <item>降りる</item>
         <item>終る</item>
@@ -5573,8 +5573,8 @@
         <item>切る</item>
         <item>着る</item>
         <item>きれい</item>
-        <item>キロ/キログラム</item>
-        <item>キロ/キロメートル</item>
+        <item>キログラム</item>
+        <item>キロメートル</item>
         <item>銀行</item>
         <item>金曜日</item>
         <item>薬</item>

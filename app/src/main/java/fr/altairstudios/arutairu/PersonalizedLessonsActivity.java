@@ -16,6 +16,7 @@ import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -45,6 +46,7 @@ import fr.altairstudios.arutairu.databinding.ActivityPersonalizedLessonsBinding;
 public class PersonalizedLessonsActivity extends AppCompatActivity {
 
     private ActivityPersonalizedLessonsBinding binding;
+    private Button mTuto;
     private ListView listView;
     private TextView mEmptyMessage;
     private ImageView mEmptyLogo;
@@ -259,6 +261,16 @@ public class PersonalizedLessonsActivity extends AppCompatActivity {
         listView = findViewById(R.id.listLessons);
         mEmptyLogo = findViewById(R.id.emptyLogo);
         mEmptyMessage = findViewById(R.id.emptyMessage);
+        mTuto = findViewById(R.id.tutorial);
+
+        mTuto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://altair-studios.fr/tutorial"); // missing 'http://' will cause crashed
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
 
         try {
             loadCustom();
