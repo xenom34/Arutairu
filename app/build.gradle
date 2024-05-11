@@ -8,7 +8,7 @@ android {
         applicationId "fr.altairstudios.arutairu"
         minSdkVersion 23
         targetSdk 34
-        versionCode 113
+        versionCode 114
         versionName "1.5"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
