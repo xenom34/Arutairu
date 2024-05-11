@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,20 +29,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.billingclient.api.BillingClient;
-import com.android.billingclient.api.BillingClientStateListener;
-import com.android.billingclient.api.BillingResult;
-import com.android.billingclient.api.Purchase;
-import com.android.billingclient.api.PurchasesUpdatedListener;
-import com.android.billingclient.api.SkuDetailsParams;
-import com.google.android.gms.ads.AdError;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.FullScreenContentCallback;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
-
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -53,34 +41,13 @@ public class MainActivity extends AppCompatActivity {
     private ImageView mCurrentLanguage;
     private com.google.android.material.textview.MaterialTextView mWelcome;
     private TextView mArutairu;
-    private AdRequest adRequest;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
     private com.google.android.material.button.MaterialButton mStart, mRequired;
     private Animation fadeAltair2, fadeAltair3;
     private final ShuffleBg shuffleBg = new ShuffleBg();
     private boolean executed = false;
     private TextToSpeech textToSpeech;
-    private InterstitialAd mInterstitialAd;
     static int VERSION_CODE = 35;
-    private final PurchasesUpdatedListener purchaseUpdateListener = new PurchasesUpdatedListener() {
-        @Override
-        public void onPurchasesUpdated(BillingResult billingResult, List<Purchase> purchases) {
-            if (!(billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_TIMEOUT || billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_UNAVAILABLE)) {
-
-
-                // To be implemented in a later section.
-                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                    if (purchases.get(0).getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
-                        sharedPreferences.edit().putBoolean("POLARIS", true).apply();
-                    }
-                } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
-                    sharedPreferences.edit().putBoolean("POLARIS", true).apply();
-                } else {
-                    sharedPreferences.edit().putBoolean("POLARIS", false).apply();
-                }
-            }
-        }
-    };
 
     @Override
     protected void onStop() {
@@ -104,17 +71,6 @@ public class MainActivity extends AppCompatActivity {
         Configuration conf = res.getConfiguration();
         sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
 
-        adRequest = new AdRequest.Builder()
-                .addKeyword(getString(R.string.japanKWords))
-                .addKeyword("nihongo")
-                .addKeyword("tokyo")
-                .addKeyword("manga")
-                .addKeyword("anime")
-                .addKeyword(getString(R.string.gameKWord))
-                .addKeyword(getString(R.string.languageKWord))
-                .addKeyword(getString(R.string.learnKWord))
-                .addKeyword(getString(R.string.travelKWord)).build();
-
         /*FirebaseMessaging.getInstance().getToken()
                 .addOnCompleteListener(new OnCompleteListener<String>() {
                     @Override
@@ -134,44 +90,6 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("HEY !", String.valueOf(sharedPreferences.getBoolean("POLARIS", false)));
 
-        if (!sharedPreferences.getBoolean("POLARIS", false)){
-            InterstitialAd.load(this,"ca-app-pub-9369103706924521/9128046879", adRequest, new InterstitialAdLoadCallback() {
-                @Override
-                public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                    // The mInterstitialAd reference will be null until
-                    // an ad is loaded.
-                    mInterstitialAd = interstitialAd;
-                    mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback(){
-                        @Override
-                        public void onAdDismissedFullScreenContent() {
-                            // Called when fullscreen content is dismissed.
-                            Log.d("TAG", "The ad was dismissed.");
-                        }
-
-                        @Override
-                        public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
-                            // Called when fullscreen content failed to show.
-                            Log.d("TAG", "The ad failed to show.");
-                        }
-
-                        @Override
-                        public void onAdShowedFullScreenContent() {
-                            // Called when fullscreen content is shown.
-                            // Make sure to set your reference to null so you don't
-                            // show it a second time.
-                            mInterstitialAd = null;
-                            Log.d("TAG", "The ad was shown.");
-                        }
-                    });
-                }
-
-                @Override
-                public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                    // Handle the error
-                    mInterstitialAd = null;
-                }
-            });
-        }
             /*mInterstitialAd = new InterstitialAd(this);
             mInterstitialAd.setAdUnitId("ca-app-pub-9369103706924521/9128046879");
             mInterstitialAd.loadAd(new AdRequest.Builder()
@@ -241,22 +159,11 @@ public class MainActivity extends AppCompatActivity {
         mBg.setAlpha(0f);
 
         mStart.setOnClickListener(v -> {
-            if (!sharedPreferences.getBoolean("POLARIS", false)){
-                if (mInterstitialAd != null) {
-                    Intent intent = new Intent(getBaseContext(), HomeActivity.class);
-                    startActivity(intent);
-                    mInterstitialAd.show(MainActivity.this);
-                    finish();
-                }else{
-                    Intent intent = new Intent(getBaseContext(), HomeActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            }else{
+
                 Intent intent = new Intent(getBaseContext(), HomeActivity.class);
                 startActivity(intent);
                 finish();
-            }
+
         });
 
         mRequired.setOnClickListener(v -> languageDialog());
@@ -422,12 +329,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        MobileAds.initialize(this, initializationStatus -> {
-
-        });
-
-        checkPurchased();
-
         if (!executed) {
 
             Animation fadeAltair =
@@ -446,62 +347,6 @@ public class MainActivity extends AppCompatActivity {
             }, 1500);
         }
 
-    }
-
-    private void checkPurchased(){
-        final BillingClient mBillingClient;
-        final Activity activity = this;
-
-        mBillingClient = BillingClient.newBuilder(activity)
-                .setListener(purchaseUpdateListener)
-                .enablePendingPurchases()
-                .build();
-
-        mBillingClient.startConnection(new BillingClientStateListener() {
-            @Override
-            public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
-                if (billingResult.getResponseCode() ==  BillingClient.BillingResponseCode.OK) {
-                    // The BillingClient is ready. You can query purchases here.
-                    List<String> skuList = new ArrayList<>();
-                    skuList.add("no_ads");
-                    SkuDetailsParams.Builder params = SkuDetailsParams.newBuilder();
-                    params.setSkusList(skuList).setType(BillingClient.SkuType.INAPP);
-                    /*mBillingClient.queryPurchaseHistoryAsync(BillingClient.SkuType.INAPP,
-                            new PurchaseHistoryResponseListener() {
-                                @Override
-                                public void onPurchaseHistoryResponse(@NonNull BillingResult billingResult, @Nullable List<PurchaseHistoryRecord> list) {
-                                    if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED
-                                            && list != null) {
-                                        Toast.makeText(activity, "LICENSE OK", Toast.LENGTH_SHORT).show();
-                                        sharedPreferences.edit().putBoolean("POLARIS", true).apply();
-                                    }
-                                }});*/
-                    mBillingClient.querySkuDetailsAsync(params.build(),
-                            (billingResult1, skuDetailsList) -> {
-                                int responseCode = 1000;
-                                assert skuDetailsList != null;
-                                if (skuDetailsList.isEmpty()) {
-                                    Toast.makeText(getApplicationContext(), "Connexion impossible", Toast.LENGTH_SHORT).show();
-                                }
-                                if (billingResult1.getResponseCode() == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
-                                    Toast.makeText(activity, "LICENSE OK", Toast.LENGTH_SHORT).show();
-                                    sharedPreferences.edit().putBoolean("POLARIS", true).apply();
-                                }
-                            });
-                }else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_UNAVAILABLE){
-                    Toast.makeText(getApplicationContext(), "Service indisponible", Toast.LENGTH_SHORT).show();
-                }else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_DISCONNECTED){
-                    Toast.makeText(getApplicationContext(), "Service déconnecté", Toast.LENGTH_SHORT).show();
-                } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_TIMEOUT){
-                    Toast.makeText(getApplicationContext(), "Timeout", Toast.LENGTH_SHORT).show();
-                }
-            }
-            @Override
-            public void onBillingServiceDisconnected() {
-                // Try to restart the connection on the next request to
-                // Google Play by calling the startConnection() method.
-            }
-        });
     }
 
     private void showMenu() {

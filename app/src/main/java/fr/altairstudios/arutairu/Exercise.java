@@ -1,7 +1,6 @@
 package fr.altairstudios.arutairu;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,16 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.gms.ads.AdError;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.FullScreenContentCallback;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textview.MaterialTextView;
@@ -34,9 +26,9 @@ import java.util.Random;
 public class Exercise extends AppCompatActivity {
     private TextInputEditText mAnswer;
     private MaterialButton mSubmit;
+    private OnBackPressedDispatcher onBackPressedDispatcher;
     private ImageView mcheck;
     SelectedItemList selectedItemList;
-    private InterstitialAd mInterstitialAd;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
     private MaterialTextView mText, mState;
     private final LessonsStorage lessonsStorage = new LessonsStorage();
@@ -48,7 +40,6 @@ public class Exercise extends AppCompatActivity {
     private String mAnswerText;
     LessonsCompleted lessonsCompleted;
     private SharedPreferences sharedPreferences;
-    private AdRequest adRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,59 +47,16 @@ public class Exercise extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
 
-        if (!sharedPreferences.getBoolean("POLARIS", false)){
-            setContentView(R.layout.activity_exercise);
-            AdView mAdView = findViewById(R.id.adViewExercise);
-            adRequest = new AdRequest.Builder()
-                    .addKeyword(getString(R.string.japanKWords))
-                    .addKeyword("nihongo")
-                    .addKeyword("tokyo")
-                    .addKeyword("manga")
-                    .addKeyword("anime")
-                    .addKeyword(getString(R.string.gameKWord))
-                    .addKeyword(getString(R.string.languageKWord))
-                    .addKeyword(getString(R.string.learnKWord))
-                    .addKeyword(getString(R.string.travelKWord)).build();
-            InterstitialAd.load(this,"ca-app-pub-9369103706924521/2427690661", adRequest, new InterstitialAdLoadCallback() {
-                @Override
-                public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                    // The mInterstitialAd reference will be null until
-                    // an ad is loaded.
-                    mInterstitialAd = interstitialAd;
-                    mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback(){
-                        @Override
-                        public void onAdDismissedFullScreenContent() {
-                            // Called when fullscreen content is dismissed.
-                            Log.d("TAG", "The ad was dismissed.");
-                        }
+        setContentView(R.layout.activity_exercise_no_ads);
+        onBackPressedDispatcher = getOnBackPressedDispatcher();
+        onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Log.d("IHFZOFN","HIJKVBFZ");
+                exit();
+            }
+        });
 
-                        @Override
-                        public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
-                            // Called when fullscreen content failed to show.
-                            Log.d("TAG", "The ad failed to show.");
-                        }
-
-                        @Override
-                        public void onAdShowedFullScreenContent() {
-                            // Called when fullscreen content is shown.
-                            // Make sure to set your reference to null so you don't
-                            // show it a second time.
-                            mInterstitialAd = null;
-                            Log.d("TAG", "The ad was shown.");
-                        }
-                    });
-                }
-
-                @Override
-                public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                    // Handle the error
-                    mInterstitialAd = null;
-                }
-            });
-            mAdView.loadAd(adRequest);
-        }else{
-            setContentView(R.layout.activity_exercise_no_ads);
-        }
 
         lessonsCompleted = (LessonsCompleted) getIntent().getSerializableExtra("COMPLETED");
 
@@ -228,32 +176,14 @@ public class Exercise extends AppCompatActivity {
 
 
         builder.setPositiveButton(R.string.backlessons, (dialogInterface, i) -> {
-            if (!sharedPreferences.getBoolean("POLARIS", false)){
-                if (mInterstitialAd != null) {
-                    SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
-                    sharedPreferences.edit().putBoolean(Integer.toString(lesson), completed).apply();
-                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                    intent.putExtra("COMPLETED", lessonsCompleted);
-                    startActivity(intent);
-                    mInterstitialAd.show(Exercise.this);
-                    finish();
-                } else {
-                    Log.d("TAG", "The interstitial wasn't loaded yet.");
-                    SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
-                    sharedPreferences.edit().putBoolean(Integer.toString(lesson), completed).apply();
-                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                    intent.putExtra("COMPLETED", lessonsCompleted);
-                    startActivity(intent);
-                    finish();
-                }
-            }else{
+
                 SharedPreferences sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
                 sharedPreferences.edit().putBoolean(Integer.toString(lesson), completed).apply();
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 intent.putExtra("COMPLETED", lessonsCompleted);
                 startActivity(intent);
                 finish();
-            }
+
         });
 
         if (getIntent().getBooleanExtra("PRACTICE", false)){
@@ -300,7 +230,7 @@ public class Exercise extends AppCompatActivity {
 
     }
 
-    private void exit() {
+    private OnBackPressedCallback exit() {
         //before inflating the custom alert dialog layout, we will get the current activity viewgroup
         ViewGroup viewGroup = findViewById(android.R.id.content);
 
@@ -313,7 +243,7 @@ public class Exercise extends AppCompatActivity {
 
 
         builder.setPositiveButton(R.string.yes, (dialogInterface, i) -> {
-            if (sharedPreferences.getBoolean("POLARIS", false)){
+            /*if (sharedPreferences.getBoolean("POLARIS", false)){
                 if (mInterstitialAd != null) {
                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                     intent.putExtra("COMPLETED", lessonsCompleted);
@@ -325,12 +255,12 @@ public class Exercise extends AppCompatActivity {
                     startActivity(intent);
                 }
                 finish();
-            }else{
+            }*///else{
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 intent.putExtra("COMPLETED", lessonsCompleted);
                 startActivity(intent);
                 finish();
-            }
+            //}
         });
 
         builder.setTitle(R.string.exitlesson);
@@ -346,13 +276,9 @@ public class Exercise extends AppCompatActivity {
         //finally creating the alert dialog and displaying it
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+        return null;
     }
 
-    @Override
-    public void onBackPressed() {
-        exit();
-
-    }
 
     private void refresh() {
         if(!getIntent().getBooleanExtra("RETRIEVE", false)){

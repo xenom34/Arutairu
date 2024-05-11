@@ -3,6 +3,7 @@ package fr.altairstudios.arutairu;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
@@ -96,6 +97,52 @@ public class LessonsAdapter extends ArrayAdapter<Lesson> {
         //setting the view of the builder to our custom view that we already inflated
         builder.setView(dialogView);
         //builder.setNeutralButton(R.string.selector, (dialog, which) -> showChoosingWord(state-1));
+
+        builder.setNegativeButton("Flash", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                try {
+                    if (!(Integer.parseInt(min.getText() + "") < 1 || Integer.parseInt(max.getText() + "") > tempJP.length || Integer.parseInt(min.getText() + "") > Integer.parseInt(max.getText() + "") || Integer.parseInt(nb.getText() + "") < 1 || Integer.parseInt(nb.getText() + "") > tempJP.length)) {
+                        SelectedItemList selector = new SelectedItemList();
+
+                        Random random = new Random();
+                        int randomNumber;
+                        Vector<Integer> indexes = new Vector<>();
+
+                        for (int j = Integer.parseInt(min.getText() + "") - 1; j != Integer.parseInt(max.getText() + ""); j++) {
+                             indexes.add(j);
+                        }
+
+                        int size = Integer.parseInt(nb.getText().toString());
+
+                        for (int j = 0; j != size; j++) {
+                            randomNumber = indexes.elementAt(random.nextInt(indexes.size()));
+                            selector.addJp(tempJP[randomNumber]);
+                            selector.addRomaji(tempRomaji[randomNumber]);
+                            selector.addFrench(tempFr[randomNumber]);
+                            selector.addTts(tempJP[randomNumber]);
+                            selector.addCorrespondingIndex(randomNumber);
+                            indexes.removeElement(randomNumber);
+                        }
+
+                        selector.setCorrespondingLesson(state);
+
+                        Intent intent = new Intent(activity, FlashCardsActivity.class);
+                        intent.putExtra("LESSON", selector);
+                        intent.putExtra("RETRIEVE", true);
+                        intent.putExtra("ROMAJI", true);
+                        intent.putExtra("FIRST", revisionDialog);
+                        intent.putExtra("CUSTOM", true);
+                        sharedPreferences.edit().putBoolean(FIRST_REVISION, false).apply();
+                        activity.startActivity(intent);
+                        activity.finish();
+                    }
+                }catch (Exception e){
+                    //showErrorDialog();
+                    Log.d("DIALOG", e.getMessage());
+                }
+            }
+        });
 
         builder.setPositiveButton(R.string.ctipar, (dialog, which) -> {
             try {

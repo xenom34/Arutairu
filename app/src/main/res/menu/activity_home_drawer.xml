@@ -21,10 +21,10 @@
                         android:icon="@drawable/ic_baseline_record_voice_over_24"
                         android:title="@string/tts_voices" />
 
-                    <item
+                     <!--<item
                         android:id="@+id/nav_perso"
                         android:icon="@drawable/ic_file"
-                        android:title="@string/le_ons_personnalis_es" />
+                        android:title="@string/le_ons_personnalis_es" /> -->
                 </group>
             </menu>
         </item>
@@ -226,10 +226,6 @@
             <menu>
                 <group
                     android:checkableBehavior="single">
-                    <item
-                        android:id="@+id/nav_no_ads"
-                        android:icon="@drawable/ic_stat_name"
-                        android:title="@string/remove_ads" />
                     <item
                         android:id="@+id/nav_rate"
                         android:icon="@drawable/ic_baseline_star_24"

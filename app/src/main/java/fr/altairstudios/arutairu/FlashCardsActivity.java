@@ -18,17 +18,11 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.gms.ads.AdError;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.FullScreenContentCallback;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.material.card.MaterialCardView;
 
 import java.util.Objects;
@@ -36,8 +30,9 @@ import java.util.Random;
 
 public class FlashCardsActivity extends AppCompatActivity {
     private Boolean mFirst, mNextAutoState, mIsPlayingAudio, mShowError, isTtsActive, mAnswer;
+    private OnBackPressedDispatcher onBackPressedDispatcher;
+
     private final Object o = new Object();
-    private InterstitialAd mInterstitialAd;
     private Animation fadeAltair2, fadeAltair3;
     private int state = 0;
     private SharedPreferences sharedPreferences;
@@ -55,8 +50,6 @@ public class FlashCardsActivity extends AppCompatActivity {
     private AudioManager am;
     private View mBackground;
     private int focusStatus;
-    private AdView mAdView;
-    private AdRequest adRequest;
     private MaterialCardView mCard;
     boolean polaris = false;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
@@ -75,60 +68,17 @@ public class FlashCardsActivity extends AppCompatActivity {
         fadeAltair2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fadeout);
         fadeAltair3 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fadein);
 
-        if (!polaris){
-            setContentView(R.layout.activity_flash_cards);
-            mAdView = findViewById(R.id.adViewRevision);
-            adRequest = new AdRequest.Builder()
-                    .addKeyword(getString(R.string.japanKWords))
-                    .addKeyword("nihongo")
-                    .addKeyword("tokyo")
-                    .addKeyword("manga")
-                    .addKeyword("anime")
-                    .addKeyword(getString(R.string.gameKWord))
-                    .addKeyword(getString(R.string.languageKWord))
-                    .addKeyword(getString(R.string.learnKWord))
-                    .addKeyword(getString(R.string.travelKWord)).build();
-            mAdView.loadAd(adRequest);
+        onBackPressedDispatcher = getOnBackPressedDispatcher();
+        onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                showDialog();
+            }
+        });
 
-            InterstitialAd.load(this,"ca-app-pub-9369103706924521/2427690661", adRequest, new InterstitialAdLoadCallback() {
-                @Override
-                public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                    // The mInterstitialAd reference will be null until
-                    // an ad is loaded.
-                    mInterstitialAd = interstitialAd;
-                    mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback(){
-                        @Override
-                        public void onAdDismissedFullScreenContent() {
-                            // Called when fullscreen content is dismissed.
-                            Log.d("TAG", "The ad was dismissed.");
-                        }
+        setContentView(R.layout.activity_flash_cards);
 
-                        @Override
-                        public void onAdFailedToShowFullScreenContent(AdError adError) {
-                            // Called when fullscreen content failed to show.
-                            Log.d("TAG", "The ad failed to show.");
-                        }
 
-                        @Override
-                        public void onAdShowedFullScreenContent() {
-                            // Called when fullscreen content is shown.
-                            // Make sure to set your reference to null so you don't
-                            // show it a second time.
-                            mInterstitialAd = null;
-                            Log.d("TAG", "The ad was shown.");
-                        }
-                    });
-                }
-
-                @Override
-                public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                    // Handle the error
-                    mInterstitialAd = null;
-                }
-            });
-        }else{
-            setContentView(R.layout.activity_flash_cards);
-        }
         mNextAutoState = false;
         mIsPlayingAudio = false;
         isTtsActive = false;
@@ -306,16 +256,11 @@ public class FlashCardsActivity extends AppCompatActivity {
             if(getIntent().getBooleanExtra("REVISION", false)){
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 if (!sharedPreferences.getBoolean("POLARIS", false)){
-                    if(mInterstitialAd != null){
-                        intent.putExtra("COMPLETED", lessonsCompleted);
-                        startActivity(intent);
-                        mInterstitialAd.show(FlashCardsActivity.this);
-                        finish();
-                    }else{
+
                         intent.putExtra("COMPLETED", lessonsCompleted);
                         startActivity(intent);
                         finish();
-                    }
+
                 }else{
                     intent.putExtra("COMPLETED", lessonsCompleted);
                     startActivity(intent);
@@ -450,11 +395,6 @@ public class FlashCardsActivity extends AppCompatActivity {
         //finally creating the alert dialog and displaying it
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-    }
-
-    @Override
-    public void onBackPressed() {
-        showDialog();
     }
 
     private void refresh() {

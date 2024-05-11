@@ -17,16 +17,11 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.ads.AdError;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.FullScreenContentCallback;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Locale;
@@ -37,8 +32,8 @@ public class Revision extends AppCompatActivity {
     private com.google.android.material.floatingactionbutton.FloatingActionButton mSound;
     TextToSpeech t1, t2;
     private Boolean mFirst, mNextAutoState, mIsPlayingAudio, mShowError, isTtsActive;
+    private OnBackPressedDispatcher onBackPressedDispatcher;
     private final Object o = new Object();
-    private InterstitialAd mInterstitialAd;
     private int state = 0;
     private SharedPreferences sharedPreferences;
     private int max, lesson;
@@ -53,8 +48,6 @@ public class Revision extends AppCompatActivity {
     private Thread execute, fExecute;
     private AudioManager am;
     private int focusStatus;
-    private AdView mAdView;
-    private AdRequest adRequest;
     boolean polaris = false;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
 
@@ -67,61 +60,17 @@ public class Revision extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
         polaris = sharedPreferences.getBoolean("POLARIS", false);
+        onBackPressedDispatcher = getOnBackPressedDispatcher();
+        onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                showDialog();
+            }
+        });
 
-        if (!sharedPreferences.getBoolean("POLARIS", false)){
-            setContentView(R.layout.activity_revision);
-            mAdView = findViewById(R.id.adViewRevision);
-            adRequest = new AdRequest.Builder()
-                    .addKeyword(getString(R.string.japanKWords))
-                    .addKeyword("nihongo")
-                    .addKeyword("tokyo")
-                    .addKeyword("manga")
-                    .addKeyword("anime")
-                    .addKeyword(getString(R.string.gameKWord))
-                    .addKeyword(getString(R.string.languageKWord))
-                    .addKeyword(getString(R.string.learnKWord))
-                    .addKeyword(getString(R.string.travelKWord)).build();
-            mAdView.loadAd(adRequest);
 
-            InterstitialAd.load(this,"ca-app-pub-9369103706924521/2427690661", adRequest, new InterstitialAdLoadCallback() {
-                @Override
-                public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                    // The mInterstitialAd reference will be null until
-                    // an ad is loaded.
-                    mInterstitialAd = interstitialAd;
-                    mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback(){
-                        @Override
-                        public void onAdDismissedFullScreenContent() {
-                            // Called when fullscreen content is dismissed.
-                            Log.d("TAG", "The ad was dismissed.");
-                        }
-
-                        @Override
-                        public void onAdFailedToShowFullScreenContent(AdError adError) {
-                            // Called when fullscreen content failed to show.
-                            Log.d("TAG", "The ad failed to show.");
-                        }
-
-                        @Override
-                        public void onAdShowedFullScreenContent() {
-                            // Called when fullscreen content is shown.
-                            // Make sure to set your reference to null so you don't
-                            // show it a second time.
-                            mInterstitialAd = null;
-                            Log.d("TAG", "The ad was shown.");
-                        }
-                    });
-                }
-
-                @Override
-                public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                    // Handle the error
-                    mInterstitialAd = null;
-                }
-            });
-        }else{
             setContentView(R.layout.activity_revision_no_ads);
-        }
+
         mNextAutoState = false;
         mIsPlayingAudio = false;
         isTtsActive = false;
@@ -174,6 +123,14 @@ public class Revision extends AppCompatActivity {
         mStop = findViewById(R.id.stop);
         mStop.setVisibility(View.INVISIBLE);
         mStop.setClickable(false);
+
+        mShowJpn.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                startActivity(new Intent(getApplicationContext(),WebActivity.class).putExtra("WANIKANI","https://www.wanikani.com/vocabulary/"+mShowJpn.getText()));
+                return true;
+            }
+        });
 
         mNext.setOnClickListener(v -> up());
 
@@ -412,22 +369,10 @@ public class Revision extends AppCompatActivity {
             refresh();
         }else{
             if(getIntent().getBooleanExtra("REVISION", false)){
-                if (!sharedPreferences.getBoolean("POLARIS", false)){
-                    if(mInterstitialAd != null){
-                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                        startActivity(intent);
-                        mInterstitialAd.show(Revision.this);
-                        finish();
-                    }else{
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                         startActivity(intent);
                         finish();
-                    }
-                }else{
-                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
+
             }else{
                 Intent intent = new Intent(getApplicationContext(), Exercise.class);
                 intent.putExtra("MAX", max);
@@ -554,16 +499,11 @@ public class Revision extends AppCompatActivity {
             }
             stopAudio();
             if (!sharedPreferences.getBoolean("POLARIS", false)){
-                if (mInterstitialAd != null) {
-                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                    startActivity(intent);
-                    mInterstitialAd.show(Revision.this);
-                    finish();
-                }else{
+
                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(intent);
                     finish();
-                }
+
             }else{
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
@@ -584,11 +524,6 @@ public class Revision extends AppCompatActivity {
         //finally creating the alert dialog and displaying it
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-    }
-
-    @Override
-    public void onBackPressed() {
-        showDialog();
     }
 
     private void refresh() {

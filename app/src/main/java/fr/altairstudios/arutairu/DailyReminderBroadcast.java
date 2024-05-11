@@ -6,7 +6,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
@@ -38,7 +40,7 @@ public class DailyReminderBroadcast extends BroadcastReceiver {
         yersterday.add(Calendar.DATE, -1);
 
 
-        if (sharedPreferences.getBoolean("NOTIFS", false) && c.getTimeInMillis() != sharedPreferences.getLong("CALENDAR", yersterday.getTimeInMillis())){
+        if (sharedPreferences.getBoolean("NOTIFS", false) && c.getTimeInMillis() != sharedPreferences.getLong("CALENDAR", yersterday.getTimeInMillis())) {
             NotificationManagerCompat nManager = NotificationManagerCompat.from(context);
 
             Intent dailySurprise = new Intent(context, MainActivity.class);
@@ -56,7 +58,17 @@ public class DailyReminderBroadcast extends BroadcastReceiver {
                     .setAutoCancel(true)
                     .build();
 
-            nManager.notify(100,notification);
+            if (ActivityCompat.checkSelfPermission(context, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
+            nManager.notify(100, notification);
             sharedPreferences.edit().putLong("CALENDAR", c.getTimeInMillis()).apply();
         }
     }

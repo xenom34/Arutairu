@@ -8,7 +8,6 @@ import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
@@ -43,17 +42,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.ui.AppBarConfiguration;
 
-import com.android.billingclient.api.AcknowledgePurchaseParams;
-import com.android.billingclient.api.AcknowledgePurchaseResponseListener;
-import com.android.billingclient.api.BillingClient;
-import com.android.billingclient.api.BillingClientStateListener;
-import com.android.billingclient.api.BillingFlowParams;
-import com.android.billingclient.api.BillingResult;
-import com.android.billingclient.api.Purchase;
-import com.android.billingclient.api.PurchasesUpdatedListener;
-import com.android.billingclient.api.SkuDetails;
-import com.android.billingclient.api.SkuDetailsParams;
-import com.android.billingclient.api.SkuDetailsResponseListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textview.MaterialTextView;
@@ -77,7 +65,6 @@ public class HomeActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private final LessonsStorage lessonsStorage = new LessonsStorage();
     private int maxWords;
-    private BillingClient mBillingClient;
     private boolean firstExec, revisionDialog;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
     public static final String FIRST_EXEC = "firsts1";
@@ -95,33 +82,6 @@ public class HomeActivity extends AppCompatActivity {
     private Button mPractice, mTest, mRevision, mFlashCards;
     private NavigationView navigationView;
     private MaterialTextView mUnavailableKanji;
-    private final PurchasesUpdatedListener purchaseUpdateListener = new PurchasesUpdatedListener() {
-        @Override
-        public void onPurchasesUpdated(BillingResult billingResult, List<Purchase> purchases) {
-            if (!(billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_TIMEOUT || billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_UNAVAILABLE)) {
-
-                // To be implemented in a later section.
-                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                    if (purchases.get(0).getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
-                        Toast.makeText(getApplicationContext(), "PURCHASED", Toast.LENGTH_SHORT).show();
-                        sharedPreferences.edit().putBoolean("POLARIS", true).apply();
-                        AcknowledgePurchaseParams acknowledgePurchaseParams =
-                                AcknowledgePurchaseParams.newBuilder()
-                                        .setPurchaseToken(purchases.get(0).getPurchaseToken())
-                                        .build();
-                        showThanksDialog();
-                        AcknowledgePurchaseResponseListener acknowledgePurchaseResponseListener = billingResult1 -> {};
-                        mBillingClient.acknowledgePurchase(acknowledgePurchaseParams, acknowledgePurchaseResponseListener);
-                    }
-                } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
-                    Toast.makeText(getApplicationContext(), "Vous avez déjà ce produit", Toast.LENGTH_SHORT).show();
-                    sharedPreferences.edit().putBoolean("POLARIS", true).apply();
-                } else {
-                    sharedPreferences.edit().putBoolean("POLARIS", false).apply();
-                }
-            }
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,11 +96,6 @@ public class HomeActivity extends AppCompatActivity {
         res.updateConfiguration(conf, dm);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        mBillingClient = BillingClient.newBuilder(this)
-                .setListener(purchaseUpdateListener)
-                .enablePendingPurchases()
-                .build();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setBackgroundColor(getResources().getColor(R.color.darkGrey));
@@ -181,65 +136,14 @@ public class HomeActivity extends AppCompatActivity {
             }else if(item.getItemId() == R.id.nav_mail){
                 sendEmail();
                 return false;
-            }else if(item.getItemId() == R.id.nav_no_ads){
-                if (sharedPreferences.getBoolean("POLARIS", false)){
-                    Toast.makeText(getApplicationContext(), R.string.already_purchased, Toast.LENGTH_SHORT).show();
-                }else {
-                    mBillingClient.startConnection(new BillingClientStateListener() {
-                        @Override
-                        public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
-                            if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                                // The BillingClient is ready. You can query purchases here.
-                                List<String> skuList = new ArrayList<>();
-                                skuList.add("no_ads");
-                                SkuDetailsParams.Builder params = SkuDetailsParams.newBuilder();
-                                params.setSkusList(skuList).setType(BillingClient.SkuType.INAPP);
-                                mBillingClient.querySkuDetailsAsync(params.build(),
-                                        (billingResult1, skuDetailsList) -> {
-                                            int responseCode = 1000;
-                                            if (skuDetailsList.isEmpty()) {
-                                                Toast.makeText(getApplicationContext(), "Connexion impossible", Toast.LENGTH_SHORT).show();
-                                            } else {
-                                                BillingFlowParams billingFlowParams = BillingFlowParams.newBuilder()
-                                                        .setSkuDetails(skuDetailsList.get(0))
-                                                        .build();
-                                                responseCode = mBillingClient.launchBillingFlow(HomeActivity.this, billingFlowParams).getResponseCode();
-                                            }
-                                            if (responseCode == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
-                                                Toast.makeText(HomeActivity.this, "LICENSE OK", Toast.LENGTH_SHORT).show();
-                                                sharedPreferences.edit().putBoolean("POLARIS", true).apply();
-                                            }
-                                        });
-                            } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_UNAVAILABLE) {
-                                Toast.makeText(getApplicationContext(), "Service indisponible", Toast.LENGTH_SHORT).show();
-                            } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_DISCONNECTED) {
-                                Toast.makeText(getApplicationContext(), "Service déconnecté", Toast.LENGTH_SHORT).show();
-                            } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_TIMEOUT) {
-                                Toast.makeText(getApplicationContext(), "Timeout", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Erreur", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-
-                        @Override
-                        public void onBillingServiceDisconnected() {
-                            // Try to restart the connection on the next request to
-                            // Google Play by calling the startConnection() method.
-                        }
-                    });
-                }
-
-                return false;
             }else if(item.getItemId() == R.id.nav_tts){
                 loadVoices();
                 return false;
             }else if(item.getItemId() == R.id.nav_notification){
                 showNotificationDialog();
                 return false;
-            }else if (item.getItemId() == R.id.nav_perso){
-                Intent intent = new Intent(getBaseContext(), PersonalizedLessonsActivity.class);
-                startActivity(intent);
-            }else{
+            }
+            else{
                 initMenu(item.getItemId());
                 refresh(state, item.getTitle());
             }
@@ -1017,7 +921,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void enableNotification(int hour, int minute) {
         Intent intent = new Intent(getBaseContext(), DailyReminderBroadcast.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), 100, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getBaseContext(), 100, intent, PendingIntent.FLAG_IMMUTABLE);
 
         AlarmManager alarmManager = (AlarmManager) getBaseContext().getSystemService(ALARM_SERVICE);
 

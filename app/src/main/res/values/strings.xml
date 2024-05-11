@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Arutairu</string>
+    <string name="app_name">Arutairu</string>
     <string name="jpAltair" translatable="false">アルタイル</string>
     <string name="textwelcome">Hey welcome! Thank you for downloading this application!</string>
     <string name="le_ons">Lessons</string>
