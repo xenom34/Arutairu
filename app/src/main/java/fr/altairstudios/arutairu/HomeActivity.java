@@ -1231,7 +1231,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     /**
-     * Ici, on récupère l'objet stocké dans "saves.dat"
+     * Here, we save the desired serializable object in "saves.dat".
      * @throws IOException
      * @throws ClassNotFoundException
      */

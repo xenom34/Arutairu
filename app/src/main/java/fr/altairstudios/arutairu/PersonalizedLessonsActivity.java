@@ -383,7 +383,7 @@ public class PersonalizedLessonsActivity extends AppCompatActivity {
     }
 
     /**
-     * Ici, on sauvegarde l'objet sérialisable voulu dans "saves.dat"
+     * Here, we save the desired serializable object in "custom.dat".
      * @throws IOException
      */
     void saveCustom() throws IOException {
@@ -395,7 +395,7 @@ public class PersonalizedLessonsActivity extends AppCompatActivity {
     }
 
     /**
-     * Ici, on récupère l'objet stocké dans "saves.dat"
+     * Here, we retrieve the serializable object in "custom.dat".
      * @throws IOException
      * @throws ClassNotFoundException
      */
@@ -421,7 +421,7 @@ public class PersonalizedLessonsActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_CSV_FILE && resultCode == Activity.RESULT_OK){
             if (data == null){
-                //gérer
+                //handle
             }
 
             Uri uri = data.getData();
