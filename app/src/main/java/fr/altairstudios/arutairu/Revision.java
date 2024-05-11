@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -18,24 +17,23 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Random;
 
 public class Revision extends AppCompatActivity {
     private com.google.android.material.floatingactionbutton.FloatingActionButton mSound;
     TextToSpeech t1, t2;
-    private Boolean mFirst, mNextAutoState, mIsPlayingAudio, mShowError, isTtsActive;;
-    private Object o = new Object();
-    private InterstitialAd mInterstitialAd;
+    private Boolean mFirst, mNextAutoState, mIsPlayingAudio, mShowError, isTtsActive;
+    private OnBackPressedDispatcher onBackPressedDispatcher;
+    private final Object o = new Object();
     private int state = 0;
     private SharedPreferences sharedPreferences;
     private int max, lesson;
@@ -50,7 +48,6 @@ public class Revision extends AppCompatActivity {
     private Thread execute, fExecute;
     private AudioManager am;
     private int focusStatus;
-    private AdView mAdView;
     boolean polaris = false;
     public static final String ARUTAIRU_SHARED_PREFS = "ArutairuSharedPrefs";
 
@@ -63,45 +60,17 @@ public class Revision extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         sharedPreferences = getSharedPreferences(ARUTAIRU_SHARED_PREFS, MODE_PRIVATE);
         polaris = sharedPreferences.getBoolean("POLARIS", false);
+        onBackPressedDispatcher = getOnBackPressedDispatcher();
+        onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                showDialog();
+            }
+        });
 
-        if (!sharedPreferences.getBoolean("POLARIS", false)){
-            setContentView(R.layout.activity_revision);
-            mAdView = findViewById(R.id.adViewRevision);
-            AdRequest adRequest = new AdRequest.Builder()
-                    .addKeyword(getString(R.string.japanKWords))
-                    .addKeyword("nihongo")
-                    .addKeyword("tokyo")
-                    .addKeyword("manga")
-                    .addKeyword("anime")
-                    .addKeyword(getString(R.string.gameKWord))
-                    .addKeyword(getString(R.string.languageKWord))
-                    .addKeyword(getString(R.string.learnKWord))
-                    .addKeyword(getString(R.string.travelKWord)).build();
-            mAdView.loadAd(adRequest);
 
-            mInterstitialAd = new InterstitialAd(this);
-            mInterstitialAd.setAdUnitId("ca-app-pub-9369103706924521/2427690661");
-            mInterstitialAd.loadAd(new AdRequest.Builder()
-                    .addKeyword(getString(R.string.japanKWords))
-                    .addKeyword("nihongo")
-                    .addKeyword("tokyo")
-                    .addKeyword("manga")
-                    .addKeyword("anime")
-                    .addKeyword(getString(R.string.gameKWord))
-                    .addKeyword(getString(R.string.languageKWord))
-                    .addKeyword(getString(R.string.learnKWord))
-                    .addKeyword(getString(R.string.travelKWord)).build());
-            mInterstitialAd.setAdListener(new AdListener(){
-                @Override
-                public void onAdClosed() {
-                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            });
-        }else{
             setContentView(R.layout.activity_revision_no_ads);
-        }
+
         mNextAutoState = false;
         mIsPlayingAudio = false;
         isTtsActive = false;
@@ -120,7 +89,7 @@ public class Revision extends AppCompatActivity {
         if (!getIntent().getBooleanExtra("RETRIEVE", false)){
             max = getIntent().getIntExtra("MAX", Integer.MAX_VALUE);
             lesson = getIntent().getIntExtra("LESSON", Integer.MAX_VALUE);
-            if(getIntent().getStringExtra("LOCALE").equals("fr")){
+            if(Objects.equals(getIntent().getStringExtra("LOCALE"), "fr")){
                 mEnglish = getResources().getStringArray(lessonsStorage.getSrcRes(lesson));
             }else{
                 mEnglish = getResources().getStringArray(lessonsStorage.getEnRes(lesson));
@@ -155,143 +124,114 @@ public class Revision extends AppCompatActivity {
         mStop.setVisibility(View.INVISIBLE);
         mStop.setClickable(false);
 
-        mNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                up();
-            }
-        });
-
-        mNext.setOnLongClickListener(new View.OnLongClickListener() {
+        mShowJpn.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                state = max-3;
-                up();
+                startActivity(new Intent(getApplicationContext(),WebActivity.class).putExtra("WANIKANI","https://www.wanikani.com/vocabulary/"+mShowJpn.getText()));
                 return true;
             }
         });
 
-        mStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                stopAudio();
-            }
+        mNext.setOnClickListener(v -> up());
+
+        mNext.setOnLongClickListener(v -> {
+            state = max-3;
+            up();
+            return false;
         });
 
+        mStop.setOnClickListener(v -> stopAudio());
 
 
-        mBack.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                state = -1;
-                up();
-                return true;
-            }
+
+        mBack.setOnLongClickListener(v -> {
+            state = -1;
+            up();
+            return true;
         });
 
-        mBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                state--;
-                if (state != -1){
-                    refresh();
-                }else{
-                    state++;
-                }
+        mBack.setOnClickListener(v -> {
+            state--;
+            if (state != -1){
+                refresh();
+            }else{
+                state++;
             }
         });
         
-        t1=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                mShowError = t1.isLanguageAvailable(Locale.JAPANESE) == TextToSpeech.LANG_NOT_SUPPORTED && !sharedPreferences.getBoolean("ERROR_SHOWN", false);
+        t1=new TextToSpeech(getApplicationContext(), status -> {
+            mShowError = t1.isLanguageAvailable(Locale.JAPANESE) == TextToSpeech.LANG_NOT_SUPPORTED && !sharedPreferences.getBoolean("ERROR_SHOWN", false);
 
-                if(status != TextToSpeech.ERROR) {
-                    t1.setLanguage(Locale.JAPANESE);
-                    t1.setSpeechRate(0.9f);
-                }
+            if(status != TextToSpeech.ERROR) {
+                t1.setLanguage(Locale.JAPANESE);
+                t1.setSpeechRate(0.9f);
             }
         });
 
-        t2 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                if(status != TextToSpeech.ERROR) {
-                    t2.setLanguage(new Locale(sharedPreferences.getString("LOCALE", Locale.getDefault().getLanguage())));
-                    t2.setSpeechRate(1f);
-                }
+        t2 = new TextToSpeech(getApplicationContext(), status -> {
+            if(status != TextToSpeech.ERROR) {
+                t2.setLanguage(new Locale(Objects.requireNonNull(sharedPreferences.getString("LOCALE", Locale.getDefault().getLanguage()))));
+                t2.setSpeechRate(1f);
             }
         });
 
-        mSound.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    //Log.d("TEST", String.valueOf(t1.isLanguageAvailable(Locale.JAPAN)));
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if(!isTtsActive) {
-                            requestAudioFocusForMyApp();
-                            t1.speak(mTts[state], TextToSpeech.QUEUE_FLUSH, null, "1");
-                            do {
-                                isTtsActive = t1.isSpeaking();
-                            } while (isTtsActive);
-                            releaseAudioFocusForMyApp();
-                            Snackbar snackbar = Snackbar.make(findViewById(R.id.revisionactivity), mShowRomaji.getText(), Snackbar.LENGTH_SHORT);
-                            View view = snackbar.getView();
-                            FrameLayout.LayoutParams params =(FrameLayout.LayoutParams)view.getLayoutParams();
-                            params.gravity = Gravity.TOP;
-                            if (!polaris){
-                                params.topMargin = (int) convertDpToPx(getApplicationContext(), 96);
-                            }else{
-                                params.topMargin = (int) convertDpToPx(getApplicationContext(), 48);
-                            }
-
-                            view.setLayoutParams(params);
-                            snackbar.show();
-                        }
+        mSound.setOnClickListener(v -> {
+                //Log.d("TEST", String.valueOf(t1.isLanguageAvailable(Locale.JAPAN)));
+            new Thread(() -> {
+                if (!isTtsActive) {
+                    requestAudioFocusForMyApp();
+                    t1.speak(mTts[state], TextToSpeech.QUEUE_FLUSH, null, "1");
+                    do {
+                        isTtsActive = t1.isSpeaking();
+                    } while (isTtsActive);
+                    releaseAudioFocusForMyApp();
+                    Snackbar snackbar = Snackbar.make(findViewById(R.id.revisionactivity), mShowRomaji.getText(), Snackbar.LENGTH_SHORT);
+                    View view = snackbar.getView();
+                    FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) view.getLayoutParams();
+                    params.gravity = Gravity.TOP;
+                    if (!polaris) {
+                        params.topMargin = (int) convertDpToPx(getApplicationContext(), 96);
+                    } else {
+                        params.topMargin = (int) convertDpToPx(getApplicationContext(), 48);
                     }
-                }).start();
-            }
+
+                    view.setLayoutParams(params);
+                    snackbar.show();
+                }
+            }).start();
         });
 
-        mSound.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                mIsPlayingAudio = true;
-                mNext.setClickable(false);
-                mBack.setClickable(false);
-                mNext.setVisibility(View.INVISIBLE);
-                mBack.setVisibility(View.INVISIBLE);
-                mStop.setClickable(true);
-                mStop.setVisibility(View.VISIBLE);
-                mSound.setClickable(false);
-                mSound.setVisibility(View.INVISIBLE);
-                findViewById(R.id.play).setVisibility(View.INVISIBLE);
-                stopped = false;
+        mSound.setOnLongClickListener(v -> {
+            mIsPlayingAudio = true;
+            mNext.setClickable(false);
+            mBack.setClickable(false);
+            mNext.setVisibility(View.INVISIBLE);
+            mBack.setVisibility(View.INVISIBLE);
+            mStop.setClickable(true);
+            mStop.setVisibility(View.VISIBLE);
+            mSound.setClickable(false);
+            mSound.setVisibility(View.INVISIBLE);
+            findViewById(R.id.play).setVisibility(View.INVISIBLE);
+            stopped = false;
 
-                fExecute = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (requestAudioFocusForMyApp()){
-                            while (!stopped){
-                                synchronized (o){
-                                    try {
-                                        play();
-                                        o.wait();
-                                    }catch (InterruptedException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-
+            fExecute = new Thread(() -> {
+                if (requestAudioFocusForMyApp()) {
+                    while (!stopped) {
+                        synchronized (o) {
+                            try {
+                                play();
+                                o.wait();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
                             }
                         }
-                    }
-                });
 
-                fExecute.start();
-                return true;
-            }
+                    }
+                }
+            });
+
+            fExecute.start();
+            return true;
         });
 
         if (!getIntent().getBooleanExtra("ROMAJI", false)){
@@ -348,45 +288,39 @@ public class Revision extends AppCompatActivity {
     }
 
     private void play() {
-        execute = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                synchronized (o) {
-                    try {
-                        requestAudioFocusForMyApp();
-                        boolean isTtsActive = true;
-                        t2.speak(mShowEnglish.getText(), TextToSpeech.QUEUE_FLUSH, null, "1");
-                        do {
-                            isTtsActive = t2.isSpeaking();
-                        } while (isTtsActive);
-                        Thread.sleep(1500);
-                        t1.speak(mTts[state], TextToSpeech.QUEUE_FLUSH, null, "1");
-                        do {
-                            isTtsActive = t1.isSpeaking();
-                        } while (isTtsActive);
-                        Thread.sleep(1500);
-                        t1.speak(mTts[state], TextToSpeech.QUEUE_FLUSH, null, "1");
-                        do {
-                            isTtsActive = t1.isSpeaking();
-                        } while (isTtsActive);
-                        Thread.sleep(1500);
-                        mNextAutoState = true;
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (state+1 != max){
-                                    up();
-                                }else{
-                                    state = 0;
-                                    refresh();
-                                }
-                            }
-                        });
-                        Thread.sleep(500);
-                        o.notifyAll();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+        execute = new Thread(() -> {
+            synchronized (o) {
+                try {
+                    requestAudioFocusForMyApp();
+                    boolean isTtsActive = true;
+                    t2.speak(mShowEnglish.getText(), TextToSpeech.QUEUE_FLUSH, null, "1");
+                    do {
+                        isTtsActive = t2.isSpeaking();
+                    } while (isTtsActive);
+                    Thread.sleep(1500);
+                    t1.speak(mTts[state], TextToSpeech.QUEUE_FLUSH, null, "1");
+                    do {
+                        isTtsActive = t1.isSpeaking();
+                    } while (isTtsActive);
+                    Thread.sleep(1500);
+                    t1.speak(mTts[state], TextToSpeech.QUEUE_FLUSH, null, "1");
+                    do {
+                        isTtsActive = t1.isSpeaking();
+                    } while (isTtsActive);
+                    Thread.sleep(1500);
+                    mNextAutoState = true;
+                    runOnUiThread(() -> {
+                        if (state + 1 != max) {
+                            up();
+                        } else {
+                            state = 0;
+                            refresh();
+                        }
+                    });
+                    Thread.sleep(500);
+                    o.notifyAll();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -417,19 +351,11 @@ public class Revision extends AppCompatActivity {
         builder.setView(dialogView);
 
 
-        builder.setPositiveButton(R.string.understood, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                sharedPreferences.edit().putBoolean("ERROR_SHOWN", true).apply();
-            }
-        });
+        builder.setPositiveButton(R.string.understood, (dialogInterface, i) -> sharedPreferences.edit().putBoolean("ERROR_SHOWN", true).apply());
 
-        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialogInterface) {
-                //mSpam = 0;
-                sharedPreferences.edit().putBoolean("ERROR_SHOWN", true).apply();
-            }
+        builder.setOnDismissListener(dialogInterface -> {
+            //mSpam = 0;
+            sharedPreferences.edit().putBoolean("ERROR_SHOWN", true).apply();
         });
 
         //finally creating the alert dialog and displaying it
@@ -443,19 +369,10 @@ public class Revision extends AppCompatActivity {
             refresh();
         }else{
             if(getIntent().getBooleanExtra("REVISION", false)){
-                if (!sharedPreferences.getBoolean("POLARIS", false)){
-                    if(mInterstitialAd.isLoaded()){
-                        mInterstitialAd.show();
-                    }else{
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                         startActivity(intent);
                         finish();
-                    }
-                }else{
-                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
+
             }else{
                 Intent intent = new Intent(getApplicationContext(), Exercise.class);
                 intent.putExtra("MAX", max);
@@ -544,24 +461,18 @@ public class Revision extends AppCompatActivity {
         builder.setView(dialogView);
 
 
-        builder.setPositiveButton(R.string.understood, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if (message != 2){
-                    if (mShowError){
-                        showError();
-                    }else{
-                        showTuto(2);
-                    }
+        builder.setPositiveButton(R.string.understood, (dialogInterface, i) -> {
+            if (message != 2){
+                if (mShowError){
+                    showError();
+                }else{
+                    showTuto(2);
                 }
             }
         });
 
-        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialogInterface) {
-                //mSpam = 0;
-            }
+        builder.setOnDismissListener(dialogInterface -> {
+            //mSpam = 0;
         });
 
         //finally creating the alert dialog and displaying it
@@ -578,57 +489,41 @@ public class Revision extends AppCompatActivity {
 
         //setting the view of the builder to our custom view that we already inflated
 
-        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if (focusStatus == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
-                    releaseAudioFocusForMyApp();
-                }
-                if(execute!=null){
-                    //execute.interrupt();
-                    stopAudio();
-                }
+        builder.setPositiveButton(R.string.yes, (dialogInterface, i) -> {
+            if (focusStatus == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+                releaseAudioFocusForMyApp();
+            }
+            if(execute!=null){
+                //execute.interrupt();
                 stopAudio();
-                if (!sharedPreferences.getBoolean("POLARIS", false)){
-                    if (mInterstitialAd.isLoaded()) {
-                        mInterstitialAd.show();
-                    }else{
-                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                }else{
+            }
+            stopAudio();
+            if (!sharedPreferences.getBoolean("POLARIS", false)){
+
                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(intent);
                     finish();
-                }
+
+            }else{
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
-        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        builder.setNegativeButton(R.string.no, (dialog, which) -> {
 
-            }
         });
 
         builder.setTitle(R.string.exitlesson);
 
-        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialogInterface) {
-                //mSpam = 0;
-            }
+        builder.setOnDismissListener(dialogInterface -> {
+            //mSpam = 0;
         });
 
         //finally creating the alert dialog and displaying it
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-    }
-
-    @Override
-    public void onBackPressed() {
-        showDialog();
     }
 
     private void refresh() {

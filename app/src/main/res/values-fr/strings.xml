@@ -126,4 +126,7 @@
     <string name="languageKWord">langues</string>
     <string name="learnKWord">apprendre</string>
     <string name="travelKWord">voyage</string>
+    <string name="le_ons_personnalis_es">Leçons personnalisées</string>
+    <string name="mots">" mots"</string>
+    <string name="il_semblerait_que_vous_n_ayez_aucune_nle_on_personnalis_e_pour_le_moment">Il semblerait que vous n\'ayez pas ajouté de leçons pour le moment...</string>
 </resources>

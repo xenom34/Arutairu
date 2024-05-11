@@ -3,7 +3,7 @@ package fr.altairstudios.arutairu;
 import android.util.SparseArray;
 
 class LessonsStorage {
-    private SparseArray<Lesson> storage = new SparseArray<>();
+    private final SparseArray<Lesson> storage = new SparseArray<>();
     static final int HIRAGANA = 1;
     static final int DAKUTEN = 2;
     static final int KATAKANA = 3;
@@ -98,23 +98,23 @@ class LessonsStorage {
 
     }
     int getJpRes(int i){
-        return storage.get(i).getJpn();
+        return storage.get(i).getJpnRes();
     }
 
     int getRmRes(int i){
-        return storage.get(i).getRom();
+        return storage.get(i).getRomRes();
     }
 
     int getSrcRes(int i){
-        return storage.get(i).getSrc();
+        return storage.get(i).getSrcRes();
     }
 
     int getKjRes(int i){
-        return storage.get(i).getKj();
+        return storage.get(i).getKjRes();
     }
 
     int getEnRes(int i){
-        return storage.get(i).getEn();
+        return storage.get(i).getEnRes();
     }
 
     boolean haveRomaji(int i){

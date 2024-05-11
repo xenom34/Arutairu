@@ -181,17 +181,37 @@
 
                 </LinearLayout>
 
-                <Button
-                    android:id="@+id/evaluation"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="12dp"
-                    android:backgroundTint="@color/deepBlue"
-                    android:drawableLeft="@drawable/ic_document"
-                    android:text="@string/evaluation"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:layout_marginBottom="64dp"
-                    android:textColor="@color/white"
-                    android:textSize="12sp" />
+                    android:layout_marginHorizontal="12dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/evaluation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/deepBlue"
+                        android:drawableLeft="@drawable/ic_document"
+                        android:text="@string/evaluation"
+                        android:textColor="@color/white"
+                        android:layout_marginEnd="6dp"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/flashcards"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/green"
+                        android:text="Flashcards"
+                        android:textColor="@color/white"
+                        android:textSize="10sp" />
+                </LinearLayout>
 
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp"
+    android:id="@+id/parentLayoutLesson">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="10"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/lessonItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:text="Japonais"
+            android:textSize="20dp" />
+        <TextView
+            android:id="@+id/lessonItemSec"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:alpha="0.5"
+            android:text="French"
+            android:textSize="12dp" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/delete"
+        android:background="@null"
+        android:src="@drawable/ic_trash"
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
+
+</LinearLayout>

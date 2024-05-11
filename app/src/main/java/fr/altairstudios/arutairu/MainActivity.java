@@ -5,17 +5,18 @@ import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.ActivityNotFoundException;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.speech.tts.TextToSpeech;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,24 +29,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.billingclient.api.BillingClient;
-import com.android.billingclient.api.BillingClientStateListener;
-import com.android.billingclient.api.BillingResult;
-import com.android.billingclient.api.Purchase;
-import com.android.billingclient.api.PurchasesUpdatedListener;
-import com.android.billingclient.api.SkuDetails;
-import com.android.billingclient.api.SkuDetailsParams;
-import com.android.billingclient.api.SkuDetailsResponseListener;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     private ImageView mAltair, mBg;
@@ -59,27 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private final ShuffleBg shuffleBg = new ShuffleBg();
     private boolean executed = false;
     private TextToSpeech textToSpeech;
-    private InterstitialAd mInterstitialAd;
     static int VERSION_CODE = 35;
-    private final PurchasesUpdatedListener purchaseUpdateListener = new PurchasesUpdatedListener() {
-        @Override
-        public void onPurchasesUpdated(BillingResult billingResult, List<Purchase> purchases) {
-            if (!(billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_TIMEOUT || billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_UNAVAILABLE)) {
-
-
-                // To be implemented in a later section.
-                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                    if (purchases.get(0).getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
-                        sharedPreferences.edit().putBoolean("POLARIS", true).apply();
-                    }
-                } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
-                    sharedPreferences.edit().putBoolean("POLARIS", true).apply();
-                } else {
-                    sharedPreferences.edit().putBoolean("POLARIS", false).apply();
-                }
-            }
-        }
-    };
 
     @Override
     protected void onStop() {
@@ -120,8 +88,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });*/
 
-        if (!sharedPreferences.getBoolean("POLARIS", false)){
-            mInterstitialAd = new InterstitialAd(this);
+        Log.d("HEY !", String.valueOf(sharedPreferences.getBoolean("POLARIS", false)));
+
+            /*mInterstitialAd = new InterstitialAd(this);
             mInterstitialAd.setAdUnitId("ca-app-pub-9369103706924521/9128046879");
             mInterstitialAd.loadAd(new AdRequest.Builder()
                     .addKeyword(getString(R.string.japanKWords))
@@ -139,11 +108,12 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(getBaseContext(), HomeActivity.class);
                     startActivity(intent);
                     finish();
-                }
-            });
-        }
 
-        conf.setLocale(new Locale(sharedPreferences.getString("LOCALE", Locale.getDefault().getLanguage())));
+
+                }
+            });*/
+
+        conf.setLocale(new Locale(Objects.requireNonNull(sharedPreferences.getString("LOCALE", Locale.getDefault().getLanguage()))));
 
         if(sharedPreferences.getBoolean("RAN", true)){
             sharedPreferences.edit().putBoolean("RAN", false).apply();
@@ -169,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fadeAltair2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade2);
+        fadeAltair2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slowfadein);
         fadeAltair3 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade3);
 
         mAltair = findViewById(R.id.altair);
@@ -188,31 +158,15 @@ public class MainActivity extends AppCompatActivity {
         mBg.setImageResource(shuffleBg.choose());
         mBg.setAlpha(0f);
 
-        mStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!sharedPreferences.getBoolean("POLARIS", false)){
-                    if (mInterstitialAd.isLoaded()) {
-                        mInterstitialAd.show();
-                    }else{
-                        Intent intent = new Intent(getBaseContext(), HomeActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                }else{
-                    Intent intent = new Intent(getBaseContext(), HomeActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            }
+        mStart.setOnClickListener(v -> {
+
+                Intent intent = new Intent(getBaseContext(), HomeActivity.class);
+                startActivity(intent);
+                finish();
+
         });
 
-        mRequired.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                languageDialog();
-            }
-        });
+        mRequired.setOnClickListener(v -> languageDialog());
     }
 
     private void languageDialog() {
@@ -225,19 +179,9 @@ public class MainActivity extends AppCompatActivity {
         View french = dialogView.findViewById(R.id.french);
         View english = dialogView.findViewById(R.id.english);
 
-        french.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setLanguage("fr");
-            }
-        });
+        french.setOnClickListener(v -> setLanguage("fr"));
 
-        english.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setLanguage("en");
-            }
-        });
+        english.setOnClickListener(v -> setLanguage("en"));
 
         //Now we need an AlertDialog.Builder object
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -245,11 +189,8 @@ public class MainActivity extends AppCompatActivity {
         //setting the view of the builder to our custom view that we already inflated
         builder.setView(dialogView);
 
-        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialogInterface) {
-                //mSpam = 0;
-            }
+        builder.setOnDismissListener(dialogInterface -> {
+            //mSpam = 0;
         });
 
         //finally creating the alert dialog and displaying it
@@ -301,47 +242,31 @@ public class MainActivity extends AppCompatActivity {
         builder.setCancelable(false);
         if (dialogs != 1){
             if (dialogs == 3) {
-                builder.setPositiveButton(R.string.super_tts, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        showMenu();
-                    }
-                });
+                builder.setPositiveButton(R.string.super_tts, (dialog, which) -> showMenu());
             }else{
-                builder.setNegativeButton(R.string.settings_tts, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        textToSpeech.stop();
-                        textToSpeech.shutdown();
-                        Intent installIntent = new Intent();
-                        installIntent.setAction(
-                                TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
-                        startActivity(installIntent);
-                        showMenu();
-                    }
+                builder.setNegativeButton(R.string.settings_tts, (dialog, which) -> {
+                    textToSpeech.stop();
+                    textToSpeech.shutdown();
+                    Intent installIntent = new Intent();
+                    installIntent.setAction(
+                            TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
+                    startActivity(installIntent);
+                    showMenu();
                 });
-                builder.setPositiveButton(R.string.continue_tts, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        showMenu();
-                    }
-                });
-                builder.setNeutralButton(R.string.download, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Uri uri = Uri.parse("market://details?id=com.google.android.tts");
-                        Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
-                        // To count with Play market backstack, After pressing back button,
-                        // to taken back to our application, we need to add following flags to intent.
-                        goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
-                                Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
-                                Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-                        try {
-                            startActivity(goToMarket);
-                        } catch (ActivityNotFoundException e) {
-                            startActivity(new Intent(Intent.ACTION_VIEW,
-                                    Uri.parse("https://play.google.com/store/apps/details?id=com.google.android.tts")));
-                        }
+                builder.setPositiveButton(R.string.continue_tts, (dialog, which) -> showMenu());
+                builder.setNeutralButton(R.string.download, (dialog, which) -> {
+                    Uri uri = Uri.parse("market://details?id=com.google.android.tts");
+                    Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+                    // To count with Play market backstack, After pressing back button,
+                    // to taken back to our application, we need to add following flags to intent.
+                    goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                            Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+                            Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                    try {
+                        startActivity(goToMarket);
+                    } catch (ActivityNotFoundException e) {
+                        startActivity(new Intent(Intent.ACTION_VIEW,
+                                Uri.parse("https://play.google.com/store/apps/details?id=com.google.android.tts")));
                     }
                 });
             }
@@ -352,30 +277,22 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.show();
 
         if (dialogs == 1){
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    textToSpeech = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
-                        @Override
-                        public void onInit(int status) {
-                            if(status == TextToSpeech.SUCCESS && textToSpeech.isLanguageAvailable(Locale.JAPANESE) != TextToSpeech.LANG_NOT_SUPPORTED) {
-                                textToSpeech.setLanguage(Locale.JAPANESE);
-                                textToSpeech.setSpeechRate(0.9f);
-                                showTtsCheck(3);
-                                alertDialog.hide();
-                            }else if (textToSpeech.isLanguageAvailable(Locale.JAPANESE) == TextToSpeech.LANG_NOT_SUPPORTED) {
-                                showTtsCheck(2);
-                                alertDialog.hide();
-                            }else if (textToSpeech.isLanguageAvailable(Locale.JAPANESE) == TextToSpeech.LANG_AVAILABLE){
-                                showAskForDownloadTts();
-                                alertDialog.hide();
-                            }else{
-                                showTtsCheck(0);
-                            }
-                        }
-                    });
+            new Handler().postDelayed(() -> textToSpeech = new TextToSpeech(getApplicationContext(), status -> {
+                if (status == TextToSpeech.SUCCESS && textToSpeech.isLanguageAvailable(Locale.JAPANESE) != TextToSpeech.LANG_NOT_SUPPORTED) {
+                    textToSpeech.setLanguage(Locale.JAPANESE);
+                    textToSpeech.setSpeechRate(0.9f);
+                    showTtsCheck(3);
+                    alertDialog.hide();
+                } else if (textToSpeech.isLanguageAvailable(Locale.JAPANESE) == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    showTtsCheck(2);
+                    alertDialog.hide();
+                } else if (textToSpeech.isLanguageAvailable(Locale.JAPANESE) == TextToSpeech.LANG_AVAILABLE) {
+                    showAskForDownloadTts();
+                    alertDialog.hide();
+                } else {
+                    showTtsCheck(0);
                 }
-            }, 3000);
+            }), 3000);
         }
         sharedPreferences.edit().putBoolean("TTS", false).apply();
         //alertDialog.hide();
@@ -395,19 +312,11 @@ public class MainActivity extends AppCompatActivity {
             builder.setView(dialogView);
 
 
-            builder.setPositiveButton(R.string.understood, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    sharedPreferences.edit().putBoolean("ERROR_SHOWN", true).apply();
-                }
-            });
+            builder.setPositiveButton(R.string.understood, (dialogInterface, i) -> sharedPreferences.edit().putBoolean("ERROR_SHOWN", true).apply());
 
-            builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                @Override
-                public void onDismiss(DialogInterface dialogInterface) {
-                    //mSpam = 0;
-                    sharedPreferences.edit().putBoolean("ERROR_SHOWN", true).apply();
-                }
+            builder.setOnDismissListener(dialogInterface -> {
+                //mSpam = 0;
+                sharedPreferences.edit().putBoolean("ERROR_SHOWN", true).apply();
             });
 
             //finally creating the alert dialog and displaying it
@@ -420,15 +329,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-
-            }
-        });
-
-        checkPurchased();
-
         if (!executed) {
 
             Animation fadeAltair =
@@ -438,99 +338,34 @@ public class MainActivity extends AppCompatActivity {
             mStart.setClickable(false);
             mRequired.setClickable(false);
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    if (sharedPreferences.getBoolean("TTS", true)){
-                        showTtsCheck(1);
-                    }else{
-                        showMenu();
-                    }
+            new Handler().postDelayed(() -> {
+                if (sharedPreferences.getBoolean("TTS", true)){
+                    showTtsCheck(1);
+                }else{
+                    showMenu();
                 }
             }, 1500);
         }
 
     }
 
-    private void checkPurchased(){
-        final BillingClient mBillingClient;
-        final Activity activity = this;
-
-        mBillingClient = BillingClient.newBuilder(activity)
-                .setListener(purchaseUpdateListener)
-                .enablePendingPurchases()
-                .build();
-
-        mBillingClient.startConnection(new BillingClientStateListener() {
-            @Override
-            public void onBillingSetupFinished(@NonNull BillingResult billingResult) {
-                if (billingResult.getResponseCode() ==  BillingClient.BillingResponseCode.OK) {
-                    // The BillingClient is ready. You can query purchases here.
-                    List<String> skuList = new ArrayList<>();
-                    skuList.add("no_ads");
-                    SkuDetailsParams.Builder params = SkuDetailsParams.newBuilder();
-                    params.setSkusList(skuList).setType(BillingClient.SkuType.INAPP);
-                    /*mBillingClient.queryPurchaseHistoryAsync(BillingClient.SkuType.INAPP,
-                            new PurchaseHistoryResponseListener() {
-                                @Override
-                                public void onPurchaseHistoryResponse(@NonNull BillingResult billingResult, @Nullable List<PurchaseHistoryRecord> list) {
-                                    if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED
-                                            && list != null) {
-                                        Toast.makeText(activity, "LICENSE OK", Toast.LENGTH_SHORT).show();
-                                        sharedPreferences.edit().putBoolean("POLARIS", true).apply();
-                                    }
-                                }});*/
-                    mBillingClient.querySkuDetailsAsync(params.build(),
-                            new SkuDetailsResponseListener() {
-                                @Override
-                                public void onSkuDetailsResponse(@NonNull BillingResult billingResult,
-                                                                 List<SkuDetails> skuDetailsList) {
-                                    int responseCode = 1000;
-                                    if (skuDetailsList.isEmpty()) {
-                                        Toast.makeText(getApplicationContext(), "Connexion impossible", Toast.LENGTH_SHORT).show();
-                                    }
-                                    if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
-                                        Toast.makeText(activity, "LICENSE OK", Toast.LENGTH_SHORT).show();
-                                        sharedPreferences.edit().putBoolean("POLARIS", true).apply();
-                                    }
-                                }
-                            });
-                }else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_UNAVAILABLE){
-                    Toast.makeText(getApplicationContext(), "Service indisponible", Toast.LENGTH_SHORT).show();
-                }else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_DISCONNECTED){
-                    Toast.makeText(getApplicationContext(), "Service déconnecté", Toast.LENGTH_SHORT).show();
-                } else if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.SERVICE_TIMEOUT){
-                    Toast.makeText(getApplicationContext(), "Timeout", Toast.LENGTH_SHORT).show();
-                }
-            }
-            @Override
-            public void onBillingServiceDisconnected() {
-                // Try to restart the connection on the next request to
-                // Google Play by calling the startConnection() method.
-            }
-        });
-    }
-
     private void showMenu() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mRequired.setClickable(true);
-                mStart.setClickable(true);
-                mArutairu.setAlpha(1f);
-                mStart.setAlpha(1f);
-                mWelcome.setAlpha(1f);
-                mRequired.setAlpha(1f);
-                mCurrentLanguage.setAlpha(1f);
-                mBg.setAlpha(0.5f);
-                mRequired.startAnimation(fadeAltair2);
-                mArutairu.startAnimation(fadeAltair2);
-                mStart.startAnimation(fadeAltair2);
-                mCurrentLanguage.startAnimation(fadeAltair2);
-                mWelcome.startAnimation(fadeAltair2);
-                mBg.startAnimation(fadeAltair3);
-                executed = true;
-            }
+        new Handler().postDelayed(() -> {
+            mRequired.setClickable(true);
+            mStart.setClickable(true);
+            mArutairu.setAlpha(1f);
+            mStart.setAlpha(1f);
+            mWelcome.setAlpha(1f);
+            mRequired.setAlpha(1f);
+            mCurrentLanguage.setAlpha(1f);
+            mBg.setAlpha(0.5f);
+            mRequired.startAnimation(fadeAltair2);
+            mArutairu.startAnimation(fadeAltair2);
+            mStart.startAnimation(fadeAltair2);
+            mCurrentLanguage.startAnimation(fadeAltair2);
+            mWelcome.startAnimation(fadeAltair2);
+            mBg.startAnimation(fadeAltair3);
+            executed = true;
         }, 2000);
     }
 }
