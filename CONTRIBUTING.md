@@ -57,7 +57,7 @@ To maintain consistency across the project, please follow these coding guideline
 
 ### Community Guidelines
 
-We strive to create a welcoming and inclusive environment. Please adhere to our [Code of Conduct](#code-of-conduct) in all your interactions.
+We strive to create a welcoming and inclusive environment. Please adhere to our [Code of Conduct](https://github.com/xenom34/Arutairu/blob/master/CODE_OF_CONDUCT.md) in all your interactions.
 
 ### Acknowledgements
 
