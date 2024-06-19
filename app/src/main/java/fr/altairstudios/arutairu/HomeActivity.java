@@ -133,8 +133,8 @@ public class HomeActivity extends AppCompatActivity {
             }else if (item.getItemId() == R.id.nav_rate){
                 rateThisApp();
                 return false;
-            }else if(item.getItemId() == R.id.nav_mail){
-                sendEmail();
+            }else if(item.getItemId() == R.id.nav_github){
+                openGithub();
                 return false;
             }else if(item.getItemId() == R.id.nav_tts){
                 loadVoices();
@@ -193,6 +193,8 @@ public class HomeActivity extends AppCompatActivity {
         picker.show();
     }
 
+    ///replaced by openGithub @line 137
+    ///undeleted for future purposes
     private void sendEmail() {
         String[] TO = {"contact@altair-studios.fr"};
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
@@ -226,6 +228,11 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(new Intent(Intent.ACTION_VIEW,
                     Uri.parse("http://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName())));
         }
+    }
+
+    private void openGithub(){
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/xenom34/Arutairu"));
+        startActivity(browserIntent);
     }
 
     private void refresh(int item, CharSequence title) {
